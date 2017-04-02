@@ -1,0 +1,21 @@
+services:
+    ds_service.serializer.context_builder.service:
+        decorates: api_platform.serializer.context_builder
+        class: Ds\Bundle\ServiceBundle\Serializer\ContextBuilder\ServiceContextBuilder
+        arguments:
+            - "@ds_service.serializer.context_builder.service.inner"
+            - "@security.authorization_checker"
+
+    ds_service.serializer.context_builder.category:
+        decorates: api_platform.serializer.context_builder
+        class: Ds\Bundle\ServiceBundle\Serializer\ContextBuilder\CategoryContextBuilder
+        arguments:
+            - "@ds_service.serializer.context_builder.category.inner"
+            - "@security.authorization_checker"
+
+    ds_service.serializer.context_builder.submission:
+        decorates: api_platform.serializer.context_builder
+        class: Ds\Bundle\ServiceBundle\Serializer\ContextBuilder\SubmissionContextBuilder
+        arguments:
+            - "@ds_service.serializer.context_builder.submission.inner"
+            - "@security.authorization_checker"

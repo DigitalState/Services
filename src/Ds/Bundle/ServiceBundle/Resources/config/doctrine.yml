@@ -1,0 +1,18 @@
+services:
+    ds_service.doctrine.orm.query_extension.service_enabled:
+        class: Ds\Component\Entity\Doctrine\ORM\QueryExtension\EnabledExtension
+        autowire: true
+        arguments:
+            - Ds\Bundle\ServiceBundle\Entity\Service
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+            - { name: api_platform.doctrine.orm.query_extension.item }
+
+    ds_service.doctrine.orm.query_extension.category_enabled:
+        class: Ds\Component\Entity\Doctrine\ORM\QueryExtension\EnabledExtension
+        autowire: true
+        arguments:
+            - Ds\Bundle\ServiceBundle\Entity\Category
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+            - { name: api_platform.doctrine.orm.query_extension.item }

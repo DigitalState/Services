@@ -1,0 +1,7 @@
+api:
+    resource: .
+    type: api_platform
+
+#ds_service:
+#    resource: "@DsServiceBundle/Action/"
+#    type: annotation

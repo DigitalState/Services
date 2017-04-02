@@ -1,0 +1,18 @@
+web8014:
+    build: .
+    environment:
+        SYMFONY_ENV: dev
+    links:
+        - database8014
+    volumes:
+        - .:/app
+    ports:
+        - 8014:80
+
+database8014:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: ds_services
+        MYSQL_USER: ds_services
+        MYSQL_PASSWORD: ds_services

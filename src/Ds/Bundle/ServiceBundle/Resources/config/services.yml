@@ -1,0 +1,9 @@
+services:
+    ds_service.service.service:
+        class: Ds\Bundle\ServiceBundle\Service\ServiceService
+
+    ds_service.service.category:
+        class: Ds\Bundle\ServiceBundle\Service\CategoryService
+
+    ds_service.service.submission:
+        class: Ds\Bundle\ServiceBundle\Service\SubmissionService
