@@ -5,3 +5,14 @@ api:
 #ds_service:
 #    resource: "@DsServiceBundle/Action/"
 #    type: annotation
+#
+
+ds_service_activation:
+    path : /activation/{formPath}
+    defaults:  { _controller: DsServiceBundle:Activation:getFormSchema }
+    methods:  [GET]
+
+ds_service_submission:
+    path : /submission/{formPath}
+    defaults:  { _controller: DsServiceBundle:Submission:validateForm }
+    methods:  [POST]
