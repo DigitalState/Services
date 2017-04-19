@@ -4,6 +4,7 @@ namespace Ds\Bundle\ServiceBundle\Controller;
 
 use GuzzleHttp\Exception\RequestException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -31,13 +32,11 @@ class SubmissionController extends Controller
     public function validateFormAction(Request $request, $formPath)
     {
         $formData = $request->getContent();
-
         $client = new HttpClient();
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse();
 
         try {
-            $requestUri = 'http://localhost:3001/' . $formPath . '/submission';
+            $requestUri = $this->getParameter('formio_uri') . '/' . $formPath . '/submission';
             $formioResponse = $client->request('POST', $requestUri, [
                 'body' => $formData,
                 'query' => [
@@ -49,17 +48,33 @@ class SubmissionController extends Controller
             ]);
 
             $formioResponseContents = $formioResponse->getBody()->getContents();
-            $response->setContent($formioResponseContents);
+            $response->setData($formioResponseContents);
 
         } catch (RequestException $e) {
-            $errorMessage = 'Unable to validate form (' . $formPath . ')';
             if ($e->hasResponse()) {
-                $formioResponseContents = $e->getResponse()->getBody()->getContents();
-                $response->setContent($formioResponseContents);
-                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                $responseSummary = RequestException::getResponseBodySummary($e->getResponse());
+                $decodedJsonMessage = json_decode($e->getResponse()->getBody()->getContents());
+                $responseMessage = empty($decodedJsonMessage) ? $responseSummary : $decodedJsonMessage;
+
+                if (empty($responseMessage)) {
+                    $responseMessage = $e->getMessage();
+                }
+
+                $response->setStatusCode($e->getCode());
+                $response->setData([
+                    'statusCode' => $e->getCode(),
+                    'error' => Response::$statusTexts[$e->getCode()],
+                    'message' => $responseMessage,
+                ]);
             }
             else {
-                throw new \Exception($errorMessage);
+                $errorMessage = 'Unable to validate form (' . $formPath . ')';
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                $response->setData([
+                    'statusCode' => Response::HTTP_BAD_REQUEST,
+                    'error' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
+                    'message' => $errorMessage . ' :: ' . $e->getMessage(),
+                ]);
             }
         }
 

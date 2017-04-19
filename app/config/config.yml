@@ -6,6 +6,7 @@ imports:
 
 parameters:
     locale: en
+    formio_uri: "http://localhost:3001"
 
 framework:
     #esi: ~

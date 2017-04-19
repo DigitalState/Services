@@ -3,6 +3,7 @@
 namespace Ds\Bundle\ServiceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use GuzzleHttp\Psr7;
@@ -26,21 +27,30 @@ class ActivationController extends Controller
     public function getFormSchemaAction($formPath)
     {
         $client = new HttpClient();
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse();
 
         try {
-            $formioResponse = $client->request('GET', 'http://localhost:3001/' . $formPath);
+            $formioResponse = $client->request('GET', $this->getParameter('formio_uri') . '/' . $formPath);
             $formioResponseContents = $formioResponse->getBody()->getContents();
             $response->setContent($formioResponseContents);
 
         } catch (RequestException $e) {
-            $errorMessage = 'Unable to retrieve form (' . $formPath . ')';
             if ($e->hasResponse()) {
-                throw new \Exception($errorMessage . ' :: ' . Psr7\str($e->getResponse()));
+                $response->setStatusCode($e->getCode());
+                $response->setData([
+                    'statusCode' => $e->getCode(),
+                    'error' => Response::$statusTexts[$e->getCode()],
+                    'message' => 'invalid query'
+                ]);
             }
             else {
-                throw new \Exception($errorMessage);
+                $errorMessage = 'Unable to retrieve form (' . $formPath . ')';
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                $response->setData([
+                    'statusCode' => Response::HTTP_BAD_REQUEST,
+                    'error' => Response::$statusTexts[Response::HTTP_BAD_REQUEST],
+                    'message' => $errorMessage . ' :: ' . $e->getMessage()
+                ]);
             }
         }
 
