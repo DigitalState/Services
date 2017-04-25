@@ -7,12 +7,22 @@ api:
 #    type: annotation
 #
 
-ds_service_activation:
-    path : /activation/{formPath}
-    defaults:  { _controller: DsServiceBundle:Activation:getFormSchema }
+ds_service_form_activation:
+    path : /activation/{serviceUuid}
+    defaults:  { _controller: DsServiceBundle:Activation:getServiceFormSchema }
     methods:  [GET]
 
-ds_service_submission:
-    path : /submission/{formPath}
-    defaults:  { _controller: DsServiceBundle:Submission:validateForm }
+#ds_service_activation:
+#    path : /activation/{formPath}
+#    defaults:  { _controller: DsServiceBundle:Activation:getFormSchema }
+#    methods:  [GET]
+
+#ds_service_submission:
+#    path : /submission/{formPath}
+#    defaults:  { _controller: DsServiceBundle:Submission:validateForm }
+#    methods:  [POST]
+
+ds_service_validation_and_submission:
+    path : /submission/{serviceUuid}
+    defaults:  { _controller: DsServiceBundle:Submission:validateAndSubmit }
     methods:  [POST]

@@ -10,27 +10,49 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException;
 
-class ActivationController extends Controller
+class ActivationController extends BaseServiceController
 {
     public function indexAction($name)
     {
         return $this->render('', array('name' => $name));
     }
 
+    public function getServiceFormSchemaAction(String $serviceUuid)
+    {
+        $service = $this->getServiceByUuid($serviceUuid);
+
+        if ($service instanceof Response) {
+            return $service;
+        }
+
+        $formioFormKey = $this->getCamundaFormKeyFromService($service);
+
+        if ($formioFormKey instanceof Response) {
+            return $formioFormKey;
+        }
+        elseif (is_string($formioFormKey)) {
+            $formioResponse = $this->getFormSchemaAction($formioFormKey);
+            return $formioResponse;
+        }
+        else {
+            return $this->buildJsonResponseError('Unexpected internal process response.', Response::HTTP_BAD_REQUEST);
+        }
+    }
+
     /**
      * Fetch a form schema from a Formio server.
      *
-     * @param $formPath The path identifier of the requested form
+     * @param $formioFormKey The path identifier of the requested form
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function getFormSchemaAction($formPath)
+    public function getFormSchemaAction($formioFormKey)
     {
         $client = new HttpClient();
         $response = new JsonResponse();
 
         try {
-            $formioResponse = $client->request('GET', $this->getParameter('formio_uri') . '/' . $formPath);
+            $formioResponse = $client->request('GET', $this->getParameter('formio_uri') . '/' . $formioFormKey);
             $formioResponseContents = $formioResponse->getBody()->getContents();
             $response->setContent($formioResponseContents);
 
@@ -44,7 +66,7 @@ class ActivationController extends Controller
                 ]);
             }
             else {
-                $errorMessage = 'Unable to retrieve form (' . $formPath . ')';
+                $errorMessage = 'Unable to retrieve form (' . $formioFormKey . ')';
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
                 $response->setData([
                     'statusCode' => Response::HTTP_BAD_REQUEST,
@@ -56,4 +78,6 @@ class ActivationController extends Controller
 
         return $response;
     }
+
+
 }

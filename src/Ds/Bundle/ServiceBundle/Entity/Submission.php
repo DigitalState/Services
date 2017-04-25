@@ -75,7 +75,7 @@ class Submission implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"submission_output_admin", "submission_input_admin"})
-     * @ORM\Column(name="`handler`", type="string")
+     * @ORM\Column(name="`handler`", type="string", nullable=true)
      */
     protected $handler; use Accessor\Handler;
 
@@ -83,7 +83,7 @@ class Submission implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"submission_output_admin", "submission_input_admin"})
-     * @ORM\Column(name="handler_uuid", type="guid")
+     * @ORM\Column(name="handler_uuid", type="guid", nullable=true)
      * @Assert\Uuid
      */
     protected $handlerUuid; use Accessor\HandlerUuid;
@@ -123,54 +123,54 @@ class Submission implements Uuidentifiable
 
     # endregion
 
-    /**
-     * @var array
-     *
-     * @Serializer\Groups({"submission_output", "submission_input"})
-     * @ORM\Column(name="data", type="json_array")
-     */
-    protected $data; use Accessor\Data;
-
-    /**
-     * @var array
-     *
-     * @Serializer\Groups({"submission_output", "submission_input"})
-     * @ORM\Column(name="draft", type="json_array")
-     */
-    protected $draft; # region accessors
-
-    /**
-     * Set draft
-     *
-     * @param array $draft
-     * @return \Ds\Bundle\ServiceBundle\Entity\Submission
-     */
-    public function setDraft($draft)
-    {
-        $this->draft = $draft;
-
-        return $this;
-    }
-
-    /**
-     * Get draft
-     *
-     * @param string $property
-     * @return array
-     * @throws \OutOfRangeException
-     */
-    public function getDraft($property = null)
-    {
-        if (null === $property) {
-            return $this->draft;
-        }
-
-        if (!array_key_exists($property, $this->draft)) {
-            throw new OutOfRangeException('Array property does not exist.');
-        }
-
-        return $this->draft[$property];
-    }
+//    /**
+//     * @var array
+//     *
+//     * @Serializer\Groups({"submission_output", "submission_input"})
+//     * @ORM\Column(name="data", type="json_array")
+//     */
+//    protected $data; use Accessor\Data;
+//
+//    /**
+//     * @var array
+//     *
+//     * @Serializer\Groups({"submission_output", "submission_input"})
+//     * @ORM\Column(name="draft", type="json_array")
+//     */
+//    protected $draft; # region accessors
+//
+//    /**
+//     * Set draft
+//     *
+//     * @param array $draft
+//     * @return \Ds\Bundle\ServiceBundle\Entity\Submission
+//     */
+//    public function setDraft($draft)
+//    {
+//        $this->draft = $draft;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get draft
+//     *
+//     * @param string $property
+//     * @return array
+//     * @throws \OutOfRangeException
+//     */
+//    public function getDraft($property = null)
+//    {
+//        if (null === $property) {
+//            return $this->draft;
+//        }
+//
+//        if (!array_key_exists($property, $this->draft)) {
+//            throw new OutOfRangeException('Array property does not exist.');
+//        }
+//
+//        return $this->draft[$property];
+//    }
 
     # endregion
 

@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     attributes={
  *         "filters"={"ds_service.service.filter"},
  *         "normalization_context"={"groups"={"service_output"}},
- *         "denormalization_context"={"groups"={"service_input"}}
+ *         "denormalization_context"={"groups"={"service_input", "service_input_admin"}}
  *     }
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\ServiceRepository")
@@ -76,8 +76,8 @@ class Service implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"service_output_admin", "service_input_admin"})
-     * @ORM\Column(name="`handler`", type="string")
-     * @Assert\NotBlank
+     * @ORM\Column(name="`handler`", type="string", nullable=true)
+     * Assert\NotBlank
      */
     protected $handler; use Accessor\Handler;
 
@@ -85,8 +85,8 @@ class Service implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"service_output_admin", "service_input_admin"})
-     * @ORM\Column(name="handler_uuid", type="guid")
-     * @Assert\NotBlank
+     * @ORM\Column(name="handler_uuid", type="guid", nullable=true)
+     * Assert\NotBlank
      * @Assert\Uuid
      */
     protected $handlerUuid; use Accessor\HandlerUuid;
@@ -226,17 +226,17 @@ class Service implements Uuidentifiable
     # endregion
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @Serializer\Groups({"service_output_admin", "service_input_admin"})
-     * @ORM\Column(name="enabled", type="boolean")
-     * @Assert\NotBlank
+     * @Serializer\Groups({"service_output", "service_output_admin", "service_input_admin"})
+     * @ORM\Column(name="enabled", type="boolean", nullable=true)
      */
-    protected $enabled; use Accessor\Enabled;
+    protected $enabled = TRUE; use Accessor\Enabled;
 
     /**
      * @var string
      *
+     * @Serializer\Groups({"service_output", "service_input_admin"})
      * @ORM\Column(name="form", type="string")
      */
     protected $form; # region accessors
@@ -266,46 +266,46 @@ class Service implements Uuidentifiable
 
     # endregion
 
-    /**
-     * @var array
-     *
-     * @ApiProperty()
-     * @Serializer\Groups({"service_output"})
-     */
-    protected $formMeta; # region accessors
-
-    /**
-     * Set form meta
-     *
-     * @param array $formMeta
-     * @return \Ds\Bundle\ServiceBundle\Entity\Service
-     */
-    public function setFormMeta($formMeta)
-    {
-        $this->formMeta = $formMeta;
-
-        return $this;
-    }
-
-    /**
-     * Get form meta
-     *
-     * @param string $property
-     * @return array
-     * @throws \OutOfRangeException
-     */
-    public function getFormMeta($property = null)
-    {
-        if (null === $property) {
-            return $this->formMeta;
-        }
-
-        if (!array_key_exists($property, $this->formMeta)) {
-            throw new OutOfRangeException('Array property does not exist.');
-        }
-
-        return $this->formMeta[$property];
-    }
+//    /**
+//     * @var array
+//     *
+//     * @ApiProperty()
+//     * @Serializer\Groups({"service_output"})
+//     */
+//    protected $formMeta; # region accessors
+//
+//    /**
+//     * Set form meta
+//     *
+//     * @param array $formMeta
+//     * @return \Ds\Bundle\ServiceBundle\Entity\Service
+//     */
+//    public function setFormMeta($formMeta)
+//    {
+//        $this->formMeta = $formMeta;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get form meta
+//     *
+//     * @param string $property
+//     * @return array
+//     * @throws \OutOfRangeException
+//     */
+//    public function getFormMeta($property = null)
+//    {
+//        if (null === $property) {
+//            return $this->formMeta;
+//        }
+//
+//        if (!array_key_exists($property, $this->formMeta)) {
+//            throw new OutOfRangeException('Array property does not exist.');
+//        }
+//
+//        return $this->formMeta[$property];
+//    }
 
     # endregion
 

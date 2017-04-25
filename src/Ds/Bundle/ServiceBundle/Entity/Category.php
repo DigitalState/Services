@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     attributes={
  *         "filters"={"ds_service.category.filter"},
  *         "normalization_context"={"groups"={"category_output"}},
- *         "denormalization_context"={"groups"={"category_input"}}
+ *         "denormalization_context"={"groups"={"category_input", "category_input_admin"}}
  *     }
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\CategoryRepository")
@@ -76,8 +76,8 @@ class Category implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"category_output_admin", "category_input_admin"})
-     * @ORM\Column(name="`handler`", type="string")
-     * @Assert\NotBlank
+     * @ORM\Column(name="`handler`", type="string", nullable=true)
+     * Assert\NotBlank
      */
     protected $handler; use Accessor\Handler;
 
@@ -85,9 +85,9 @@ class Category implements Uuidentifiable
      * @var string
      *
      * @Serializer\Groups({"category_output_admin", "category_input_admin"})
-     * @ORM\Column(name="handler_uuid", type="guid")
-     * @Assert\NotBlank
-     * @Assert\Uuid
+     * @ORM\Column(name="handler_uuid", type="guid", nullable=true)
+     * Assert\NotBlank
+     * Assert\Uuid
      */
     protected $handlerUuid; use Accessor\HandlerUuid;
 
