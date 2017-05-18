@@ -15,3 +15,6 @@ security:
 
     access_control:
         - { path: ^/acl/permissions, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/categories, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/services, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/submissions, role: IS_AUTHENTICATED_FULLY }
