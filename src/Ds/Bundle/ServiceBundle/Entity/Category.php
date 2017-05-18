@@ -24,7 +24,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={"ds_service.category.filter"},
+ *         "filters"={"ds_service.filter.category"},
  *         "normalization_context"={"groups"={"category_output"}},
  *         "denormalization_context"={"groups"={"category_input"}}
  *     }

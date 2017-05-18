@@ -8,26 +8,26 @@ services:
     ds_service.service.submission:
         class: Ds\Bundle\ServiceBundle\Service\SubmissionService
 
-    ds_service.service.filter:
+    ds_service.filter.service:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
             - { uuid: exact }
         tags:
-            - { name: api_platform.filter, id: ds_service.service.filter }
+            - { name: api_platform.filter, id: ds_service.filter.service }
 
-    ds_service.category.filter:
+    ds_service.filter.category:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
             - { uuid: exact }
         tags:
-            - { name: api_platform.filter, id: ds_service.category.filter }
+            - { name: api_platform.filter, id: ds_service.filter.category }
 
-    ds_service.submission.filter:
+    ds_service.filter.submission:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
             - { uuid: exact }
         tags:
-            - { name: api_platform.filter, id: ds_service.submission.filter }
+            - { name: api_platform.filter, id: ds_service.filter.submission }
 
     ds_service.form.flow.formio:
         parent: craue.form.flow
