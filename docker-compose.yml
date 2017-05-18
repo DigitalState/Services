@@ -1,18 +1,45 @@
-web8014:
-    build: .
-    environment:
-        SYMFONY_ENV: dev
-    links:
-        - database8014
-    volumes:
-        - .:/app
-    ports:
-        - 8014:80
+version: '2.1'
 
-database8014:
-    image: mysql
+volumes:
+  db_data:
+    driver: 'local'
+
+services:
+  db:
+    image: 'mysql:5.7'
+    ports:
+      - '9051:3306'
     environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: ds_services
-        MYSQL_USER: ds_services
-        MYSQL_PASSWORD: ds_services
+      MYSQL_DATABASE: 'api_platform'
+      MYSQL_USER: 'api_platform'
+      MYSQL_PASSWORD: 'api_platform'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+    volumes:
+      - 'db_data:/var/lib/mysql'
+    healthcheck:
+      test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
+      interval: '5s'
+      timeout: '1s'
+      retries: 10
+
+  php:
+    build: '.'
+    depends_on:
+      db:
+        condition: 'service_healthy'
+    environment:
+      SYMFONY_ENV: 'dev'
+    volumes:
+      - './:/srv/api-platform'
+
+  nginx:
+    image: 'nginx:1.11-alpine'
+    depends_on:
+      php:
+        condition: 'service_started'
+    ports:
+      - '8051:80'
+    volumes_from:
+      - php
+    volumes:
+      - './docker/nginx/conf.d:/etc/nginx/conf.d:ro'

@@ -26,9 +26,9 @@
         "dunglas/action-bundle": "^0.3",
         "nelmio/cors-bundle": "^1.4",
         "phpdocumentor/reflection-docblock": "^3.0",
-        "stof/doctrine-extensions-bundle": "^1.2",
-        "digitalstate/core": "dev-develop",
-        "craue/formflow-bundle": "~3.0@dev"
+        "knplabs/doctrine-behaviors": "~1.1",
+        "craue/formflow-bundle": "~3.0@dev",
+        "digitalstate/core": "dev-develop"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",
@@ -42,21 +42,18 @@
         "behatch/contexts": "^2.5"
     },
     "scripts": {
-        "post-install-cmd": [
+        "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "@symfony-scripts"
         ]
     },
     "extra": {
@@ -65,12 +62,11 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
+        "symfony-assets-install": "hard",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+            "file": "app/config/dev/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.0-dev"
         }
     }
 }

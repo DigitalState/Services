@@ -1,6 +1,0 @@
-services:
-    ds_service.event_listener.submission.handler:
-        class: Ds\Bundle\ServiceBundle\EventListener\Submission\HandlerListener
-        autowire: true
-        tags:
-            - { name: doctrine.orm.entity_listener, entity: Ds\Bundle\ServiceBundle\Entity\Submission, event: prePersist }

@@ -5,9 +5,9 @@ namespace Ds\Bundle\ServiceBundle\EventListener\Submission;
 use Ds\Bundle\ServiceBundle\Entity\Submission;
 
 /**
- * Class HandlerListener
+ * Class OwnerListener
  */
-class HandlerListener
+class OwnerListener
 {
     /**
      * Pre persist
@@ -16,13 +16,13 @@ class HandlerListener
      */
     public function prePersist(Submission $submission)
     {
-        if (null !== $submission->getHandler()) {
+        if (null !== $submission->getOwner()) {
             return;
         }
 
         $service = $submission->getService();
         $submission
-            ->setHandler($service->getHandler())
-            ->setHandlerUuid($service->getHandlerUuid());
+            ->setOwner($service->getOwner())
+            ->setOwnerUuid($service->getOwnerUuid());
     }
 }

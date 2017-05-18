@@ -1,9 +1,0 @@
-services:
-    ds_service.form.flow.formio:
-        parent: craue.form.flow
-        class: Ds\Bundle\ServiceBundle\Form\Flow\FormioFlow
-
-    ds_service.form.flow.formio.factory:
-        class: Ds\Bundle\ServiceBundle\Form\Flow\Formio\Factory
-        arguments:
-            - '@ds_service.form.flow.formio'

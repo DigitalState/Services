@@ -1,7 +1,5 @@
 imports:
-    - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: listeners.yml }
     - { resource: services.yml }
 
 parameters:
@@ -9,13 +7,13 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ["%locale%"] }
+    translator: { fallbacks: ["%locale%"] }
     secret: "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form: ~
-    csrf_protection: ~
+    csrf_protection: false
     validation: { enable_annotations: true }
     serializer: { enable_annotations: true }
     templating:
@@ -24,8 +22,7 @@ framework:
     trusted_hosts: ~
     trusted_proxies: ~
     session:
-        handler_id: session.handler.native_file
-        save_path: "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        handler_id: ds.session.handler.pdo
     fragments: ~
     http_method_override: true
     assets: ~
@@ -44,43 +41,27 @@ doctrine:
         dbname: "%database_name%"
         user: "%database_user%"
         password: "%database_password%"
-        charset: UTF8
-
+        charset:  UTF8
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        mappings:
-            gedmo_translatable:
-                type: annotation
-                prefix: Gedmo\Translatable\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                alias: GedmoTranslatable
-                is_bundle: false
-            gedmo_translator:
-                type: annotation
-                prefix: Gedmo\Translator\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
-                alias: GedmoTranslator
-                is_bundle: false
-            gedmo_loggable:
-                type: annotation
-                prefix: Gedmo\Loggable\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
-                alias: GedmoLoggable
-                is_bundle: false
-            gedmo_tree:
-                type: annotation
-                prefix: Gedmo\Tree\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
-                alias: GedmoTree
-                is_bundle: false
 
-stof_doctrine_extensions:
-    default_locale: "%locale%"
-    orm:
-        default:
-            timestampable: true
+knp_doctrine_behaviors:
+    blameable: true
+    geocodable: false
+    loggable: false
+    sluggable: false
+    sortable: false
+    timestampable: true
+    translatable: true
+    tree: false
+
+lexik_jwt_authentication:
+    private_key_path: "%jwt_private_key_path%"
+    public_key_path: "%jwt_public_key_path%"
+    pass_phrase: "%jwt_key_pass_phrase%"
+    token_ttl: "%jwt_token_ttl%"
 
 swiftmailer:
     transport: "%mailer_transport%"
@@ -101,7 +82,11 @@ nelmio_cors:
 
 dunglas_action:
     directories:
-        - ../src/*/Bundle/*Bundle/{Controller,Action,Command,EventSubscriber,Service}
+        - ../src/*/Bundle/*Bundle/Controller
+        - ../src/*/Bundle/*Bundle/Action
+        - ../src/*/Bundle/*Bundle/Command
+        - ../src/*/Bundle/*Bundle/EventSubscriber
+        - ../src/*/Bundle/*Bundle/Service
 
 api_platform:
     title: Services
@@ -110,3 +95,18 @@ api_platform:
     default_operation_path_resolver: api_platform.operation_path_resolver.dash
     eager_loading:
         force_eager: false
+
+ds_model:
+    behavior:
+        uuidentifiable: ~
+        translatable: ~
+        localizable: ~
+
+ds_security:
+    token:
+        ip: ~
+        client: ~
+        identity: ~
+    filter:
+        anonymous: ~
+        individual: ~

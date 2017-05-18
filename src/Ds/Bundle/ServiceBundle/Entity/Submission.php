@@ -2,16 +2,21 @@
 
 namespace Ds\Bundle\ServiceBundle\Entity;
 
-use Ds\Component\Entity\Entity\Uuidentifiable;
-use Ds\Component\Entity\Entity\Accessor;
+use Ds\Component\Model\Type\Identifiable;
+use Ds\Component\Model\Type\Uuidentifiable;
+use Ds\Component\Model\Type\Ownable;
+use Ds\Component\Model\Type\Identitiable;
+use Ds\Component\Model\Accessor;
+use Ds\Bundle\ServiceBundle\Accessor as ServiceAccessor;
+use Knp\DoctrineBehaviors\Model as Behavior;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use Symfony\Component\Serializer\Annotation As Serializer;
-use Gedmo\Mapping\Annotation as Behavior;
+use Symfony\Component\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+use Ds\Component\Model\Annotation\Translate;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Submission
@@ -25,154 +30,132 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\SubmissionRepository")
  * @ORM\Table(name="ds_submission")
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  * @ORM\HasLifecycleCallbacks
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Submission implements Uuidentifiable
+class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
 {
+    use Behavior\Timestampable\Timestampable;
+    use Behavior\SoftDeletable\SoftDeletable;
+
+    use Accessor\Id;
+    use Accessor\Uuid;
+    use Accessor\Owner;
+    use Accessor\OwnerUuid;
+    use Accessor\Identity;
+    use Accessor\IdentityUuid;
+    use Accessor\Data;
+    use Accessor\State;
+    use ServiceAccessor\Service;
+
+    /**
+     * @const integer
+     */
+    const STATE_DRAFT = 0;
+    const STATE_SUBMITTED = 1;
+
     /**
      * @var integer
-     *
-     * @ApiProperty(identifier=false)
-     * @Serializer\Groups({"submission_output_admin"})
+     * @ApiProperty(identifier=false, writable=false)
+     * @Serializer\Groups({"submission_output"})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="integer")
      */
-    protected $id; use Accessor\Id;
+    protected $id;
 
     /**
      * @var string
-     *
-     * @ApiProperty(identifier=true)
+     * @ApiProperty(identifier=true, writable=false)
      * @Serializer\Groups({"submission_output"})
      * @ORM\Column(name="uuid", type="guid", unique=true)
      * @Assert\Uuid
      */
-    protected $uuid; use Accessor\Uuid;
+    protected $uuid;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Groups({"submission_output_admin"})
-     * @Behavior\Timestampable(on="create")
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"submission_output"})
      */
-    protected $createdAt; use Accessor\CreatedAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Groups({"submission_output_admin"})
-     * @Behavior\Timestampable(on="update")
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"submission_output"})
      */
-    protected $updatedAt; use Accessor\UpdatedAt;
+    protected $updatedAt;
+
+    /**
+     * @var \DateTime
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"submission_output"})
+     */
+    protected $deletedAt;
 
     /**
      * @var string
-     *
-     * @Serializer\Groups({"submission_output_admin", "submission_input_admin"})
-     * @ORM\Column(name="`handler`", type="string")
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
-    protected $handler; use Accessor\Handler;
+    protected $owner;
 
     /**
      * @var string
-     *
-     * @Serializer\Groups({"submission_output_admin", "submission_input_admin"})
-     * @ORM\Column(name="handler_uuid", type="guid")
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @ORM\Column(name="owner_uuid", type="guid", nullable=true)
+     * @Assert\NotBlank
      * @Assert\Uuid
      */
-    protected $handlerUuid; use Accessor\HandlerUuid;
+    protected $ownerUuid;
+
+    /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @ORM\Column(name="identity", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     */
+    protected $identity;
+
+    /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @ORM\Column(name="identity_uuid", type="guid", nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Uuid
+     */
+    protected $identityUuid;
 
     /**
      * @var \Ds\Bundle\ServiceBundle\Entity\Service
-     *
      * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\ManyToOne(targetEntity="Service", inversedBy="submissions")
      * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
      * @Assert\Valid
      */
-    protected $service; # region accessors
-
-    /**
-     * Set service
-     *
-     * @param \Ds\Bundle\ServiceBundle\Entity\Service $service
-     * @return \Ds\Bundle\ServiceBundle\Entity\Submission
-     */
-    public function setService(Service $service)
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    /**
-     * Get service
-     *
-     * @return \Ds\Bundle\ServiceBundle\Entity\Service
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
-
-    # endregion
+    protected $service;
 
     /**
      * @var array
-     *
      * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\Column(name="data", type="json_array")
      */
-    protected $data; use Accessor\Data;
+    protected $data;
 
     /**
-     * @var array
-     *
-     * @Serializer\Groups({"submission_output", "submission_input"})
-     * @ORM\Column(name="draft", type="json_array")
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output"})
+     * @ORM\Column(name="state", type="smallint", options={"unsigned"=true})
+     * @Assert\NotBlank
      */
-    protected $draft; # region accessors
-
-    /**
-     * Set draft
-     *
-     * @param array $draft
-     * @return \Ds\Bundle\ServiceBundle\Entity\Submission
-     */
-    public function setDraft($draft)
-    {
-        $this->draft = $draft;
-
-        return $this;
-    }
-
-    /**
-     * Get draft
-     *
-     * @param string $property
-     * @return array
-     * @throws \OutOfRangeException
-     */
-    public function getDraft($property = null)
-    {
-        if (null === $property) {
-            return $this->draft;
-        }
-
-        if (!array_key_exists($property, $this->draft)) {
-            throw new OutOfRangeException('Array property does not exist.');
-        }
-
-        return $this->draft[$property];
-    }
-
-    # endregion
+    protected $state;
 
     /**
      * Constructor
@@ -180,6 +163,6 @@ class Submission implements Uuidentifiable
     public function __construct()
     {
         $this->data = [];
-        $this->draft = [];
+        $this->state = static::STATE_DRAFT;
     }
 }

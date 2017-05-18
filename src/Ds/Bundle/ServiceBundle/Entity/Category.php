@@ -2,17 +2,22 @@
 
 namespace Ds\Bundle\ServiceBundle\Entity;
 
-use Ds\Component\Entity\Entity\Uuidentifiable;
-use Ds\Component\Entity\Entity\Accessor;
+use Ds\Component\Model\Type\Identifiable;
+use Ds\Component\Model\Type\Uuidentifiable;
+use Ds\Component\Model\Type\Ownable;
+use Ds\Component\Model\Type\Translatable;
+use Ds\Component\Model\Type\Enableable;
+use Ds\Component\Model\Accessor;
+use Knp\DoctrineBehaviors\Model as Behavior;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use Symfony\Component\Serializer\Annotation As Serializer;
-use Gedmo\Mapping\Annotation as Behavior;
+use Symfony\Component\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+use Ds\Component\Model\Annotation\Translate;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Category
@@ -26,93 +31,117 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\CategoryRepository")
  * @ORM\Table(name="ds_category")
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  * @ORM\HasLifecycleCallbacks
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Category implements Uuidentifiable
+class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, Enableable
 {
+    use Behavior\Translatable\Translatable;
+    use Behavior\Timestampable\Timestampable;
+    use Behavior\SoftDeletable\SoftDeletable;
+
+    use Accessor\Id;
+    use Accessor\Uuid;
+    use Accessor\Owner;
+    use Accessor\OwnerUuid;
+    use Accessor\Title;
+    use Accessor\Description;
+    use Accessor\Presentation;
+    use Accessor\Enabled;
+
     /**
      * @var integer
-     *
-     * @ApiProperty(identifier=false)
-     * @Serializer\Groups({"category_output_admin"})
+     * @ApiProperty(identifier=false, writable=false)
+     * @Serializer\Groups({"category_output"})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="integer")
      */
-    protected $id; use Accessor\Id;
+    protected $id;
 
     /**
      * @var string
-     *
-     * @ApiProperty(identifier=true)
+     * @ApiProperty(identifier=true, writable=false)
      * @Serializer\Groups({"category_output"})
      * @ORM\Column(name="uuid", type="guid", unique=true)
      * @Assert\Uuid
      */
-    protected $uuid; use Accessor\Uuid;
+    protected $uuid;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Groups({"category_output_admin"})
-     * @Behavior\Timestampable(on="create")
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"category_output"})
      */
-    protected $createdAt; use Accessor\CreatedAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
-     *
-     * @Serializer\Groups({"category_output_admin"})
-     * @Behavior\Timestampable(on="update")
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"category_output"})
      */
-    protected $updatedAt; use Accessor\UpdatedAt;
+    protected $updatedAt;
+
+    /**
+     * @var \DateTime
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"category_output"})
+     */
+    protected $deletedAt;
 
     /**
      * @var string
-     *
-     * @Serializer\Groups({"category_output_admin", "category_input_admin"})
-     * @ORM\Column(name="`handler`", type="string")
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
      * @Assert\NotBlank
      */
-    protected $handler; use Accessor\Handler;
+    protected $owner;
 
     /**
      * @var string
-     *
-     * @Serializer\Groups({"category_output_admin", "category_input_admin"})
-     * @ORM\Column(name="handler_uuid", type="guid")
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @ORM\Column(name="owner_uuid", type="guid", nullable=true)
      * @Assert\NotBlank
      * @Assert\Uuid
      */
-    protected $handlerUuid; use Accessor\HandlerUuid;
+    protected $ownerUuid;
 
     /**
-     * @var string
-     *
-     * @Serializer\Groups({"category_output", "category_input_admin"})
-     * @ORM\Column(name="title", type="string")
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Translate
      */
-    protected $title; use Accessor\Title;
+    protected $title;
 
     /**
-     * @var string
-     *
-     * @Serializer\Groups({"category_output", "category_input_admin"})
-     * @ORM\Column(name="description", type="text")
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Translate
      */
-    protected $description; use Accessor\Description;
+    protected $description;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Translate
+     */
+    protected $presentation;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
-     *
-     * @Serializer\Groups({"category_input_admin"})
+     * @ApiProperty
+     * @Serializer\Groups({"category_input"})
      * @ORM\ManyToMany(targetEntity="Service", mappedBy="categories")
      */
     protected $services; # region accessors
@@ -162,18 +191,21 @@ class Category implements Uuidentifiable
 
     /**
      * @var string
-     *
-     * @Serializer\Groups({"category_output_admin", "category_input_admin"})
+     * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\Column(name="enabled", type="boolean")
      * @Assert\NotBlank
      */
-    protected $enabled; use Accessor\Enabled;
+    protected $enabled;
 
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->title = [];
+        $this->description = [];
+        $this->presentation = [];
         $this->services = new ArrayCollection;
+        $this->enabled = false;
     }
 }
