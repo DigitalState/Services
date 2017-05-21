@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class ServiceTranslation
  *
  * @ORM\Entity
- * @ORM\Table(name="ds_service_translation")
+ * @ORM\Table(name="ds_service_trans")
  */
 class ServiceTranslation
 {
