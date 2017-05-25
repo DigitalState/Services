@@ -4,7 +4,7 @@ categories:
         owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38   # Finance
         title:
             en: Financial Services
-            fr: Financial Services
+            fr: Services financiers
         description:
             en: Description ...
             fr: Description ...
@@ -17,7 +17,7 @@ categories:
         owner_uuid: 2b20cb91-d0ef-41f1-b2f8-6c1a9ebc6fd8   # Human Resources
         title:
             en: HR Services
-            fr: HR Services
+            fr: Services ressources humaines
         description:
             en: Description ...
             fr: Description ...
