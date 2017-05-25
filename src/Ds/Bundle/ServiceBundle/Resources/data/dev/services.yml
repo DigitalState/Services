@@ -1,0 +1,35 @@
+services:
+    -
+        uuid: b12fef1d-c197-4420-be77-083e2f2b53d6
+        owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38   # Finance
+        title:
+            en: Pay Taxes
+            fr: Pay Taxes
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Presentation ...
+
+    -
+        uuid: b1f12b2c-5dec-4142-a50b-7b0ac871ee1b
+        owner_uuid: 2b20cb91-d0ef-41f1-b2f8-6c1a9ebc6fd8   # Human Resources
+        title:
+            en: Report Issue
+            fr: Report Issue
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Presentation ...
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    title: []
+    description: []
+    presentation: []
+    enabled: true

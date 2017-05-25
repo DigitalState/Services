@@ -1,4 +1,6 @@
 parameters:
+    server: dev
+
     database_host: db
     database_port: 3306
     database_name: api_platform
