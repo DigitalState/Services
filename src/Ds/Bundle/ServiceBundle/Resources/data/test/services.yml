@@ -4,3 +4,7 @@ prototype:
     uuid: ~
     owner: ~
     owner_uuid: ~
+    title: []
+    description: []
+    presentation: []
+    enabled: ~
