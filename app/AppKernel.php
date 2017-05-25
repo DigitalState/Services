@@ -30,7 +30,9 @@ class AppKernel extends Kernel
             new Ds\Component\Model\Bridge\Symfony\Bundle\DsModelBundle(),
             new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
             new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
-            new Ds\Bundle\ServiceBundle\DsServiceBundle()
+            new Ds\Bundle\BpmBundle\DsBpmBundle(),
+            new Ds\Bundle\BpmCamundaBundle\DsBpmCamundaBundle(),
+            new Ds\Bundle\ServiceBundle\DsServiceBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
