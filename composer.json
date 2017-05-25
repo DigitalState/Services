@@ -28,7 +28,8 @@
         "phpdocumentor/reflection-docblock": "^3.0",
         "knplabs/doctrine-behaviors": "~1.1",
         "craue/formflow-bundle": "~3.0@dev",
-        "digitalstate/core": "dev-develop"
+        "digitalstate/core": "dev-develop",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "api-platform/schema-generator": "^1.2",
