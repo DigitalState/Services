@@ -1,0 +1,12 @@
+services:
+    ds_bpm_camunda.service.process_definition:
+        parent: ds_bpm.service
+        class: Ds\Component\BpmCamunda\Service\ProcessDefinitionService
+
+    ds_bpm_camunda.service.process_instance:
+        parent: ds_bpm.service
+        class: Ds\Component\BpmCamunda\Service\ProcessInstanceService
+
+    ds_bpm_camunda.service.task:
+        parent: ds_bpm.service
+        class: Ds\Component\BpmCamunda\Service\TaskService

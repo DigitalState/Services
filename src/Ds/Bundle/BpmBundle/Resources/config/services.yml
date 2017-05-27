@@ -1,0 +1,8 @@
+services:
+    ds_bpm.http.client:
+        class: GuzzleHttp\Client
+
+    ds_bpm.service:
+        abstract: true
+        arguments:
+            - "@ds_bpm.http.client"
