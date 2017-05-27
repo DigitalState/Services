@@ -99,7 +99,6 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
      * @ApiProperty
      * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
-     * @Assert\NotBlank
      */
     protected $owner;
 
@@ -108,7 +107,6 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
      * @ApiProperty
      * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\Column(name="owner_uuid", type="guid", nullable=true)
-     * @Assert\NotBlank
      * @Assert\Uuid
      */
     protected $ownerUuid;
