@@ -199,6 +199,56 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ApiProperty
      * @Serializer\Groups({"service_output"})
+     * @ORM\OneToMany(targetEntity="Scenario", mappedBy="service")
+     */
+    protected $scenarios; # region accessors
+
+    /**
+     * Add scenario
+     *
+     * @param \Ds\Bundle\ServiceBundle\Entity\Scenario $scenario
+     * @return \Ds\Bundle\ServiceBundle\Entity\Service
+     */
+    public function addScenario(Scenario $scenario)
+    {
+        if (!$this->scenarios->contains($scenario)) {
+            $this->scenarios->add($scenario);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove scenario
+     *
+     * @param \Ds\Bundle\ServiceBundle\Entity\Scenario $scenario
+     * @return \Ds\Bundle\ServiceBundle\Entity\Service
+     */
+    public function removeScenario(Scenario $scenario)
+    {
+        if ($this->scenarios->contains($scenario)) {
+            $this->scenarios->removeElement($scenario);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get scenarios
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getScenarios()
+    {
+        return $this->scenarios;
+    }
+
+    # endregion
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ApiProperty
+     * @Serializer\Groups({"service_output"})
      * @ORM\OneToMany(targetEntity="Submission", mappedBy="service")
      */
     protected $submissions; # region accessors
@@ -212,12 +262,12 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     public function addSubmission(Submission $submission)
     {
         if (!$this->submissions->contains($submission)) {
-            $submission->addService($this);
             $this->submissions->add($submission);
         }
 
         return $this;
     }
+
     /**
      * Remove submission
      *
@@ -227,7 +277,6 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     public function removeSubmission(Submission $submission)
     {
         if ($this->submissions->contains($submission)) {
-            $submission->removeService($this);
             $this->submissions->removeElement($submission);
         }
 
