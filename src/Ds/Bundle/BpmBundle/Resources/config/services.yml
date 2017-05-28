@@ -6,3 +6,11 @@ services:
         abstract: true
         arguments:
             - "@ds_bpm.http.client"
+
+    ds_bpm.collection.bpm.api:
+        class: Ds\Bundle\BpmBundle\Collection\Bpm\ApiCollection
+
+    ds_bpm.bpm.api.factory:
+        class: Ds\Bundle\BpmBundle\Bpm\Api\Factory
+        arguments:
+            - "@ds_bpm.collection.bpm.api"
