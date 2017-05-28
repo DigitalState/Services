@@ -19,7 +19,22 @@ abstract class AbstractService implements Service
     /**
      * @var string
      */
-    protected $host;
+    protected $host; # region accessors
+
+    /**
+     * Set host
+     *
+     * @param string $host
+     * @return \Ds\Component\Bpm\Service\Service
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    # endregion
 
     /**
      * Constructor
@@ -27,7 +42,7 @@ abstract class AbstractService implements Service
      * @param \GuzzleHttp\ClientInterface $client
      * @param string $host
      */
-    public function __construct(ClientInterface $client, $host)
+    public function __construct(ClientInterface $client, $host = null)
     {
         $this->client = $client;
         $this->host = $host;

@@ -7,5 +7,4 @@ namespace Ds\Component\Bpm\Api;
  */
 interface Api
 {
-
 }
