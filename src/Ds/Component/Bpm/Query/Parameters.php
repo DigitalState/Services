@@ -10,7 +10,8 @@ interface Parameters
     /**
      * Cast parameters to array
      *
+     * @param boolean $minimal
      * @return array
      */
-    public function toArray();
+    public function toArray($minimal = false);
 }

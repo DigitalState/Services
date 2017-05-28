@@ -37,7 +37,8 @@ interface ProcessDefinitionService extends Service
      * Start a process definition
      *
      * @param string $id
+     * @param \Ds\Component\Bpm\Query\ProcessDefinitionParameters $parameters
      * @return \Ds\Component\Bpm\Model\ProcessInstance
      */
-    public function start($id);
+    public function start($id, ProcessDefinitionParameters $parameters = null);
 }

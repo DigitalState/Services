@@ -3,6 +3,7 @@
 namespace Ds\Component\Bpm\Service;
 
 use GuzzleHttp\ClientInterface;
+use Ds\Component\Bpm\Query\Parameters;
 use InvalidArgumentException;
 use UnexpectedValueException;
 
@@ -53,12 +54,19 @@ abstract class AbstractService implements Service
      *
      * @param string $method
      * @param string $resource
+     * @param \Ds\Component\Bpm\Query\Parameters $parameters
      * @return mixed
      */
-    protected function execute($method, $resource)
+    protected function execute($method, $resource, Parameters $parameters = null)
     {
         $uri = $this->host.$resource;
-        $response = $this->client->request($method, $uri);
+        $options = ['content-type' => 'application/json'];
+
+        if ($parameters) {
+            $options['json'] = $parameters->toArray(true);
+        }
+
+        $response = $this->client->request($method, $uri, $options);
 
         try {
             $data = \GuzzleHttp\json_decode($response->getBody());

@@ -21,6 +21,7 @@ trait Name
     public function setName($name)
     {
         $this->name = $name;
+        $this->_name = true;
 
         return $this;
     }
@@ -36,4 +37,9 @@ trait Name
     }
 
     # endregion
+
+    /**
+     * @var boolean
+     */
+    protected $_name;
 }

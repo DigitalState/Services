@@ -49,7 +49,7 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     public function getList(ProcessDefinitionParameters $parameters = null)
     {
         //$items = $this->execute('GET', static::RESOURCE_LIST);
-        $items = $this->execute('GET', 'http://www.mocky.io/v2/592990fa110000bf000828eb');
+        $items = $this->execute('GET', 'http://www.mocky.io/v2/592990fa110000bf000828eb', $parameters);
         $list = [];
 
         foreach ($items as $item) {
@@ -66,7 +66,7 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     public function getCount(ProcessDefinitionParameters $parameters = null)
     {
         //$result = $this->execute('GET', static::RESOURCE_COUNT);
-        $result = $this->execute('GET', 'http://www.mocky.io/v2/5929a2061100008001082903');
+        $result = $this->execute('GET', 'http://www.mocky.io/v2/5929a2061100008001082903', $parameters);
 
         return $result->count;
     }
@@ -86,10 +86,10 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     /**
      * {@inheritdoc}
      */
-    public function start($id)
+    public function start($id, ProcessDefinitionParameters $parameters = null)
     {
         //$item = $this->execute('POST', str_replace('{id}', $id, static::RESOURCE_START));
-        $item = $this->execute('POST', 'http://www.mocky.io/v2/5929a4ee1100006c01082909');
+        $item = $this->execute('POST', 'http://www.mocky.io/v2/5929a4ee1100006c01082909', $parameters);
         $model = ProcessInstanceService::toModel($item);
 
         return $model;
