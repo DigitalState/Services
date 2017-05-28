@@ -51,6 +51,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Presentation;
     use Accessor\Data;
     use Accessor\Enabled;
+    use Accessor\Weight;
     use ServiceAccessor\Service;
 
     /**
@@ -233,6 +234,16 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     protected $enabled;
 
     /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @ORM\Column(name="weight", type="smallint")
+     * @Assert\NotBlank
+     * @Assert\Length(min=0, max=255)
+     */
+    protected $weight;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -243,5 +254,6 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
         $this->data = [];
         $this->submissions = new ArrayCollection;
         $this->enabled = false;
+        $this->weight = 0;
     }
 }

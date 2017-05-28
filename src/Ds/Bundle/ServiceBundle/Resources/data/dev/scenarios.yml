@@ -16,6 +16,7 @@ scenarios:
         data:
             bpm: camunda
             bpm_id: PayTaxes
+        weight: 0
 
     -
         uuid: 67dfc5ec-96d0-4a28-9137-73bba3dc054b
@@ -31,6 +32,7 @@ scenarios:
         presentation:
             en: Presentation ...
             fr: Présentation ...
+        weight: 1
 
 prototype:
     uuid: ~
@@ -43,3 +45,4 @@ prototype:
     presentation: []
     data: []
     enabled: true
+    weight: 0

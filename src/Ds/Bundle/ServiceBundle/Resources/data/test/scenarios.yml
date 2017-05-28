@@ -11,3 +11,4 @@ prototype:
     presentation: []
     data: []
     enabled: ~
+    weight: 0

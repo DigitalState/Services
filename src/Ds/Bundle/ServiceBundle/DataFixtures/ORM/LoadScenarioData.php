@@ -32,7 +32,8 @@ class LoadScenarioData extends ResourceFixture implements OrderedFixtureInterfac
                 ->setDescription($scenario['description'])
                 ->setPresentation($scenario['presentation'])
                 ->setData($scenario['data'])
-                ->setEnabled($scenario['enabled']);
+                ->setEnabled($scenario['enabled'])
+                ->setWeight($scenario['weight']);
             $manager->persist($entity);
             $manager->flush();
         }
