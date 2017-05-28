@@ -34,6 +34,8 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->scalarNode('user')
                         ->end()
+                        ->scalarNode('submission')
+                        ->end()
                         ->scalarNode('none_start_event_form_data')
                         ->end()
                         ->scalarNode('localization')
