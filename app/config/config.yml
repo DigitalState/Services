@@ -17,7 +17,7 @@ framework:
     validation: { enable_annotations: true }
     serializer: { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: ["twig"]
     default_locale: "%locale%"
     trusted_hosts: ~
     trusted_proxies: ~
@@ -98,6 +98,7 @@ api_platform:
 
 ds_model:
     behavior:
+        identitiable: ~
         uuidentifiable: ~
         translatable: ~
         localizable: ~
