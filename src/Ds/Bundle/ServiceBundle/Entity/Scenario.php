@@ -54,6 +54,11 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use ServiceAccessor\Service;
 
     /**
+     * @const string
+     */
+    const TYPE_BPM = 'bpm';
+
+    /**
      * @var integer
      * @ApiProperty(identifier=false, writable=false)
      * @Serializer\Groups({"scenario_output"})
