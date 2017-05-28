@@ -246,56 +246,6 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     # endregion
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ApiProperty
-     * @Serializer\Groups({"service_output"})
-     * @ORM\OneToMany(targetEntity="Submission", mappedBy="service")
-     */
-    protected $submissions; # region accessors
-
-    /**
-     * Add submission
-     *
-     * @param \Ds\Bundle\ServiceBundle\Entity\Submission $submission
-     * @return \Ds\Bundle\ServiceBundle\Entity\Service
-     */
-    public function addSubmission(Submission $submission)
-    {
-        if (!$this->submissions->contains($submission)) {
-            $this->submissions->add($submission);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove submission
-     *
-     * @param \Ds\Bundle\ServiceBundle\Entity\Submission $submission
-     * @return \Ds\Bundle\ServiceBundle\Entity\Service
-     */
-    public function removeSubmission(Submission $submission)
-    {
-        if ($this->submissions->contains($submission)) {
-            $this->submissions->removeElement($submission);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get submissions
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getSubmissions()
-    {
-        return $this->submissions;
-    }
-
-    # endregion
-
-    /**
      * @var string
      * @ApiProperty
      * @Serializer\Groups({"service_output", "service_input"})
@@ -386,7 +336,6 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
         $this->description = [];
         $this->presentation = [];
         $this->categories = new ArrayCollection;
-        $this->submissions = new ArrayCollection;
         $this->enabled = false;
     }
 }

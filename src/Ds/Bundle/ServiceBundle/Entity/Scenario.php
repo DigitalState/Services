@@ -10,6 +10,7 @@ use Ds\Component\Model\Type\Enableable;
 use Ds\Component\Model\Accessor;
 use Ds\Bundle\ServiceBundle\Accessor as ServiceAccessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
@@ -149,6 +150,56 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     protected $presentation;
 
     /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output"})
+     * @ORM\OneToMany(targetEntity="Submission", mappedBy="scenario")
+     */
+    protected $submissions; # region accessors
+
+    /**
+     * Add submission
+     *
+     * @param \Ds\Bundle\ServiceBundle\Entity\Submission $submission
+     * @return \Ds\Bundle\ServiceBundle\Entity\Scenario
+     */
+    public function addSubmission(Submission $submission)
+    {
+        if (!$this->submissions->contains($submission)) {
+            $this->submissions->add($submission);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove submission
+     *
+     * @param \Ds\Bundle\ServiceBundle\Entity\Submission $submission
+     * @return \Ds\Bundle\ServiceBundle\Entity\Scenario
+     */
+    public function removeSubmission(Submission $submission)
+    {
+        if ($this->submissions->contains($submission)) {
+            $this->submissions->removeElement($submission);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get submissions
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getSubmissions()
+    {
+        return $this->submissions;
+    }
+
+    # endregion
+
+    /**
      * @var string
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
@@ -165,6 +216,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
         $this->title = [];
         $this->description = [];
         $this->presentation = [];
+        $this->submissions = new ArrayCollection;
         $this->enabled = false;
     }
 }

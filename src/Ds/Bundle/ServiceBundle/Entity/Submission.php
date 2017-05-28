@@ -46,7 +46,7 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
     use Accessor\IdentityUuid;
     use Accessor\Data;
     use Accessor\State;
-    use ServiceAccessor\Service;
+    use ServiceAccessor\Scenario;
 
     /**
      * @const integer
@@ -129,13 +129,13 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
     protected $identityUuid;
 
     /**
-     * @var \Ds\Bundle\ServiceBundle\Entity\Service
+     * @var \Ds\Bundle\ServiceBundle\Entity\Scenario
      * @Serializer\Groups({"submission_output", "submission_input"})
-     * @ORM\ManyToOne(targetEntity="Service", inversedBy="submissions")
-     * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Scenario", inversedBy="submissions")
+     * @ORM\JoinColumn(name="scenario_id", referencedColumnName="id")
      * @Assert\Valid
      */
-    protected $service;
+    protected $scenario;
 
     /**
      * @var array
