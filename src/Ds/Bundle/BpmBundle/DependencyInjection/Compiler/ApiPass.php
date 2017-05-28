@@ -28,7 +28,7 @@ class ApiPass implements CompilerPassInterface
         foreach ($services as $id => $tags) {
             foreach ($tags as $tag) {
                 $alias = array_key_exists('alias', $tag) ? $tag['alias'] : null;
-                $definition->addMethodCall('addApi', [new Reference($id), $alias]);
+                $definition->addMethodCall('set', [$alias, new Reference($id)]);
             }
         }
     }
