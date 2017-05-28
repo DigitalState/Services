@@ -40,17 +40,13 @@ class Factory
      * @return \Ds\Component\Bpm\Api\Api
      * @throws \LogicException
      */
-    public function create($alias)
+    public function api($alias)
     {
-        $apis = clone $this->apiCollection->filter(function($item) use ($alias) {
-            return $item['alias'] == $alias;
-        });
-
-        if (!count($apis)) {
+        if (!$this->apiCollection->containsKey($alias)) {
             throw new LogicException('Api does not exist.');
         }
 
-        $api = $apis->first()['api'];
+        $api = $this->apiCollection->get($alias);
 
         return $api;
     }

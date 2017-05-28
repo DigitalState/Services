@@ -14,24 +14,31 @@ use Symfony\Component\Config\FileLocator;
 class DsBpmExtension extends Extension implements PrependExtensionInterface
 {
     /**
+     * Get variables
+     *
+     * @return array
+     */
+    public static function getVariables()
+    {
+        return [
+            'api_url', 'api_user', 'api_key', 'service_uuid', 'scenario_uuid',
+            'identity', 'identity_uuid', 'submission_uuid', 'none_start_event_form_data',
+            'localization', 'user_task_form_data'
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function prepend(ContainerBuilder $container)
     {
-        $container->prependExtensionConfig('ds_bpm', [
-            'variables' => [
-                'api_url' => '_api_url',
-                'api_user' => '_api_user',
-                'api_key' => '_api_key',
-                'service' => '_service',
-                'scenario' => '_scenario',
-                'user' => '_user',
-                'submission' => '_submission',
-                'none_start_event_form_data' => '_none_start_event_form_data',
-                'localization' => '_localization',
-                'user_task_form_data' => '_user_task_{id}_form_data',
-            ]
-        ]);
+        $variables = [];
+
+        foreach (static::getVariables() as $variable) {
+            $variables[$variable] = '_'.$variable;
+        }
+
+        $container->prependExtensionConfig('ds_bpm', ['variables' => $variables]);
     }
 
     /**
@@ -45,12 +52,7 @@ class DsBpmExtension extends Extension implements PrependExtensionInterface
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $variables = [
-            'api_url', 'api_user', 'api_key', 'service', 'scenario', 'user', 'submission',
-            'none_start_event_form_data', 'localization', 'user_task_form_data'
-        ];
-
-        foreach ($variables as $variable) {
+        foreach (static::getVariables() as $variable) {
             $container->setParameter('ds_bpm.variables.'.$variable, $config['variables'][$variable]);
         }
     }
