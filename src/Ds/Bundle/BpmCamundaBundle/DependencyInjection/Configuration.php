@@ -18,6 +18,20 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder;
         $rootNode = $treeBuilder->root('ds_bpm_camunda');
 
+        $rootNode
+            ->children()
+                ->arrayNode('host')
+                    ->children()
+                        ->scalarNode('url')
+                        ->end()
+                        ->scalarNode('user')
+                        ->end()
+                        ->scalarNode('password')
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+
         return $treeBuilder;
     }
 }
