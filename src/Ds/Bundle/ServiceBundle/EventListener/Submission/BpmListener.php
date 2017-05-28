@@ -3,9 +3,9 @@
 namespace Ds\Bundle\ServiceBundle\EventListener\Submission;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Ds\Bundle\BpmBundle\Bpm\Api\Factory;
 use Ds\Bundle\ServiceBundle\Entity\Submission;
 use Ds\Bundle\ServiceBundle\Entity\Scenario;
+use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
 
 /**
  * Class BpmListener
@@ -18,7 +18,7 @@ class BpmListener
     protected $container;
 
     /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     * @var \Ds\Bundle\BpmBundle\Bpm\Api\Factory
      */
     protected $factory;
 
@@ -40,6 +40,7 @@ class BpmListener
     public function postPersist(Submission $submission)
     {
         $scenario = $submission->getScenario();
+        $service = $scenario->getService();
 
         if (Scenario::TYPE_BPM !== $scenario->getType()) {
             return;
@@ -51,7 +52,19 @@ class BpmListener
 
         $bpm = $scenario->getData('bpm');
         $bpmId = $scenario->getData('bpm_id');
-        $api = $this->factory->create($bpm);
-        $api->processDefinition->start($bpmId);
+        $api = $this->factory->api($bpm);
+        $parameters = new ProcessDefinitionParameters;
+        $parameters->setVariables([
+            'api_url' => '',
+            'api_user' => '',
+            'api_key' => '',
+            'service_uuid' => $service->getUuid(),
+            'scenario_uuid' => $scenario->getUuid(),
+            'identity' => $submission->getIdentity(),
+            'identity_uuid' => $submission->getIdentityUuid(),
+            'submission_uuid' => $submission->getUuid(),
+            'none_start_event_form_data' => $submission->getData()
+        ]);
+        $api->processDefinition->start($bpmId, $parameters);
     }
 }
