@@ -45,9 +45,11 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Uuid;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
+    use Accessor\Type;
     use Accessor\Title;
     use Accessor\Description;
     use Accessor\Presentation;
+    use Accessor\Data;
     use Accessor\Enabled;
     use ServiceAccessor\Service;
 
@@ -120,6 +122,14 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     protected $service;
 
     /**
+     * @var string
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @ORM\Column(name="`type`", type="string", length=255)
+     */
+    protected $type;
+
+    /**
      * @var array
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
@@ -148,6 +158,15 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Translate
      */
     protected $presentation;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @ORM\Column(name="data", type="json_array")
+     * @Assert\Type("array")
+     */
+    protected $data;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -216,6 +235,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
         $this->title = [];
         $this->description = [];
         $this->presentation = [];
+        $this->data = [];
         $this->submissions = new ArrayCollection;
         $this->enabled = false;
     }

@@ -1,11 +1,13 @@
 scenarios: []
 
 prototype:
-    service: ~
     uuid: ~
     owner: ~
     owner_uuid: ~
+    service: ~
+    type: ~
     title: []
     description: []
     presentation: []
+    data: []
     enabled: ~

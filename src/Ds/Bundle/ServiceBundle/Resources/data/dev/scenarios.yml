@@ -3,6 +3,7 @@ scenarios:
         uuid: b12fef1d-c197-4420-be77-083e2f2b53d6
         owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38   # Finance
         service: b12fef1d-c197-4420-be77-083e2f2b53d6      # Pay Your Taxes
+        type: bpm
         title:
             en: Pay Your Taxes Online
             fr: Payer vos taxes en-ligne
@@ -12,11 +13,15 @@ scenarios:
         presentation:
             en: Presentation ...
             fr: Présentation ...
+        data:
+            bpm: camunda
+            bpm_id: PayTaxes
 
     -
         uuid: 67dfc5ec-96d0-4a28-9137-73bba3dc054b
         owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38   # Finance
         service: b12fef1d-c197-4420-be77-083e2f2b53d6      # Pay Your Taxes
+        type: mail
         title:
             en: Pay Your Taxes By Mail
             fr: Payer vos taxes par courrier
@@ -31,7 +36,10 @@ prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
+    service: ~
+    type: ~
     title: []
     description: []
     presentation: []
+    data: []
     enabled: true
