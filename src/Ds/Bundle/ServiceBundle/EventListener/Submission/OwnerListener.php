@@ -20,9 +20,10 @@ class OwnerListener
             return;
         }
 
-        $service = $submission->getService();
+        $scenario = $submission->getScenario();
+
         $submission
-            ->setOwner($service->getOwner())
-            ->setOwnerUuid($service->getOwnerUuid());
+            ->setOwner($scenario->getOwner())
+            ->setOwnerUuid($scenario->getOwnerUuid());
     }
 }
