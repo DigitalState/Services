@@ -2,42 +2,14 @@
 
 namespace Ds\Component\BpmCamunda\Api;
 
-use Ds\Component\Bpm\Api\Api as ApiInterface;
+use Ds\Component\Bpm\Api\Api as BaseApi;
 use GuzzleHttp\ClientInterface;
-use LogicException;
 
 /**
  * Class Api
  */
-class Api implements ApiInterface
+class Api extends BaseApi
 {
-    /**
-     * @var \Ds\Component\BpmCamunda\Service\ProcessDefinitionService
-     */
-    protected $processDefinition;
-
-    /**
-     * @var \Ds\Component\BpmCamunda\Service\ProcessInstanceService
-     */
-    protected $processInstance;
-
-    /**
-     * @var \Ds\Component\BpmCamunda\Service\TaskService
-     */
-    protected $task;
-
-    /**
-     * Get services
-     *
-     * @return array
-     */
-    protected static function getServices()
-    {
-        return [
-            'processDefinition', 'processInstance', 'task'
-        ];
-    }
-
     /**
      * Constructor
      *
@@ -46,26 +18,12 @@ class Api implements ApiInterface
      */
     public function __construct(ClientInterface $client, $host = null)
     {
-        foreach (static::getServices() as $service) {
+        $services = array_keys(get_object_vars($this));
+
+        foreach ($services as $service) {
             $class = '\\Ds\\Component\\BpmCamunda\\Service\\'.ucfirst($service).'Service';
             $this->$service = new $class($client, $host);
         }
-    }
-
-    /**
-     * Get service
-     *
-     * @param string $service
-     * @return \Ds\Component\Bpm\Service\Service
-     * @throws \LogicException
-     */
-    public function __get($service)
-    {
-        if (!in_array($service, static::getServices(), true)) {
-            throw new LogicException('Service does not exist.');
-        }
-
-        return $this->$service;
     }
 
     /**
@@ -76,7 +34,9 @@ class Api implements ApiInterface
      */
     public function setHost($host)
     {
-        foreach (static::getServices() as $service) {
+        $services = array_keys(get_object_vars($this));
+
+        foreach ($services as $service) {
             $this->$service->setHost($host);
         }
 

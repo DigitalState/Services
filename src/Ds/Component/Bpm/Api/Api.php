@@ -3,8 +3,22 @@
 namespace Ds\Component\Bpm\Api;
 
 /**
- * Interface Api
+ * Class Api
  */
-interface Api
+class Api
 {
+    /**
+     * @var \Ds\Component\Bpm\Service\ProcessDefinitionService
+     */
+    public $processDefinition;
+
+    /**
+     * @var \Ds\Component\Bpm\Service\ProcessInstanceService
+     */
+    public $processInstance;
+
+    /**
+     * @var \Ds\Component\Bpm\Service\TaskService
+     */
+    public $task;
 }
