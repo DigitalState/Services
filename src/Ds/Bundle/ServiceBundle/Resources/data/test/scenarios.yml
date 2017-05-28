@@ -1,0 +1,11 @@
+scenarios: []
+
+prototype:
+    service: ~
+    uuid: ~
+    owner: ~
+    owner_uuid: ~
+    title: []
+    description: []
+    presentation: []
+    enabled: ~
