@@ -41,4 +41,12 @@ interface ProcessDefinitionService extends Service
      * @return \Ds\Component\Bpm\Model\ProcessInstance
      */
     public function start($id, ProcessDefinitionParameters $parameters = null);
+
+    /**
+     * Get start form
+     *
+     * @param string $id
+     * @return
+     */
+    public function getStartForm($id);
 }

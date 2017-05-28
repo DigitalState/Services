@@ -19,6 +19,7 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     const RESOURCE_COUNT = '/process-definition/count';
     const RESOURCE_ITEM = '/process-definition/{id}';
     const RESOURCE_START = '/process-definition/{id}/start';
+    const RESOURCE_START_FORM = '/process-definition/{id}/startForm';
 
     /**
      * Cast object to model
@@ -93,5 +94,16 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
         $model = ProcessInstanceService::toModel($item);
 
         return $model;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStartForm($id)
+    {
+        //$result = $this->execute('GET', static::RESOURCE_START_FORM);
+        $result = $this->execute('GET', 'http://www.mocky.io/v2/592b4ed8100000e30a389763');
+
+        return $result->key;
     }
 }
