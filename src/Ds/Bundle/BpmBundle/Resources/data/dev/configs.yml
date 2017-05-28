@@ -1,0 +1,38 @@
+configs:
+    -
+        key: ds_bpm.variables.api_url
+
+    -
+        key: ds_bpm.variables.api_user
+
+    -
+        key: ds_bpm.variables.api_key
+
+    -
+        key: ds_bpm.variables.service
+
+    -
+        key: ds_bpm.variables.scenario
+
+    -
+        key: ds_bpm.variables.user
+
+    -
+        key: ds_bpm.variables.submission
+
+    -
+        key: ds_bpm.variables.none_start_event_form_data
+
+    -
+        key: ds_bpm.variables.localization
+
+    -
+        key: ds_bpm.variables.user_task_form_data
+
+    -
+        key: ds_bpm.variables.error
+
+prototype:
+    key: ~
+    value: ~
+    fallback: true

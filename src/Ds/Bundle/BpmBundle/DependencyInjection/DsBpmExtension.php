@@ -44,5 +44,14 @@ class DsBpmExtension extends Extension implements PrependExtensionInterface
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $variables = [
+            'api_url', 'api_user', 'api_key', 'service', 'scenario', 'user', 'submission',
+            'none_start_event_form_data', 'localization', 'user_task_form_data'
+        ];
+
+        foreach ($variables as $variable) {
+            $container->setParameter('ds_bpm.variables.'.$variable, $config['variables'][$variable]);
+        }
     }
 }
