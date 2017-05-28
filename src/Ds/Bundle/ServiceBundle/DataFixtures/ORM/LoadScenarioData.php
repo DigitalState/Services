@@ -24,12 +24,14 @@ class LoadScenarioData extends ResourceFixture implements OrderedFixtureInterfac
             $entity = new Scenario;
             $entity
                 ->setService($manager->getRepository(Service::class)->findOneBy(['uuid' => $scenario['service']]))
+                ->setType($scenario['type'])
                 ->setUuid($scenario['uuid'])
                 ->setOwner($scenario['owner'])
                 ->setOwnerUuid($scenario['owner_uuid'])
                 ->setTitle($scenario['title'])
                 ->setDescription($scenario['description'])
                 ->setPresentation($scenario['presentation'])
+                ->setData($scenario['data'])
                 ->setEnabled($scenario['enabled']);
             $manager->persist($entity);
             $manager->flush();
