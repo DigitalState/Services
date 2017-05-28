@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
+            new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
             new Ds\Component\Model\Bridge\Symfony\Bundle\DsModelBundle(),
             new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
             new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
