@@ -16,7 +16,7 @@ class Api extends BaseApi
      * @param \GuzzleHttp\ClientInterface $client
      * @param string $host
      */
-    public function __construct(ClientInterface $client, $host = null)
+    public function __construct(ClientInterface $client, $host = 'http://localhost:8080/engine-rest')
     {
         $services = array_keys(get_object_vars($this));
 
