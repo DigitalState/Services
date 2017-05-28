@@ -50,12 +50,12 @@ services:
 
     ds_service.event_listener.submission.owner:
         class: Ds\Bundle\ServiceBundle\EventListener\Submission\OwnerListener
-        autowire: true
         tags:
             - { name: doctrine.orm.entity_listener, entity: Ds\Bundle\ServiceBundle\Entity\Submission, event: prePersist }
 
     ds_service.event_listener.submission.bpm:
         class: Ds\Bundle\ServiceBundle\EventListener\Submission\BpmListener
-        autowire: true
+        arguments:
+            - "@service_container"
         tags:
             - { name: doctrine.orm.entity_listener, entity: Ds\Bundle\ServiceBundle\Entity\Submission, event: postPersist }

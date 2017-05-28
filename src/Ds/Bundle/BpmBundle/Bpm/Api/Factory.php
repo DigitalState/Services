@@ -2,7 +2,8 @@
 
 namespace Ds\Bundle\BpmBundle\Bpm\Api;
 
-use Ds\Bundle\BpmBundle\Collection\Bpm\ApiCollection;
+use Ds\Component\Bpm\Collection\ApiCollection;
+use Ds\Component\Config\Service\ConfigService;
 use LogicException;
 
 /**
@@ -11,18 +12,25 @@ use LogicException;
 class Factory
 {
     /**
-     * @var \Ds\Bundle\BpmBundle\Collection\Bpm\ApiCollection
+     * @var \Ds\Component\Bpm\Collection\ApiCollection
      */
     protected $apiCollection;
 
     /**
+     * @var \Ds\Component\Config\Service\ConfigService
+     */
+    protected $configService;
+
+    /**
      * Constructor.
      *
-     * @param \Ds\Bundle\BpmBundle\Collection\Bpm\ApiCollection $apiCollection
+     * @param \Ds\Component\Bpm\Collection\ApiCollection $apiCollection
+     * @param \Ds\Component\Config\Service\ConfigService $configService
      */
-    public function __construct(ApiCollection $apiCollection)
+    public function __construct(ApiCollection $apiCollection, ConfigService $configService)
     {
         $this->apiCollection = $apiCollection;
+        $this->configService = $configService;
     }
 
     /**

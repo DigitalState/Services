@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Bundle\BpmBundle\DependencyInjection\Compiler\Bpm;
+namespace Ds\Bundle\BpmBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -18,11 +18,11 @@ class ApiPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('ds_bpm.collection.bpm.api')) {
+        if (!$container->has('ds_bpm.collection.api')) {
             return;
         }
 
-        $definition = $container->findDefinition('ds_bpm.collection.bpm.api');
+        $definition = $container->findDefinition('ds_bpm.collection.api');
         $services = $container->findTaggedServiceIds('ds_bpm.api');
 
         foreach ($services as $id => $tags) {

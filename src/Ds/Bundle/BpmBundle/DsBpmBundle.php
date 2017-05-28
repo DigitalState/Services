@@ -4,7 +4,7 @@ namespace Ds\Bundle\BpmBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Ds\Bundle\BpmBundle\DependencyInjection\Compiler\Bpm;
+use Ds\Bundle\BpmBundle\DependencyInjection\Compiler;
 
 /**
  * Class DsBpmBundle
@@ -18,6 +18,6 @@ class DsBpmBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new Bpm\ApiPass);
+        $container->addCompilerPass(new Compiler\ApiPass);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Bundle\BpmBundle\Collection\Bpm;
+namespace Ds\Component\Bpm\Collection;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Ds\Component\Bpm\Api\Api;
@@ -15,7 +15,7 @@ class ApiCollection extends ArrayCollection
      *
      * @param \Ds\Component\Bpm\Api\Api $api
      * @param string $alias
-     * @return \Ds\Bundle\BpmBundle\Collection\Bpm\ApiCollection
+     * @return \Ds\Component\Bpm\Collection\ApiCollection
      */
     public function addApi(Api $api, $alias = null)
     {
