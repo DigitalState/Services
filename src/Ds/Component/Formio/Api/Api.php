@@ -10,9 +10,24 @@ use GuzzleHttp\ClientInterface;
 class Api
 {
     /**
+     * @var \Ds\Component\Formio\Service\AuthenticationService
+     */
+    public $authentication;
+
+    /**
+     * @var \Ds\Component\Formio\Service\ProjectService
+     */
+    public $project;
+
+    /**
      * @var \Ds\Component\Formio\Service\FormService
      */
     public $form;
+
+    /**
+     * @var \Ds\Component\Formio\Service\SubmissionService
+     */
+    public $submission;
 
     /**
      * Constructor

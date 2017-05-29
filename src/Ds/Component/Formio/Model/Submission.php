@@ -3,10 +3,9 @@
 namespace Ds\Component\Formio\Model;
 
 /**
- * Class Form
+ * Class Submission
  */
-class Form
+class Submission
 {
     use Attribute\Id;
-    use Attribute\Components;
 }

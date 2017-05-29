@@ -26,11 +26,22 @@ class FormService extends AbstractService
     {
         $model = new Form;
         $properties = [
+            'id' => '_id',
+            'updated' => 'modified',
+            'title',
+            'display',
+            'type',
+            'name',
+            'path'
         ];
 
-        foreach ($properties as $property) {
-            if (property_exists($item, $property)) {
-                $model->{'set' . $property}($item->$property);
+        foreach ($properties as $local => $remote) {
+            if (is_int($local)) {
+                $local = $remote;
+            }
+
+            if (property_exists($item, $remote)) {
+                $model->{'set'.$local}($item->$remote);
             }
         }
 
