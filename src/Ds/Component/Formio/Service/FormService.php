@@ -56,13 +56,13 @@ class FormService extends AbstractService
             }
 
             if (property_exists($item, $remote)) {
-                $model->{'set'.$local}($item->$remote);
+                $model->{'set' . ucfirst($local)}($item->$remote);
             }
         }
 
         return $model;
     }
-
+    
     /**
      * Get form list
      *

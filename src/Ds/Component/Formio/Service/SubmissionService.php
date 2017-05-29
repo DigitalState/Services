@@ -15,6 +15,8 @@ class SubmissionService extends AbstractService
      */
     const RESOURCE_LIST = '/{formPath}/submission';
     const RESOURCE_ITEM = '/{formPath}/submission/{submissionId}';
+    const RESOURCE_ITEM_BY_FIELD = '/{formPath}/submission?{fieldName}={fieldValue}';
+    const RESOURCE_ITEM_EXISTS_BY_FIELD = '/{formPath}/exists?{fieldName}={{fieldValue}}';
 
     /**
      * API Resource <--> Model property mapping
@@ -51,7 +53,7 @@ class SubmissionService extends AbstractService
             }
 
             if (property_exists($item, $remote)) {
-                $model->{'set'.$local}($item->$remote);
+                $model->{'set' . ucfirst($local)}($item->$remote);
             }
         }
 
@@ -93,6 +95,65 @@ class SubmissionService extends AbstractService
         $model = static::toModel($item);
 
         return $model;
+    }
+
+    /**
+     * Get submission by an arbitrary field
+     *
+     * @param string $fieldName
+     * @param string $fieldValue
+     * @return \Ds\Component\Formio\Model\Submission
+     */
+    public function getByField($fieldName, $fieldValue)
+    {
+        //$url = str_replace(['{$fieldName}', '{$fieldValue}'], [$fieldName, $fieldValue], static::RESOURCE_ITEM_BY_FIELD);
+        //$item = $this->execute('GET', $url);
+        $item = $this->execute('GET', 'http://www.mocky.io/v2/592c6f7311000029066df850');
+        $model = static::toModel($item);
+
+        return $model;
+    }
+
+    /**
+     * Get submission by an arbitrary data field
+     *
+     * @param $dataFieldName
+     * @param $dataFieldValue
+     * @return \Ds\Component\Formio\Model\Submission
+     */
+    public function getByDataField($dataFieldName, $dataFieldValue)
+    {
+        return $this->getByField('data.' . $dataFieldName, $dataFieldValue);
+    }
+
+    /**
+     * Check whether a submission exists using an arbitrary field
+     *
+     * @param string $fieldName
+     * @param string $fieldValue
+     * @return boolean
+     */
+    public function existsByField($fieldName, $fieldValue)
+    {
+        //$url = str_replace(['{$fieldName}', '{$fieldValue}'], [$fieldName, $fieldValue], static::RESOURCE_ITEM_EXISTS_BY_FIELD);
+        //$item = $this->execute('GET', $url);
+        $item = $this->execute('GET', 'http://www.mocky.io/v2/592c6f7311000029066df850');
+
+        if ($item && property_exists($item, '_id') && !empty($item->_id)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether a submission exists using an arbitrary data field
+     * @param $dataFieldName
+     * @param $dataFieldValue
+     * @return bool
+     */
+    public function existsByDataField($dataFieldName, $dataFieldValue) {
+        return $this->existsByField('data.' . $dataFieldName, $dataFieldValue);
     }
 
     public function create(Submission $submission)
