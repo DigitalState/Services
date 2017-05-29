@@ -39,6 +39,10 @@ class BpmListener
      */
     public function postPersist(Submission $submission)
     {
+        // Circular reference error workaround
+        $this->factory = $this->container->get('ds_bpm.bpm.api.factory');
+        //
+
         $scenario = $submission->getScenario();
         $service = $scenario->getService();
 
@@ -46,13 +50,11 @@ class BpmListener
             return;
         }
 
-        // Circular reference error workaround
-        $this->factory = $this->container->get('ds_bpm.bpm.api.factory');
-        //
-
         $bpm = $scenario->getData('bpm');
-        $bpmId = $scenario->getData('bpm_id');
         $api = $this->factory->api($bpm);
+        $bpmId = $scenario->getData('bpm_id');
+        $form = $api->processDefinition->getStartForm($bpmId);
+
         $parameters = new ProcessDefinitionParameters;
         $parameters->setVariables([
             'api_url' => '',
