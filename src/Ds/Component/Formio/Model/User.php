@@ -5,7 +5,7 @@ namespace Ds\Component\Formio\Model;
 /**
  * Class User
  */
-class User
+class User extends Submission
 {
-    use Attribute\Id;
+
 }

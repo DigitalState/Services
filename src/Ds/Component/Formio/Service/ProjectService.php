@@ -10,6 +10,19 @@ use stdClass;
  */
 class ProjectService extends AbstractService
 {
+
+    /**
+     * API Resource <--> Model property mapping
+     * @return array
+     */
+    public static function getMap() {
+        return [
+            'id' => '_id',
+            'updated' => 'modified',
+            'title'
+        ];
+    }
+
     /**
      * Cast object to model
      *
@@ -19,11 +32,7 @@ class ProjectService extends AbstractService
     public static function toModel(stdClass $item)
     {
         $model = new Project;
-        $properties = [
-            'id' => '_id',
-            'updated' => 'modified',
-            'title'
-        ];
+        $properties = static::getMap();
 
         foreach ($properties as $local => $remote) {
             if (is_int($local)) {

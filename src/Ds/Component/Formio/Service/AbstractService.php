@@ -69,4 +69,30 @@ abstract class AbstractService implements Service
 
         return $data;
     }
+
+    public abstract static function getMap();
+
+    /**
+     * Cast model to std object
+     *
+     * @param object Model
+     * @return stdClass
+     */
+    public static function toStdClass($model)
+    {
+        $properties = static::getMap();
+        $item = new stdClass;
+
+        foreach ($properties as $local => $remote) {
+            if (is_int($local)) {
+                $local = $remote;
+            }
+
+            if (property_exists($model, $remote)) {
+                $item->$remote = $model->{'get' . ucfirst($local)}();
+            }
+        }
+
+        return $item;
+    }
 }
