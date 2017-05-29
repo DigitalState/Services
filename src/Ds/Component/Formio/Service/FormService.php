@@ -50,6 +50,8 @@ class FormService extends AbstractService
 
     /**
      * Get form list
+     *
+     * @return array
      */
     public function getList()
     {
@@ -66,7 +68,10 @@ class FormService extends AbstractService
     }
 
     /**
-     * {@inheritdoc}
+     * Get form
+     *
+     * @param string $id
+     * @return \Ds\Component\Formio\Model\Form
      */
     public function get($id)
     {

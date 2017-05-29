@@ -25,6 +25,11 @@ class Api
     public $form;
 
     /**
+     * @var \Ds\Component\Formio\Service\UserService
+     */
+    public $user;
+
+    /**
      * @var \Ds\Component\Formio\Service\SubmissionService
      */
     public $submission;

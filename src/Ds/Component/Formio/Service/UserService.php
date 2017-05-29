@@ -2,27 +2,26 @@
 
 namespace Ds\Component\Formio\Service;
 
-use Ds\Component\Formio\Model\Submission;
+use Ds\Component\Formio\Model\User;
 use stdClass;
 
 /**
- * Class SubmissionService
+ * Class UserService
  */
-class SubmissionService extends AbstractService
+class UserService extends AbstractService
 {
     /**
      * Cast object to model
      *
      * @param stdClass $item
-     * @return \Ds\Component\Formio\Model\Submission
+     * @return \Ds\Component\Formio\Model\User
      */
     public static function toModel(stdClass $item)
     {
-        $model = new Submission;
+        $model = new User;
         $properties = [
             'id' => '_id',
-            'updated' => 'modified',
-            'title'
+            'updated' => 'modified'
         ];
 
         foreach ($properties as $local => $remote) {
@@ -48,12 +47,12 @@ class SubmissionService extends AbstractService
 
     }
 
-    public function create(Submission $submission)
+    public function create(User $user)
     {
 
     }
 
-    public function update(Submission $submission)
+    public function update(User $user)
     {
 
     }
