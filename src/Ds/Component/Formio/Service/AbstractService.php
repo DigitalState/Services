@@ -3,6 +3,7 @@
 namespace Ds\Component\Formio\Service;
 
 use GuzzleHttp\ClientInterface;
+use Ds\Component\Formio\Query\Parameters;
 use InvalidArgumentException;
 use UnexpectedValueException;
 
@@ -53,9 +54,10 @@ abstract class AbstractService implements Service
      *
      * @param string $method
      * @param string $resource
+     * @param \Ds\Component\Formio\Query\Parameters $parameters
      * @return mixed
      */
-    protected function execute($method, $resource)
+    protected function execute($method, $resource, Parameters $parameters = null)
     {
         $uri = $this->host.$resource;
         $options = ['content-type' => 'application/json'];
