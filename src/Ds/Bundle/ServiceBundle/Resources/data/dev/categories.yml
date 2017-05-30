@@ -11,6 +11,8 @@ categories:
         presentation:
             en: Presentation ...
             fr: Presentation ...
+        services:
+            - b12fef1d-c197-4420-be77-083e2f2b53d6         # Pay Your Taxes
 
     -
         uuid: 69dd4dab-f80f-4235-a774-08d88380f006
@@ -24,6 +26,8 @@ categories:
         presentation:
             en: Presentation ...
             fr: Presentation ...
+        services:
+            - b1f12b2c-5dec-4142-a50b-7b0ac871ee1b         # Report an Issue
 
 prototype:
     uuid: ~
@@ -33,3 +37,4 @@ prototype:
     description: []
     presentation: []
     enabled: true
+    services: []

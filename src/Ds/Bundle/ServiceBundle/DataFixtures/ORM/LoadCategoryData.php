@@ -6,6 +6,7 @@ use Ds\Component\Migration\Fixture\ORM\ResourceFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Bundle\ServiceBundle\Entity\Category;
+use Ds\Bundle\ServiceBundle\Entity\Service;
 
 /**
  * Class LoadCategoryData
@@ -29,6 +30,11 @@ class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterfac
                 ->setDescription($category['description'])
                 ->setPresentation($category['presentation'])
                 ->setEnabled($category['enabled']);
+
+            foreach ($category['services'] as $service) {
+                $entity->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $service]));
+            }
+
             $manager->persist($entity);
             $manager->flush();
         }
@@ -39,6 +45,6 @@ class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 0;
+        return 1;
     }
 }
