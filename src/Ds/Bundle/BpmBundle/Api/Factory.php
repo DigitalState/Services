@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Bundle\BpmBundle\Bpm\Api;
+namespace Ds\Bundle\BpmBundle\Api;
 
 use Ds\Component\Bpm\Collection\ApiCollection;
 use Ds\Component\Config\Service\ConfigService;
