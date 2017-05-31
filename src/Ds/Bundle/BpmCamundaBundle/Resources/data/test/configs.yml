@@ -1,0 +1,6 @@
+configs: []
+
+prototype:
+    key: ~
+    value: ~
+    fallback: true

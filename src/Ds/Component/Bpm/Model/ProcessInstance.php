@@ -5,7 +5,7 @@ namespace Ds\Component\Bpm\Model;
 /**
  * Class ProcessInstance
  */
-class ProcessInstance
+class ProcessInstance implements Model
 {
     use Attribute\Id;
     use Attribute\DefinitionId;

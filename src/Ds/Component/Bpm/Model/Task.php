@@ -5,7 +5,7 @@ namespace Ds\Component\Bpm\Model;
 /**
  * Class Task
  */
-class Task
+class Task implements Model
 {
     use Attribute\Id;
 }

@@ -4,8 +4,7 @@ namespace Ds\Component\BpmCamunda\Service;
 
 use Ds\Component\Bpm\Service;
 use Ds\Component\Bpm\Model\ProcessInstance;
-use Ds\Component\Bpm\Query\ProcessInstanceParameters;
-use stdClass;
+use Ds\Component\Bpm\Query\ProcessInstanceParameters as Parameters;
 
 /**
  * Class ProcessInstanceService
@@ -13,31 +12,27 @@ use stdClass;
 class ProcessInstanceService extends Service\AbstractService implements Service\ProcessInstanceService
 {
     /**
-     * Cast object to model
-     *
-     * @param stdClass $item
-     * @return \Ds\Component\Bpm\Model\ProcessInstance
+     * @const string
      */
-    public static function toModel(stdClass $item)
-    {
-        $model = new ProcessInstance;
-        $properties = [
-            'id', 'definitionId', 'businessKey', 'ended', 'suspended', 'tenantId', 'caseInstanceId'
-        ];
+    const MODEL = ProcessInstance::class;
 
-        foreach ($properties as $property) {
-            if (property_exists($item, $property)) {
-                $model->{'set' . $property}($item->$property);
-            }
-        }
-
-        return $model;
-    }
+    /**
+     * @var array
+     */
+    protected static $map = [
+        'id',
+        'definitionId',
+        'businessKey',
+        'ended',
+        'suspended',
+        'tenantId',
+        'caseInstanceId'
+    ];
 
     /**
      * {@inheritdoc}
      */
-    public function getList(ProcessInstanceParameters $parameters = null)
+    public function getList(Parameters $parameters = null)
     {
 
     }
@@ -45,7 +40,7 @@ class ProcessInstanceService extends Service\AbstractService implements Service\
     /**
      * {@inheritdoc}
      */
-    public function getCount(ProcessInstanceParameters $parameters = null)
+    public function getCount(Parameters $parameters = null)
     {
 
     }

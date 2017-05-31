@@ -8,7 +8,7 @@ services:
             - "@ds_bpm.http.client"
 
     ds_bpm.collection.api:
-        class: Ds\Component\Bpm\Collection\ApiCollection
+        class: Ds\Bundle\BpmBundle\Collection\ApiCollection
 
     ds_bpm.api.factory:
         class: Ds\Bundle\BpmBundle\Api\Factory

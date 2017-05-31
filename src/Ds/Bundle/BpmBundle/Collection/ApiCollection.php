@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Component\Bpm\Collection;
+namespace Ds\Bundle\BpmBundle\Collection;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
