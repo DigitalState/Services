@@ -5,7 +5,7 @@ namespace Ds\Component\Formio\Model;
 /**
  * Class Form
  */
-class Form
+class Form implements Model
 {
     use Attribute\Id;
     use Attribute\Updated;

@@ -11,7 +11,7 @@ interface Parameters
      * Cast parameters to array
      *
      * @param boolean $minimal
-     * @return array
+     * @return \stdClass
      */
-    public function toArray($minimal = false);
+    public function toObject($minimal = false);
 }

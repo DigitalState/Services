@@ -2,23 +2,25 @@
 
 namespace Ds\Component\Formio\Model\Attribute;
 
+use stdClass;
+
 /**
  * Trait Data
  */
 trait Data
 {
     /**
-     * @var array
+     * @var \stdClass
      */
     protected $data; # region accessors
 
     /**
      * Set data
      *
-     * @param array $data
+     * @param stdClass $data
      * @return object
      */
-    public function setData(array $data)
+    public function setData(stdClass $data)
     {
         $this->data = $data;
 
@@ -28,7 +30,7 @@ trait Data
     /**
      * Get data
      *
-     * @return array
+     * @return stdClass
      */
     public function getData()
     {

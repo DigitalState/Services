@@ -2,6 +2,8 @@
 
 namespace Ds\Component\Formio\Query;
 
+use stdClass;
+
 /**
  * Class AbstractParameters
  */
@@ -10,9 +12,9 @@ abstract class AbstractParameters implements Parameters
     /**
      * {@inheritdoc}
      */
-    public function toArray($minimal = false)
+    public function toObject($minimal = false)
     {
-        $array = [];
+        $object = new stdClass;
 
         foreach ($this as $key => $value) {
             if ('_' === substr($key, 0, 1)) {
@@ -23,9 +25,9 @@ abstract class AbstractParameters implements Parameters
                 continue;
             }
 
-            $array[$key] = $value;
+            $object->$key = $value;
         }
 
-        return $array;
+        return $object;
     }
 }

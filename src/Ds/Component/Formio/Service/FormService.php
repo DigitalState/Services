@@ -15,6 +15,11 @@ class FormService extends AbstractService
     /**
      * @const string
      */
+    const MODEL = Form::class;
+
+    /**
+     * @const string
+     */
     const RESOURCE_LIST = '/form';
     const RESOURCE_OBJECT = '/form/{id}';
 
@@ -38,66 +43,6 @@ class FormService extends AbstractService
     ];
 
     /**
-     * Cast object to model
-     *
-     * @param \stdClass $object
-     * @return \Ds\Component\Formio\Model\Form
-     */
-    public static function toModel(stdClass $object)
-    {
-        $model = new Form;
-
-        foreach (static::$map as $local => $remote) {
-            if (is_int($local)) {
-                $local = $remote;
-            }
-
-            if (property_exists($object, $remote)) {
-                switch ($local) {
-                    case 'created':
-                    case 'updated':
-                        $model->{'set'.ucfirst($local)}(new DateTime($object->$remote));
-                        break;
-
-                    default:
-                        $model->{'set'.ucfirst($local)}($object->$remote);
-                }
-            }
-        }
-
-        return $model;
-    }
-
-    /**
-     * Cast model to object
-     *
-     * @param \Ds\Component\Formio\Model\Form $model
-     * @return stdClass
-     */
-    public static function toStdClass(Form $model)
-    {
-        $object = new stdClass;
-
-        foreach (static::$map as $local => $remote) {
-            if (is_int($local)) {
-                $local = $remote;
-            }
-
-            switch ($local) {
-                case 'created':
-                case 'updated':
-                    $object->$remote = $model->{'get'.ucfirst($local)}()->format('Y-m-d H:i:s');
-                    break;
-
-                default:
-                    $object->$remote = $model->{'get'.ucfirst($local)}();
-            }
-        }
-
-        return $object;
-    }
-
-    /**
      * Get form list
      *
      * @param \Ds\Component\Formio\Query\FormParameters $parameters
@@ -105,12 +50,11 @@ class FormService extends AbstractService
      */
     public function getList(FormParameters $parameters = null)
     {
-        //$objects = $this->execute('GET', static::RESOURCE_LIST, $parameters);
-        $objects = $this->execute('GET', 'http://www.mocky.io/v2/592b798d100000b10e389778', $parameters);
+        $objects = $this->execute('GET', 'http://www.mocky.io/v2/592b798d100000b10e389778');
         $list = [];
 
         foreach ($objects as $object) {
-            $model = $this->toModel($object);
+            $model = static::toModel($object);
             $list[] = $model;
         }
 
@@ -125,9 +69,8 @@ class FormService extends AbstractService
      */
     public function get($id)
     {
-        //$object = $this->execute('GET', str_replace('{id}', $id, static::RESOURCE_OBJECT));
         $object = $this->execute('GET', 'http://www.mocky.io/v2/592b7a27100000b10e38977b');
-        $model = $this->toModel($object);
+        $model = static::toModel($object);
 
         return $model;
     }

@@ -7,4 +7,5 @@ namespace Ds\Component\Formio\Query;
  */
 class SubmissionParameters extends AbstractParameters
 {
+    use Attribute\DryRun;
 }
