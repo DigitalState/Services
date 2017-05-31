@@ -3,6 +3,7 @@
 namespace Ds\Component\Formio\Api;
 
 use GuzzleHttp\ClientInterface;
+use Ds\Component\Formio\Service;
 
 /**
  * Class Api
@@ -25,14 +26,14 @@ class Api
     public $form;
 
     /**
-     * @var \Ds\Component\Formio\Service\UserService
-     */
-    public $user;
-
-    /**
      * @var \Ds\Component\Formio\Service\SubmissionService
      */
     public $submission;
+
+    /**
+     * @var \Ds\Component\Formio\Service\UserService
+     */
+    public $user;
 
     /**
      * Constructor
@@ -42,12 +43,11 @@ class Api
      */
     public function __construct(ClientInterface $client, $host = null)
     {
-        $services = array_keys(get_object_vars($this));
-
-        foreach ($services as $service) {
-            $class = '\\Ds\\Component\\Formio\\Service\\'.ucfirst($service).'Service';
-            $this->$service = new $class($client, $host);
-        }
+        $this->authentication = new Service\AuthenticationService($client, $host);
+        $this->project = new Service\ProjectService($client, $host);
+        $this->form = new Service\FormService($client, $host);
+        $this->submission = new Service\SubmissionService($client, $host);
+        $this->user = new Service\UserService($client, $host);
     }
 
     /**
@@ -58,11 +58,11 @@ class Api
      */
     public function setHost($host)
     {
-        $services = array_keys(get_object_vars($this));
-
-        foreach ($services as $service) {
-            $this->$service->setHost($host);
-        }
+        $this->authentication->setHost($host);
+        $this->project->setHost($host);
+        $this->form->setHost($host);
+        $this->user->setHost($host);
+        $this->submission->setHost($host);
 
         return $this;
     }
