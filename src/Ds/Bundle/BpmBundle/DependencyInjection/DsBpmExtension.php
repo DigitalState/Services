@@ -14,31 +14,12 @@ use Symfony\Component\Config\FileLocator;
 class DsBpmExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * Get variables
-     *
-     * @return array
-     */
-    public static function getVariables()
-    {
-        return [
-            'api_url', 'api_user', 'api_key', 'service_uuid', 'scenario_uuid',
-            'identity', 'identity_uuid', 'submission_uuid', 'none_start_event_form_data',
-            'localization', 'user_task_form_data'
-        ];
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function prepend(ContainerBuilder $container)
     {
-        $variables = [];
-
-        foreach (static::getVariables() as $variable) {
-            $variables[$variable] = '_'.$variable;
-        }
-
-        $container->prependExtensionConfig('ds_bpm', ['variables' => $variables]);
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('config.yml');
     }
 
     /**
@@ -52,8 +33,18 @@ class DsBpmExtension extends Extension implements PrependExtensionInterface
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        foreach (static::getVariables() as $variable) {
-            $container->setParameter('ds_bpm.variables.'.$variable, $config['variables'][$variable]);
-        }
+        // @todo Move this config -> parameters logic to a common trait in the config component bridge
+        $container->setParameter('ds_config.configs.ds_bpm.variables.api_url', $config['variables']['api_url']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.api_user', $config['variables']['api_user']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.api_key', $config['variables']['api_key']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.service_uuid', $config['variables']['service_uuid']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.scenario_uuid', $config['variables']['scenario_uuid']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.identity', $config['variables']['identity']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.identity_uuid', $config['variables']['identity_uuid']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.submission_uuid', $config['variables']['submission_uuid']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.none_start_event_form_data', $config['variables']['none_start_event_form_data']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.localization', $config['variables']['localization']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.user_task_form_data', $config['variables']['user_task_form_data']);
+        $container->setParameter('ds_config.configs.ds_bpm.variables.error', $config['variables']['error']);
     }
 }

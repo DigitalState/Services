@@ -19,6 +19,5 @@ class DsBpmBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new Compiler\ApiPass);
-        $container->addCompilerPass(new Compiler\ConfigPass);
     }
 }

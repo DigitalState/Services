@@ -1,0 +1,5 @@
+ds_bpm_camunda:
+    host:
+        url: ~
+        user: ~
+        password: ~

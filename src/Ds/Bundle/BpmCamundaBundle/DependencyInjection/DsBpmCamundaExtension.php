@@ -18,13 +18,8 @@ class DsBpmCamundaExtension extends Extension implements PrependExtensionInterfa
      */
     public function prepend(ContainerBuilder $container)
     {
-        $container->prependExtensionConfig('ds_bpm_camunda', [
-            'host' => [
-                'url' => 'http://localhost:8080/engine-rest',
-                'user' => null,
-                'password' => null
-            ]
-        ]);
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('config.yml');
     }
 
     /**
