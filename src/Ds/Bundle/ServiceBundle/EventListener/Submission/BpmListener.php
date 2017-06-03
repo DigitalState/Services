@@ -2,13 +2,11 @@
 
 namespace Ds\Bundle\ServiceBundle\EventListener\Submission;
 
-use Behat\Mink\Exception\Exception;
+use Ds\Component\Bpm\Model\Variable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Ds\Bundle\ServiceBundle\Entity\Submission;
 use Ds\Bundle\ServiceBundle\Entity\Scenario;
 use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
-use Ds\Component\Formio\Model\Submission as SubmissionModel;
-use Ds\Component\Formio\Query\SubmissionParameters;
 
 /**
  * Class BpmListener
@@ -21,13 +19,17 @@ class BpmListener
     protected $container;
 
     /**
+     * @var \Ds\Bundle\BpmBundle\Api\Factory
+     */
+    protected $factory;
+
+    /**
      * Constructor
      *
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
-        // Circular reference error workaround
         $this->container = $container;
     }
 
@@ -38,41 +40,31 @@ class BpmListener
      */
     public function postPersist(Submission $submission)
     {
+        // Circular reference error workaround
+        // @todo Look into fixing this
+        $this->factory = $this->container->get('ds_bpm.api.factory');
+        //
+
         $scenario = $submission->getScenario();
 
         if (Scenario::TYPE_BPM !== $scenario->getType()) {
             return;
         }
 
-        $bpm = $this->container->get('ds_bpm.api.factory')->api($scenario->getData('bpm'));
-        $formio = $this->container->get('ds_formio.api');
-
-        // Bpm form key
-        $form = $bpm->processDefinition->getStartForm($scenario->getData('bpm_id'));
-
-        // Formio dryrun
-        $model = new SubmissionModel;
-        $model
-            ->setData((object) $submission->getData());
-        $parameters = new SubmissionParameters;
-        $parameters
-            ->setDryRun(true);
-        $formio->submission->create($model, $parameters);
-
-        // Bpm start instance
+        $bpm = $scenario->getData('bpm');
+        $processDefinition = $scenario->getData('process_definition_id');
+        $api = $this->factory->api($bpm);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
-        $parameters->setVariables([
-            'api_url' => '',
-            'api_user' => '',
-            'api_key' => '',
-            'service_uuid' => $service->getUuid(),
-            'scenario_uuid' => $scenario->getUuid(),
-            'identity' => $submission->getIdentity(),
-            'identity_uuid' => $submission->getIdentityUuid(),
-            'submission_uuid' => $submission->getUuid(),
-            'none_start_event_form_data' => $submission->getData()
-        ]);
-        $bpm->processDefinition->start($scenario->getData('bpm_id'), $parameters);
+        $parameters->addVariable(new Variable('api_url', ''));
+        $parameters->addVariable(new Variable('api_user', ''));
+        $parameters->addVariable(new Variable('api_key', ''));
+        $parameters->addVariable(new Variable('service_uuid', $service->getUuid()));
+        $parameters->addVariable(new Variable('scenario_uuid', $scenario->getUuid()));
+        $parameters->addVariable(new Variable('identity', $submission->getIdentity()));
+        $parameters->addVariable(new Variable('identity_uuid', $submission->getIdentityUuid()));
+        $parameters->addVariable(new Variable('submission_uuid', $submission->getUuid()));
+        $parameters->addVariable(new Variable('none_start_event_form_data', $submission->getData(), Variable::TYPE_JSON));
+        $api->processDefinition->start($processDefinition, $parameters);
     }
 }
