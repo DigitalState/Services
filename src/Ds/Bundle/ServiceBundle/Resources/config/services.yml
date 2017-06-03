@@ -52,6 +52,7 @@ services:
         class: Ds\Bundle\ServiceBundle\EventListener\Submission\FormioListener
         arguments:
             - '@ds_formio.api'
+            - '@api_platform.hydra.normalizer.constraint_violation_list'
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
 
