@@ -48,6 +48,13 @@ services:
         arguments:
             - '@ds_service.form.flow.formio'
 
+    ds_service.event_listener.submission.formio:
+        class: Ds\Bundle\ServiceBundle\EventListener\Submission\FormioListener
+        arguments:
+            - '@ds_formio.api'
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
+
     ds_service.event_listener.submission.owner:
         class: Ds\Bundle\ServiceBundle\EventListener\Submission\OwnerListener
         tags:
