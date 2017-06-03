@@ -4,7 +4,7 @@ namespace Ds\Component\BpmCamunda\Service;
 
 use Ds\Component\Bpm\Service;
 use Ds\Component\Bpm\Model\Task;
-use Ds\Component\Bpm\Query\TaskParameters;
+use Ds\Component\Bpm\Query\TaskParameters as Parameters;
 
 /**
  * Class TaskService
@@ -25,7 +25,7 @@ class TaskService extends Service\AbstractService implements Service\TaskService
     /**
      * {@inheritdoc}
      */
-    public function getList(TaskParameters $parameters = null)
+    public function getList(Parameters $parameters = null)
     {
 
     }
@@ -33,7 +33,7 @@ class TaskService extends Service\AbstractService implements Service\TaskService
     /**
      * {@inheritdoc}
      */
-    public function getCount(TaskParameters $parameters = null)
+    public function getCount(Parameters $parameters = null)
     {
 
     }

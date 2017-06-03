@@ -2,6 +2,8 @@
 
 namespace Ds\Component\Bpm\Query\Attribute;
 
+use Ds\Component\Bpm\Model\Variable;
+
 /**
  * Trait Variables
  */
@@ -18,9 +20,26 @@ trait Variables
      * @param array $variables
      * @return object
      */
-    public function setVariables($variables)
+    public function setVariables(array $variables)
     {
-        $this->variables = $variables;
+        $this->variables = [];
+
+        foreach ($variables as $variable) {
+            $this->addVariable($variable);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add variable
+     *
+     * @param \Ds\Component\Bpm\Model\Variable $variable
+     * @return object
+     */
+    public function addVariable(Variable $variable)
+    {
+        $this->variables[] = $variable;
         $this->_variables = true;
 
         return $this;

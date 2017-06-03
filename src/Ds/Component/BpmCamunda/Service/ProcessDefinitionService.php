@@ -22,9 +22,9 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     const RESOURCE_LIST = '/process-definition';
     const RESOURCE_COUNT = '/process-definition/count';
-    const RESOURCE_ITEM = '/process-definition/{id}';
-    const RESOURCE_ITEM_START = '/process-definition/{id}/start';
-    const RESOURCE_ITEM_START_FORM = '/process-definition/{id}/startForm';
+    const RESOURCE_OBJECT = '/process-definition/{id}';
+    const RESOURCE_OBJECT_START = '/process-definition/{id}/start';
+    const RESOURCE_OBJECT_START_FORM = '/process-definition/{id}/startForm';
 
     /**
      * @var array
@@ -48,11 +48,11 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     public function getList(Parameters $parameters = null)
     {
-        $items = $this->execute('GET', static::RESOURCE_LIST);
+        $objects = $this->execute('GET', static::RESOURCE_LIST);
         $list = [];
 
-        foreach ($items as $item) {
-            $model = static::toModel($item);
+        foreach ($objects as $object) {
+            $model = static::toModel($object);
             $list[] = $model;
         }
 
@@ -74,9 +74,9 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     public function get($id)
     {
-        $resource = str_replace('{id}', $id, static::RESOURCE_ITEM);
-        $item = $this->execute('GET', $resource);
-        $model = static::toModel($item);
+        $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT);
+        $object = $this->execute('GET', $resource);
+        $model = static::toModel($object);
 
         return $model;
     }
@@ -86,9 +86,15 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     public function start($id, Parameters $parameters = null)
     {
-        //$item = $this->execute('POST', str_replace('{id}', $id, static::RESOURCE_START));
-        $item = $this->execute('POST', 'http://www.mocky.io/v2/5929a4ee1100006c01082909', $parameters);
-        $model = ProcessInstanceService::toModel($item);
+        $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START);
+        $options = [];
+
+        if ($parameters) {
+            $options['form_params'] = (array) $parameters->toObject(true);
+        }
+
+        $object = $this->execute('POST', $resource, $options);
+        $model = ProcessInstanceService::toModel($object);
 
         return $model;
     }
@@ -98,7 +104,7 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     public function getStartForm($id)
     {
-        $resource = str_replace('{id}', $id, static::RESOURCE_ITEM_START_FORM);
+        $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START_FORM);
         $result = $this->execute('GET', $resource);
 
         return $result->key;

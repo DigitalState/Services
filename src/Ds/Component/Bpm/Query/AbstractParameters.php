@@ -2,6 +2,8 @@
 
 namespace Ds\Component\Bpm\Query;
 
+use GuzzleHttp;
+use Ds\Component\Bpm\Model\Variable;
 use stdClass;
 
 /**
@@ -25,7 +27,23 @@ abstract class AbstractParameters implements Parameters
                 continue;
             }
 
-            $object->$key = $value;
+            switch ($key) {
+                case 'variables':
+                    $object->$key = new stdClass;
+
+                    foreach ($value as $variable) {
+                        $object->$key->{$variable->getName()} = $variable->toObject(true);
+
+                        if (Variable::TYPE_JSON === $variable->getType()) {
+                            $object->$key->{$variable->getName()}->value = GuzzleHttp\json_encode($object->$key->{$variable->getName()}->value);
+                        }
+                    }
+
+                    break;
+
+                default:
+                    $object->$key = $value;
+            }
         }
 
         return $object;

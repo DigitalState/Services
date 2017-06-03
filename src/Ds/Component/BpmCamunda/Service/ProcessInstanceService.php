@@ -26,7 +26,8 @@ class ProcessInstanceService extends Service\AbstractService implements Service\
         'ended',
         'suspended',
         'tenantId',
-        'caseInstanceId'
+        'caseInstanceId',
+        'links'
     ];
 
     /**
