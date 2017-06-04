@@ -47,6 +47,12 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/Migrations"
+    namespace: Migrations
+    table_name: ds_migrations
+    name: Application Migrations
+
 knp_doctrine_behaviors:
     blameable: true
     geocodable: false
