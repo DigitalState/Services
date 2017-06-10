@@ -47,7 +47,6 @@ class Factory
         }
 
         $api = $this->apiCollection->get($alias);
-        $api->setHost($this->configService->get('ds_bpm_'.$alias.'.api.url'));
 
         return $api;
     }
