@@ -5,7 +5,7 @@ configs:
 
     -
         key: ds_bpm.variables.api_user
-        value: _api_url
+        value: _api_user
 
     -
         key: ds_bpm.variables.api_key
