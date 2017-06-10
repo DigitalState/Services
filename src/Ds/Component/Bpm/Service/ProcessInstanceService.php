@@ -2,7 +2,7 @@
 
 namespace Ds\Component\Bpm\Service;
 
-use Ds\Component\Bpm\Query\ProcessInstanceParameters;
+use Ds\Component\Bpm\Query\ProcessInstanceParameters as Parameters;
 
 /**
  * Interface ProcessInstanceService
@@ -15,7 +15,7 @@ interface ProcessInstanceService extends Service
      * @param \Ds\Component\Bpm\Query\ProcessInstanceParameters $parameters
      * @return array
      */
-    public function getList(ProcessInstanceParameters $parameters = null);
+    public function getList(Parameters $parameters = null);
 
     /**
      * Get process instance count
@@ -23,12 +23,13 @@ interface ProcessInstanceService extends Service
      * @param \Ds\Component\Bpm\Query\ProcessInstanceParameters $parameters
      * @return integer
      */
-    public function getCount(ProcessInstanceParameters $parameters = null);
+    public function getCount(Parameters $parameters = null);
 
     /**
      * Get process instance
      *
      * @param string $id
+     * @param \Ds\Component\Bpm\Query\ProcessInstanceParameters $parameters
      */
-    public function get($id);
+    public function get($id, Parameters $parameters = null);
 }

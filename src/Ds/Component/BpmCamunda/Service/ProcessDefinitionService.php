@@ -24,7 +24,9 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     const RESOURCE_COUNT = '/process-definition/count';
     const RESOURCE_OBJECT = '/process-definition/{id}';
     const RESOURCE_OBJECT_START = '/process-definition/{id}/start';
+    const RESOURCE_OBJECT_START_BY_KEY = '/process-definition/key/{key}/start';
     const RESOURCE_OBJECT_START_FORM = '/process-definition/{id}/startForm';
+    const RESOURCE_OBJECT_START_FORM_BY_KEY = '/process-definition/key/{key}/startForm';
 
     /**
      * @var array
@@ -72,7 +74,7 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     /**
      * {@inheritdoc}
      */
-    public function get($id)
+    public function get($id, Parameters $parameters = null)
     {
         $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT);
         $object = $this->execute('GET', $resource);
@@ -86,11 +88,26 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
      */
     public function start($id, Parameters $parameters = null)
     {
-        $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START);
+        if (null !== $id) {
+            $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START);
+        } else {
+            $resource = str_replace('{key}', $parameters->getKey(), static::RESOURCE_OBJECT_START_BY_KEY);
+        }
+
         $options = [];
 
         if ($parameters) {
-            $options['form_params'] = (array) $parameters->toObject(true);
+            foreach ($parameters->getVariables() as $variable) {
+                $options['json']['variables'][$variable->getName()] = [
+                    'value' => $variable->getValue(),
+                    'type' => $variable->getType()
+                ];
+
+                if ('json' === $variable->getType()) {
+                    $options['json']['variables'][$variable->getName()]['value'] =
+                        json_encode($options['json']['variables'][$variable->getName()]['value']);
+                }
+            }
         }
 
         $object = $this->execute('POST', $resource, $options);
@@ -102,9 +119,14 @@ class ProcessDefinitionService extends Service\AbstractService implements Servic
     /**
      * {@inheritdoc}
      */
-    public function getStartForm($id)
+    public function getStartForm($id, Parameters $parameters = null)
     {
-        $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START_FORM);
+        if (null !== $id) {
+            $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT_START_FORM);
+        } else {
+            $resource = str_replace('{key}', $parameters->getKey(), static::RESOURCE_OBJECT_START_FORM_BY_KEY);
+        }
+
         $result = $this->execute('GET', $resource);
 
         return $result->key;

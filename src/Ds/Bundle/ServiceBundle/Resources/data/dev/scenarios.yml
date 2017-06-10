@@ -15,7 +15,7 @@ scenarios:
             fr: Présentation ...
         data:
             bpm: camunda
-            process_definition_id: PayTaxes
+            process_definition_key: PayTaxes
         weight: 0
 
     -

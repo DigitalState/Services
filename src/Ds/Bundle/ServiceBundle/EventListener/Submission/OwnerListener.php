@@ -21,7 +21,6 @@ class OwnerListener
         }
 
         $scenario = $submission->getScenario();
-
         $submission
             ->setOwner($scenario->getOwner())
             ->setOwnerUuid($scenario->getOwnerUuid());

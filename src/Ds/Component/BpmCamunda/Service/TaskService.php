@@ -41,7 +41,7 @@ class TaskService extends Service\AbstractService implements Service\TaskService
     /**
      * {@inheritdoc}
      */
-    public function get($id)
+    public function get($id, Parameters $parameters = null)
     {
 
     }

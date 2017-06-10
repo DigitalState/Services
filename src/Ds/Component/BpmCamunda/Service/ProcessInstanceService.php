@@ -49,7 +49,7 @@ class ProcessInstanceService extends Service\AbstractService implements Service\
     /**
      * {@inheritdoc}
      */
-    public function get($id)
+    public function get($id, Parameters $parameters = null)
     {
 
     }

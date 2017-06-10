@@ -3,7 +3,7 @@
 namespace Ds\Component\Formio\Service;
 
 use Ds\Component\Formio\Model\Form;
-use Ds\Component\Formio\Query\FormParameters;
+use Ds\Component\Formio\Query\FormParameters as Parameters;
 use stdClass;
 use DateTime;
 
@@ -48,7 +48,7 @@ class FormService extends AbstractService
      * @param \Ds\Component\Formio\Query\FormParameters $parameters
      * @return array
      */
-    public function getList(FormParameters $parameters = null)
+    public function getList(Parameters $parameters = null)
     {
         $objects = $this->execute('GET', 'http://www.mocky.io/v2/592b798d100000b10e389778');
         $list = [];
@@ -65,9 +65,10 @@ class FormService extends AbstractService
      * Get form
      *
      * @param string $id
+     * @param \Ds\Component\Formio\Query\FormParameters $parameters
      * @return \Ds\Component\Formio\Model\Form
      */
-    public function get($id)
+    public function get($id, Parameters $parameters = null)
     {
         $object = $this->execute('GET', 'http://www.mocky.io/v2/592b7a27100000b10e38977b');
         $model = static::toModel($object);

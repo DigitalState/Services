@@ -3,7 +3,6 @@
 namespace Ds\Component\Formio\Service;
 
 use Ds\Component\Formio\Model\Project;
-use stdClass;
 
 /**
  * Class ProjectService

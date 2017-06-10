@@ -48,10 +48,12 @@ services:
         arguments:
             - '@ds_service.form.flow.formio'
 
-    ds_service.event_listener.submission.formio:
-        class: Ds\Bundle\ServiceBundle\EventListener\Submission\FormioListener
+    ds_service.event_listener.submission.validation.formio:
+        class: Ds\Bundle\ServiceBundle\EventListener\Submission\Validation\FormioListener
         arguments:
+            - '@service_container'
             - '@ds_formio.api'
+            - '@ds_config.service.config'
             - '@api_platform.hydra.normalizer.constraint_violation_list'
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
@@ -61,8 +63,8 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener, entity: Ds\Bundle\ServiceBundle\Entity\Submission, event: prePersist }
 
-    ds_service.event_listener.submission.bpm:
-        class: Ds\Bundle\ServiceBundle\EventListener\Submission\BpmListener
+    ds_service.event_listener.submission.delegation.bpm:
+        class: Ds\Bundle\ServiceBundle\EventListener\Submission\Delegation\BpmListener
         arguments:
             - "@service_container"
         tags:

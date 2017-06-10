@@ -4,6 +4,8 @@ namespace Ds\Component\Formio\Service;
 
 use Ds\Component\Formio\Model\Submission;
 use Ds\Component\Formio\Query\SubmissionParameters as Parameters;
+use Ds\Component\Formio\Exception\ValidationException;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class SubmissionService
@@ -96,15 +98,32 @@ class SubmissionService extends AbstractService
      * @param \Ds\Component\Formio\Model\Submission $submission
      * @param \Ds\Component\Formio\Query\SubmissionParameters $parameters
      * @return \Ds\Component\Formio\Model\Submission
+     * @throws \Ds\Component\Formio\Exception\ValidationException
      */
     public function create(Submission $submission, Parameters $parameters = null)
     {
-        $object = $this->execute('POST', 'http://www.mocky.io/v2/592e176f100000fa16d0dc1d', [
-            'form_params' => (array) static::toObject($submission),
-            'query' => (array) $parameters->toObject(true)
-        ]);
+        $resource = str_replace('{form}', $submission->getForm(), static::RESOURCE_LIST);
 
-        $submission = static::toModel($object);
+        try {
+            $object = $this->execute('POST', $resource, [
+                'form_params' => [
+                    'data' => (array)static::toObject($submission)->data
+                ],
+                'query' => (array)$parameters->toObject(true)
+            ]);
+        } catch (ClientException $exception) {
+            $response = $exception->getResponse();
+
+            if (400 === $response->getStatusCode()) {
+                throw new ValidationException('Formio validation errors', 0, $exception);
+            }
+
+            throw $exception;
+        }
+
+        if (!is_bool($object)) {
+            $submission = static::toModel($object);
+        }
 
         return $submission;
     }

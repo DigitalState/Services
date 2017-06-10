@@ -18,6 +18,20 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder;
         $rootNode = $treeBuilder->root('ds_service');
 
+        $rootNode
+            ->children()
+                ->arrayNode('services')
+                    ->children()
+                        ->arrayNode('formio')
+                            ->children()
+                                ->scalarNode('url')
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+
         return $treeBuilder;
     }
 }

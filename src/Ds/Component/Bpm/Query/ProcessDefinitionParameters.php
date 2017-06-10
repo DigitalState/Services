@@ -8,6 +8,7 @@ namespace Ds\Component\Bpm\Query;
 class ProcessDefinitionParameters extends AbstractParameters
 {
     use Attribute\Name;
+    use Attribute\Key;
     use Attribute\Variables;
 
     /**

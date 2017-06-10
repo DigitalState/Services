@@ -1,0 +1,13 @@
+configs:
+    -
+        key: ds_service.services.formio.url
+        value: http://45.79.141.45:8056
+
+    -
+        key: ds_service.services.camunda.url
+        value: http://172.17.0.1:8055/engine-rest
+
+prototype:
+    key: ~
+    value: ~
+    enabled: true

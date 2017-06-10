@@ -3,3 +3,8 @@ ds_security:
         permissions:
             service:            { entity: Ds\Bundle\ServiceBundle\Entity\Service, attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
             service_field:      { field:  Ds\Bundle\ServiceBundle\Entity\Service.*, attributes: [BROWSE, READ, EDIT] }
+
+ds_service:
+    services:
+        formio:
+            url: ~

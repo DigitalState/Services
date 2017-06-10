@@ -2,7 +2,7 @@
 
 namespace Ds\Component\Bpm\Service;
 
-use Ds\Component\Bpm\Query\TaskParameters;
+use Ds\Component\Bpm\Query\TaskParameters as Parameters;
 
 /**
  * Interface TaskService
@@ -15,7 +15,7 @@ interface TaskService extends Service
      * @param \Ds\Component\Bpm\Query\TaskParameters $parameters
      * @return array
      */
-    public function getList(TaskParameters $parameters = null);
+    public function getList(Parameters $parameters = null);
 
     /**
      * Get task count
@@ -23,12 +23,13 @@ interface TaskService extends Service
      * @param \Ds\Component\Bpm\Query\TaskParameters $parameters
      * @return integer
      */
-    public function getCount(TaskParameters $parameters = null);
+    public function getCount(Parameters $parameters = null);
 
     /**
      * Get task
      *
      * @param string $id
+     * @param \Ds\Component\Bpm\Query\TaskParameters $parameters
      */
-    public function get($id);
+    public function get($id, Parameters $parameters = null);
 }

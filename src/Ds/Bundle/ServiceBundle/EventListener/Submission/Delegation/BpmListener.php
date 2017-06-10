@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Bundle\ServiceBundle\EventListener\Submission;
+namespace Ds\Bundle\ServiceBundle\EventListener\Submission\Delegation;
 
 use Ds\Component\Bpm\Model\Variable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -51,9 +51,7 @@ class BpmListener
             return;
         }
 
-        $bpm = $scenario->getData('bpm');
-        $processDefinition = $scenario->getData('process_definition_id');
-        $api = $this->factory->api($bpm);
+        $api = $this->factory->api($scenario->getData('bpm'));
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
         $parameters->addVariable(new Variable('api_url', ''));
@@ -65,6 +63,7 @@ class BpmListener
         $parameters->addVariable(new Variable('identity_uuid', $submission->getIdentityUuid()));
         $parameters->addVariable(new Variable('submission_uuid', $submission->getUuid()));
         $parameters->addVariable(new Variable('none_start_event_form_data', $submission->getData(), Variable::TYPE_JSON));
-        $api->processDefinition->start($processDefinition, $parameters);
+        $parameters->setKey($scenario->getData('process_definition_key'));
+        $api->processDefinition->start(null, $parameters);
     }
 }

@@ -150,7 +150,10 @@ abstract class AbstractService implements Service
     protected function execute($method, $resource, array $options = [])
     {
         $uri = $this->host.$resource;
-        $options += ['content-type' => 'application/json'];
+        $options += [
+            'content-type' => 'application/json',
+            'accept' => 'application/json'
+        ];
         $response = $this->client->request($method, $uri, $options);
 
         try {
