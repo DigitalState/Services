@@ -10,6 +10,7 @@ use Ds\Component\Config\Service\ConfigService;
 use Ds\Bundle\ServiceBundle\Entity\Scenario;
 use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
 use Ds\Bundle\ServiceBundle\Model\Scenario\Form;
+use DomainException;
 
 /**
  * Class ScenarioService
@@ -17,26 +18,26 @@ use Ds\Bundle\ServiceBundle\Model\Scenario\Form;
 class ScenarioService extends EntityService
 {
     /**
-     * @var Factory
+     * @var \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
      */
     protected $factory;
 
     /**
-     * @var Api
+     * @var \Ds\Component\Formio\Api\Api
      */
     protected $api;
 
     /**
-     * @var ConfigService
+     * @var \Ds\Component\Config\Service\ConfigService
      */
     protected $configService;
 
     /**
      * Constructor
      *
-     * @param EntityManager $manager
-     * @param Factory $factory
-     * @param Api $api
+     * @param \Doctrine\ORM\EntityManager $manager
+     * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $factory
+     * @param \Ds\Component\Formio\Api\Api $api
      * @param string $entity
      */
     public function __construct(EntityManager $manager, Factory $factory, Api $api, ConfigService $configService, $entity = Scenario::class)
@@ -51,47 +52,39 @@ class ScenarioService extends EntityService
     /**
      * Get form
      *
-     * @param Scenario $scenario
-     * @return Form
+     * @param \Ds\Bundle\ServiceBundle\Entity\Scenario $scenario
+     * @return \Ds\Bundle\ServiceBundle\Model\Scenario\Form
+     * @throws \DomainException
      */
     public function getForm(Scenario $scenario)
     {
-        $type = $scenario->getType();
-
-        switch ($type) {
+        switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $api = $this->factory->api($scenario->getData('bpm'));
                 $api->setHost($this->configService->get('ds_service.services.camunda.url'));
-                $parameters = new ProcessDefinitionParameters;
-                $parameters->setKey($scenario->getData('process_definition_key'));
+                $parameters = (new ProcessDefinitionParameters)
+                    ->setKey($scenario->getData('process_definition_key'));
                 $form = $api->processDefinition->getStartForm(null, $parameters);
                 list($type, $value) = explode(':', $form, 2);
-                $form = new Form;
-                $form
+                $form = (new Form)
                     ->setType($type)
                     ->setValue($value);
 
                 break;
 
             default:
-                $form = null;
+                throw new DomainException('Scenario type does not exist.');
+        }
+
+        switch ($form->getType()) {
+            case Form::TYPE_FORMIO:
+
+                break;
+
+            default:
+                throw new DomainException('Scenario form type does not exist.');
         }
 
         return $form;
-    }
-
-    /**
-     * Get form schema
-     *
-     * @param Scenario $scenario
-     * @return array
-     */
-    public function getFormSchema(Scenario $scenario)
-    {
-        $form = $this->getForm($scenario);
-
-        return [
-            'schema' => (object) []
-        ];
     }
 }

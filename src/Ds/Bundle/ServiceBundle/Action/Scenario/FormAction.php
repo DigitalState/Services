@@ -39,8 +39,8 @@ class FormAction
     public function __invoke($id)
     {
         $scenario = $this->scenarioService->getRepository()->find($id);
-        $formSchema = $this->scenarioService->getFormSchema($scenario);
+        $form = $this->scenarioService->getForm($scenario);
 
-        return new JsonResponse($formSchema);
+        return new JsonResponse($form->toObject());
     }
 }

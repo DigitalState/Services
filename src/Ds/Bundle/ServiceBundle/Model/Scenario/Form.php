@@ -11,4 +11,19 @@ class Form
 {
     use Attribute\Type;
     use Attribute\Value;
+
+    /**
+     * @const integer
+     */
+    const TYPE_FORMIO = 'formio';
+
+    /**
+     * Typecast to object
+     *
+     * @return \stdClass
+     */
+    public function toObject()
+    {
+        return (object) get_object_vars($this);
+    }
 }

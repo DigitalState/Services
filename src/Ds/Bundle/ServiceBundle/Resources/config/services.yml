@@ -71,7 +71,7 @@ services:
     ds_service.event_listener.submission.delegation.bpm:
         class: Ds\Bundle\ServiceBundle\EventListener\Submission\Delegation\BpmListener
         arguments:
-            - "@service_container"
+            - '@service_container'
         tags:
             - { name: doctrine.orm.entity_listener, entity: Ds\Bundle\ServiceBundle\Entity\Submission, event: postPersist }
 
@@ -79,3 +79,10 @@ services:
         class: Ds\Bundle\ServiceBundle\Action\Scenario\FormAction
         arguments:
             - '@ds_service.service.scenario'
+
+    Ds\Bundle\ServiceBundle\Action\Scenario\Form\TranslationAction:
+        class: Ds\Bundle\ServiceBundle\Action\Scenario\Form\TranslationAction
+        arguments:
+            - '@ds_service.service.scenario'
+            - '@request_stack'
+            - "%locale%"
