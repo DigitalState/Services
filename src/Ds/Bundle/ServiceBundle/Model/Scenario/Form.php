@@ -2,23 +2,13 @@
 
 namespace Ds\Bundle\ServiceBundle\Model\Scenario;
 
-use Ds\Component\Model\Accessor;
+use Ds\Component\Model\Attribute;
 
 /**
  * Class Form
  */
 class Form
 {
-    use Accessor\Type;
-    use Accessor\Value;
-
-    /**
-     * @var string
-     */
-    protected $type;
-
-    /**
-     * @var mixed
-     */
-    protected $value;
+    use Attribute\Type;
+    use Attribute\Value;
 }

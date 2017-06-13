@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Bundle\ServiceBundle\Accessor;
+namespace Ds\Bundle\ServiceBundle\Attribute\Accessor;
 
 use Ds\Bundle\ServiceBundle\Entity\Service as ServiceEntity;
 

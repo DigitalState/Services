@@ -7,8 +7,8 @@ use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Translatable;
 use Ds\Component\Model\Type\Enableable;
-use Ds\Component\Model\Accessor;
-use Ds\Bundle\ServiceBundle\Accessor as ServiceAccessor;
+use Ds\Component\Model\Attribute\Accessor;
+use Ds\Bundle\ServiceBundle\Attribute\Accessor as ServiceAccessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
 use Doctrine\Common\Collections\ArrayCollection;
 

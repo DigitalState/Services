@@ -2,7 +2,7 @@
 
 namespace Ds\Bundle\ServiceBundle\Entity;
 
-use Ds\Component\Model\Accessor;
+use Ds\Component\Model\Attribute\Accessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use Doctrine\ORM\Mapping as ORM;

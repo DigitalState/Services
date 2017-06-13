@@ -7,7 +7,7 @@ use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Translatable;
 use Ds\Component\Model\Type\Enableable;
-use Ds\Component\Model\Accessor;
+use Ds\Component\Model\Attribute\Accessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
 use Doctrine\Common\Collections\ArrayCollection;
 
