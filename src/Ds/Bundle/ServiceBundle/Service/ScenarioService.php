@@ -9,6 +9,7 @@ use Ds\Component\Formio\Api\Api;
 use Ds\Component\Config\Service\ConfigService;
 use Ds\Bundle\ServiceBundle\Entity\Scenario;
 use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
+use Ds\Component\Formio\Query\FormParameters;
 use Ds\Bundle\ServiceBundle\Model\Scenario\Form;
 use DomainException;
 
@@ -58,17 +59,16 @@ class ScenarioService extends EntityService
      */
     public function getForm(Scenario $scenario)
     {
+        $form = new Form;
+
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $api = $this->factory->api($scenario->getData('bpm'));
                 $api->setHost($this->configService->get('ds_service.services.camunda.url'));
-                $parameters = (new ProcessDefinitionParameters)
-                    ->setKey($scenario->getData('process_definition_key'));
-                $form = $api->processDefinition->getStartForm(null, $parameters);
-                list($type, $value) = explode(':', $form, 2);
-                $form = (new Form)
-                    ->setType($type)
-                    ->setValue($value);
+                $parameters = new ProcessDefinitionParameters;
+                $parameters->setKey($scenario->getData('process_definition_key'));
+                list($type, $value) = explode(':', $api->processDefinition->getStartForm(null, $parameters), 2);
+                $form->setType($type);
 
                 break;
 
@@ -78,7 +78,11 @@ class ScenarioService extends EntityService
 
         switch ($form->getType()) {
             case Form::TYPE_FORMIO:
-
+                $this->api->setHost($this->configService->get('ds_service.services.formio.url'));
+                $parameters = new FormParameters;
+                $parameters->setPath($value);
+                $components = $this->api->form->get(null, $parameters)->getComponents();
+                $form->setSchema($components);
                 break;
 
             default:

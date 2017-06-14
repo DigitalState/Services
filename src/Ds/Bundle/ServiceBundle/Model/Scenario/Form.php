@@ -10,7 +10,7 @@ use Ds\Component\Model\Attribute;
 class Form
 {
     use Attribute\Type;
-    use Attribute\Value;
+    use Attribute\Schema;
 
     /**
      * @const integer

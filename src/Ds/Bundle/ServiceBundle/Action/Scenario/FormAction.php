@@ -3,6 +3,7 @@
 namespace Ds\Bundle\ServiceBundle\Action\Scenario;
 
 use Ds\Bundle\ServiceBundle\Service\ScenarioService;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,14 +32,20 @@ class FormAction
     /**
      * Form
      *
-     * @Route(path="/scenarios/{id}/form")
+     * @Route(path="/scenarios/{uuid}/form")
      * @Method("GET")
-     * @param integer $id
-     * @return string
+     * @param string $uuid
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function __invoke($id)
+    public function __invoke($uuid)
     {
-        $scenario = $this->scenarioService->getRepository()->find($id);
+        $scenario = $this->scenarioService->getRepository()->findOneBy(['uuid' => $uuid]);
+
+        if (!$scenario) {
+            throw new NotFoundHttpException('Scenario not found.');
+        }
+
         $form = $this->scenarioService->getForm($scenario);
 
         return new JsonResponse($form->toObject());
