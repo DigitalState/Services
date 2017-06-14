@@ -176,8 +176,6 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ApiProperty
-     * @Serializer\Groups({"scenario_output"})
      * @ORM\OneToMany(targetEntity="Submission", mappedBy="scenario")
      */
     protected $submissions; # region accessors
