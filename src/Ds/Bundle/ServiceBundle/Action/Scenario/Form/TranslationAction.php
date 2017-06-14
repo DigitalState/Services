@@ -45,12 +45,12 @@ class TranslationAction
     /**
      * Form
      *
-     * @Route(path="/scenarios/{id}/form/translation")
+     * @Route(path="/scenarios/{uuid}/form/translation")
      * @Method("GET")
-     * @param integer $id
-     * @return string
+     * @param string $uuid
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function __invoke($id)
+    public function __invoke($uuid)
     {
         $request = $this->requestStack->getCurrentRequest();
         $locale = $request->query->get('locale', 'en');
