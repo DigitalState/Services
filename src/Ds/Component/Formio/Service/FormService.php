@@ -22,6 +22,7 @@ class FormService extends AbstractService
      */
     const RESOURCE_LIST = '/form';
     const RESOURCE_OBJECT = '/form/{id}';
+    const RESOURCE_OBJECT_BY_PATH = '/{path}';
 
     /**
      * @var array
@@ -70,7 +71,13 @@ class FormService extends AbstractService
      */
     public function get($id, Parameters $parameters = null)
     {
-        $object = $this->execute('GET', 'http://www.mocky.io/v2/592b7a27100000b10e38977b');
+        if (null !== $id) {
+            $resource = str_replace('{id}', $id, static::RESOURCE_OBJECT);
+        } else {
+            $resource = str_replace('{path}', $parameters->getPath(), static::RESOURCE_OBJECT_BY_PATH);
+        }
+
+        $object = $this->execute('GET', $resource);
         $model = static::toModel($object);
 
         return $model;

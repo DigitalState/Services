@@ -8,4 +8,5 @@ namespace Ds\Component\Formio\Query;
 class FormParameters extends AbstractParameters
 {
     use Attribute\Name;
+    use Attribute\Path;
 }
