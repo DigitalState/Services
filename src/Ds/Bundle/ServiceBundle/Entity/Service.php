@@ -142,7 +142,7 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ApiProperty
-     * @Serializer\Groups({"service_input"})
+     * @Serializer\Groups({"service_output", "service_input"})
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="services")
      * @ORM\JoinTable(
      *     name="ds_service_category",

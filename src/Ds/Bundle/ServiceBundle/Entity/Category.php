@@ -141,7 +141,7 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ApiProperty
-     * @Serializer\Groups({"category_input"})
+     * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\ManyToMany(targetEntity="Service", mappedBy="categories")
      */
     protected $services; # region accessors
