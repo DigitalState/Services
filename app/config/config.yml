@@ -110,10 +110,6 @@ ds_model:
         localizable: ~
 
 ds_security:
-    token:
-#        ip: ~
-#        client: ~
-        identity: ~
     filter:
         anonymous: ~
         individual: ~
