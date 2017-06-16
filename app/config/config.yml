@@ -50,7 +50,7 @@ doctrine:
 doctrine_migrations:
     dir_name: '%kernel.root_dir%/Migrations'
     namespace: Migrations
-    table_name: ds_migrations
+    table_name: ds_migration
     name: Application Migrations
 
 knp_doctrine_behaviors:
