@@ -5,7 +5,7 @@ services:
     ds_bpm.service:
         abstract: true
         arguments:
-            - "@ds_bpm.http.client"
+            - '@ds_bpm.http.client'
 
     ds_bpm.collection.api:
         class: Ds\Component\Bpm\Collection\ApiCollection
@@ -13,5 +13,5 @@ services:
     ds_bpm.api.factory:
         class: Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
         arguments:
-            - "@ds_bpm.collection.api"
-            - "@ds_config.service.config"
+            - '@ds_bpm.collection.api'
+            - '@ds_config.service.config'

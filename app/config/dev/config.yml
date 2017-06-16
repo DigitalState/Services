@@ -4,7 +4,7 @@ imports:
 
 framework:
     router:
-        resource: "%kernel.root_dir%/config/dev/routing.yml"
+        resource: '%kernel.root_dir%/config/dev/routing.yml'
         strict_requirements: true
     profiler: { only_exceptions: false }
 
@@ -16,7 +16,7 @@ monolog:
     handlers:
         main:
             type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
             channels: [!event]
         console:

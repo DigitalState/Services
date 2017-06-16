@@ -5,7 +5,7 @@ services:
     ds_formio.service:
         abstract: true
         arguments:
-            - "@ds_formio.http.client"
+            - '@ds_formio.http.client'
 
     ds_formio.service.form:
         parent: ds_formio.service
@@ -14,4 +14,4 @@ services:
     ds_formio.api:
         class: Ds\Component\Formio\Api\Api
         arguments:
-            - "@ds_bpm.http.client"
+            - '@ds_bpm.http.client'
