@@ -101,6 +101,8 @@ api_platform:
     default_operation_path_resolver: api_platform.operation_path_resolver.dash
     eager_loading:
         force_eager: false
+    enable_swagger: false
+    enable_swagger_ui: false
 
 ds_model:
     behavior:
