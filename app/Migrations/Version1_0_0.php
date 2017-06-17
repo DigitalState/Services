@@ -6,9 +6,9 @@ use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
 
 /**
- * Class Version20170616030220
+ * Class Version1_0_0
  */
-class Version20170616030220 extends AbstractMigration
+class Version1_0_0 extends AbstractMigration
 {
     /**
      * Up
