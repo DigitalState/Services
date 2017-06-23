@@ -1,13 +1,18 @@
 configs:
     -
+        uuid: 56a98b64-3e78-4b88-b122-2c93f64309e5
         key: ds_service.services.formio.url
         value: http://45.79.141.45:8056
 
     -
+        uuid: 2984d3ec-4fab-4217-86ae-710fa5df8c4a
         key: ds_service.services.camunda.url
         value: http://172.17.0.1:8055/engine-rest
 
 prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d       # Administration
     key: ~
     value: ~
     enabled: true

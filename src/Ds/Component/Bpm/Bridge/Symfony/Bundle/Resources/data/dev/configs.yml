@@ -1,49 +1,63 @@
 configs:
     -
+        uuid: d823bca8-bb87-4537-a4b1-b78239c127f8
         key: ds_bpm.variables.api_url
         value: _api_url
 
     -
+        uuid: 89f881cb-8195-434f-968d-06e99cda6681
         key: ds_bpm.variables.api_user
         value: _api_user
 
     -
+        uuid: 34119c32-534f-4f12-ae13-132929890858
         key: ds_bpm.variables.api_key
         value: _api_key
 
     -
+        uuid: 9dfde13c-2f3b-406f-ae91-9e1fb1f85502
         key: ds_bpm.variables.service
         value: _service
 
     -
+        uuid: 02b05413-e458-401d-a6ca-138acbab3f93
         key: ds_bpm.variables.scenario
         value: _scenario
 
     -
+        uuid: 2963d06b-3592-4fee-853b-6aae7e1c2aca
         key: ds_bpm.variables.user
         value: _user
 
     -
+        uuid: 6f8c28df-17ba-4cc9-8250-91b3367a5294
         key: ds_bpm.variables.submission
         value: _submission
 
     -
+        uuid: e2919fad-e05b-4ff4-ac3d-40a042f182dc
         key: ds_bpm.variables.none_start_event_form_data
         value: _none_start_event_form_data
 
     -
+        uuid: 28587c73-c3b3-4586-b3b2-5265532aa8af
         key: ds_bpm.variables.localization
         value: _localization
 
     -
+        uuid: ac8d63e0-c2c5-4894-b88d-e50a35578b95
         key: ds_bpm.variables.user_task_form_data
         value: _user_task_form_data
 
     -
+        uuid: f7ee75aa-773f-408e-842c-81f5af2ab669
         key: ds_bpm.variables.error
         value: _error
 
 prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d       # Administration
     key: ~
     value: ~
     enabled: true

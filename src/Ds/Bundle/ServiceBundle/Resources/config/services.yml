@@ -1,9 +1,15 @@
 services:
     ds_service.service.service:
         class: Ds\Bundle\ServiceBundle\Service\ServiceService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\ServiceBundle\Entity\Service
 
     ds_service.service.category:
         class: Ds\Bundle\ServiceBundle\Service\CategoryService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\ServiceBundle\Entity\Category
 
     ds_service.service.scenario:
         class: Ds\Bundle\ServiceBundle\Service\ScenarioService
@@ -15,6 +21,9 @@ services:
 
     ds_service.service.submission:
         class: Ds\Bundle\ServiceBundle\Service\SubmissionService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - Ds\Bundle\ServiceBundle\Entity\Submission
 
     ds_service.filter.service:
         parent: api_platform.doctrine.orm.search_filter

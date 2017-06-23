@@ -1,0 +1,7 @@
+permission_entries: []
+
+prototype:
+    permission: ~
+    business_unit_uuid: ~
+    key: ~
+    attributes: []

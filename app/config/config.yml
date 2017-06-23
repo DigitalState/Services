@@ -88,16 +88,12 @@ nelmio_cors:
 
 dunglas_action:
     directories:
-        - ../src/*/Bundle/*Bundle/Controller
         - ../src/*/Bundle/*Bundle/Action
-        - ../src/*/Bundle/*Bundle/Command
-        - ../src/*/Bundle/*Bundle/EventSubscriber
-        - ../src/*/Bundle/*Bundle/Service
 
 api_platform:
     title: Services
     description: The DigitalState Services Api
-    version: 0.1.0
+    version: 1.0.0
     default_operation_path_resolver: api_platform.operation_path_resolver.dash
     eager_loading:
         force_eager: false

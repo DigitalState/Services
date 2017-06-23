@@ -39,6 +39,6 @@ class LoadServiceData extends ResourceFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 0;
+        return 10;
     }
 }

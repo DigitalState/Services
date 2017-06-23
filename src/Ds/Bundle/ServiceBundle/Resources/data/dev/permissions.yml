@@ -1,0 +1,11 @@
+permissions:
+    -
+        uuid: 6e47bde9-3ccf-4a4b-b376-023092ea058d
+        owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d                 # Administration
+        user_uuid: a57ccc4b-6567-4ea5-83b2-5332baf94611                  # morgan
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    user_uuid: ~

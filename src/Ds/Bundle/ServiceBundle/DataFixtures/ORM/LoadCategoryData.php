@@ -45,6 +45,6 @@ class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 1;
+        return 11;
     }
 }

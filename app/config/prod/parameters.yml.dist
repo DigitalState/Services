@@ -1,5 +1,5 @@
 parameters:
-    server: dev
+    server: prod
 
     database_host: db
     database_port: 3306
