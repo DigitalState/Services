@@ -42,7 +42,7 @@ class ScenarioService extends EntityService
      * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $bpmFactory, Api $formio, ConfigService $configService, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Factory $bpmFactory, Api $formio, ConfigService $configService, $entity)
     {
         parent::__construct($manager, $entity);
 

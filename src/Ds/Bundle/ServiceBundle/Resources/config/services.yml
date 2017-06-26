@@ -18,12 +18,16 @@ services:
             - '@ds_bpm.api.factory'
             - '@ds_formio.api'
             - '@ds_config.service.config'
+            - Ds\Bundle\ServiceBundle\Entity\Scenario
 
     ds_service.service.submission:
         class: Ds\Bundle\ServiceBundle\Service\SubmissionService
         arguments:
             - '@doctrine.orm.entity_manager'
             - Ds\Bundle\ServiceBundle\Entity\Submission
+            - '@ds_service.service.scenario'
+            - '@ds_formio.api'
+            - '@ds_config.service.config'
 
     ds_service.filter.category.search:
         parent: api_platform.doctrine.orm.search_filter
@@ -154,13 +158,10 @@ services:
         arguments:
             - '@ds_service.form.flow.formio'
 
-    ds_service.event_listener.submission.validation.formio:
-        class: Ds\Bundle\ServiceBundle\EventListener\Submission\Validation\FormioListener
+    ds_service.event_listener.submission.validation:
+        class: Ds\Bundle\ServiceBundle\EventListener\Submission\Validation\DataListener
         arguments:
-            - '@service_container'
-            - '@ds_formio.api'
-            - '@ds_config.service.config'
-            - '@api_platform.hydra.normalizer.constraint_violation_list'
+            - '@ds_service.service.submission'
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
 
@@ -187,3 +188,10 @@ services:
             - '@ds_service.service.scenario'
             - '@request_stack'
             - "%locale%"
+
+    Ds\Bundle\ServiceBundle\Action\Scenario\SubmissionsAction:
+        class: Ds\Bundle\ServiceBundle\Action\Scenario\SubmissionsAction
+        arguments:
+            - '@request_stack'
+            - '@ds_service.service.scenario'
+            - '@ds_service.service.submission'
