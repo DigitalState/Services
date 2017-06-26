@@ -189,6 +189,21 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.submission.boolean }
 
+    ds_service.filter.submission.sort:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            -
+                id: ~
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+                owner: ~
+                identity: ~
+                state: ~
+                weight: ~
+        tags:
+            - { name: api_platform.filter, id: ds.submission.sort }
+
     ds_service.form.flow.formio:
         parent: craue.form.flow
         class: Ds\Bundle\ServiceBundle\Form\Flow\FormioFlow
