@@ -37,6 +37,7 @@ services:
                 uuid: exact
                 owner: exact
                 ownerUuid: exact
+                services.uuid: exact
         tags:
             - { name: api_platform.filter, id: ds.category.search }
 
@@ -97,6 +98,7 @@ services:
                 uuid: exact
                 owner: exact
                 ownerUuid: exact
+                categories.uuid: exact
         tags:
             - { name: api_platform.filter, id: ds.service.search }
 
@@ -158,6 +160,7 @@ services:
                 owner: exact
                 ownerUuid: exact
                 type: exact
+                service.uuid: exact
         tags:
             - { name: api_platform.filter, id: ds.scenario.search }
 
