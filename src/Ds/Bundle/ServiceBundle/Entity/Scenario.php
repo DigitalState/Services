@@ -26,9 +26,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={"ds_service.filter.scenario"},
- *         "normalization_context"={"groups"={"scenario_output"}},
- *         "denormalization_context"={"groups"={"scenario_input"}}
+ *         "filters"={"ds.scenario.search", "ds.scenario.date", "ds.scenario.boolean"},
+ *         "normalization_context"={
+ *             "groups"={"scenario_output"}
+ *         },
+ *         "denormalization_context"={
+ *             "groups"={"scenario_input"}
+ *         }
  *     }
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\ScenarioRepository")

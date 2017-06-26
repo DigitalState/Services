@@ -24,9 +24,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={"ds_service.filter.submission"},
- *         "normalization_context"={"groups"={"submission_output"}},
- *         "denormalization_context"={"groups"={"submission_input"}}
+ *         "filters"={"ds.submission.search", "ds.submission.date", "ds.submission.boolean"},
+ *         "normalization_context"={
+ *             "groups"={"submission_output"}
+ *         },
+ *         "denormalization_context"={
+ *             "groups"={"submission_input"}
+ *         }
  *     }
  * )
  * @ORM\Entity(repositoryClass="Ds\Bundle\ServiceBundle\Repository\SubmissionRepository")

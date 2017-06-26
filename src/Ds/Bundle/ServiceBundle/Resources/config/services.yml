@@ -25,33 +25,125 @@ services:
             - '@doctrine.orm.entity_manager'
             - Ds\Bundle\ServiceBundle\Entity\Submission
 
-    ds_service.filter.service:
+    ds_service.filter.category.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { uuid: exact }
+            -
+                id: exact
+                uuid: exact
+                owner: exact
+                ownerUuid: exact
         tags:
-            - { name: api_platform.filter, id: ds_service.filter.service }
+            - { name: api_platform.filter, id: ds.category.search }
 
-    ds_service.filter.category:
-        parent: api_platform.doctrine.orm.search_filter
+    ds_service.filter.category.date:
+        parent: api_platform.doctrine.orm.date_filter
         arguments:
-            - { uuid: exact }
+            -
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
         tags:
-            - { name: api_platform.filter, id: ds_service.filter.category }
+            - { name: api_platform.filter, id: ds.category.date }
 
-    ds_service.filter.scenario:
-        parent: api_platform.doctrine.orm.search_filter
+    ds_service.filter.category.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
         arguments:
-            - { uuid: exact }
+            -
+                enabled: ~
         tags:
-            - { name: api_platform.filter, id: ds_service.filter.scenario }
+            - { name: api_platform.filter, id: ds.category.boolean }
 
-    ds_service.filter.submission:
+    ds_service.filter.service.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
-            - { uuid: exact }
+            -
+                id: exact
+                uuid: exact
+                owner: exact
+                ownerUuid: exact
         tags:
-            - { name: api_platform.filter, id: ds_service.filter.submission }
+            - { name: api_platform.filter, id: ds.service.search }
+
+    ds_service.filter.service.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            -
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+        tags:
+            - { name: api_platform.filter, id: ds.service.date }
+
+    ds_service.filter.service.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            -
+                enabled: ~
+        tags:
+            - { name: api_platform.filter, id: ds.service.boolean }
+
+    ds_service.filter.scenario.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            -
+                id: exact
+                uuid: exact
+                owner: exact
+                ownerUuid: exact
+                type: exact
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.search }
+
+    ds_service.filter.scenario.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            -
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.date }
+
+    ds_service.filter.scenario.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            -
+                enabled: ~
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.boolean }
+
+    ds_service.filter.submission.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            -
+                id: exact
+                uuid: exact
+                owner: exact
+                ownerUuid: exact
+                identity: exact
+                identityUuid: exact
+                state: exact
+        tags:
+            - { name: api_platform.filter, id: ds.submission.search }
+
+    ds_service.filter.submission.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            -
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+        tags:
+            - { name: api_platform.filter, id: ds.submission.date }
+
+    ds_service.filter.submission.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            -
+                enabled: ~
+        tags:
+            - { name: api_platform.filter, id: ds.submission.boolean }
 
     ds_service.form.flow.formio:
         parent: craue.form.flow
