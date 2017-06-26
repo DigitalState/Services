@@ -96,6 +96,7 @@ services:
                 updatedAt: ~
                 deletedAt: ~
                 owner: ~
+                weight: ~
         tags:
             - { name: api_platform.filter, id: ds.service.sort }
 
