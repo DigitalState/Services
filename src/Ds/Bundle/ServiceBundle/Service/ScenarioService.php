@@ -21,12 +21,12 @@ class ScenarioService extends EntityService
     /**
      * @var \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
      */
-    protected $factory;
+    protected $bpmFactory;
 
     /**
      * @var \Ds\Component\Formio\Api\Api
      */
-    protected $api;
+    protected $formio;
 
     /**
      * @var \Ds\Component\Config\Service\ConfigService
@@ -37,16 +37,17 @@ class ScenarioService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $factory
-     * @param \Ds\Component\Formio\Api\Api $api
+     * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $bpmFactory
+     * @param \Ds\Component\Formio\Api\Api $formio
+     * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $factory, Api $api, ConfigService $configService, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Factory $bpmFactory, Api $formio, ConfigService $configService, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
-        $this->factory = $factory;
-        $this->api = $api;
+        $this->bpmFactory = $bpmFactory;
+        $this->formio = $formio;
         $this->configService = $configService;
     }
 
@@ -63,12 +64,14 @@ class ScenarioService extends EntityService
 
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
-                $api = $this->factory->api($scenario->getData('bpm'));
+                $api = $this->bpmFactory->api($scenario->getData('bpm'));
                 $api->setHost($this->configService->get('ds_service.services.camunda.url'));
                 $parameters = new ProcessDefinitionParameters;
                 $parameters->setKey($scenario->getData('process_definition_key'));
-                list($type, $value) = explode(':', $api->processDefinition->getStartForm(null, $parameters), 2);
-                $form->setType($type);
+                list($type, $id) = explode(':', $api->processDefinition->getStartForm(null, $parameters), 2);
+                $form
+                    ->setType($type)
+                    ->setId($id);
 
                 break;
 
@@ -78,11 +81,15 @@ class ScenarioService extends EntityService
 
         switch ($form->getType()) {
             case Form::TYPE_FORMIO:
-                $this->api->setHost($this->configService->get('ds_service.services.formio.url'));
+                $this->formio->setHost($this->configService->get('ds_service.services.formio.url'));
                 $parameters = new FormParameters;
-                $parameters->setPath($value);
-                $components = $this->api->form->get(null, $parameters)->getComponents();
-                $form->setSchema($components);
+                $parameters->setPath($id);
+                $components = $this->formio->form->get(null, $parameters)->getComponents();
+                $form
+                    ->setSchema($components)
+                    ->setMethod('POST')
+                    ->setAction('/scenarios/'.$scenario->getUuid().'/submissions');
+
                 break;
 
             default:
