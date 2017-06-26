@@ -225,6 +225,7 @@ services:
                 identity: exact
                 identityUuid: exact
                 state: exact
+                scenario.uuid: exact
         tags:
             - { name: api_platform.filter, id: ds.submission.search }
 
