@@ -44,6 +44,6 @@ class LoadScenarioData extends ResourceFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 1;
+        return 11;
     }
 }
