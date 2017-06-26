@@ -10,6 +10,7 @@ use Ds\Component\Model\Attribute as ModelAttribute;
  */
 class Form
 {
+    use Attribute\Id;
     use Attribute\Method;
     use Attribute\Action;
     use ModelAttribute\Type;
