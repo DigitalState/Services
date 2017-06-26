@@ -2,20 +2,25 @@
 
 namespace Ds\Bundle\ServiceBundle\Model\Scenario;
 
-use Ds\Component\Model\Attribute;
+use Ds\Bundle\ServiceBundle\Model\Attribute;
+use Ds\Component\Model\Attribute as ModelAttribute;
 
 /**
  * Class Form
  */
 class Form
 {
-    use Attribute\Type;
-    use Attribute\Schema;
+    use Attribute\Method;
+    use Attribute\Action;
+    use ModelAttribute\Type;
+    use ModelAttribute\Schema;
 
     /**
      * @const integer
      */
     const TYPE_FORMIO = 'formio';
+    const TYPE_BPM = 'bpm';
+    const TYPE_SYMFONY = 'symfony';
 
     /**
      * Typecast to object
