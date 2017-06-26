@@ -40,15 +40,15 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.category.search }
 
-    ds_service.filter.category.translation:
-        parent: ds_translation.doctrine.orm.filter.translation
+    ds_service.filter.category.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
         arguments:
             -
                 title: partial
                 description: partial
                 presentation: partial
         tags:
-            - { name: api_platform.filter, id: ds.category.translation }
+            - { name: api_platform.filter, id: ds.category.search_translation }
 
     ds_service.filter.category.date:
         parent: api_platform.doctrine.orm.date_filter
@@ -68,7 +68,7 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.category.boolean }
 
-    ds_service.filter.category.sort:
+    ds_service.filter.category.order:
         parent: api_platform.doctrine.orm.order_filter
         arguments:
             -
@@ -79,7 +79,15 @@ services:
                 owner: ~
                 weight: ~
         tags:
-            - { name: api_platform.filter, id: ds.category.sort }
+            - { name: api_platform.filter, id: ds.category.order }
+
+    ds_service.filter.category.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            -
+                title: ~
+        tags:
+            - { name: api_platform.filter, id: ds.category.order_translation }
 
     ds_service.filter.service.search:
         parent: api_platform.doctrine.orm.search_filter
@@ -92,15 +100,15 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.service.search }
 
-    ds_service.filter.service.translation:
-        parent: ds_translation.doctrine.orm.filter.translation
+    ds_service.filter.service.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
         arguments:
             -
                 title: partial
                 description: partial
                 presentation: partial
         tags:
-            - { name: api_platform.filter, id: ds.service.translation }
+            - { name: api_platform.filter, id: ds.service.search_translation }
 
     ds_service.filter.service.date:
         parent: api_platform.doctrine.orm.date_filter
@@ -120,7 +128,7 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.service.boolean }
 
-    ds_service.filter.service.sort:
+    ds_service.filter.service.order:
         parent: api_platform.doctrine.orm.order_filter
         arguments:
             -
@@ -131,7 +139,15 @@ services:
                 owner: ~
                 weight: ~
         tags:
-            - { name: api_platform.filter, id: ds.service.sort }
+            - { name: api_platform.filter, id: ds.service.order }
+
+    ds_service.filter.service.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            -
+                title: ~
+        tags:
+            - { name: api_platform.filter, id: ds.service.order_translation }
 
     ds_service.filter.scenario.search:
         parent: api_platform.doctrine.orm.search_filter
@@ -145,15 +161,15 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.scenario.search }
 
-    ds_service.filter.scenario.translation:
-        parent: ds_translation.doctrine.orm.filter.translation
+    ds_service.filter.scenario.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
         arguments:
             -
                 title: partial
                 description: partial
                 presentation: partial
         tags:
-            - { name: api_platform.filter, id: ds.scenario.translation }
+            - { name: api_platform.filter, id: ds.scenario.search_translation }
 
     ds_service.filter.scenario.date:
         parent: api_platform.doctrine.orm.date_filter
@@ -173,7 +189,7 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.scenario.boolean }
 
-    ds_service.filter.scenario.sort:
+    ds_service.filter.scenario.order:
         parent: api_platform.doctrine.orm.order_filter
         arguments:
             -
@@ -185,7 +201,15 @@ services:
                 type: ~
                 weight: ~
         tags:
-            - { name: api_platform.filter, id: ds.scenario.sort }
+            - { name: api_platform.filter, id: ds.scenario.order }
+
+    ds_service.filter.scenario.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            -
+                title: ~
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.order_translation }
 
     ds_service.filter.submission.search:
         parent: api_platform.doctrine.orm.search_filter
@@ -219,7 +243,7 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.submission.boolean }
 
-    ds_service.filter.submission.sort:
+    ds_service.filter.submission.order:
         parent: api_platform.doctrine.orm.order_filter
         arguments:
             -
@@ -232,7 +256,7 @@ services:
                 state: ~
                 weight: ~
         tags:
-            - { name: api_platform.filter, id: ds.submission.sort }
+            - { name: api_platform.filter, id: ds.submission.order }
 
     ds_service.form.flow.formio:
         parent: craue.form.flow
