@@ -26,7 +26,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={"ds.service.search", "ds.service.date", "ds.service.boolean", "ds.service.sort"},
+ *         "filters"={"ds.service.search", "ds.service.translation", "ds.service.date", "ds.service.boolean", "ds.service.sort"},
  *         "normalization_context"={
  *             "groups"={"service_output"}
  *         },

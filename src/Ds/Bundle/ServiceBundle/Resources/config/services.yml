@@ -40,6 +40,16 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.category.search }
 
+    ds_service.filter.category.translation:
+        parent: ds_translation.doctrine.orm.filter.translation
+        arguments:
+            -
+                title: partial
+                description: partial
+                presentation: partial
+        tags:
+            - { name: api_platform.filter, id: ds.category.translation }
+
     ds_service.filter.category.date:
         parent: api_platform.doctrine.orm.date_filter
         arguments:
@@ -81,6 +91,16 @@ services:
                 ownerUuid: exact
         tags:
             - { name: api_platform.filter, id: ds.service.search }
+
+    ds_service.filter.service.translation:
+        parent: ds_translation.doctrine.orm.filter.translation
+        arguments:
+            -
+                title: partial
+                description: partial
+                presentation: partial
+        tags:
+            - { name: api_platform.filter, id: ds.service.translation }
 
     ds_service.filter.service.date:
         parent: api_platform.doctrine.orm.date_filter
@@ -124,6 +144,16 @@ services:
                 type: exact
         tags:
             - { name: api_platform.filter, id: ds.scenario.search }
+
+    ds_service.filter.scenario.translation:
+        parent: ds_translation.doctrine.orm.filter.translation
+        arguments:
+            -
+                title: partial
+                description: partial
+                presentation: partial
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.translation }
 
     ds_service.filter.scenario.date:
         parent: api_platform.doctrine.orm.date_filter
