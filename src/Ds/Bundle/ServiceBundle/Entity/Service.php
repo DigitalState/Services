@@ -7,6 +7,7 @@ use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Translatable;
 use Ds\Component\Model\Type\Enableable;
+use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Model\Attribute\Accessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -35,7 +36,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\HasLifecycleCallbacks
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, Enableable
+class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, Enableable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -49,6 +50,7 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     use Accessor\Description;
     use Accessor\Presentation;
     use Accessor\Enabled;
+    use Accessor\Version;
 
     /**
      * @var integer
@@ -253,6 +255,17 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Assert\NotBlank
      */
     protected $enabled;
+
+    /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"service_output", "service_input"})
+     * @ORM\Column(name="version", type="integer")
+     * @ORM\Version
+     * @Assert\NotBlank
+     * @Assert\Type("integer")
+     */
+    protected $version;
 
     /**
      * @var string

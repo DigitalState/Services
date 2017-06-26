@@ -7,6 +7,7 @@ use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Translatable;
 use Ds\Component\Model\Type\Enableable;
+use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Model\Attribute\Accessor;
 use Ds\Bundle\ServiceBundle\Attribute\Accessor as ServiceAccessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
@@ -35,7 +36,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\HasLifecycleCallbacks
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, Enableable
+class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, Enableable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -52,6 +53,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Data;
     use Accessor\Enabled;
     use Accessor\Weight;
+    use Accessor\Version;
     use ServiceAccessor\Service;
 
     /**
@@ -240,6 +242,17 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Assert\Length(min=0, max=255)
      */
     protected $weight;
+
+    /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @ORM\Column(name="version", type="integer")
+     * @ORM\Version
+     * @Assert\NotBlank
+     * @Assert\Type("integer")
+     */
+    protected $version;
 
     /**
      * Constructor

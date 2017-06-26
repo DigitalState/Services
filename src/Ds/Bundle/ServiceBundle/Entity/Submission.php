@@ -6,6 +6,7 @@ use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Identitiable;
+use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Model\Attribute\Accessor;
 use Ds\Bundle\ServiceBundle\Attribute\Accessor as ServiceAccessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
@@ -33,7 +34,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\HasLifecycleCallbacks
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
+class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Versionable
 {
     use Behavior\Timestampable\Timestampable;
     use Behavior\SoftDeletable\SoftDeletable;
@@ -46,6 +47,7 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
     use Accessor\IdentityUuid;
     use Accessor\Data;
     use Accessor\State;
+    use Accessor\Version;
     use ServiceAccessor\Scenario;
 
     /**
@@ -152,6 +154,17 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable
      * @Assert\NotBlank
      */
     protected $state;
+
+    /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @ORM\Column(name="version", type="integer")
+     * @ORM\Version
+     * @Assert\NotBlank
+     * @Assert\Type("integer")
+     */
+    protected $version;
 
     /**
      * Constructor
