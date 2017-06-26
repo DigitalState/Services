@@ -58,6 +58,19 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.category.boolean }
 
+    ds_service.filter.category.sort:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            -
+                id: ~
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+                owner: ~
+                weight: ~
+        tags:
+            - { name: api_platform.filter, id: ds.category.sort }
+
     ds_service.filter.service.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
