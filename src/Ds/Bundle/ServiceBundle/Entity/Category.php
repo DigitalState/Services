@@ -97,6 +97,7 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
      */
     protected $owner;
 
@@ -116,6 +117,10 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"category_output", "category_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $title;
@@ -126,6 +131,10 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"category_output", "category_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $description;
@@ -136,6 +145,10 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"category_output", "category_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $presentation;
@@ -195,7 +208,7 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @var string
      * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\Column(name="enabled", type="boolean")
-     * @Assert\NotBlank
+     * @Assert\Type("boolean")
      */
     protected $enabled;
 

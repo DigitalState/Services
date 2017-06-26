@@ -143,15 +143,15 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
      * @var array
      * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\Column(name="data", type="json_array")
+     * @Assert\Type("array")
      */
     protected $data;
 
     /**
      * @var integer
      * @ApiProperty
-     * @Serializer\Groups({"submission_output"})
+     * @Serializer\Groups({"submission_output", "submission_input"})
      * @ORM\Column(name="state", type="smallint", options={"unsigned"=true})
-     * @Assert\NotBlank
      */
     protected $state;
 

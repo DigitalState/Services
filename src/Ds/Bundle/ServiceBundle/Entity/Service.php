@@ -98,6 +98,7 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Serializer\Groups({"service_output", "service_input"})
      * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
      */
     protected $owner;
 
@@ -117,6 +118,10 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Serializer\Groups({"service_output", "service_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $title;
@@ -127,6 +132,10 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Serializer\Groups({"service_output", "service_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $description;
@@ -137,6 +146,10 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Serializer\Groups({"service_output", "service_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $presentation;
@@ -252,7 +265,7 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @ApiProperty
      * @Serializer\Groups({"service_output", "service_input"})
      * @ORM\Column(name="enabled", type="boolean")
-     * @Assert\NotBlank
+     * @Assert\Type("boolean")
      */
     protected $enabled;
 

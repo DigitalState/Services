@@ -107,6 +107,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @ORM\Column(name="`owner`", type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
      */
     protected $owner;
 
@@ -134,6 +135,8 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @ORM\Column(name="`type`", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=1, max=255)
      */
     protected $type;
 
@@ -143,6 +146,10 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $title;
@@ -153,6 +160,10 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $description;
@@ -163,6 +174,10 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @Assert\Type("array")
      * @Assert\NotBlank
+     * @Assert\All({
+     *     @Assert\NotBlank,
+     *     @Assert\Length(min=1)
+     * })
      * @Translate
      */
     protected $presentation;
@@ -229,7 +244,7 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @ORM\Column(name="enabled", type="boolean")
-     * @Assert\NotBlank
+     * @Assert\Type("boolean")
      */
     protected $enabled;
 
