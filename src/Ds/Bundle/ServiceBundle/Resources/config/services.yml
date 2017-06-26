@@ -143,6 +143,20 @@ services:
         tags:
             - { name: api_platform.filter, id: ds.scenario.boolean }
 
+    ds_service.filter.scenario.sort:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            -
+                id: ~
+                createdAt: ~
+                updatedAt: ~
+                deletedAt: ~
+                owner: ~
+                type: ~
+                weight: ~
+        tags:
+            - { name: api_platform.filter, id: ds.scenario.sort }
+
     ds_service.filter.submission.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
