@@ -8,3 +8,4 @@ prototype:
     description: []
     presentation: []
     enabled: ~
+    weight: 0

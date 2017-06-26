@@ -53,6 +53,7 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Description;
     use Accessor\Presentation;
     use Accessor\Enabled;
+    use Accessor\Weight;
     use Accessor\Version;
 
     /**
@@ -215,6 +216,16 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @Assert\Type("boolean")
      */
     protected $enabled;
+
+    /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @ORM\Column(name="weight", type="smallint")
+     * @Assert\NotBlank
+     * @Assert\Length(min=0, max=255)
+     */
+    protected $weight;
 
     /**
      * @var integer

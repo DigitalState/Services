@@ -29,7 +29,8 @@ class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterfac
                 ->setTitle($category['title'])
                 ->setDescription($category['description'])
                 ->setPresentation($category['presentation'])
-                ->setEnabled($category['enabled']);
+                ->setEnabled($category['enabled'])
+                ->setWeight($category['weight']);
 
             foreach ($category['services'] as $service) {
                 $entity->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $service]));

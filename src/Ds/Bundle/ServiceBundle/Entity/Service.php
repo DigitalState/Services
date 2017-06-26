@@ -54,6 +54,7 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
     use Accessor\Description;
     use Accessor\Presentation;
     use Accessor\Enabled;
+    use Accessor\Weight;
     use Accessor\Version;
 
     /**
@@ -272,6 +273,16 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @Assert\Type("boolean")
      */
     protected $enabled;
+
+    /**
+     * @var integer
+     * @ApiProperty
+     * @Serializer\Groups({"service_output", "service_input"})
+     * @ORM\Column(name="weight", type="smallint")
+     * @Assert\NotBlank
+     * @Assert\Length(min=0, max=255)
+     */
+    protected $weight;
 
     /**
      * @var integer

@@ -33,3 +33,4 @@ prototype:
     description: []
     presentation: []
     enabled: true
+    weight: 0

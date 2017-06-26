@@ -28,7 +28,8 @@ class LoadServiceData extends ResourceFixture implements OrderedFixtureInterface
                 ->setTitle($service['title'])
                 ->setDescription($service['description'])
                 ->setPresentation($service['presentation'])
-                ->setEnabled($service['enabled']);
+                ->setEnabled($service['enabled'])
+                ->setWeight($service['weight']);
             $manager->persist($entity);
             $manager->flush();
         }
