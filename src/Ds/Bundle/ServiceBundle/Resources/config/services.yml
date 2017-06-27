@@ -86,7 +86,7 @@ services:
         parent: ds_translation.doctrine.orm.filter.order
         arguments:
             -
-                title: partial
+                title: ~
         tags:
             - { name: api_platform.filter, id: ds.category.order_translation }
 
@@ -147,7 +147,7 @@ services:
         parent: ds_translation.doctrine.orm.filter.order
         arguments:
             -
-                title: partial
+                title: ~
         tags:
             - { name: api_platform.filter, id: ds.service.order_translation }
 
@@ -210,7 +210,7 @@ services:
         parent: ds_translation.doctrine.orm.filter.order
         arguments:
             -
-                title: partial
+                title: ~
         tags:
             - { name: api_platform.filter, id: ds.scenario.order_translation }
 
