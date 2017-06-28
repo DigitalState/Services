@@ -51,9 +51,9 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Owner;
     use Accessor\OwnerUuid;
     use Accessor\Type;
-    use Accessor\Title;
-    use Accessor\Description;
-    use Accessor\Presentation;
+    use Accessor\Translation\Title;
+    use Accessor\Translation\Description;
+    use Accessor\Translation\Presentation;
     use Accessor\Data;
     use Accessor\Enabled;
     use Accessor\Weight;

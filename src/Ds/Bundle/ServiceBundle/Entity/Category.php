@@ -49,9 +49,9 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
     use Accessor\Uuid;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
-    use Accessor\Title;
-    use Accessor\Description;
-    use Accessor\Presentation;
+    use Accessor\Translation\Title;
+    use Accessor\Translation\Description;
+    use Accessor\Translation\Presentation;
     use Accessor\Enabled;
     use Accessor\Weight;
     use Accessor\Version;
