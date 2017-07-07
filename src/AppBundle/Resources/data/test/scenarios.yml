@@ -1,0 +1,14 @@
+scenarios: []
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    service: ~
+    type: ~
+    title: []
+    description: []
+    presentation: []
+    data: []
+    enabled: ~
+    weight: 0

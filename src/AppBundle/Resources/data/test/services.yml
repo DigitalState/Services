@@ -1,0 +1,11 @@
+services: []
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    title: []
+    description: []
+    presentation: []
+    enabled: ~
+    weight: 0

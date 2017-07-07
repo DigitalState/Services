@@ -1,0 +1,19 @@
+services:
+    app.event_listener.submission.validation:
+        class: AppBundle\EventListener\Submission\Validation\DataListener
+        arguments:
+            - '@app.service.submission'
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
+
+    app.event_listener.submission.owner:
+        class: AppBundle\EventListener\Submission\OwnerListener
+        tags:
+            - { name: doctrine.orm.entity_listener, entity: AppBundle\Entity\Submission, event: prePersist }
+
+    app.event_listener.submission.delegation.bpm:
+        class: AppBundle\EventListener\Submission\Delegation\BpmListener
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: doctrine.orm.entity_listener, entity: AppBundle\Entity\Submission, event: postPersist }

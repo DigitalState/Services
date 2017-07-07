@@ -1,0 +1,30 @@
+services:
+    app.service.service:
+        class: AppBundle\Service\ServiceService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Service
+
+    app.service.category:
+        class: AppBundle\Service\CategoryService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Category
+
+    app.service.scenario:
+        class: AppBundle\Service\ScenarioService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Scenario
+            - '@ds_bpm.api.factory'
+            - '@ds_formio.api'
+            - '@ds_config.service.config'
+
+    app.service.submission:
+        class: AppBundle\Service\SubmissionService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - AppBundle\Entity\Submission
+            - '@app.service.scenario'
+            - '@ds_formio.api'
+            - '@ds_config.service.config'

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Dunglas\ActionBundle\DunglasActionBundle(),
@@ -36,7 +37,7 @@ class AppKernel extends Kernel
             new Ds\Component\Bpm\Bridge\Symfony\Bundle\DsBpmBundle(),
             new Ds\Component\BpmCamunda\Bridge\Symfony\Bundle\DsBpmCamundaBundle(),
             new Ds\Component\Formio\Bridge\Symfony\Bundle\DsFormioBundle(),
-            new Ds\Bundle\ServiceBundle\DsServiceBundle(),
+            new AppBundle\AppBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

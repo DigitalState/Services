@@ -22,7 +22,7 @@ framework:
     trusted_hosts: ~
     trusted_proxies: ~
     session:
-        handler_id: ds.session.handler.pdo
+        handler_id: ds_session.handler.pdo
     fragments: ~
     http_method_override: true
     assets: ~
@@ -47,10 +47,16 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+doctrine_cache:
+    providers:
+        app_query:
+            type: file_system
+            namespace: app_query
+
 doctrine_migrations:
-    dir_name: '%kernel.root_dir%/Migrations'
-    namespace: Migrations
-    table_name: ds_migration
+    dir_name: '%kernel.root_dir%/../src/AppBundle/Migrations'
+    namespace: AppBundle\Migrations
+    table_name: app_migration
     name: Application Migrations
 
 knp_doctrine_behaviors:
@@ -102,12 +108,10 @@ api_platform:
 
 ds_model:
     behavior:
-        identitiable: ~
-        uuidentifiable: ~
-        translatable: ~
-        localizable: ~
+        identitiable: true
+        uuidentifiable: true
+        translatable: true
+        localizable: true
 
 ds_security:
-    filter:
-        anonymous: ~
-        individual: ~
+    acl: true

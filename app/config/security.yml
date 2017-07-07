@@ -15,7 +15,7 @@ security:
 
     access_control:
         - { path: ^/security/permissions, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/permissions,          role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/accesses,             role: IS_AUTHENTICATED_FULLY }
         - { path: ^/configs,              role: IS_AUTHENTICATED_FULLY }
         - { path: ^/categories,           role: IS_AUTHENTICATED_FULLY }
         - { path: ^/services,             role: IS_AUTHENTICATED_FULLY }

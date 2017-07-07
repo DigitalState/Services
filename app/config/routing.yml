@@ -5,6 +5,6 @@ api:
 ds_security:
     resource: '@DsSecurityBundle/Resources/config/routing.yml'
 
-ds_service:
-    resource: '@DsServiceBundle/Action/'
+app_action:
+    resource: '@AppBundle/Action/'
     type: annotation

@@ -1,9 +1,0 @@
-configs: []
-
-prototype:
-    uuid: ~
-    owner: BusinessUnit
-    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d       # Administration
-    key: ~
-    value: ~
-    enabled: true

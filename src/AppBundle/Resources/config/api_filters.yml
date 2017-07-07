@@ -1,0 +1,155 @@
+services:
+
+    app.filter.category.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, services.uuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.category.search }
+
+    app.filter.category.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial, description: partial, presentation: partial }
+        tags:
+            - { name: api_platform.filter, id: app.category.search_translation }
+
+    app.filter.category.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.category.date }
+
+    app.filter.category.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            - { enabled: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.category.boolean }
+
+    app.filter.category.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~, weight: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.category.order }
+
+    app.filter.category.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            - { title: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.category.order_translation }
+
+    app.filter.service.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, categories.uuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.service.search }
+
+    app.filter.service.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial, description: partial, presentation: partial }
+        tags:
+            - { name: api_platform.filter, id: app.service.search_translation }
+
+    app.filter.service.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.service.date }
+
+    app.filter.service.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            - { enabled: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.service.boolean }
+
+    app.filter.service.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~, weight: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.service.order }
+
+    app.filter.service.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            - { title: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.service.order_translation }
+
+    app.filter.scenario.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, type: exact, service.uuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.search }
+
+    app.filter.scenario.search_translation:
+        parent: ds_translation.doctrine.orm.filter.search
+        arguments:
+            - { title: partial, description: partial, presentation: partial }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.search_translation }
+
+    app.filter.scenario.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            - { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.date }
+
+    app.filter.scenario.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            - { enabled: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.boolean }
+
+    app.filter.scenario.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~, type: ~, weight: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.order }
+
+    app.filter.scenario.order_translation:
+        parent: ds_translation.doctrine.orm.filter.order
+        arguments:
+            - { title: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.scenario.order_translation }
+
+    app.filter.submission.search:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { id: exact, uuid: exact, owner: exact, ownerUuid: exact, identity: exact, identityUuid: exact, state: exact, scenario.uuid: exact }
+        tags:
+            - { name: api_platform.filter, id: app.submission.search }
+
+    app.filter.submission.date:
+        parent: api_platform.doctrine.orm.date_filter
+        arguments:
+            -  { createdAt: ~, updatedAt: ~, deletedAt: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.submission.date }
+
+    app.filter.submission.boolean:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            - { enabled: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.submission.boolean }
+
+    app.filter.submission.order:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { id: ~, createdAt: ~, updatedAt: ~, deletedAt: ~, owner: ~, identity: ~, state: ~, weight: ~ }
+        tags:
+            - { name: api_platform.filter, id: app.submission.order }

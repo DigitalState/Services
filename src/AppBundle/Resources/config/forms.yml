@@ -1,0 +1,9 @@
+services:
+    app.form.flow.formio:
+        parent: craue.form.flow
+        class: AppBundle\Form\Flow\FormioFlow
+
+    app.form.flow.formio.factory:
+        class: AppBundle\Form\Flow\Formio\Factory
+        arguments:
+            - '@app.form.flow.formio'
