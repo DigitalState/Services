@@ -1,23 +1,22 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixture\ORM;
 
 use AppBundle\Entity\Service;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Migration\Fixture\ORM\ResourceFixture;
 
 /**
- * Class LoadServiceData
+ * Class ServiceFixture
  */
-class LoadServiceData extends ResourceFixture implements OrderedFixtureInterface
+abstract class ServiceFixture extends ResourceFixture
 {
     /**
      * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
-        $services = $this->parse(__DIR__.'/../../Resources/data/{server}/services.yml');
+        $services = $this->parse($this->getResource());
 
         foreach ($services as $service) {
             $entity = new Service;
@@ -36,10 +35,9 @@ class LoadServiceData extends ResourceFixture implements OrderedFixtureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get resource
+     *
+     * @return string
      */
-    public function getOrder()
-    {
-        return 10;
-    }
+    abstract protected function getResource();
 }

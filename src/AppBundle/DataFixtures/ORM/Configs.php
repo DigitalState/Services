@@ -1,14 +1,14 @@
 <?php
 
-namespace Ds\Component\Bpm\Bridge\Symfony\Bundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
-use Ds\Component\Config\Fixture\ORM\ConfigFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Ds\Component\Config\Fixture\ORM\ConfigFixture;
 
 /**
- * Class LoadConfigData
+ * Class Configs
  */
-class LoadConfigData extends ConfigFixture implements OrderedFixtureInterface
+class Configs extends ConfigFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}

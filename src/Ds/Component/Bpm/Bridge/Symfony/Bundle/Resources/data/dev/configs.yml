@@ -1,63 +1,63 @@
-configs:
+items:
     -
-        uuid: d823bca8-bb87-4537-a4b1-b78239c127f8
+        uuid: b4c7d523-b99d-42fc-a1e4-75a172a3d7dc
         key: ds_bpm.variables.api_url
         value: _api_url
 
     -
-        uuid: 89f881cb-8195-434f-968d-06e99cda6681
+        uuid: 734bacc7-f420-4b15-83ae-73707b4cfc78
         key: ds_bpm.variables.api_user
         value: _api_user
 
     -
-        uuid: 34119c32-534f-4f12-ae13-132929890858
+        uuid: 414a9fc5-8431-4fee-8d16-68a220e7ec2d
         key: ds_bpm.variables.api_key
         value: _api_key
 
     -
-        uuid: 9dfde13c-2f3b-406f-ae91-9e1fb1f85502
+        uuid: c9cb147c-5bad-4a78-993e-3725fae578c0
         key: ds_bpm.variables.service
         value: _service
 
     -
-        uuid: 02b05413-e458-401d-a6ca-138acbab3f93
+        uuid: cdf6e5ec-d7b6-49da-8b92-31cc40c3ad20
         key: ds_bpm.variables.scenario
         value: _scenario
 
     -
-        uuid: 2963d06b-3592-4fee-853b-6aae7e1c2aca
+        uuid: d9a33632-9e62-4252-bd15-4d9dd663e1cd
         key: ds_bpm.variables.user
         value: _user
 
     -
-        uuid: 6f8c28df-17ba-4cc9-8250-91b3367a5294
+        uuid: 33af1a58-529d-484a-a1dc-4e8c4b252d82
         key: ds_bpm.variables.submission
         value: _submission
 
     -
-        uuid: e2919fad-e05b-4ff4-ac3d-40a042f182dc
+        uuid: b8e8c5d2-1a62-4fea-bbea-5d771b78dce7
         key: ds_bpm.variables.none_start_event_form_data
         value: _none_start_event_form_data
 
     -
-        uuid: 28587c73-c3b3-4586-b3b2-5265532aa8af
+        uuid: 658a5634-4248-4bc2-a6e2-92cf109bd195
         key: ds_bpm.variables.localization
         value: _localization
 
     -
-        uuid: ac8d63e0-c2c5-4894-b88d-e50a35578b95
+        uuid: f6ec8dbe-a382-4997-acb2-a819c6a75d07
         key: ds_bpm.variables.user_task_form_data
         value: _user_task_form_data
 
     -
-        uuid: f7ee75aa-773f-408e-842c-81f5af2ab669
+        uuid: 69cff78f-9d0c-4650-bddf-492e6763f3e1
         key: ds_bpm.variables.error
         value: _error
 
 prototype:
     uuid: ~
     owner: BusinessUnit
-    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d       # Administration
+    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
     key: ~
     value: ~
     enabled: true

@@ -1,4 +1,4 @@
-configs:
+items:
     -
         uuid: 56a98b64-3e78-4b88-b122-2c93f64309e5
         key: app.services.formio.url

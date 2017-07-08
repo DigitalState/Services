@@ -1,23 +1,10 @@
-services:
+items:
     -
-        uuid: b12fef1d-c197-4420-be77-083e2f2b53d6
-        owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38 # Finance
+        uuid: 2eb0cfc7-0402-4bc6-8733-c00084deb15c
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         title:
             en: Pay Your Taxes
             fr: Payer vos taxes
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-
-    -
-        uuid: b1f12b2c-5dec-4142-a50b-7b0ac871ee1b
-        owner_uuid: 2b20cb91-d0ef-41f1-b2f8-6c1a9ebc6fd8 # Human Resources
-        title:
-            en: Report an Issue
-            fr: Reporter un problème
         description:
             en: Description ...
             fr: Description ...

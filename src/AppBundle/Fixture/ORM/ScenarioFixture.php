@@ -1,24 +1,23 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixture\ORM;
 
 use AppBundle\Entity\Service;
 use AppBundle\Entity\Scenario;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Migration\Fixture\ORM\ResourceFixture;
 
 /**
- * Class LoadScenarioData
+ * Class ScenarioFixture
  */
-class LoadScenarioData extends ResourceFixture implements OrderedFixtureInterface
+abstract class ScenarioFixture extends ResourceFixture
 {
     /**
      * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
-        $scenarios = $this->parse(__DIR__.'/../../Resources/data/{server}/scenarios.yml');
+        $scenarios = $this->parse($this->getResource());
 
         foreach ($scenarios as $scenario) {
             $entity = new Scenario;
@@ -40,10 +39,9 @@ class LoadScenarioData extends ResourceFixture implements OrderedFixtureInterfac
     }
 
     /**
-     * {@inheritdoc}
+     * Get resource
+     *
+     * @return string
      */
-    public function getOrder()
-    {
-        return 11;
-    }
+    abstract protected function getResource();
 }

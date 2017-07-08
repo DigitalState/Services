@@ -1,13 +1,13 @@
-configs:
+items:
     -
-        uuid: 8e634ca4-a4f7-4602-b58a-58877c934da5
+        uuid: 403b4974-cc86-47fe-b35b-a2d190b6cf72
         key: ds_bpm_camunda.api.url
         value: http://192.168.99.100:8055/engine-rest
 
 prototype:
     uuid: ~
     owner: BusinessUnit
-    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d       # Administration
+    owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
     key: ~
     value: ~
     enabled: true

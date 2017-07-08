@@ -6,9 +6,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Ds\Component\Security\Fixture\ORM\AccessFixture;
 
 /**
- * Class LoadAccessData
+ * Class Accesses
  */
-class LoadAccessData extends AccessFixture implements OrderedFixtureInterface
+class Accesses extends AccessFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class LoadAccessData extends AccessFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/accesses.yml';
+        return __DIR__.'/../../Resources/data/{server}/*/accesses.yml';
     }
 }

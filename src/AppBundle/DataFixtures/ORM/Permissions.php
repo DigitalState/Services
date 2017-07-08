@@ -6,9 +6,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Ds\Component\Security\Fixture\ORM\PermissionFixture;
 
 /**
- * Class LoadPermissionData
+ * Class Permissions
  */
-class LoadPermissionData extends PermissionFixture implements OrderedFixtureInterface
+class Permissions extends PermissionFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class LoadPermissionData extends PermissionFixture implements OrderedFixtureInte
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/permissions.yml';
+        return __DIR__.'/../../Resources/data/{server}/*/permissions.yml';
     }
 }

@@ -2,20 +2,20 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Fixture\ORM\ScenarioFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Ds\Component\Config\Fixture\ORM\ConfigFixture;
 
 /**
- * Class LoadConfigData
+ * Class Scenarios
  */
-class LoadConfigData extends ConfigFixture implements OrderedFixtureInterface
+class Scenarios extends ScenarioFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
      */
     public function getOrder()
     {
-        return 0;
+        return 11;
     }
 
     /**
@@ -23,6 +23,6 @@ class LoadConfigData extends ConfigFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/configs.yml';
+        return __DIR__.'/../../Resources/data/{server}/scenarios.yml';
     }
 }

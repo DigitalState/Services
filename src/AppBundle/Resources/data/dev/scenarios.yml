@@ -1,8 +1,8 @@
-scenarios:
+items:
     -
-        uuid: b030d951-b257-45be-8abb-527efb7e2555
-        owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38 # Finance
-        service: b12fef1d-c197-4420-be77-083e2f2b53d6 # Pay Your Taxes
+        uuid: e049f2b4-b249-48c2-850c-64d4c4b39527
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
         type: bpm
         title:
             en: Pay Your Taxes Online
@@ -19,9 +19,9 @@ scenarios:
         weight: 0
 
     -
-        uuid: 67dfc5ec-96d0-4a28-9137-73bba3dc054b
-        owner_uuid: 7e105be4-578d-4a1f-bc04-fd85f3ddcc38 # Finance
-        service: b12fef1d-c197-4420-be77-083e2f2b53d6 # Pay Your Taxes
+        uuid: 3584cb49-a908-4e58-89c3-6d6d77e0a5f0
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
         type: mail
         title:
             en: Pay Your Taxes By Mail

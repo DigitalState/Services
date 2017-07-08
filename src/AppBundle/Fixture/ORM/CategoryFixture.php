@@ -1,24 +1,23 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixture\ORM;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Service;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Migration\Fixture\ORM\ResourceFixture;
 
 /**
- * Class LoadCategoryData
+ * Class CategoryFixture
  */
-class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterface
+abstract class CategoryFixture extends ResourceFixture
 {
     /**
      * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
-        $categories = $this->parse(__DIR__.'/../../Resources/data/{server}/categories.yml');
+        $categories = $this->parse($this->getResource());
 
         foreach ($categories as $category) {
             $entity = new Category;
@@ -42,10 +41,9 @@ class LoadCategoryData extends ResourceFixture implements OrderedFixtureInterfac
     }
 
     /**
-     * {@inheritdoc}
+     * Get resource
+     *
+     * @return string
      */
-    public function getOrder()
-    {
-        return 11;
-    }
+    abstract protected function getResource();
 }
