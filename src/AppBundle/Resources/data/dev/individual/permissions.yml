@@ -1,4 +1,29 @@
-items: []
+items:
+    -
+        access: cb0891a5-e69d-4165-8138-5651823c59b2 # Any individual
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        key:
+            - category
+            - category_uuid
+            - category_title
+            - category_description
+            - category_presentation
+            - service
+            - service_uuid
+            - service_title
+            - service_description
+            - service_presentation
+            - scenario
+            - scenario_uuid
+            - scenario_title
+            - scenario_description
+            - scenario_presentation
+            - submission
+            - submission_uuid
+            - submission_created_at
+            - submission_scenario
+            - submission_data
+        attributes: [BROWSE, READ]
 
 prototype:
     access: ~
