@@ -1,4 +1,27 @@
-items: []
+items:
+    -
+        uuid: 6053e05b-dd54-40e4-9617-01fba3a67fb7
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        identity: Staff
+        identity_uuid: ~ # Any staff
+
+    -
+        uuid: aa046284-b176-4c9c-978e-d94b69623f03
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        identity: Staff
+        identity_uuid: 47a5a9cb-496f-4db7-8999-489ec404887f # Manager
+
+    -
+        uuid: d7d4d1fb-492c-48fe-9454-85d894ff4f53
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        identity: Staff
+        identity_uuid: 9d10157c-f2ce-48fb-a5ab-83faaae952a7 # Agent
+
+    -
+        uuid: 8d24dba5-1e70-4e9b-9fda-9939ace9c62a
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        identity: Staff
+        identity_uuid: 71f285ba-f994-444c-b9e5-fa813295a0b7 # Intern
 
 prototype:
     uuid: ~

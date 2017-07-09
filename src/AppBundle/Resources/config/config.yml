@@ -1,6 +1,7 @@
 ds_security:
     permissions:
         category:                 { title: Category,      entity:    AppBundle\Entity\Category,                attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        category_fields:          { title: All fields,    property:  AppBundle\Entity\Category.*,              attributes: [BROWSE, READ, EDIT] }
         category_id:              { title: ID,            property:  AppBundle\Entity\Category.id,             attributes: [BROWSE, READ, EDIT] }
         category_uuid:            { title: UUID,          property:  AppBundle\Entity\Category.uuid,           attributes: [BROWSE, READ, EDIT] }
         category_created_at:      { title: Created At,    property:  AppBundle\Entity\Category.createdAt,      attributes: [BROWSE, READ, EDIT] }
@@ -12,9 +13,9 @@ ds_security:
         category_description:     { title: Description,   property:  AppBundle\Entity\Category.description,    attributes: [BROWSE, READ, EDIT] }
         category_presentation:    { title: Presentation,  property:  AppBundle\Entity\Category.presentation,   attributes: [BROWSE, READ, EDIT] }
         category_version:         { title: Version,       property:  AppBundle\Entity\Category.version,        attributes: [BROWSE, READ, EDIT] }
-
         service:                  { title: Service,       entity:    AppBundle\Entity\Service,                 attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         service_id:               { title: ID,            property:  AppBundle\Entity\Service.id,              attributes: [BROWSE, READ, EDIT] }
+        service_fields:           { title: All Fields,    property:  AppBundle\Entity\Service.*,               attributes: [BROWSE, READ, EDIT] }
         service_uuid:             { title: UUID,          property:  AppBundle\Entity\Service.uuid,            attributes: [BROWSE, READ, EDIT] }
         service_created_at:       { title: Created At,    property:  AppBundle\Entity\Service.createdAt,       attributes: [BROWSE, READ, EDIT] }
         service_updated_at:       { title: Updated At,    property:  AppBundle\Entity\Service.updatedAt,       attributes: [BROWSE, READ, EDIT] }
@@ -25,8 +26,8 @@ ds_security:
         service_description:      { title: Description,   property:  AppBundle\Entity\Service.description,     attributes: [BROWSE, READ, EDIT] }
         service_presentation:     { title: Presentation,  property:  AppBundle\Entity\Service.presentation,    attributes: [BROWSE, READ, EDIT] }
         service_version:          { title: Version,       property:  AppBundle\Entity\Service.version,         attributes: [BROWSE, READ, EDIT] }
-
         scenario:                 { title: Scenario,      entity:    AppBundle\Entity\Scenario,                attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        scenario_fields:          { title: All Fields,    property:  AppBundle\Entity\Scenario.*,              attributes: [BROWSE, READ, EDIT] }
         scenario_id:              { title: ID,            property:  AppBundle\Entity\Scenario.id,             attributes: [BROWSE, READ, EDIT] }
         scenario_uuid:            { title: UUID,          property:  AppBundle\Entity\Scenario.uuid,           attributes: [BROWSE, READ, EDIT] }
         scenario_created_at:      { title: Created At,    property:  AppBundle\Entity\Scenario.createdAt,      attributes: [BROWSE, READ, EDIT] }
@@ -40,8 +41,8 @@ ds_security:
         scenario_presentation:    { title: Presentation,  property:  AppBundle\Entity\Scenario.presentation,   attributes: [BROWSE, READ, EDIT] }
         scenario_data:            { title: Data,          property:  AppBundle\Entity\Scenario.data,           attributes: [BROWSE, READ, EDIT] }
         scenario_version:         { title: Version,       property:  AppBundle\Entity\Scenario.version,        attributes: [BROWSE, READ, EDIT] }
-
         submission:               { title: Submission,    entity:    AppBundle\Entity\Submission,              attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
+        submission_fields:        { title: All Fields,    property:  AppBundle\Entity\Submission.*,            attributes: [BROWSE, READ, EDIT] }
         submission_id:            { title: ID,            property:  AppBundle\Entity\Submission.id,           attributes: [BROWSE, READ, EDIT] }
         submission_uuid:          { title: UUID,          property:  AppBundle\Entity\Submission.uuid,         attributes: [BROWSE, READ, EDIT] }
         submission_created_at:    { title: Created At,    property:  AppBundle\Entity\Submission.createdAt,    attributes: [BROWSE, READ, EDIT] }
