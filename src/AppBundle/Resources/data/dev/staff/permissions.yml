@@ -2,145 +2,49 @@ items:
     -
         access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category_fields
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service_fields
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario_fields
-        attributes: [BROWSE, READ]
-
-    -
-        access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission_fields
+        key:
+            - category
+            - category_fields
+            - service
+            - service_fields
+            - scenario
+            - scenario_fields
+            - submission
+            - submission_fields
         attributes: [BROWSE, READ]
 
     -
         access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category
+        key:
+            - category
+            - service
+            - scenario
+            - submission
         attributes: [EDIT, ADD, DELETE]
 
     -
         access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service
-        attributes: [EDIT, ADD, DELETE]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario
-        attributes: [EDIT, ADD, DELETE]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission
-        attributes: [EDIT, ADD, DELETE]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category_fields
-        attributes: [EDIT]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service_fields
-        attributes: [EDIT]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario_fields
-        attributes: [EDIT]
-
-    -
-        access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission_fields
+        key:
+            - category_fields
+            - service_fields
+            - scenario_fields
+            - submission_fields
         attributes: [EDIT]
 
     -
         access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: category_fields
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: service_fields
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: scenario_fields
-        attributes: [EDIT]
-
-    -
-        access: d7d4d1fb-492c-48fe-9454-85d894ff4f53 # Agent
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        key: submission_fields
+        key:
+            - category
+            - category_fields
+            - service
+            - service_fields
+            - scenario
+            - scenario_fields
+            - submission
+            - submission_fields
         attributes: [EDIT]
 
 prototype:
