@@ -8,8 +8,14 @@ items:
     -
         access: 059741bb-e6d9-459c-9f88-e63be9668fad # Any system
         entity_uuid: ~ # Any business unit
-        key: entity_fields
+        key: property
         attributes: [BROWSE, READ, EDIT]
+
+    -
+        access: 059741bb-e6d9-459c-9f88-e63be9668fad # Any system
+        entity_uuid: ~ # Any business unit
+        key: custom
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 
 prototype:
     access: ~

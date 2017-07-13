@@ -4,13 +4,13 @@ items:
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         key:
             - category
-            - category_fields
+            - category_property
             - service
-            - service_fields
+            - service_property
             - scenario
-            - scenario_fields
+            - scenario_property
             - submission
-            - submission_fields
+            - submission_property
         attributes: [BROWSE, READ]
 
     -
@@ -27,10 +27,10 @@ items:
         access: aa046284-b176-4c9c-978e-d94b69623f03 # Manager
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         key:
-            - category_fields
-            - service_fields
-            - scenario_fields
-            - submission_fields
+            - category_property
+            - service_property
+            - scenario_property
+            - submission_property
         attributes: [EDIT]
 
     -
@@ -38,13 +38,13 @@ items:
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         key:
             - category
-            - category_fields
+            - category_property
             - service
-            - service_fields
+            - service_property
             - scenario
-            - scenario_fields
+            - scenario_property
             - submission
-            - submission_fields
+            - submission_property
         attributes: [EDIT]
 
 prototype:
