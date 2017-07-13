@@ -284,7 +284,6 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
      * @ApiProperty
      * @Serializer\Groups({"service_output", "service_input"})
      * @ORM\Column(name="weight", type="smallint")
-     * @Assert\NotBlank
      * @Assert\Length(min=0, max=255)
      */
     protected $weight;
@@ -383,5 +382,6 @@ class Service implements Identifiable, Uuidentifiable, Ownable, Translatable, En
         $this->presentation = [];
         $this->categories = new ArrayCollection;
         $this->enabled = false;
+        $this->weight = 0;
     }
 }

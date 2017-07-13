@@ -228,7 +228,6 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @ApiProperty
      * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\Column(name="weight", type="smallint")
-     * @Assert\NotBlank
      * @Assert\Length(min=0, max=255)
      */
     protected $weight;
@@ -254,5 +253,6 @@ class Category implements Identifiable, Uuidentifiable, Ownable, Translatable, E
         $this->presentation = [];
         $this->services = new ArrayCollection;
         $this->enabled = false;
+        $this->weight = 0;
     }
 }

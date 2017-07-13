@@ -263,7 +263,6 @@ class Scenario implements Identifiable, Uuidentifiable, Ownable, Translatable, E
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @ORM\Column(name="weight", type="smallint")
-     * @Assert\NotBlank
      * @Assert\Length(min=0, max=255)
      */
     protected $weight;
