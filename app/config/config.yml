@@ -94,7 +94,7 @@ nelmio_cors:
 
 dunglas_action:
     directories:
-        - ../src/*/Bundle/*Bundle/Action
+        - '%kernel.root_dir%/../src/*Bundle/Action'
 
 api_platform:
     title: Services
