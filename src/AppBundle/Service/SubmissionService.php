@@ -36,12 +36,12 @@ class SubmissionService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param string $entity
      * @param \AppBundle\Service\ScenarioService $scenarioService
      * @param \Ds\Component\Formio\Api\Api $formio
      * @param \Ds\Component\Config\Service\ConfigService $configService
+     * @param string $entity
      */
-    public function __construct(EntityManager $manager, $entity, ScenarioService $scenarioService, Api $formio, ConfigService $configService)
+    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Api $formio, ConfigService $configService, $entity = Submission::class)
     {
         parent::__construct($manager, $entity);
 

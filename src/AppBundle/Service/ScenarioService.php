@@ -37,12 +37,12 @@ class ScenarioService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param string $entity
      * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $bpmFactory
      * @param \Ds\Component\Formio\Api\Api $formio
      * @param \Ds\Component\Config\Service\ConfigService $configService
+     * @param string $entity
      */
-    public function __construct(EntityManager $manager, $entity, Factory $bpmFactory, Api $formio, ConfigService $configService)
+    public function __construct(EntityManager $manager, Factory $bpmFactory, Api $formio, ConfigService $configService, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 

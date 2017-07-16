@@ -27,6 +27,7 @@ abstract class ScenarioFixture extends ResourceFixture
                 ->setUuid($scenario['uuid'])
                 ->setOwner($scenario['owner'])
                 ->setOwnerUuid($scenario['owner_uuid'])
+                ->setSlug($scenario['slug'])
                 ->setTitle($scenario['title'])
                 ->setDescription($scenario['description'])
                 ->setPresentation($scenario['presentation'])

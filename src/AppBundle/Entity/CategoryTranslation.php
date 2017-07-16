@@ -16,8 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
 class CategoryTranslation
 {
     use Behavior\Translatable\Translation;
-    use Behavior\Timestampable\Timestampable;
-    use Behavior\SoftDeletable\SoftDeletable;
 
     use Accessor\Title;
     use Accessor\Description;
@@ -25,19 +23,19 @@ class CategoryTranslation
 
     /**
      * @var string
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     protected $description;
 
     /**
      * @var string
-     * @ORM\Column(name="presentation", type="text")
+     * @ORM\Column(name="presentation", type="text", nullable=true)
      */
     protected $presentation;
 }

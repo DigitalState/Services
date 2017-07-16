@@ -24,6 +24,7 @@ abstract class ServiceFixture extends ResourceFixture
                 ->setUuid($service['uuid'])
                 ->setOwner($service['owner'])
                 ->setOwnerUuid($service['owner_uuid'])
+                ->setSlug($service['slug'])
                 ->setTitle($service['title'])
                 ->setDescription($service['description'])
                 ->setPresentation($service['presentation'])

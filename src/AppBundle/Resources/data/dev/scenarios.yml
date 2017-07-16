@@ -4,6 +4,7 @@ items:
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
         type: bpm
+        slug: online
         title:
             en: Pay Your Taxes Online
             fr: Payer vos taxes en-ligne
@@ -23,6 +24,7 @@ items:
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
         service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
         type: mail
+        slug: mail
         title:
             en: Pay Your Taxes By Mail
             fr: Payer vos taxes par courrier
@@ -40,6 +42,7 @@ prototype:
     owner_uuid: ~
     service: ~
     type: ~
+    slug: ~
     title: []
     description: []
     presentation: []

@@ -2,9 +2,10 @@ items:
     -
         uuid: 2042b73c-eb69-4b47-96f4-380578f5c3fe
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        slug: finance
         title:
-            en: Financial Services
-            fr: Services financiers
+            en: Finance
+            fr: Finance
         description:
             en: Description ...
             fr: Description ...
@@ -18,6 +19,7 @@ prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
+    slug: ~
     title: []
     description: []
     presentation: []

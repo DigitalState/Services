@@ -25,6 +25,7 @@ abstract class CategoryFixture extends ResourceFixture
                 ->setUuid($category['uuid'])
                 ->setOwner($category['owner'])
                 ->setOwnerUuid($category['owner_uuid'])
+                ->setSlug($category['slug'])
                 ->setTitle($category['title'])
                 ->setDescription($category['description'])
                 ->setPresentation($category['presentation'])

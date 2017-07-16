@@ -2,6 +2,7 @@ items:
     -
         uuid: 2eb0cfc7-0402-4bc6-8733-c00084deb15c
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        slug: pay-your-taxes
         title:
             en: Pay Your Taxes
             fr: Payer vos taxes
@@ -16,6 +17,7 @@ prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
+    slug: ~
     title: []
     description: []
     presentation: []
