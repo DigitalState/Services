@@ -18,7 +18,8 @@ use Knp\DoctrineBehaviors\Model as Behavior;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Doctrine\ORM\Mapping as ORM;
-use Ds\Component\Locale\Model\Annotation\Localized;
+use Ds\Component\Locale\Model\Annotation\Locale;
+use Ds\Component\Translation\Model\Annotation\Translate;
 use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
 use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -147,7 +148,8 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      *     @Assert\NotBlank,
      *     @Assert\Length(min=1)
      * })
-     * @Localized
+     * @Locale
+     * @Translate
      */
     protected $title;
 
@@ -161,7 +163,8 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      *     @Assert\NotBlank,
      *     @Assert\Length(min=1)
      * })
-     * @Localized
+     * @Locale
+     * @Translate
      */
     protected $description;
 
@@ -175,7 +178,8 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      *     @Assert\NotBlank,
      *     @Assert\Length(min=1)
      * })
-     * @Localized
+     * @Locale
+     * @Translate
      */
     protected $presentation;
 
