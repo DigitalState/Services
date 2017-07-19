@@ -64,11 +64,11 @@ class SubmissionsAction
         }
 
         $request = $this->requestStack->getCurrentRequest();
-        $content = json_decode($request->getContent(), true);
+        $content = json_decode($request->getContent());
         $submission = $this->submissionService->createInstance();
         $submission
             ->setScenario($scenario)
-            ->setData($content['data']);
+            ->setData($content->data);
 
         if (!$this->submissionService->isValid($submission)) {
             return new JsonResponse((object) ['error' => 'Data is not valid.']);
