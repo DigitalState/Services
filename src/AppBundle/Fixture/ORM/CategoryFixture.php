@@ -5,7 +5,7 @@ namespace AppBundle\Fixture\ORM;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Service;
 use Doctrine\Common\Persistence\ObjectManager;
-use Ds\Component\Migration\Fixture\ORM\ResourceFixture;
+use Ds\Component\Database\Fixture\ORM\ResourceFixture;
 
 /**
  * Class CategoryFixture

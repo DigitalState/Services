@@ -23,6 +23,6 @@ class Permissions extends PermissionFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/*/permissions.yml';
+        return __DIR__.'/../../Resources/data/{env}/*/permissions.yml';
     }
 }

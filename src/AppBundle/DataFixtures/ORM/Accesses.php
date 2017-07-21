@@ -23,6 +23,6 @@ class Accesses extends AccessFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/*/accesses.yml';
+        return __DIR__.'/../../Resources/data/{env}/*/accesses.yml';
     }
 }

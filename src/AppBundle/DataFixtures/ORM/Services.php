@@ -23,6 +23,6 @@ class Services extends ServiceFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/services.yml';
+        return __DIR__.'/../../Resources/data/{env}/services.yml';
     }
 }

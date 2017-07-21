@@ -23,6 +23,6 @@ class Scenarios extends ScenarioFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/scenarios.yml';
+        return __DIR__.'/../../Resources/data/{env}/scenarios.yml';
     }
 }
