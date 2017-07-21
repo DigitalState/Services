@@ -1,0 +1,15 @@
+items: []
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    service: ~
+    type: ~
+    slug: ~
+    title: []
+    description: []
+    presentation: []
+    data: []
+    enabled: true
+    weight: 0

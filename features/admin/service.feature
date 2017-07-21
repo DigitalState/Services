@@ -15,7 +15,7 @@ Feature: Manage services
     Then the response should be in JSON
     Then the header "Content-Type" should be equal to "application/json; charset=utf-8"
 
-  @dropSchema
+
   Scenario: Read service
     When I add "Accept" header equal to "application/json"
     When I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
