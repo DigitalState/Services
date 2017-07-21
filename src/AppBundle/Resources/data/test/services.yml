@@ -1,11 +1,25 @@
-services: []
+items:
+    -
+        uuid: 920f17d8-ee25-456e-aa56-33771951dc81
+        owner_uuid: f2b7c698-80b9-413f-ad7e-eeaf6aa048e5 # Public
+        slug: service-1
+        title:
+            en: Service 1
+            fr: Service 1
+        description:
+            en: Description
+            fr: Description
+        presentation:
+            en: Presentation
+            fr: Présentation
 
 prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
+    slug: ~
     title: []
     description: []
     presentation: []
-    enabled: ~
+    enabled: true
     weight: 0

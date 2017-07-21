@@ -1,0 +1,13 @@
+items:
+    -
+        uuid: defca237-e7c9-483d-8a15-ee106ab9e386
+        owner_uuid: 54d68e66-f796-430a-807c-eba414bbc0eb # Administration
+        identity: Admin
+        identity_uuid: ~ # Any admin
+
+prototype:
+    uuid: ~
+    owner: BusinessUnit
+    owner_uuid: ~
+    identity: ~
+    identity_uuid: ~

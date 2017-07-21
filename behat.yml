@@ -4,18 +4,21 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext: { doctrine: "@doctrine" }
+        - FeatureContext
         - Behat\MinkExtension\Context\MinkContext
-        - Sanpi\Behatch\Context\RestContext
-        - Sanpi\Behatch\Context\JsonContext
+        - Behatch\Context\RestContext
+        - Behatch\Context\JsonContext
+        - Ds\Component\Identity\Behat\Context\IdentityContext
+        - Ds\Component\Database\Behat\Context\SchemaContext: { doctrine: "@doctrine" }
+        - Ds\Component\Database\Behat\Context\MigrationContext
   extensions:
     Behat\Symfony2Extension:
       kernel:
         env: "test"
         debug: "true"
     Behat\MinkExtension:
-      base_url: "http://example.com/"
+      base_url: "http://localhost:8051/"
       sessions:
         default:
           symfony2: ~
-    Sanpi\Behatch\Extension: ~
+    Behatch\Extension: ~
