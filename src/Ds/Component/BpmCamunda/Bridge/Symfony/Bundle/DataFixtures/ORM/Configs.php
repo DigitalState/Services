@@ -23,6 +23,6 @@ class Configs extends ConfigFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{server}/configs.yml';
+        return __DIR__.'/../../Resources/data/{env}/configs.yml';
     }
 }
