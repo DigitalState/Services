@@ -40,3 +40,4 @@ Feature: Manage services
     When I add "Accept" header equal to "application/json"
     When I send a "DELETE" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
     Then the response status code should be 204
+    Then the response should be empty
