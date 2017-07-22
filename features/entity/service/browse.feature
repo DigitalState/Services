@@ -1,6 +1,4 @@
-@entity
-@service
-@browse
+@entity @service @browse
 Feature: Browse services
   In order to browse services
   As the admin identity
@@ -9,14 +7,15 @@ Feature: Browse services
   Background:
     Given I am authenticated as an "admin" identity
 
-  @createSchema
-  @loadFixtures
+  @createSchema @loadFixtures
   Scenario: Browse all services
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items
 
   Scenario: Browse services with a specific id
     When I add "Accept" header equal to "application/json"
@@ -25,6 +24,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific ids
     When I add "Accept" header equal to "application/json"
@@ -33,6 +34,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items
 
   Scenario: Browse services with a specific uuid
     When I add "Accept" header equal to "application/json"
@@ -41,6 +44,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific uuids
     When I add "Accept" header equal to "application/json"
@@ -49,6 +54,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items
 
   Scenario: Browse services with a specific owner
     When I add "Accept" header equal to "application/json"
@@ -57,6 +64,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items
 
   Scenario: Browse services with specific owners
     When I add "Accept" header equal to "application/json"
@@ -65,6 +74,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items
 
   Scenario: Browse services with a specific owner uuid
     When I add "Accept" header equal to "application/json"
@@ -73,6 +84,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 1 items
 
   @dropSchema
   Scenario: Browse services with specific owner uuids
@@ -82,3 +95,5 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the response JSON should be a collection
+    And the response collection should count 2 items

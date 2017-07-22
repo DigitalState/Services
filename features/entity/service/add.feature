@@ -1,6 +1,4 @@
-@entity
-@service
-@add
+@entity @service @add
 Feature: Add services
   In order to add services
   As the admin identity

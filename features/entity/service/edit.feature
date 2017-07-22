@@ -1,6 +1,4 @@
-@entity
-@service
-@edit
+@entity @service @edit
 Feature: Edit services
   In order to edit services
   As the admin identity
@@ -9,9 +7,7 @@ Feature: Edit services
   Background:
     Given I am authenticated as an "admin" identity
 
-  @createSchema
-  @loadFixtures
-  @dropSchema
+  @createSchema @loadFixtures @dropSchema
   Scenario: Edit service
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"

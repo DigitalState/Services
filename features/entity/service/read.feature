@@ -1,6 +1,4 @@
-@entity
-@service
-@read
+@entity @service @read
 Feature: Read services
   In order to read services
   As the admin identity
@@ -9,9 +7,7 @@ Feature: Read services
   Background:
     Given I am authenticated as an "admin" identity
 
-  @createSchema
-  @loadFixtures
-  @dropSchema
+  @createSchema @loadFixtures @dropSchema
   Scenario: Read one service
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
