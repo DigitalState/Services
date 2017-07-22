@@ -2,7 +2,7 @@
 @service
 @read
 Feature: Read services
-  In order to read a service
+  In order to read services
   As the admin identity
   I should be able to send api requests related to services
 
@@ -12,7 +12,7 @@ Feature: Read services
   @createSchema
   @loadFixtures
   @dropSchema
-  Scenario: Read service
+  Scenario: Read one service
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
     Then the response status code should be 200

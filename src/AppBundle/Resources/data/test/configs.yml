@@ -3,7 +3,7 @@ items: []
 prototype:
     uuid: ~
     owner: BusinessUnit
-    owner_uuid: 25b88f35-eb37-4dae-9d89-668151e11a0d # Administration
+    owner_uuid: d111a5b4-facd-4380-b197-4629e983c670
     key: ~
     value: ~
     enabled: true

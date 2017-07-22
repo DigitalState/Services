@@ -2,7 +2,7 @@
 @service
 @edit
 Feature: Edit services
-  In order to edit a service
+  In order to edit services
   As the admin identity
   I should be able to send api requests related to services
 

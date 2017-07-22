@@ -2,7 +2,7 @@
 @service
 @delete
 Feature: Delete services
-  In order to browse services
+  In order to delete services
   As the admin identity
   I should be able to send api requests related to services
 

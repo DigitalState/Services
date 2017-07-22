@@ -1,17 +1,31 @@
 items:
     -
         uuid: 920f17d8-ee25-456e-aa56-33771951dc81
-        owner_uuid: f2b7c698-80b9-413f-ad7e-eeaf6aa048e5 # Public
-        slug: service-1
+        owner_uuid: f2b7c698-80b9-413f-ad7e-eeaf6aa048e5
+        slug: report-pothole
         title:
-            en: Service 1
-            fr: Service 1
+            en: Report a Pothole
+            fr: Signaler un nids de poule
         description:
-            en: Description
-            fr: Description
+            en: Report a Pothole (description)
+            fr: Signaler un nids de poule (description)
         presentation:
-            en: Presentation
-            fr: Présentation
+            en: Report a Pothole (presentation)
+            fr: Signaler un nids de poule (presentation)
+
+    -
+        uuid: 1f04aa3a-82f7-4103-afb3-0e1029915ec4
+        owner_uuid: 44a24145-c302-496f-808e-10a3cfee633d
+        slug: report-graffiti
+        title:
+            en: Report a graffiti
+            fr: Signaler un graffiti
+        description:
+            en: Report a graffiti (description)
+            fr: Signaler un graffiti (description)
+        presentation:
+            en: Report a graffiti (presentation)
+            fr: Signaler un graffiti (presentation)
 
 prototype:
     uuid: ~

@@ -1,6 +1,7 @@
 default:
   calls:
     error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+
   suites:
     default:
       contexts:
@@ -8,17 +9,23 @@ default:
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
-        - Ds\Component\Identity\Behat\Context\IdentityContext
-        - Ds\Component\Database\Behat\Context\SchemaContext: { doctrine: "@doctrine" }
-        - Ds\Component\Database\Behat\Context\MigrationContext
+        - Ds\Component\Identity\Test\Context\IdentityContext:
+            tokenManager: "@lexik_jwt_authentication.jwt_manager"
+            identityCollection: "@ds_identity_test.collection.identity"
+        - Ds\Component\Database\Test\Context\SchemaContext:
+            doctrine: "@doctrine"
+        - Ds\Component\Database\Test\Context\MigrationContext
+
   extensions:
     Behat\Symfony2Extension:
       kernel:
         env: "test"
         debug: "true"
+
     Behat\MinkExtension:
       base_url: "http://localhost:8051/"
       sessions:
         default:
           symfony2: ~
+
     Behatch\Extension: ~
