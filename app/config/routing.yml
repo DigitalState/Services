@@ -2,6 +2,9 @@ api:
     resource: .
     type: api_platform
 
+ds_health:
+    resource: '@DsHealthBundle/Resources/config/routing.yml'
+
 ds_security:
     resource: '@DsSecurityBundle/Resources/config/routing.yml'
 

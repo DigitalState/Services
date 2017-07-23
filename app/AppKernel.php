@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
             new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle(),
+            new Ds\Component\Health\Bridge\Symfony\Bundle\DsHealthBundle(),
             new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle(),
             new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
             new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
