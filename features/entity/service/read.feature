@@ -1,14 +1,14 @@
 @entity @service @read
 Feature: Read services
   In order to read services
-  As the admin identity
+  As an admin identity
   I should be able to send api requests related to services
 
   Background:
     Given I am authenticated as an "admin" identity
 
   @createSchema @loadFixtures @dropSchema
-  Scenario: Read one service
+  Scenario: Read a service
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
     Then the response status code should be 200
@@ -29,10 +29,15 @@ Feature: Read services
     And the JSON node "slug" should exist
     And the JSON node "slug" should be equal to the string "report-pothole"
     And the JSON node "title" should exist
+#    And the JSON node "title" should be equal to "todo"
     And the JSON node "description" should exist
+#    And the JSON node "description" should be equal to "todo"
     And the JSON node "presentation" should exist
+#    And the JSON node "presentation" should be equal to "todo"
     And the JSON node "categories" should exist
     And the JSON node "scenarios" should exist
+    And the JSON node "enabled" should exist
+    And the JSON node "enabled" should be true
     And the JSON node "weight" should exist
     And the JSON node "weight" should be equal to the number 0
     And the JSON node "version" should exist

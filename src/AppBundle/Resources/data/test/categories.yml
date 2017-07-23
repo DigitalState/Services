@@ -1,4 +1,17 @@
-items: []
+items:
+    -
+        uuid: 7095e66e-ed2f-469a-b173-15c866899d67
+        owner_uuid: f2b7c698-80b9-413f-ad7e-eeaf6aa048e5
+        slug: public-works
+        title:
+            en: Public Works
+            fr: Travaux publics
+        description:
+            en: Public Works (description)
+            fr: Travaux publics (description)
+        presentation:
+            en: Public Works (presentation)
+            fr: Travaux publics (presentation)
 
 prototype:
     uuid: ~
