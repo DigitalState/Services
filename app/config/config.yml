@@ -103,6 +103,10 @@ api_platform:
     default_operation_path_resolver: api_platform.operation_path_resolver.dash
     eager_loading:
         force_eager: false
+    collection:
+        pagination:
+            client_items_per_page: true
+            items_per_page_parameter_name: limit
     enable_swagger: false
     enable_swagger_ui: false
 
