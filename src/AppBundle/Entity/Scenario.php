@@ -80,7 +80,10 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     /**
      * @const string
      */
+    const TYPE_API = 'api';
     const TYPE_BPM = 'bpm';
+    const TYPE_INFO = 'info';
+    const TYPE_URL = 'url';
 
     /**
      * @var integer
