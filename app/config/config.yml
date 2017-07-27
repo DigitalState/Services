@@ -105,6 +105,7 @@ api_platform:
         force_eager: false
     collection:
         pagination:
+            items_per_page: 10
             client_items_per_page: true
             items_per_page_parameter_name: limit
     enable_swagger: false
