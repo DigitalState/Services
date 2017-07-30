@@ -14,6 +14,7 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
+        - { path: ^/health,               role: IS_AUTHENTICATED_FULLY }
         - { path: ^/permissions,          role: IS_AUTHENTICATED_FULLY }
         - { path: ^/accesses,             role: IS_AUTHENTICATED_FULLY }
         - { path: ^/configs,              role: IS_AUTHENTICATED_FULLY }
