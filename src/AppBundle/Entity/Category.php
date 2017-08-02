@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Enableable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
@@ -50,7 +51,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
-class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Versionable
+class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -65,6 +66,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
     use Accessor\Enabled;
+    use Accessor\Deleted;
     use Accessor\Weight;
     use Accessor\Version;
 
@@ -272,6 +274,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
         $this->presentation = [];
         $this->services = new ArrayCollection;
         $this->enabled = false;
+        $this->deleted = false;
         $this->weight = 0;
     }
 }

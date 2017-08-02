@@ -6,6 +6,7 @@ use AppBundle\Entity\Attribute\Accessor as ServiceAccessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Enableable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Ownable;
@@ -56,7 +57,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields={"service", "slug"})
  */
-class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Versionable
+class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -73,6 +74,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use TranslationAccessor\Presentation;
     use Accessor\Data;
     use Accessor\Enabled;
+    use Accessor\Deleted;
     use Accessor\Weight;
     use Accessor\Version;
     use ServiceAccessor\Service;

@@ -2,12 +2,13 @@
 
 namespace AppBundle\Entity;
 
+use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Model\Type\Deletable;
 use Ds\Component\Model\Type\Identifiable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Identitiable;
 use Ds\Component\Model\Type\Versionable;
-use Ds\Component\Model\Attribute\Accessor;
 use AppBundle\Entity\Attribute\Accessor as ServiceAccessor;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
@@ -41,7 +42,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\Table(name="app_submission")
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Versionable
+class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable
 {
     use Behavior\Timestampable\Timestampable;
     use Behavior\SoftDeletable\SoftDeletable;
@@ -54,6 +55,7 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
     use Accessor\IdentityUuid;
     use Accessor\Data;
     use Accessor\State;
+    use Accessor\Deleted;
     use Accessor\Version;
     use ServiceAccessor\Scenario;
 

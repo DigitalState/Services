@@ -13,6 +13,20 @@ items:
             en: Presentation ...
             fr: Présentation ...
 
+    -
+        uuid: 2033bdf0-9ade-47f0-b728-197d5597831e
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        slug: report-pothole
+        title:
+            en: Report a pothole
+            fr: Signaler un nids de poule
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Présentation ...
+
 prototype:
     uuid: ~
     owner: BusinessUnit
