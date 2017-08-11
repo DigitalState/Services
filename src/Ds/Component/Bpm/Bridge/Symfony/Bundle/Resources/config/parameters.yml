@@ -1,0 +1,4 @@
+parameters:
+    ds_bpm.api.http.client.class: GuzzleHttp\Client
+    ds_bpm.api.factory.class: Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
+    ds_bpm.collection.api.class: Ds\Component\Bpm\Collection\ApiCollection

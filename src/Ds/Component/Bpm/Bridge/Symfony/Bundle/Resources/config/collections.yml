@@ -1,0 +1,3 @@
+services:
+    ds_bpm.collection.api:
+        class: '%ds_bpm.collection.api.class%'

@@ -1,0 +1,7 @@
+services:
+    ds_bpm_camunda.api:
+        class: '%ds_bpm_camunda.api.class%'
+        arguments:
+            - '@ds_bpm.api.http.client'
+        tags:
+            - { name: ds_bpm.api, alias: camunda }
