@@ -14,4 +14,4 @@ services:
     ds_formio.api:
         class: Ds\Component\Formio\Api\Api
         arguments:
-            - '@ds_bpm.http.client'
+            - '@ds_formio.http.client'
