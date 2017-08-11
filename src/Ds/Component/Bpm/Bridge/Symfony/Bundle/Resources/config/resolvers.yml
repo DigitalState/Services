@@ -1,0 +1,5 @@
+services:
+    ds_bpm.resolver.context.bpm:
+        class: '%ds_bpm.resolver.context.bpm.class%'
+        tags:
+            - { name: ds_resolver.resolver, alias: ds.context.bpm }

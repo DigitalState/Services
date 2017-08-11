@@ -34,6 +34,7 @@ class DsBpmExtension extends Extension implements PrependExtensionInterface
         $loader->load('parameters.yml');
         $loader->load('api.yml');
         $loader->load('collections.yml');
+        $loader->load('resolvers.yml');
         $loader->load('services.yml');
 
         // @todo Move this config -> parameters logic to a common trait in the config component bridge

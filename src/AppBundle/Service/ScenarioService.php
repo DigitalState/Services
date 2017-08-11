@@ -5,13 +5,14 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Scenario;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
+use DomainException;
 use Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory;
 use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
+use Ds\Component\Bpm\Resolver\Context\BpmResolver;
 use Ds\Component\Config\Service\ConfigService;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Formio\Api\Api;
 use Ds\Component\Formio\Query\FormParameters;
-use DomainException;
 
 /**
  * Class ScenarioService
@@ -34,19 +35,26 @@ class ScenarioService extends EntityService
     protected $configService;
 
     /**
+     * @var \Ds\Component\Bpm\Resolver\Context\BpmResolver
+     */
+    protected $bpmResolver;
+
+    /**
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $bpmFactory
+     * @param \Ds\Component\Bpm\Resolver\Context\BpmResolver $bpmResolver
      * @param \Ds\Component\Formio\Api\Api $formio
      * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $bpmFactory, Api $formio, ConfigService $configService, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Factory $bpmFactory, BpmResolver $bpmResolver, Api $formio, ConfigService $configService, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
         $this->bpmFactory = $bpmFactory;
+        $this->bpmResolver = $bpmResolver;
         $this->formio = $formio;
         $this->configService = $configService;
     }
@@ -85,6 +93,29 @@ class ScenarioService extends EntityService
                 $parameters = new FormParameters;
                 $parameters->setPath($id);
                 $components = $this->formio->form->get(null, $parameters)->getComponents();
+
+                foreach ($components as &$component) {
+                    if (property_exists($component, 'columns')) {
+                        foreach ($component->columns as &$column) {
+                            foreach ($column->components as &$subComponent) {
+                                if (property_exists($subComponent, 'defaultValue')) {
+                                    try {
+                                        $subComponent->defaultValue = $this->bpmResolver->resolve($subComponent->defaultValue);
+                                    } catch (DomainException $exception) {
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if (property_exists($component, 'defaultValue')) {
+                            try {
+                                $component->defaultValue = $this->bpmResolver->resolve($component->defaultValue);
+                            } catch (DomainException $exception) {
+                            }
+                        }
+                    }
+                }
+
                 $form
                     ->setSchema($components)
                     ->setMethod('POST')
