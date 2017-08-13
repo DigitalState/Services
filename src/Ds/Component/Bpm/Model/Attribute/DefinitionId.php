@@ -13,7 +13,7 @@ trait DefinitionId
     protected $definitionId; # region accessors
 
     /**
-     * Set definitionId
+     * Set definition id
      *
      * @param string $definitionId
      * @return object
@@ -26,7 +26,7 @@ trait DefinitionId
     }
 
     /**
-     * Get definitionId
+     * Get definition id
      *
      * @return string
      */

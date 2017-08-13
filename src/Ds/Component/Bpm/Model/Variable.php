@@ -30,10 +30,11 @@ class Variable implements Model
      */
     public function __construct($name, $value, $type = self::TYPE_STRING, stdClass $meta = null)
     {
-        $this->setName($name);
-        $this->setValue($value);
-        $this->setType($type);
-        $this->setMeta($meta);
+        $this
+            ->setName($name)
+            ->setValue($value)
+            ->setType($type)
+            ->setMeta($meta);
     }
 
     /**

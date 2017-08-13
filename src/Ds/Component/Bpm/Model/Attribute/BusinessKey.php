@@ -13,7 +13,7 @@ trait BusinessKey
     protected $businessKey; # region accessors
 
     /**
-     * Set businessKey
+     * Set business key
      *
      * @param string $businessKey
      * @return object
@@ -26,7 +26,7 @@ trait BusinessKey
     }
 
     /**
-     * Get businessKey
+     * Get business key
      *
      * @return string
      */

@@ -13,7 +13,7 @@ trait TenantId
     protected $tenantId; # region accessors
 
     /**
-     * Set tenantId
+     * Set tenant id
      *
      * @param string $tenantId
      * @return object
@@ -26,7 +26,7 @@ trait TenantId
     }
 
     /**
-     * Get tenantId
+     * Get tenant id
      *
      * @return string
      */

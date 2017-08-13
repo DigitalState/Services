@@ -13,7 +13,7 @@ trait CaseInstanceId
     protected $caseInstanceId; # region accessors
 
     /**
-     * Set caseInstanceId
+     * Set case instance id
      *
      * @param string $caseInstanceId
      * @return object
@@ -26,7 +26,7 @@ trait CaseInstanceId
     }
 
     /**
-     * Get caseInstanceId
+     * Get case instance id
      *
      * @return string
      */

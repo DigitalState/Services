@@ -13,7 +13,7 @@ trait DeploymentId
     protected $deploymentId; # region accessors
 
     /**
-     * Set deploymentId
+     * Set deployment id
      *
      * @param string $deploymentId
      * @return object
@@ -26,7 +26,7 @@ trait DeploymentId
     }
 
     /**
-     * Get deploymentId
+     * Get deployment id
      *
      * @return string
      */

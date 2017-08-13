@@ -13,7 +13,7 @@ trait VersionTag
     protected $versionTag; # region accessors
 
     /**
-     * Set versionTag
+     * Set version tag
      *
      * @param string $versionTag
      * @return object
@@ -26,7 +26,7 @@ trait VersionTag
     }
 
     /**
-     * Get versionTag
+     * Get version tag
      *
      * @return string
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Component\Bpm\Bridge\Symfony\Bundle\Api;
+namespace Ds\Component\Bpm\Api;
 
 use Ds\Component\Bpm\Collection\ApiCollection;
 use Ds\Component\Config\Service\ConfigService;
