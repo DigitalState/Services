@@ -6,13 +6,14 @@ use AppBundle\Entity\Scenario;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use DomainException;
-use Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory;
+use Ds\Component\Bpm\Api\Factory;
 use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
-use Ds\Component\Bpm\Resolver\Context\BpmResolver;
+use Ds\Component\Bpm\Resolver\BpmResolver;
 use Ds\Component\Config\Service\ConfigService;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Formio\Api\Api;
 use Ds\Component\Formio\Query\FormParameters;
+use Ds\Component\Resolver\Model\Context;
 
 /**
  * Class ScenarioService
@@ -20,7 +21,7 @@ use Ds\Component\Formio\Query\FormParameters;
 class ScenarioService extends EntityService
 {
     /**
-     * @var \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
+     * @var \Ds\Component\Bpm\Api\Factory
      */
     protected $bpmFactory;
 
@@ -35,7 +36,7 @@ class ScenarioService extends EntityService
     protected $configService;
 
     /**
-     * @var \Ds\Component\Bpm\Resolver\Context\BpmResolver
+     * @var \Ds\Component\Bpm\Resolver\BpmResolver
      */
     protected $bpmResolver;
 
@@ -43,8 +44,8 @@ class ScenarioService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory $bpmFactory
-     * @param \Ds\Component\Bpm\Resolver\Context\BpmResolver $bpmResolver
+     * @param \Ds\Component\Bpm\Api\Factory $bpmFactory
+     * @param \Ds\Component\Bpm\Resolver\BpmResolver $bpmResolver
      * @param \Ds\Component\Formio\Api\Api $formio
      * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
