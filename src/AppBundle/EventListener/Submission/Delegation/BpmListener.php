@@ -19,7 +19,7 @@ class BpmListener
     protected $container;
 
     /**
-     * @var \Ds\Component\Bpm\Bridge\Symfony\Bundle\Api\Factory
+     * @var \Ds\Component\Bpm\Api\Factory
      */
     protected $factory;
 
