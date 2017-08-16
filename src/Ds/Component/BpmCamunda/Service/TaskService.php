@@ -17,9 +17,36 @@ class TaskService extends Service\AbstractService implements Service\TaskService
     const MODEL = Task::class;
 
     /**
+     * @const string
+     */
+    const TASK_LIST = '/task';
+    const TASK_COUNT = '/task/count';
+    const TASK_OBJECT = '/task/{id}';
+
+    /**
      * @var array
      */
     protected static $map = [
+        'id',
+        'name',
+        'assignee',
+        'created',
+        'due',
+        'followUp',
+        'delegationState',
+        'description',
+        'executionId',
+        'owner',
+        'parentTaskId',
+        'priority',
+        'processDefinitionId',
+        'processInstanceId',
+        'caseExecutionId',
+        'caseDefinitionId',
+        'caseInstanceId',
+        'taskDefinitionKey',
+        'formKey',
+        'tenantId'
     ];
 
     /**
@@ -27,7 +54,15 @@ class TaskService extends Service\AbstractService implements Service\TaskService
      */
     public function getList(Parameters $parameters = null)
     {
+        $objects = $this->execute('GET', static::TASK_LIST);
+        $list = [];
 
+        foreach ($objects as $object) {
+            $model = static::toModel($object);
+            $list[] = $model;
+        }
+
+        return $list;
     }
 
     /**
@@ -35,7 +70,9 @@ class TaskService extends Service\AbstractService implements Service\TaskService
      */
     public function getCount(Parameters $parameters = null)
     {
+        $result = $this->execute('GET', static::TASK_COUNT);
 
+        return $result->count;
     }
 
     /**
@@ -43,6 +80,10 @@ class TaskService extends Service\AbstractService implements Service\TaskService
      */
     public function get($id, Parameters $parameters = null)
     {
+        $resource = str_replace('{id}', $id, static::TASK_OBJECT);
+        $object = $this->execute('GET', $resource);
+        $model = static::toModel($object);
 
+        return $model;
     }
 }

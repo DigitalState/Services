@@ -50,6 +50,8 @@ abstract class AbstractService implements Service
                 switch ($local) {
                     case 'created':
                     case 'updated':
+                    case 'due':
+                    case 'followUp':
                         $model->{'set'.ucfirst($local)}(new DateTime($object->$remote));
                         break;
 
