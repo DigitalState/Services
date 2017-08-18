@@ -1,7 +1,7 @@
 items:
     -
         access: cc82373f-d2f7-4b54-ac9d-69dca4ffac5e # Any anonymous
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         key:
             - category
             - category_uuid

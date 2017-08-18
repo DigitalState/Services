@@ -1,7 +1,7 @@
 items:
     -
-        uuid: 920f17d8-ee25-456e-aa56-33771951dc81
-        owner_uuid: f2b7c698-80b9-413f-ad7e-eeaf6aa048e5
+        uuid: 7293e6d1-48e2-4761-b9c6-f77258cbe31a
+        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
         slug: report-pothole
         title:
             en: Report a Pothole
@@ -14,11 +14,11 @@ items:
             fr: Signaler un nids de poule (presentation)
 
     -
-        uuid: 1f04aa3a-82f7-4103-afb3-0e1029915ec4
-        owner_uuid: 44a24145-c302-496f-808e-10a3cfee633d
+        uuid: cdfbc069-c2f6-4a66-b477-7f9e289f6beb
+        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
         slug: report-graffiti
         title:
-            en: Report a graffiti
+            en: Report a Graffiti
             fr: Signaler un graffiti
         description:
             en: Report a graffiti (description)

@@ -1,11 +1,11 @@
 items:
     -
-        uuid: 2042b73c-eb69-4b47-96f4-380578f5c3fe
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        slug: finance
+        uuid: ecc69524-0b12-4eae-a6f4-b6eb0f442e29
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        slug: infrastructure
         title:
-            en: Finance
-            fr: Finance
+            en: Infrastructure
+            fr: Infrastructure
         description:
             en: Description ...
             fr: Description ...
@@ -13,7 +13,8 @@ items:
             en: Presentation ...
             fr: Presentation ...
         services:
-            - 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
+            - 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d # Report a Pothole
+            - 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
 
 prototype:
     uuid: ~

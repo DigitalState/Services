@@ -1,13 +1,13 @@
 items:
     -
         uuid: e049f2b4-b249-48c2-850c-64d4c4b39527
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d # Report a Pothole
         type: bpm
         slug: online
         title:
-            en: Pay Your Taxes Online
-            fr: Payer vos taxes en-ligne
+            en: Report a Pothole Online
+            fr: Signaler un nids de poule en-ligne
         description:
             en: Description ...
             fr: Description ...
@@ -21,13 +21,50 @@ items:
 
     -
         uuid: 3584cb49-a908-4e58-89c3-6d6d77e0a5f0
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        service: 2eb0cfc7-0402-4bc6-8733-c00084deb15c # Pay Your Taxes
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d # Report a Pothole
         type: info
         slug: info
         title:
-            en: Pay Your Taxes By Mail
-            fr: Payer vos taxes par courrier
+            en: Report a Pothole By Mail
+            fr: Signaler un nids de poule par courrier
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Présentation ...
+        weight: 1
+
+    -
+        uuid: d4833574-377f-4845-acc1-bc6fcead0ce5
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
+        type: bpm
+        slug: online
+        title:
+            en: Report a Graffiti Online
+            fr: Signaler un graffiti en-ligne
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Présentation ...
+        data:
+            bpm: camunda
+            process_definition_key: PayTaxes
+        weight: 0
+
+    -
+        uuid: 8a22dd6c-0548-452b-8fda-68d80362a1d7
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
+        type: info
+        slug: info
+        title:
+            en: Report a Graffiti By Mail
+            fr: Signaler un graffiti par courrier
         description:
             en: Description ...
             fr: Description ...

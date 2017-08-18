@@ -1,31 +1,31 @@
 items:
     -
-        uuid: 2eb0cfc7-0402-4bc6-8733-c00084deb15c
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
-        slug: pay-your-taxes
-        title:
-            en: Pay Your Taxes
-            fr: Payer vos taxes
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-
-    -
-        uuid: 2033bdf0-9ade-47f0-b728-197d5597831e
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public
+        uuid: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         slug: report-pothole
         title:
-            en: Report a pothole
+            en: Report a Pothole
             fr: Signaler un nids de poule
         description:
-            en: Description ...
-            fr: Description ...
+            en: Report a Pothole (description)
+            fr: Signaler un nids de poule (description)
         presentation:
-            en: Presentation ...
-            fr: Présentation ...
+            en: Report a Pothole (presentation)
+            fr: Signaler un nids de poule (presentation)
+
+    -
+        uuid: 52d4797d-aeba-4933-8775-e44901cf5f2d
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        slug: report-graffiti
+        title:
+            en: Report a Graffiti
+            fr: Signaler un graffiti
+        description:
+            en: Report a graffiti (description)
+            fr: Signaler un graffiti (description)
+        presentation:
+            en: Report a graffiti (presentation)
+            fr: Signaler un graffiti (presentation)
 
 prototype:
     uuid: ~
