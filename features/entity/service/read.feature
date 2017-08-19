@@ -41,5 +41,4 @@ Feature: Read services
     And the JSON node "weight" should exist
     And the JSON node "weight" should be equal to the number 0
     And the JSON node "version" should exist
-    And print last JSON response
     And the JSON node "version" should be equal to the number 2
