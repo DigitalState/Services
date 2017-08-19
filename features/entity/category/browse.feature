@@ -15,7 +15,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse paginated categories
     When I add "Accept" header equal to "application/json"
@@ -37,16 +37,16 @@ Feature: Browse categories
 
   Scenario: Browse categories with specific ids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?id[0]=1&id[1]=2"
+    And I send a "GET" request to "/categories?id[0]=1"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific uuid
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?uuid=920f17d8-ee25-456e-aa56-33771951dc81"
+    And I send a "GET" request to "/categories?uuid=70f36469-a65c-4d81-ae15-d66a2ef90df0"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -55,12 +55,12 @@ Feature: Browse categories
 
   Scenario: Browse categories with specific uuids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?uuid[0]=920f17d8-ee25-456e-aa56-33771951dc81&uuid[1]=1f04aa3a-82f7-4103-afb3-0e1029915ec4"
+    And I send a "GET" request to "/categories?uuid[0]=70f36469-a65c-4d81-ae15-d66a2ef90df0"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific owner
     When I add "Accept" header equal to "application/json"
@@ -73,16 +73,16 @@ Feature: Browse categories
 
   Scenario: Browse categories with specific owners
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?owner[0]=BusinessUnit&owner[1]=Staff"
+    And I send a "GET" request to "/categories?owner[0]=BusinessUnit"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific owner uuid
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?ownerUuid=f2b7c698-80b9-413f-ad7e-eeaf6aa048e5"
+    And I send a "GET" request to "/categories?ownerUuid=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -91,12 +91,12 @@ Feature: Browse categories
 
   Scenario: Browse categories with specific owner uuids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?ownerUuid[0]=f2b7c698-80b9-413f-ad7e-eeaf6aa048e5&ownerUuid[1]=44a24145-c302-496f-808e-10a3cfee633d"
+    And I send a "GET" request to "/categories?ownerUuid[0]=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific before created date
     When I add "Accept" header equal to "application/json"
@@ -105,7 +105,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific after created date
     When I add "Accept" header equal to "application/json"
@@ -114,7 +114,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific before updated date
     When I add "Accept" header equal to "application/json"
@@ -123,7 +123,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific after updated date
     When I add "Accept" header equal to "application/json"
@@ -132,7 +132,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific before deleted date
     When I add "Accept" header equal to "application/json"
@@ -141,7 +141,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories with a specific after deleted date
     When I add "Accept" header equal to "application/json"
@@ -150,7 +150,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories that are enabled
     When I add "Accept" header equal to "application/json"
@@ -159,7 +159,7 @@ Feature: Browse categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 2 items
+#    And the response collection should count 1 items
 
   Scenario: Browse categories that are disabled
     When I add "Accept" header equal to "application/json"
@@ -172,7 +172,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has keywords for title
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?title=Pothole"
+    And I send a "GET" request to "/categories?title=Infrastructure"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -181,7 +181,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has case-insensitive keywords for title
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?title=pothole"
+    And I send a "GET" request to "/categories?title=infrastructure"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -190,7 +190,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has keywords for description
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?description=Pothole"
+    And I send a "GET" request to "/categories?description=Description"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -199,7 +199,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has case-insensitive keywords for description
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?description=pothole"
+    And I send a "GET" request to "/categories?description=description"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -208,7 +208,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has keywords for presentation
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?presentation=Pothole"
+    And I send a "GET" request to "/categories?presentation=Presentation"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -217,7 +217,7 @@ Feature: Browse categories
 
   Scenario: Browse categories that has case-insensitive keywords for presentation
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories?presentation=pothole"
+    And I send a "GET" request to "/categories?presentation=presentation"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON

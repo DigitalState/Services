@@ -10,6 +10,6 @@ Feature: Delete services
   @createSchema @loadFixtures @dropSchema
   Scenario: Delete a service
     When I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
+    And I send a "DELETE" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 204
     And the response should be empty

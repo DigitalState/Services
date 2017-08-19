@@ -11,7 +11,7 @@ Feature: Edit services
   Scenario: Edit a service
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "ownerUuid": "a4b9e265-a7a1-4921-a387-1f2a6bea43f6",
@@ -21,12 +21,12 @@ Feature: Edit services
         "fr": "Signaler un nids de poule - edit"
       },
       "description": {
-        "en": "Report a Pothole (description) - edit",
-        "fr": "Signaler un nids de poule (description) - edit"
+        "en": "Description - edit",
+        "fr": "Description - edit"
       },
       "presentation": {
-        "en": "Report a Pothole (presentation) - edit",
-        "fr": "Signaler un nids de poule (presentation) - edit"
+        "en": "Presentation - edit",
+        "fr": "Presentation - edit"
       },
       "enabled": false,
       "weight": 1
@@ -45,7 +45,7 @@ Feature: Edit services
 
   Scenario: Confirm the edited service
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
+    And I send a "GET" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -60,7 +60,7 @@ Feature: Edit services
   Scenario: Edit a service's read-only properties
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "id": 9999,
@@ -74,19 +74,19 @@ Feature: Edit services
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "920f17d8-ee25-456e-aa56-33771951dc81"
+    And the JSON node "uuid" should be equal to the string "7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
 
   Scenario: Confirm the unedited service
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81"
+    And I send a "GET" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "920f17d8-ee25-456e-aa56-33771951dc81"
+    And the JSON node "uuid" should be equal to the string "7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
@@ -95,7 +95,7 @@ Feature: Edit services
   Scenario: Edit a service with an invalid optimistic lock
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/services/920f17d8-ee25-456e-aa56-33771951dc81" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "enabled": true,

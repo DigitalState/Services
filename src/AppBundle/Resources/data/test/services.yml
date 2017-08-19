@@ -7,11 +7,11 @@ items:
             en: Report a Pothole
             fr: Signaler un nids de poule
         description:
-            en: Report a Pothole (description)
-            fr: Signaler un nids de poule (description)
+            en: Description ...
+            fr: Description ...
         presentation:
-            en: Report a Pothole (presentation)
-            fr: Signaler un nids de poule (presentation)
+            en: Presentation ...
+            fr: Presentation ...
 
     -
         uuid: cdfbc069-c2f6-4a66-b477-7f9e289f6beb
@@ -21,11 +21,11 @@ items:
             en: Report a Graffiti
             fr: Signaler un graffiti
         description:
-            en: Report a graffiti (description)
-            fr: Signaler un graffiti (description)
+            en: Description ...
+            fr: Description ...
         presentation:
-            en: Report a graffiti (presentation)
-            fr: Signaler un graffiti (presentation)
+            en: Presentation ...
+            fr: Presentation ...
 
 prototype:
     uuid: ~

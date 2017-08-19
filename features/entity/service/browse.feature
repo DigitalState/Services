@@ -46,7 +46,7 @@ Feature: Browse services
 
   Scenario: Browse services with a specific uuid
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?uuid=920f17d8-ee25-456e-aa56-33771951dc81"
+    And I send a "GET" request to "/services?uuid=7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -55,7 +55,7 @@ Feature: Browse services
 
   Scenario: Browse services with specific uuids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?uuid[0]=920f17d8-ee25-456e-aa56-33771951dc81&uuid[1]=1f04aa3a-82f7-4103-afb3-0e1029915ec4"
+    And I send a "GET" request to "/services?uuid[0]=7293e6d1-48e2-4761-b9c6-f77258cbe31a&uuid[1]=cdfbc069-c2f6-4a66-b477-7f9e289f6beb"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -82,16 +82,16 @@ Feature: Browse services
 
   Scenario: Browse services with a specific owner uuid
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?ownerUuid=f2b7c698-80b9-413f-ad7e-eeaf6aa048e5"
+    And I send a "GET" request to "/services?ownerUuid=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
 #    And the response JSON should be a collection
-#    And the response collection should count 1 items
+#    And the response collection should count 2 items
 
   Scenario: Browse services with specific owner uuids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?ownerUuid[0]=f2b7c698-80b9-413f-ad7e-eeaf6aa048e5&ownerUuid[1]=44a24145-c302-496f-808e-10a3cfee633d"
+    And I send a "GET" request to "/services?ownerUuid[0]=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -190,7 +190,7 @@ Feature: Browse services
 
   Scenario: Browse services that has keywords for description
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?description=Pothole"
+    And I send a "GET" request to "/services?description=Description"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -199,7 +199,7 @@ Feature: Browse services
 
   Scenario: Browse services that has case-insensitive keywords for description
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?description=pothole"
+    And I send a "GET" request to "/services?description=description"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -208,7 +208,7 @@ Feature: Browse services
 
   Scenario: Browse services that has keywords for presentation
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?presentation=Pothole"
+    And I send a "GET" request to "/services?presentation=Presentation"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
@@ -217,7 +217,7 @@ Feature: Browse services
 
   Scenario: Browse services that has case-insensitive keywords for presentation
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?presentation=pothole"
+    And I send a "GET" request to "/services?presentation=presentation"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
