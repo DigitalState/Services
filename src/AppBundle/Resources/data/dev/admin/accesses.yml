@@ -2,12 +2,11 @@ items:
     -
         uuid: a3e5e9d8-98e8-44b1-8630-dbec396831d7
         owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
-        identity: Admin
         identity_uuid: ~ # Any admin
 
 prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
-    identity: ~
+    identity: Admin
     identity_uuid: ~

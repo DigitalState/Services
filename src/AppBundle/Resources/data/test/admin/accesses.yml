@@ -2,12 +2,11 @@ items:
     -
         uuid: defca237-e7c9-483d-8a15-ee106ab9e386
         owner_uuid: d5de44e0-d727-4f69-a8b3-c3afbf75eda3 # Administration
-        identity: Admin
         identity_uuid: ~ # Any admin
 
 prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
-    identity: ~
+    identity: Admin
     identity_uuid: ~

@@ -4,5 +4,5 @@ prototype:
     uuid: ~
     owner: BusinessUnit
     owner_uuid: ~
-    identity: ~
+    identity: Anonymous
     identity_uuid: ~
