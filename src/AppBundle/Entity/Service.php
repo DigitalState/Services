@@ -243,7 +243,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ApiProperty
+     * @ApiProperty(writable=false)
      * @Serializer\Groups({"service_output"})
      * @ORM\OneToMany(targetEntity="Scenario", mappedBy="service")
      */
