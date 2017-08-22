@@ -1,4 +1,4 @@
-@entity @category @edit
+@app @entity @category @edit
 Feature: Edit categories
   In order to edit categories
   As an admin identity

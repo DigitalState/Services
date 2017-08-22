@@ -4,6 +4,11 @@ default:
 
   suites:
     default:
+      paths:
+        - %paths.base%/features
+        - %paths.base%/vendor/digitalstate/core/features/config
+        - %paths.base%/vendor/digitalstate/core/features/health
+        - %paths.base%/vendor/digitalstate/core/features/security
       contexts:
         - FeatureContext
         - Behat\MinkExtension\Context\MinkContext

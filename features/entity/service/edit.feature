@@ -1,4 +1,4 @@
-@entity @service @edit
+@app @entity @service @edit
 Feature: Edit services
   In order to edit services
   As an admin identity

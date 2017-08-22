@@ -1,4 +1,4 @@
-@entity @category @add
+@app @entity @category @add
 Feature: Add categories
   In order to add categories
   As an admin identity

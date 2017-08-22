@@ -1,4 +1,4 @@
-@entity @service @delete
+@app @entity @service @delete
 Feature: Delete services
   In order to delete services
   As an admin identity

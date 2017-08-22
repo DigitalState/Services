@@ -1,4 +1,4 @@
-@entity @service @read
+@app @entity @service @read
 Feature: Read services
   In order to read services
   As an admin identity

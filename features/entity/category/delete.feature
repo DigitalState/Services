@@ -1,4 +1,4 @@
-@entity @category @delete
+@app @entity @category @delete
 Feature: Delete categories
   In order to delete categories
   As an admin identity

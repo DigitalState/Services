@@ -1,4 +1,4 @@
-@entity @category @read
+@app @entity @category @read
 Feature: Read categories
   In order to read categories
   As an admin identity

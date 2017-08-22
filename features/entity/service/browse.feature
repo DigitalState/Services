@@ -1,4 +1,4 @@
-@entity @service @browse
+@app @entity @service @browse
 Feature: Browse services
   In order to browse services
   As an admin identity

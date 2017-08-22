@@ -1,4 +1,4 @@
-@entity @category @browse
+@app @entity @category @browse
 Feature: Browse categories
   In order to browse categories
   As an admin identity
