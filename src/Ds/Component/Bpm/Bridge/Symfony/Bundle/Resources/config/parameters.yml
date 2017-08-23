@@ -1,7 +1,0 @@
-parameters:
-    ds_bpm.api.http.client.class: GuzzleHttp\Client
-    ds_bpm.api.factory.class: Ds\Component\Bpm\Api\Factory
-    ds_bpm.collection.api.class: Ds\Component\Bpm\Collection\ApiCollection
-    ds_bpm.resolver.bpm.class: Ds\Component\Bpm\Resolver\BpmResolver
-    ds_bpm.resolver.task.class: Ds\Component\Bpm\Resolver\TaskResolver
-    ds_bpm.resolver.tasks.class: Ds\Component\Bpm\Resolver\TasksResolver

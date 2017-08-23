@@ -1,5 +1,0 @@
-parameters:
-    ds_bpm_camunda.api.class: Ds\Component\BpmCamunda\Api\Api
-    ds_bpm_camunda.service.process_definition.class: Ds\Component\BpmCamunda\Service\ProcessDefinitionService
-    ds_bpm_camunda.service.process_instance.class: Ds\Component\BpmCamunda\Service\ProcessInstanceService
-    ds_bpm_camunda.service.task.class: Ds\Component\BpmCamunda\Service\TaskService

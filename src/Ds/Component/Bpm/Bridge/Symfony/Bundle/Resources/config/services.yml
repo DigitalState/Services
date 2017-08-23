@@ -1,5 +1,0 @@
-services:
-    ds_bpm.service:
-        abstract: true
-        arguments:
-            - '@ds_bpm.api.http.client'

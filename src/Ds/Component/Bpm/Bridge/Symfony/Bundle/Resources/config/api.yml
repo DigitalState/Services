@@ -1,9 +1,0 @@
-services:
-    ds_bpm.api.http.client:
-        class: '%ds_bpm.api.http.client.class%'
-
-    ds_bpm.api.factory:
-        class: '%ds_bpm.api.factory.class%'
-        arguments:
-            - '@ds_bpm.collection.api'
-            - '@ds_config.service.config'
