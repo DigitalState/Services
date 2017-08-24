@@ -16,7 +16,7 @@ items:
             fr: Présentation ...
         data:
             bpm: camunda
-            process_definition_key: PayTaxes
+            process_definition_key: report-pothole
         weight: 0
 
     -
