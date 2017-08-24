@@ -9,7 +9,7 @@ services:
         arguments:
             - '@app.service.scenario'
             - '@request_stack'
-            - "%locale%"
+            - '%locale%'
 
     AppBundle\Action\Scenario\SubmissionsAction:
         class: AppBundle\Action\Scenario\SubmissionsAction
