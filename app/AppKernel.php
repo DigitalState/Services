@@ -39,7 +39,7 @@ class AppKernel extends Kernel
             new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
             new Ds\Component\Translation\Bridge\Symfony\Bundle\DsTranslationBundle(),
             new Ds\Component\Bpm\Bridge\Symfony\Bundle\DsBpmBundle(),
-            new Ds\Component\BpmCamunda\Bridge\Symfony\Bundle\DsBpmCamundaBundle(),
+            new Ds\Component\Camunda\Bridge\Symfony\Bundle\DsCamundaBundle(),
             new Ds\Component\Formio\Bridge\Symfony\Bundle\DsFormioBundle(),
             new AppBundle\AppBundle(),
         ];
