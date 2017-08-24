@@ -12,7 +12,7 @@ services:
         parent: ds_entity.service.entity
         arguments:
             - '@ds_bpm.api.factory'
-            - '@ds_bpm.resolver.bpm'
+            - '@ds_resolver.collection.resolver'
             - '@ds_formio.api'
             - '@ds_config.service.config'
 

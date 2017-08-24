@@ -13,7 +13,7 @@ use Ds\Component\Config\Service\ConfigService;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Formio\Api\Api;
 use Ds\Component\Formio\Query\FormParameters;
-use Ds\Component\Resolver\Model\Context;
+use Ds\Component\Resolver\Collection\ResolverCollection;
 
 /**
  * Class ScenarioService
@@ -36,26 +36,26 @@ class ScenarioService extends EntityService
     protected $configService;
 
     /**
-     * @var \Ds\Component\Bpm\Resolver\BpmResolver
+     * @var \Ds\Component\Resolver\Collection\ResolverCollection
      */
-    protected $bpmResolver;
+    protected $resolverCollection;
 
     /**
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \Ds\Component\Bpm\Api\Factory $bpmFactory
-     * @param \Ds\Component\Bpm\Resolver\BpmResolver $bpmResolver
+     * @param \Ds\Component\Resolver\Collection\ResolverCollection $resolverCollection
      * @param \Ds\Component\Formio\Api\Api $formio
      * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $bpmFactory, BpmResolver $bpmResolver, Api $formio, ConfigService $configService, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Factory $bpmFactory, ResolverCollection $resolverCollection, Api $formio, ConfigService $configService, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
         $this->bpmFactory = $bpmFactory;
-        $this->bpmResolver = $bpmResolver;
+        $this->resolverCollection = $resolverCollection;
         $this->formio = $formio;
         $this->configService = $configService;
     }
@@ -101,7 +101,7 @@ class ScenarioService extends EntityService
                             foreach ($column->components as &$subComponent) {
                                 if (property_exists($subComponent, 'defaultValue')) {
                                     try {
-                                        $subComponent->defaultValue = $this->bpmResolver->resolve($subComponent->defaultValue);
+                                        $subComponent->defaultValue = $this->resolverCollection->resolve($subComponent->defaultValue);
                                     } catch (DomainException $exception) {
                                     }
                                 }
@@ -110,7 +110,7 @@ class ScenarioService extends EntityService
                     } else {
                         if (property_exists($component, 'defaultValue')) {
                             try {
-                                $component->defaultValue = $this->bpmResolver->resolve($component->defaultValue);
+                                $component->defaultValue = $this->resolverCollection->resolve($component->defaultValue);
                             } catch (DomainException $exception) {
                             }
                         }
