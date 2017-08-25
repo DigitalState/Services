@@ -1,5 +1,23 @@
 items:
     -
+        access: 3399d1a9-06d9-457b-8722-d0baa6c12648 # Admin
+        entity_uuid: ~ # Any business unit
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+
+    -
+        access: 3399d1a9-06d9-457b-8722-d0baa6c12648 # Admin
+        entity_uuid: ~ # Any business unit
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+
+    -
+        access: 3399d1a9-06d9-457b-8722-d0baa6c12648 # Admin
+        entity_uuid: ~ # Any business unit
+        key: custom
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+    -
         access: 6053e05b-dd54-40e4-9617-01fba3a67fb7 # Any staff
         entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         key:

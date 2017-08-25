@@ -1,5 +1,10 @@
 items:
     -
+        uuid: 3399d1a9-06d9-457b-8722-d0baa6c12648
+        owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+        identity_uuid: e32f09b7-e1cf-4a91-a0e1-6822bf47a662 # Admin
+
+    -
         uuid: 6053e05b-dd54-40e4-9617-01fba3a67fb7
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         identity_uuid: ~ # Any staff
