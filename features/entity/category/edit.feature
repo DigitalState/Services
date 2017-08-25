@@ -1,11 +1,11 @@
 @app @entity @category @edit
 Feature: Edit categories
   In order to edit categories
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to categories
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures
   Scenario: Edit a category

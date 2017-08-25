@@ -1,11 +1,11 @@
 @app @entity @service @delete
 Feature: Delete services
   In order to delete services
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures @dropSchema
   Scenario: Delete a service

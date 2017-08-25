@@ -1,11 +1,11 @@
 @app @entity @service @edit
 Feature: Edit services
   In order to edit services
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures
   Scenario: Edit a service

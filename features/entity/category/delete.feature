@@ -1,11 +1,11 @@
 @app @entity @category @delete
 Feature: Delete categories
   In order to delete categories
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to categories
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures @dropSchema
   Scenario: Delete a category

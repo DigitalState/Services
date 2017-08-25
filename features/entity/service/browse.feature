@@ -1,11 +1,11 @@
 @app @entity @service @browse
 Feature: Browse services
   In order to browse services
-  As an admin identity
+  As a system identity
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as an "admin" identity
+    Given I am authenticated as a "system" identity
 
   @createSchema @loadFixtures
   Scenario: Browse all services

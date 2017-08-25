@@ -1,4 +1,9 @@
-items: []
+items:
+    -
+        uuid: 89e827e2-78dd-497f-a7f5-d294073c6cd3
+        owner: System
+        owner_uuid: 5386e249-8ad0-45f1-a30e-d5a055cc5993 # System
+        identity_uuid: 5386e249-8ad0-45f1-a30e-d5a055cc5993 # System
 
 prototype:
     uuid: ~
