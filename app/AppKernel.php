@@ -34,11 +34,11 @@ class AppKernel extends Kernel
             new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle(),
             new Ds\Component\Health\Bridge\Symfony\Bundle\DsHealthBundle(),
             new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle(),
+            new Ds\Component\Log\Bridge\Symfony\Bundle\DsLogBundle(),
             new Ds\Component\Resolver\Bridge\Symfony\Bundle\DsResolverBundle(),
             new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
             new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
             new Ds\Component\Translation\Bridge\Symfony\Bundle\DsTranslationBundle(),
-            new Ds\Component\Bpm\Bridge\Symfony\Bundle\DsBpmBundle(),
             new Ds\Component\Camunda\Bridge\Symfony\Bundle\DsCamundaBundle(),
             new Ds\Component\Formio\Bridge\Symfony\Bundle\DsFormioBundle(),
             new AppBundle\AppBundle(),
@@ -50,6 +50,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new Ds\Component\Debug\Bridge\Symfony\Bundle\DsDebugBundle();
             $bundles[] = new Ds\Component\Identity\Bridge\Symfony\TestBundle\DsIdentityTestBundle();
         }
 
