@@ -7,7 +7,7 @@ use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use Ds\Component\Config\Service\ConfigService;
 use Ds\Component\Entity\Service\EntityService;
-use Ds\Component\Formio\Api\Api;
+use Ds\Component\Api\Api\Factory;
 use Ds\Component\Formio\Exception\ValidationException;
 use Ds\Component\Formio\Model\Submission as Model;
 use Ds\Component\Formio\Query\SubmissionParameters as Parameters;
@@ -23,9 +23,9 @@ class SubmissionService extends EntityService
     protected $scenarioService;
 
     /**
-     * @var \Ds\Component\Formio\Api\Api
+     * @var \Ds\Component\Api\Api\Factory
      */
-    protected $formio;
+    protected $factory;
 
     /**
      * @var \Ds\Component\Config\Service\ConfigService
@@ -37,16 +37,16 @@ class SubmissionService extends EntityService
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \AppBundle\Service\ScenarioService $scenarioService
-     * @param \Ds\Component\Formio\Api\Api $formio
+     * @param \Ds\Component\Api\Api\Factory $factory
      * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Api $formio, ConfigService $configService, $entity = Submission::class)
+    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Factory $factory, ConfigService $configService, $entity = Submission::class)
     {
         parent::__construct($manager, $entity);
 
         $this->scenarioService = $scenarioService;
-        $this->formio = $formio;
+        $this->factory = $factory;
         $this->configService = $configService;
     }
 
@@ -68,10 +68,10 @@ class SubmissionService extends EntityService
                     ->setForm($form->getId())
                     ->setData((object) $submission->getData());
                 $parameters = new Parameters;
-                $this->formio->setHost($this->configService->get('app.services.formio.url'));
+                $api = $this->factory->create();
 
                 try {
-                    $this->formio->submission->create($model, $parameters);
+                    $api->formio->submission->create($model, $parameters);
 
                     return true;
                 } catch (ValidationException $exception) {

@@ -11,15 +11,13 @@ services:
         class: AppBundle\Service\ScenarioService
         parent: ds_entity.service.entity
         arguments:
-            - '@ds_bpm.api.factory'
+            - '@ds_api.factory'
             - '@ds_resolver.collection.resolver'
-            - '@ds_formio.api'
-            - '@ds_config.service.config'
 
     app.service.submission:
         class: AppBundle\Service\SubmissionService
         parent: ds_entity.service.entity
         arguments:
             - '@app.service.scenario'
-            - '@ds_formio.api'
+            - '@ds_api.factory'
             - '@ds_config.service.config'

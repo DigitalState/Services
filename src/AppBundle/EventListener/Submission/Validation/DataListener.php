@@ -35,13 +35,11 @@ class DataListener
      */
     public function kernelView(GetResponseForControllerResultEvent $event)
     {
-        $entity = $event->getControllerResult();
+        $submission = $event->getControllerResult();
 
-        if (!$entity instanceof Submission) {
+        if (!$submission instanceof Submission) {
             return;
         }
-
-        $submission = $entity;
 
         if (!$this->submissionService->isValid($submission)) {
             $response = new JsonResponse(['error' => 'Data is not valid.'], Response::HTTP_BAD_REQUEST);

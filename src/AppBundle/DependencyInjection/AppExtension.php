@@ -18,14 +18,6 @@ class AppExtension extends Extension implements PrependExtensionInterface
      */
     public function prepend(ContainerBuilder $container)
     {
-        $container->prependExtensionConfig('app', [
-            'services' => [
-                'formio' => [
-                    'url' => null
-                ]
-            ]
-        ]);
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('config.yml');
     }
@@ -44,8 +36,5 @@ class AppExtension extends Extension implements PrependExtensionInterface
         $loader->load('event_listeners.yml');
         $loader->load('forms.yml');
         $loader->load('services.yml');
-
-        // @todo Move this config -> parameters logic to a common trait in the config component bridge
-        $container->setParameter('ds_config.configs.app.services.formio.url', $config['services']['formio']['url']);
     }
 }

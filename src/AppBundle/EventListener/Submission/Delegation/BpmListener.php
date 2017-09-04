@@ -4,8 +4,8 @@ namespace AppBundle\EventListener\Submission\Delegation;
 
 use AppBundle\Entity\Submission;
 use AppBundle\Entity\Scenario;
-use Ds\Component\Bpm\Model\Variable;
-use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
+use Ds\Component\Camunda\Model\Variable;
+use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -19,7 +19,7 @@ class BpmListener
     protected $container;
 
     /**
-     * @var \Ds\Component\Bpm\Api\Factory
+     * @var \Ds\Component\Api\Api\Factory
      */
     protected $factory;
 
@@ -42,7 +42,7 @@ class BpmListener
     {
         // Circular reference error workaround
         // @todo Look into fixing this
-        $this->factory = $this->container->get('ds_bpm.api.factory');
+        $this->factory = $this->container->get('ds_api.factory');
         //
 
         $scenario = $submission->getScenario();
@@ -51,7 +51,7 @@ class BpmListener
             return;
         }
 
-        $api = $this->factory->api($scenario->getData('bpm'));
+        $api = $this->factory->create();
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
         $parameters->addVariable(new Variable('api_url', ''));
@@ -64,6 +64,6 @@ class BpmListener
         $parameters->addVariable(new Variable('submission_uuid', $submission->getUuid()));
         $parameters->addVariable(new Variable('none_start_event_form_data', $submission->getData(), Variable::TYPE_JSON));
         $parameters->setKey($scenario->getData('process_definition_key'));
-        $api->processDefinition->start(null, $parameters);
+        $api->camunda->processDefinition->start(null, $parameters);
     }
 }

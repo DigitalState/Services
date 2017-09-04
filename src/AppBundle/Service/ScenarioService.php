@@ -6,12 +6,9 @@ use AppBundle\Entity\Scenario;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use DomainException;
-use Ds\Component\Bpm\Api\Factory;
-use Ds\Component\Bpm\Query\ProcessDefinitionParameters;
-use Ds\Component\Bpm\Resolver\BpmResolver;
-use Ds\Component\Config\Service\ConfigService;
+use Ds\Component\Api\Api\Factory;
+use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
 use Ds\Component\Entity\Service\EntityService;
-use Ds\Component\Formio\Api\Api;
 use Ds\Component\Formio\Query\FormParameters;
 use Ds\Component\Resolver\Collection\ResolverCollection;
 
@@ -21,19 +18,9 @@ use Ds\Component\Resolver\Collection\ResolverCollection;
 class ScenarioService extends EntityService
 {
     /**
-     * @var \Ds\Component\Bpm\Api\Factory
+     * @var \Ds\Component\Api\Api\Factory
      */
-    protected $bpmFactory;
-
-    /**
-     * @var \Ds\Component\Formio\Api\Api
-     */
-    protected $formio;
-
-    /**
-     * @var \Ds\Component\Config\Service\ConfigService
-     */
-    protected $configService;
+    protected $factory;
 
     /**
      * @var \Ds\Component\Resolver\Collection\ResolverCollection
@@ -44,20 +31,16 @@ class ScenarioService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param \Ds\Component\Bpm\Api\Factory $bpmFactory
+     * @param \Ds\Component\Api\Api\Factory $factory
      * @param \Ds\Component\Resolver\Collection\ResolverCollection $resolverCollection
-     * @param \Ds\Component\Formio\Api\Api $formio
-     * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $bpmFactory, ResolverCollection $resolverCollection, Api $formio, ConfigService $configService, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Factory $factory, ResolverCollection $resolverCollection, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
-        $this->bpmFactory = $bpmFactory;
+        $this->factory = $factory;
         $this->resolverCollection = $resolverCollection;
-        $this->formio = $formio;
-        $this->configService = $configService;
     }
 
     /**
@@ -70,14 +53,13 @@ class ScenarioService extends EntityService
     public function getForm(Scenario $scenario)
     {
         $form = new Form;
+        $api = $this->factory->create();
 
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
-                $api = $this->bpmFactory->api($scenario->getData('bpm'));
-                $api->setHost($this->configService->get('app.services.camunda.url'));
                 $parameters = new ProcessDefinitionParameters;
                 $parameters->setKey($scenario->getData('process_definition_key'));
-                list($type, $id) = explode(':', $api->processDefinition->getStartForm(null, $parameters), 2);
+                list($type, $id) = explode(':', $api->camunda->processDefinition->getStartForm(null, $parameters), 2);
                 $form
                     ->setType($type)
                     ->setId($id);
@@ -90,10 +72,9 @@ class ScenarioService extends EntityService
 
         switch ($form->getType()) {
             case Form::TYPE_FORMIO:
-                $this->formio->setHost($this->configService->get('app.services.formio.url'));
                 $parameters = new FormParameters;
                 $parameters->setPath($id);
-                $components = $this->formio->form->get(null, $parameters)->getComponents();
+                $components = $api->formio->form->get(null, $parameters)->getComponents();
 
                 foreach ($components as &$component) {
                     if (property_exists($component, 'columns')) {
