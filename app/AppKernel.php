@@ -44,6 +44,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
         ];
 
+        if (in_array($this->getEnvironment(), ['prod'], true)) {
+            $bundles[] = new Ds\Component\Exception\Bridge\Symfony\Bundle\DsExceptionBundle();
+        }
+
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
