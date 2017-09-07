@@ -1,5 +1,4 @@
 services:
-
     app.filter.category.search:
         parent: api_platform.doctrine.orm.search_filter
         arguments:
