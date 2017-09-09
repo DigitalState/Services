@@ -29,7 +29,7 @@ class DataListener
     }
 
     /**
-     * Validate the submission using the formio dryrun
+     * Validate the submission data using the formio dryrun
      *
      * @param \Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent $event
      */
