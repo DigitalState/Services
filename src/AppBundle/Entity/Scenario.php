@@ -19,6 +19,7 @@ use Knp\DoctrineBehaviors\Model as Behavior;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
+use AppBundle\Validator\Constraints\Scenario as ScenarioAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Ds\Component\Locale\Model\Annotation\Locale;
 use Ds\Component\Translation\Model\Annotation\Translate;
@@ -56,6 +57,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields={"service", "slug"})
+ * @ScenarioAssert\Data\Valid
  */
 class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable
 {
