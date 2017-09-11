@@ -76,27 +76,27 @@ class ScenarioService extends EntityService
                 $parameters->setPath($id);
                 $components = $api->formio->form->get(null, $parameters)->getComponents();
 
-                foreach ($components as &$component) {
-                    if (property_exists($component, 'columns')) {
-                        foreach ($component->columns as &$column) {
-                            foreach ($column->components as &$subComponent) {
-                                if (property_exists($subComponent, 'defaultValue')) {
-                                    try {
-                                        $subComponent->defaultValue = $this->resolverCollection->resolve($subComponent->defaultValue);
-                                    } catch (DomainException $exception) {
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if (property_exists($component, 'defaultValue')) {
-                            try {
-                                $component->defaultValue = $this->resolverCollection->resolve($component->defaultValue);
-                            } catch (DomainException $exception) {
-                            }
-                        }
-                    }
-                }
+//                foreach ($components as &$component) {
+//                    if (property_exists($component, 'columns')) {
+//                        foreach ($component->columns as &$column) {
+//                            foreach ($column->components as &$subComponent) {
+//                                if (property_exists($subComponent, 'defaultValue')) {
+//                                    try {
+//                                        $subComponent->defaultValue = $this->resolverCollection->resolve($subComponent->defaultValue);
+//                                    } catch (DomainException $exception) {
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    } else {
+//                        if (property_exists($component, 'defaultValue')) {
+//                            try {
+//                                $component->defaultValue = $this->resolverCollection->resolve($component->defaultValue);
+//                            } catch (DomainException $exception) {
+//                            }
+//                        }
+//                    }
+//                }
 
                 $form
                     ->setSchema($components)
