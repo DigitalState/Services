@@ -74,8 +74,9 @@ class SubmissionsAction
             return new JsonResponse((object) ['error' => 'Data is not valid.']);
         }
 
-        $this->submissionService->getManager()->persist($submission);
-        $this->submissionService->getManager()->flush();
+        $manager = $this->submissionService->getManager();
+        $manager->persist($submission);
+        $manager->flush();
 
         return new JsonResponse($submission, Response::HTTP_CREATED);
     }
