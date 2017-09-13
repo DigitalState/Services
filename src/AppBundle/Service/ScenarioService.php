@@ -105,6 +105,9 @@ class ScenarioService extends EntityService
 
                 break;
 
+            case Form::TYPE_SYMFONY:
+                break;
+
             default:
                 throw new DomainException('Scenario form type does not exist.');
         }
