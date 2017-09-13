@@ -19,7 +19,6 @@ class Form
      * @const integer
      */
     const TYPE_FORMIO = 'formio';
-    const TYPE_BPM = 'bpm';
     const TYPE_SYMFONY = 'symfony';
 
     /**
