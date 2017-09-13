@@ -5,7 +5,6 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Submission;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
-use Ds\Component\Config\Service\ConfigService;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Api\Api\Factory;
 use Ds\Component\Formio\Exception\ValidationException;
@@ -28,26 +27,19 @@ class SubmissionService extends EntityService
     protected $factory;
 
     /**
-     * @var \Ds\Component\Config\Service\ConfigService
-     */
-    protected $configService;
-
-    /**
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \AppBundle\Service\ScenarioService $scenarioService
      * @param \Ds\Component\Api\Api\Factory $factory
-     * @param \Ds\Component\Config\Service\ConfigService $configService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Factory $factory, ConfigService $configService, $entity = Submission::class)
+    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Factory $factory, $entity = Submission::class)
     {
         parent::__construct($manager, $entity);
 
         $this->scenarioService = $scenarioService;
         $this->factory = $factory;
-        $this->configService = $configService;
     }
 
     /**

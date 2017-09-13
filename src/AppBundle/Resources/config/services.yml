@@ -20,4 +20,3 @@ services:
         arguments:
             - '@app.service.scenario'
             - '@ds_api.factory'
-            - '@ds_config.service.config'
