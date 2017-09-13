@@ -2,8 +2,7 @@
 
 namespace AppBundle\Model\Scenario;
 
-use AppBundle\Model\Attribute;
-use Ds\Component\Model\Attribute as ModelAttribute;
+use Ds\Component\Model\Attribute;
 
 /**
  * Class Form
@@ -13,8 +12,8 @@ class Form
     use Attribute\Id;
     use Attribute\Method;
     use Attribute\Action;
-    use ModelAttribute\Type;
-    use ModelAttribute\Schema;
+    use Attribute\Type;
+    use Attribute\Schema;
 
     /**
      * @const integer
