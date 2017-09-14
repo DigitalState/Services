@@ -17,6 +17,7 @@ items:
         data:
             bpm: camunda
             process_definition_key: report-pothole
+            button_text: ds.microservices.entity.action.activate
         weight: 0
 
     -
@@ -54,6 +55,7 @@ items:
         data:
             bpm: camunda
             process_definition_key: PayTaxes
+            button_text: ds.microservices.entity.action.activate
         weight: 0
 
     -

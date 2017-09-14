@@ -18,6 +18,8 @@ items:
             - scenario_title
             - scenario_description
             - scenario_presentation
+            - scenario_type
+            - scenario_data
             - submission
             - submission_uuid
             - submission_created_at
