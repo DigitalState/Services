@@ -48,6 +48,10 @@ class FormAction
 
         $form = $this->scenarioService->getForm($scenario);
 
+        if (!$form) {
+            throw new NotFoundHttpException('Scenario form not found.');
+        }
+
         return new JsonResponse($form->toObject());
     }
 }
