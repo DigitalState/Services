@@ -11,6 +11,7 @@ use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Formio\Query\FormParameters;
 use Ds\Component\Resolver\Collection\ResolverCollection;
+use Ds\Component\Resolver\Exception\UnmatchedException;
 use Ds\Component\Resolver\Exception\UnresolvedException;
 
 /**
@@ -132,6 +133,8 @@ class ScenarioService extends EntityService
                 try {
                     $component->defaultValue = $this->resolverCollection->resolve($component->defaultValue);
                 } catch (UnresolvedException $exception) {
+                    $component->defaultValue = null;
+                } catch (UnmatchedException $exception) {
                     // Leave default value as-is
                 }
 
