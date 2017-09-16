@@ -1,9 +1,53 @@
-items: []
+items:
+    -
+        uuid: 39cc2930-0de7-4173-8ca4-da8e01863afb
+        key: app.bpm.variables.api_url
+        value: api_url
+
+    -
+        uuid: 7701d39a-f3cc-488e-9c1a-6180eb8049d5
+        key: app.bpm.variables.api_user
+        value: api_user
+
+    -
+        uuid: 87789d3f-813c-4fbb-a9fc-f57acf26b30c
+        key: app.bpm.variables.api_key
+        value: api_key
+
+    -
+        uuid: 4e5d52e9-1870-4f6d-b75d-cd8063a97c5a
+        key: app.bpm.variables.service_uuid
+        value: service_uuid
+
+    -
+        uuid: 00084d7b-e1ae-422e-8dd4-843d47cfcdb5
+        key: app.bpm.variables.scenario_uuid
+        value: scenario_uuid
+
+    -
+        uuid: 15819529-acfc-40f7-9a8f-288b82cf89c8
+        key: app.bpm.variables.identity
+        value: identity
+
+    -
+        uuid: 2dd546a7-db36-4b81-895c-2e6874938f4a
+        key: app.bpm.variables.identity_uuid
+        value: identity_uuid
+
+    -
+        uuid: 50dbf6a5-b5ba-4478-b7f1-8a03e94e457e
+        key: app.bpm.variables.submission_uuid
+        value: submission_uuid
+
+    -
+        uuid: ebbd6b02-387f-495a-8cdf-df911247b94b
+        key: app.bpm.variables.none_start_event_form_data
+        value: none_start_event_form_data
 
 prototype:
     uuid: ~
     owner: BusinessUnit
-    owner_uuid: ~
+    owner_uuid: d5de44e0-d727-4f69-a8b3-c3afbf75eda3 # Administration
     key: ~
     value: ~
     enabled: true

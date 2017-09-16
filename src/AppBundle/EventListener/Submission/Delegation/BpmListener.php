@@ -24,6 +24,11 @@ class BpmListener
     protected $factory;
 
     /**
+     * @var \Ds\Component\Config\Service\ConfigService
+     */
+    protected $configService;
+
+    /**
      * Constructor
      *
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
@@ -43,6 +48,7 @@ class BpmListener
         // Circular reference error workaround
         // @todo Look into fixing this
         $this->factory = $this->container->get('ds_api.factory');
+        $this->configService = $this->container->get('ds_config.service.config');
         //
 
         $scenario = $submission->getScenario();
@@ -52,17 +58,20 @@ class BpmListener
         }
 
         $api = $this->factory->create();
+//        $parameters = new ProcessDefinitionParameters;
+//        $parameters->setKey($scenario->getData('process_definition_key'));
+//        $xml = $api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
-        $parameters->addVariable(new Variable('api_url', ''));
-        $parameters->addVariable(new Variable('api_user', ''));
-        $parameters->addVariable(new Variable('api_key', ''));
-        $parameters->addVariable(new Variable('service_uuid', $service->getUuid()));
-        $parameters->addVariable(new Variable('scenario_uuid', $scenario->getUuid()));
-        $parameters->addVariable(new Variable('identity', $submission->getIdentity()));
-        $parameters->addVariable(new Variable('identity_uuid', $submission->getIdentityUuid()));
-        $parameters->addVariable(new Variable('submission_uuid', $submission->getUuid()));
-        $parameters->addVariable(new Variable('none_start_event_form_data', $submission->getData(), Variable::TYPE_JSON));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_url'), ''));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_user'), ''));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_key'), ''));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.service_uuid'), $service->getUuid()));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.scenario_uuid'), $scenario->getUuid()));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.identity'), $submission->getIdentity()));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.identity_uuid'), $submission->getIdentityUuid()));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid()));
+        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.none_start_event_form_data'), $submission->getData(), Variable::TYPE_JSON));
         $parameters->setKey($scenario->getData('process_definition_key'));
         $api->camunda->processDefinition->start(null, $parameters);
     }
