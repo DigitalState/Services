@@ -18,7 +18,10 @@ items:
             en: Presentation ...
             fr: Présentation ...
         data:
-            button_text: Activate
+            en:
+                button_text: Activate
+            fr:
+                button_text: Activer
         weight: 0
 
     -
@@ -57,7 +60,10 @@ items:
             en: Presentation ...
             fr: Présentation ...
         data:
-            button_text: Activate
+            en:
+                button_text: Activate
+            fr:
+                button_text: Activer
         weight: 0
 
     -
@@ -96,7 +102,10 @@ items:
             en: Presentation ...
             fr: Présentation ...
         data:
-            button_text: Activate
+            en:
+                button_text: Activate
+            fr:
+                button_text: Activer
         weight: 0
 
     -
