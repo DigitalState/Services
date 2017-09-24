@@ -69,6 +69,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use Accessor\Uuid;
     use Accessor\Owner;
     use Accessor\OwnerUuid;
+    use ServiceAccessor\Service;
     use Accessor\Type;
     use Accessor\Config;
     use Accessor\Slug;
@@ -76,11 +77,11 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
     use Accessor\Data;
+    use ServiceAccessor\Submissions;
     use Accessor\Enabled;
     use Accessor\Deleted;
     use Accessor\Weight;
     use Accessor\Version;
-    use ServiceAccessor\Service;
 
     /**
      * @const string
@@ -246,49 +247,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\OneToMany(targetEntity="Submission", mappedBy="scenario")
      */
-    protected $submissions; # region accessors
-
-    /**
-     * Add submission
-     *
-     * @param \AppBundle\Entity\Submission $submission
-     * @return \AppBundle\Entity\Scenario
-     */
-    public function addSubmission(Submission $submission)
-    {
-        if (!$this->submissions->contains($submission)) {
-            $this->submissions->add($submission);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove submission
-     *
-     * @param \AppBundle\Entity\Submission $submission
-     * @return \AppBundle\Entity\Scenario
-     */
-    public function removeSubmission(Submission $submission)
-    {
-        if ($this->submissions->contains($submission)) {
-            $this->submissions->removeElement($submission);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get submissions
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getSubmissions()
-    {
-        return $this->submissions;
-    }
-
-    # endregion
+    protected $submissions;
 
     /**
      * @var string
