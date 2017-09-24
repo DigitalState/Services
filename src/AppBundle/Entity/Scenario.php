@@ -76,7 +76,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
-    use Accessor\Data;
+    use TranslationAccessor\Data;
     use ServiceAccessor\Submissions;
     use Accessor\Enabled;
     use Accessor\Deleted;
@@ -238,8 +238,10 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @var array
      * @ApiProperty
      * @Serializer\Groups({"scenario_output", "scenario_input"})
-     * @ORM\Column(name="data", type="json_array")
      * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Locale
+     * @Translate
      */
     protected $data;
 
