@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\EventListener\Submission\Delegation;
+namespace AppBundle\EventListener\Submission\Transfer;
 
 use AppBundle\Entity\Submission;
 use AppBundle\Entity\Scenario;
@@ -24,9 +24,19 @@ class BpmListener
     protected $factory;
 
     /**
+     * @var \Ds\Component\Api\Api\Api
+     */
+    protected $api;
+
+    /**
      * @var \Ds\Component\Config\Service\ConfigService
      */
     protected $configService;
+
+    /**
+     * @var \Appbundle\Service\SubmissionService
+     */
+    protected $submissionService;
 
     /**
      * Constructor
@@ -49,6 +59,7 @@ class BpmListener
         // @todo Look into fixing this
         $this->factory = $this->container->get('ds_api.factory');
         $this->configService = $this->container->get('ds_config.service.config');
+        $this->submissionService = $this->container->get('app.service.submission');
         //
 
         $scenario = $submission->getScenario();
@@ -57,10 +68,13 @@ class BpmListener
             return;
         }
 
-        $api = $this->factory->create();
+        if (!$this->api) {
+            $this->api = $this->factory->create();
+        }
+
 //        $parameters = new ProcessDefinitionParameters;
 //        $parameters->setKey($scenario->getConfig('process_definition_key'));
-//        $xml = $api->camunda->processDefinition->getXml(null, $parameters);
+//        $xml = $this->api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
         $parameters
@@ -76,7 +90,10 @@ class BpmListener
                 new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON)
             ])
             ->setKey($scenario->getConfig('process_definition_key'));
-
-        $api->camunda->processDefinition->start(null, $parameters);
+        $this->api->camunda->processDefinition->start(null, $parameters);
+        $submission->setState(Submission::STATE_TRANSFERRED);
+        $manager = $this->submissionService->getManager();
+        $manager->persist($submission);
+        $manager->flush();
     }
 }

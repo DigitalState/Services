@@ -64,6 +64,7 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
      */
     const STATE_DRAFT = 0;
     const STATE_SUBMITTED = 1;
+    const STATE_TRANSFERRED = 2;
 
     /**
      * @var integer

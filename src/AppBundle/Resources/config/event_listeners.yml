@@ -11,8 +11,8 @@ services:
         tags:
             - { name: doctrine.orm.entity_listener, entity: AppBundle\Entity\Submission, event: prePersist }
 
-    app.event_listener.submission.delegation.bpm:
-        class: AppBundle\EventListener\Submission\Delegation\BpmListener
+    app.event_listener.submission.transfer.bpm:
+        class: AppBundle\EventListener\Submission\Transfer\BpmListener
         arguments:
             - '@service_container'
         tags:
