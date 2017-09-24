@@ -58,7 +58,25 @@ class Version1_0_0 extends AbstractMigration
                 (3, 1, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\');
         ');
 
-        // @todo configs
+        $this->addSql('
+            INSERT INTO 
+                `ds_config` (`id`, `uuid`, `owner`, `owner_uuid`, `key`, `value`, `enabled`, `version`)
+            VALUES 
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.username\', \'system@digitalstate.ca\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.roles\', \'ROLE_USER\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.identity\', \'System\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_url\', \'api_url\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_user\', \'api_user\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_key\', \'api_key\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.service_uuid\', \'service_uuid\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.scenario_uuid\', \'scenario_uuid\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity\', \'identity\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity_uuid\', \'identity_uuid\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\'),
+                (1, \'\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.start_data\', \'start_data\');
+        ');
     }
 
     /**
