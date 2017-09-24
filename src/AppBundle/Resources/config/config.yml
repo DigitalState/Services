@@ -25,6 +25,7 @@ ds_security:
         service_title:               { title: app.permissions.service.title,               property:  AppBundle\Entity\Service.title,              attributes: [BROWSE, READ, EDIT] }
         service_description:         { title: app.permissions.service.description,         property:  AppBundle\Entity\Service.description,        attributes: [BROWSE, READ, EDIT] }
         service_presentation:        { title: app.permissions.service.presentation,        property:  AppBundle\Entity\Service.presentation,       attributes: [BROWSE, READ, EDIT] }
+        service_data:                { title: app.permissions.service.data,                property:  AppBundle\Entity\Service.data,               attributes: [BROWSE, READ, EDIT] }
         service_version:             { title: app.permissions.service.version,             property:  AppBundle\Entity\Service.version,            attributes: [BROWSE, READ, EDIT] }
         scenario:                    { title: app.permissions.scenario,                    entity:    AppBundle\Entity\Scenario,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         scenario_property:           { title: app.permissions.scenario.,                   property:  AppBundle\Entity\Scenario.*,                 attributes: [BROWSE, READ, EDIT] }

@@ -28,6 +28,7 @@ abstract class ServiceFixture extends ResourceFixture
                 ->setTitle($service['title'])
                 ->setDescription($service['description'])
                 ->setPresentation($service['presentation'])
+                ->setData($service['data'])
                 ->setEnabled($service['enabled'])
                 ->setWeight($service['weight']);
             $manager->persist($entity);

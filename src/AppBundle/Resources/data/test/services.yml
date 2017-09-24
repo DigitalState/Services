@@ -35,5 +35,6 @@ prototype:
     title: []
     description: []
     presentation: []
+    data: []
     enabled: true
     weight: 0

@@ -66,6 +66,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
+    use TranslationAccessor\Data;
     use ServiceAccessor\Scenarios;
     use Accessor\Enabled;
     use Accessor\Deleted;
@@ -186,6 +187,17 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      * @Translate
      */
     protected $presentation;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"service_output", "service_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Locale
+     * @Translate
+     */
+    protected $data;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
