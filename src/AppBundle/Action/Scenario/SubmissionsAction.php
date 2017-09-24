@@ -2,12 +2,14 @@
 
 namespace AppBundle\Action\Scenario;
 
+use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use AppBundle\Service\ScenarioService;
 use AppBundle\Service\SubmissionService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
@@ -69,9 +71,11 @@ class SubmissionsAction
         $submission
             ->setScenario($scenario)
             ->setData($content->data);
+        $violations = [];
 
-        if (!$this->submissionService->isValid($submission)) {
-            return new JsonResponse((object) ['error' => 'Data is not valid.']);
+        if (!$this->submissionService->isValid($submission, $violations)) {
+            $list = new ConstraintViolationList($violations);
+            throw new ValidationException($list, 'An error occurred');
         }
 
         $manager = $this->submissionService->getManager();

@@ -10,6 +10,7 @@ use Ds\Component\Api\Api\Factory;
 use Ds\Component\Formio\Exception\ValidationException;
 use Ds\Component\Formio\Model\Submission as Model;
 use Ds\Component\Formio\Query\SubmissionParameters as Parameters;
+use Symfony\Component\Validator\ConstraintViolation;
 
 /**
  * Class SubmissionService
@@ -46,9 +47,10 @@ class SubmissionService extends EntityService
      * Check if a submission is valid
      *
      * @param \AppBundle\Entity\Submission $submission
+     * @param array $violations
      * @return boolean
      */
-    public function isValid(Submission $submission)
+    public function isValid(Submission $submission, array &$violations = [])
     {
         $scenario = $submission->getScenario();
         $form = $this->scenarioService->getForm($scenario);
@@ -67,6 +69,16 @@ class SubmissionService extends EntityService
 
                     return true;
                 } catch (ValidationException $exception) {
+                    foreach ($exception->getErrors() as $error) {
+                        $message = $error->message;
+                        $template = '%s: %s';
+                        $parameters = ['data.'.$error->path, $error->message];
+                        $root = '';
+                        $path = 'data.'.$error->path;
+                        $value = null;
+                        $violations[] = new ConstraintViolation($message, $template, $parameters, $root, $path, $value);
+                    }
+
                     return false;
                 }
 
