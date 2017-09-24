@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Attribute\Accessor as ServiceAccessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ds\Component\Locale\Model\Type\Localizable;
 use Ds\Component\Model\Attribute\Accessor;
@@ -65,6 +66,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
+    use ServiceAccessor\Scenarios;
     use Accessor\Enabled;
     use Accessor\Deleted;
     use Accessor\Weight;
@@ -247,49 +249,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      * @Serializer\Groups({"service_output"})
      * @ORM\OneToMany(targetEntity="Scenario", mappedBy="service")
      */
-    protected $scenarios; # region accessors
-
-    /**
-     * Add scenario
-     *
-     * @param \AppBundle\Entity\Scenario $scenario
-     * @return \AppBundle\Entity\Service
-     */
-    public function addScenario(Scenario $scenario)
-    {
-        if (!$this->scenarios->contains($scenario)) {
-            $this->scenarios->add($scenario);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove scenario
-     *
-     * @param \AppBundle\Entity\Scenario $scenario
-     * @return \AppBundle\Entity\Service
-     */
-    public function removeScenario(Scenario $scenario)
-    {
-        if ($this->scenarios->contains($scenario)) {
-            $this->scenarios->removeElement($scenario);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get scenarios
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getScenarios()
-    {
-        return $this->scenarios;
-    }
-
-    # endregion
+    protected $scenarios;
 
     /**
      * @var string
