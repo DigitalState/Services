@@ -3,6 +3,7 @@
 namespace AppBundle\Action\Scenario;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
+use AppBundle\Entity\Submission;
 use AppBundle\Service\ScenarioService;
 use AppBundle\Service\SubmissionService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -70,7 +71,8 @@ class SubmissionsAction
         $submission = $this->submissionService->createInstance();
         $submission
             ->setScenario($scenario)
-            ->setData($content->data);
+            ->setData($content->data)
+            ->setState(Submission::STATE_SUBMITTED);
         $violations = [];
 
         if (!$this->submissionService->isValid($submission, $violations)) {
