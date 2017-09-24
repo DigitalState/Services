@@ -25,6 +25,11 @@ class ScenarioService extends EntityService
     protected $factory;
 
     /**
+     * @var \Ds\Component\Api\Api\Api
+     */
+    protected $api;
+
+    /**
      * @var \Ds\Component\Resolver\Collection\ResolverCollection
      */
     protected $resolverCollection;
@@ -55,13 +60,16 @@ class ScenarioService extends EntityService
     public function getForm(Scenario $scenario)
     {
         $form = new Form;
-        $api = $this->factory->create();
+
+        if (!$this->api) {
+            $this->api = $this->factory->create();
+        }
 
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $parameters = new ProcessDefinitionParameters;
                 $parameters->setKey($scenario->getConfig('process_definition_key'));
-                $startForm = $api->camunda->processDefinition->getStartForm(null, $parameters);
+                $startForm = $this->api->camunda->processDefinition->getStartForm(null, $parameters);
 
                 if (null === $startForm) {
                     return null;
@@ -82,10 +90,41 @@ class ScenarioService extends EntityService
             case Form::TYPE_FORMIO:
                 $parameters = new FormParameters;
                 $parameters->setPath($id);
-                $components = $api->formio->form->get(null, $parameters)->getComponents();
+                $components = $this->api->formio->form->get(null, $parameters)->getComponents();
+                $resolverCollection = $this->resolverCollection;
+                $resolve = function(&$component) use (&$resolve, $resolverCollection) {
+                    switch (true) {
+                        case property_exists($component, 'components'):
+                            foreach ($component->components as &$subComponent) {
+                                $resolve($subComponent);
+                            }
+
+                            break;
+
+                        case property_exists($component, 'columns'):
+                            foreach ($component->columns as &$column) {
+                                foreach ($column->components as &$subComponent) {
+                                    $resolve($subComponent);
+                                }
+                            }
+
+                            break;
+
+                        case property_exists($component, 'defaultValue'):
+                            try {
+                                $component->defaultValue = $resolverCollection->resolve($component->defaultValue);
+                            } catch (UnresolvedException $exception) {
+                                $component->defaultValue = null;
+                            } catch (UnmatchedException $exception) {
+                                // Leave default value as-is
+                            }
+
+                            break;
+                    }
+                };
 
                 foreach ($components as &$component) {
-                    $this->resolveComponent($component);
+                    $resolve($component);
                 }
 
                 $form
@@ -103,42 +142,5 @@ class ScenarioService extends EntityService
         }
 
         return $form;
-    }
-
-    /**
-     * Resolve component default value
-     *
-     * @param \stdClass $component
-     */
-    protected function resolveComponent(&$component)
-    {
-        switch (true) {
-            case property_exists($component, 'components'):
-                foreach ($component->components as &$subComponent) {
-                    $this->resolveComponent($subComponent);
-                }
-
-                break;
-
-            case property_exists($component, 'columns'):
-                foreach ($component->columns as &$column) {
-                    foreach ($column->components as &$subComponent) {
-                        $this->resolveComponent($subComponent);
-                    }
-                }
-
-                break;
-
-            case property_exists($component, 'defaultValue'):
-                try {
-                    $component->defaultValue = $this->resolverCollection->resolve($component->defaultValue);
-                } catch (UnresolvedException $exception) {
-                    $component->defaultValue = null;
-                } catch (UnmatchedException $exception) {
-                    // Leave default value as-is
-                }
-
-                break;
-        }
     }
 }
