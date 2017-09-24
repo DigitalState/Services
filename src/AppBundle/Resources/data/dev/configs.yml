@@ -41,8 +41,8 @@ items:
 
     -
         uuid: ebbd6b02-387f-495a-8cdf-df911247b94b
-        key: app.bpm.variables.none_start_event_form_data
-        value: none_start_event_form_data
+        key: app.bpm.variables.start_data
+        value: start_data
 
 prototype:
     uuid: ~

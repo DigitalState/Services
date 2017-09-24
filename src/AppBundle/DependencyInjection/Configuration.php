@@ -31,7 +31,7 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('identity')->end()
                                 ->scalarNode('identity_uuid')->end()
                                 ->scalarNode('submission_uuid')->end()
-                                ->scalarNode('none_start_event_form_data')->end()
+                                ->scalarNode('start_data')->end()
                                 ->end()
                             ->end()
                         ->end()

@@ -63,16 +63,20 @@ class BpmListener
 //        $xml = $api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_url'), ''));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_user'), ''));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.api_key'), ''));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.service_uuid'), $service->getUuid()));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.scenario_uuid'), $scenario->getUuid()));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.identity'), $submission->getIdentity()));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.identity_uuid'), $submission->getIdentityUuid()));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid()));
-        $parameters->addVariable(new Variable($this->configService->get('app.bpm.variables.none_start_event_form_data'), $submission->getData(), Variable::TYPE_JSON));
-        $parameters->setKey($scenario->getData('process_definition_key'));
+        $parameters
+            ->setVariables([
+                new Variable($this->configService->get('app.bpm.variables.api_url'), ''),
+                new Variable($this->configService->get('app.bpm.variables.api_user'), ''),
+                new Variable($this->configService->get('app.bpm.variables.api_key'), ''),
+                new Variable($this->configService->get('app.bpm.variables.service_uuid'), $service->getUuid()),
+                new Variable($this->configService->get('app.bpm.variables.scenario_uuid'), $scenario->getUuid()),
+                new Variable($this->configService->get('app.bpm.variables.identity'), $submission->getIdentity()),
+                new Variable($this->configService->get('app.bpm.variables.identity_uuid'), $submission->getIdentityUuid()),
+                new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid()),
+                new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON)
+            ])
+            ->setKey($scenario->getData('process_definition_key'));
+
         $api->camunda->processDefinition->start(null, $parameters);
     }
 }

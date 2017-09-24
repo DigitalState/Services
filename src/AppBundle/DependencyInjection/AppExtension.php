@@ -29,7 +29,7 @@ class AppExtension extends Extension implements PrependExtensionInterface
                     'identity' => 'identity',
                     'identity_uuid' => 'identity_uuid',
                     'submission_uuid' => 'submission_uuid',
-                    'none_start_event_form_data' => 'none_start_event_form_data'
+                    'start_data' => 'start_data'
                 ]
             ]
         ]);
@@ -62,6 +62,6 @@ class AppExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('ds_config.configs.app.bpm.variables.identity', $config['bpm']['variables']['identity']);
         $container->setParameter('ds_config.configs.app.bpm.variables.identity_uuid', $config['bpm']['variables']['identity_uuid']);
         $container->setParameter('ds_config.configs.app.bpm.variables.submission_uuid', $config['bpm']['variables']['submission_uuid']);
-        $container->setParameter('ds_config.configs.app.bpm.variables.none_start_event_form_data', $config['bpm']['variables']['none_start_event_form_data']);
+        $container->setParameter('ds_config.configs.app.bpm.variables.start_data', $config['bpm']['variables']['start_data']);
     }
 }
