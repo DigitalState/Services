@@ -4,6 +4,9 @@ items:
         owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
         service: 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole
         type: bpm
+        config:
+            bpm: camunda
+            process_definition_key: report-pothole
         slug: online
         title:
             en: Report a Pothole Online
@@ -15,9 +18,7 @@ items:
             en: Presentation ...
             fr: Présentation ...
         data:
-            bpm: camunda
-            process_definition_key: report-pothole
-            button_text: ds.microservices.entity.action.activate
+            button_text: Activate
         weight: 0
 
     -
@@ -42,6 +43,9 @@ items:
         owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
         service: cdfbc069-c2f6-4a66-b477-7f9e289f6beb # Report a Graffiti
         type: bpm
+        config:
+            bpm: camunda
+            process_definition_key: PayTaxes
         slug: online
         title:
             en: Report a Graffiti Online
@@ -53,8 +57,6 @@ items:
             en: Presentation ...
             fr: Présentation ...
         data:
-            bpm: camunda
-            process_definition_key: PayTaxes
             button_text: ds.microservices.entity.action.activate
         weight: 0
 
@@ -81,6 +83,7 @@ prototype:
     owner_uuid: ~
     service: ~
     type: ~
+    config: []
     slug: ~
     title: []
     description: []

@@ -59,7 +59,7 @@ class BpmListener
 
         $api = $this->factory->create();
 //        $parameters = new ProcessDefinitionParameters;
-//        $parameters->setKey($scenario->getData('process_definition_key'));
+//        $parameters->setKey($scenario->getConfig('process_definition_key'));
 //        $xml = $api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
@@ -75,7 +75,7 @@ class BpmListener
                 new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid()),
                 new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON)
             ])
-            ->setKey($scenario->getData('process_definition_key'));
+            ->setKey($scenario->getConfig('process_definition_key'));
 
         $api->camunda->processDefinition->start(null, $parameters);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Validator\Constraints\Scenario\Data;
+namespace AppBundle\Validator\Constraints\Scenario\Config;
 
 use Symfony\Component\Validator\Constraint;
 
@@ -14,7 +14,7 @@ class Valid extends Constraint
     /**
      * @var string
      */
-    public $missing = 'Data object is missing attribute {{ attribute }}.';
+    public $missing = 'Config object is missing attribute {{ attribute }}.';
 
     /**
      * {@inheritdoc}

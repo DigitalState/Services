@@ -60,7 +60,7 @@ class ScenarioService extends EntityService
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $parameters = new ProcessDefinitionParameters;
-                $parameters->setKey($scenario->getData('process_definition_key'));
+                $parameters->setKey($scenario->getConfig('process_definition_key'));
                 $startForm = $api->camunda->processDefinition->getStartForm(null, $parameters);
 
                 if (null === $startForm) {

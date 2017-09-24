@@ -24,6 +24,7 @@ abstract class ScenarioFixture extends ResourceFixture
             $entity
                 ->setService($manager->getRepository(Service::class)->findOneBy(['uuid' => $scenario['service']]))
                 ->setType($scenario['type'])
+                ->setConfig($scenario['config'])
                 ->setUuid($scenario['uuid'])
                 ->setOwner($scenario['owner'])
                 ->setOwnerUuid($scenario['owner_uuid'])

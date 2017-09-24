@@ -36,6 +36,7 @@ ds_security:
         scenario_owner:              { title: app.permissions.scenario.owner,              property:  AppBundle\Entity\Scenario.owner,             attributes: [BROWSE, READ, EDIT] }
         scenario_owner_uuid:         { title: app.permissions.scenario.owner_uuid,         property:  AppBundle\Entity\Scenario.ownerUuid,         attributes: [BROWSE, READ, EDIT] }
         scenario_type:               { title: app.permissions.scenario.type,               property:  AppBundle\Entity\Scenario.type,              attributes: [BROWSE, READ, EDIT] }
+        scenario_config:             { title: app.permissions.scenario.config,             property:  AppBundle\Entity\Scenario.config,            attributes: [BROWSE, READ, EDIT] }
         scenario_title:              { title: app.permissions.scenario.title,              property:  AppBundle\Entity\Scenario.title,             attributes: [BROWSE, READ, EDIT] }
         scenario_description:        { title: app.permissions.scenario.description,        property:  AppBundle\Entity\Scenario.description,       attributes: [BROWSE, READ, EDIT] }
         scenario_presentation:       { title: app.permissions.scenario.presentation,       property:  AppBundle\Entity\Scenario.presentation,      attributes: [BROWSE, READ, EDIT] }

@@ -57,7 +57,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields={"service", "slug"})
- * @ScenarioAssert\Data\Valid
+ * @ScenarioAssert\Config\Valid
  */
 class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable
 {
@@ -70,6 +70,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use Accessor\Owner;
     use Accessor\OwnerUuid;
     use Accessor\Type;
+    use Accessor\Config;
     use Accessor\Slug;
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
@@ -167,6 +168,15 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @Assert\Length(min=1, max=255)
      */
     protected $type;
+
+    /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @ORM\Column(name="config", type="json_array")
+     * @Assert\Type("array")
+     */
+    protected $config;
 
     /**
      * @var string
@@ -314,6 +324,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      */
     public function __construct()
     {
+        $this->config = [];
         $this->title = [];
         $this->description = [];
         $this->presentation = [];
