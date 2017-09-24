@@ -17,7 +17,7 @@ items:
         data:
             bpm: camunda
             process_definition_key: report-pothole
-            button_text: ds.microservices.entity.action.activate
+            button_text: Activate
         weight: 0
 
     -
@@ -54,8 +54,8 @@ items:
             fr: Présentation ...
         data:
             bpm: camunda
-            process_definition_key: PayTaxes
-            button_text: ds.microservices.entity.action.activate
+            process_definition_key: report-graffiti
+            button_text: Activate
         weight: 0
 
     -
@@ -67,6 +67,44 @@ items:
         title:
             en: Report a Graffiti By Mail
             fr: Signaler un graffiti par courrier
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Présentation ...
+        weight: 1
+
+    -
+        uuid: 539dbe06-0b5f-4844-b93f-fa46c3e38ef2
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: bc235109-6528-4e5e-b054-ab1788d8d640 # Pay Taxes
+        type: bpm
+        slug: online
+        title:
+            en: Pay Taxes Online
+            fr: Payer des impôts en-ligne
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Présentation ...
+        data:
+            bpm: camunda
+            process_definition_key: pay-taxes
+            button_text: Activate
+        weight: 0
+
+    -
+        uuid: 7fea4fca-eb89-47d5-83fc-ae5dc27dca46
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        service: bc235109-6528-4e5e-b054-ab1788d8d640 # Pay Taxes
+        type: info
+        slug: info
+        title:
+            en: Pay Taxes By Mail
+            fr: Payer des impôts par courrier
         description:
             en: Description ...
             fr: Description ...

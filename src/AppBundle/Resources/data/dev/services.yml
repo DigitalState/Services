@@ -27,6 +27,20 @@ items:
             en: Presentation ...
             fr: Presentation ...
 
+    -
+        uuid: bc235109-6528-4e5e-b054-ab1788d8d640
+        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        slug: pay-taxes
+        title:
+            en: Pay Taxes
+            fr: Payer des impôts
+        description:
+            en: Description ...
+            fr: Description ...
+        presentation:
+            en: Presentation ...
+            fr: Presentation ...
+
 prototype:
     uuid: ~
     owner: BusinessUnit
