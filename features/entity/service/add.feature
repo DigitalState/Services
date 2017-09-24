@@ -29,6 +29,10 @@ Feature: Add services
         "en": "Presentation - add",
         "fr": "Presentation - add"
       },
+      "data": {
+        "en": {},
+        "fr": {}
+      },
       "enabled": true,
       "weight": 1,
       "version": 1
@@ -56,6 +60,8 @@ Feature: Add services
 #    And the JSON node "description" should be equal to "todo"
     And the JSON node "presentation" should exist
 #    And the JSON node "presentation" should be equal to "todo"
+    And the JSON node "data" should exist
+#    And the JSON node "data" should be equal to "todo"
     And the JSON node "categories" should exist
     And the JSON node "scenarios" should exist
     And the JSON node "enabled" should exist
