@@ -1,3 +1,25 @@
+framework:
+    workflows:
+        submission_state:
+            type: state_machine
+            marking_store:
+                type: single_state
+                arguments:
+                    - state
+            supports:
+                - AppBundle\Entity\Submission
+            places:
+                - !php/const:AppBundle\Entity\Submission::STATE_DRAFT
+                - !php/const:AppBundle\Entity\Submission::STATE_SUBMITTED
+                - !php/const:AppBundle\Entity\Submission::STATE_TRANSFERRED
+            transitions:
+                submit:
+                    from: [!php/const:AppBundle\Entity\Submission::STATE_DRAFT]
+                    to: [!php/const:AppBundle\Entity\Submission::STATE_SUBMITTED]
+                transfer:
+                    from: [!php/const:AppBundle\Entity\Submission::STATE_SUBMITTED]
+                    to: [!php/const:AppBundle\Entity\Submission::STATE_TRANSFERRED]
+
 ds_security:
     permissions:
         category:                    { title: app.permissions.category,                    entity:    AppBundle\Entity\Category,                   attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
