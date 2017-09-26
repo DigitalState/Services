@@ -6,11 +6,14 @@ use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use AppBundle\Entity\Submission;
 use AppBundle\Service\ScenarioService;
 use AppBundle\Service\SubmissionService;
+use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\ConstraintViolationList;
+use function GuzzleHttp\json_decode;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
@@ -67,7 +70,13 @@ class SubmissionsAction
         }
 
         $request = $this->requestStack->getCurrentRequest();
-        $content = json_decode($request->getContent());
+
+        try {
+            $content = json_decode($request->getContent());
+        } catch (InvalidArgumentException $exception) {
+            throw new BadRequestHttpException('Request content is not valid json.');
+        }
+
         $submission = $this->submissionService->createInstance();
         $submission
             ->setScenario($scenario)
