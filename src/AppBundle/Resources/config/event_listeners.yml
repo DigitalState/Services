@@ -1,5 +1,5 @@
 services:
-    app.event_listener.submission.validation:
+    app.event_listener.submission.validation.data:
         class: AppBundle\EventListener\Submission\Validation\DataListener
         arguments:
             - '@app.service.submission'
