@@ -5,8 +5,6 @@ namespace AppBundle\EventListener\Submission\Validation;
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use AppBundle\Service\SubmissionService;
 use AppBundle\Entity\Submission;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Validator\ConstraintViolationList;
 
