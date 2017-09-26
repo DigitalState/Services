@@ -32,7 +32,6 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('identity_uuid')->end()
                                 ->scalarNode('submission_uuid')->end()
                                 ->scalarNode('start_data')->end()
-                                ->end()
                             ->end()
                         ->end()
                     ->end()
