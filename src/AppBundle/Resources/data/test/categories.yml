@@ -14,7 +14,6 @@ items:
             fr: Presentation ...
         services:
             - 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole
-            - cdfbc069-c2f6-4a66-b477-7f9e289f6beb # Report a Graffiti
 
 prototype:
     uuid: ~

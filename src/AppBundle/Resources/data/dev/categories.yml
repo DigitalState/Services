@@ -17,12 +17,12 @@ items:
             - 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
 
     -
-        uuid: 90fefc87-d10a-4f7e-a649-eb1d812a197d
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        slug: taxes
+        uuid: 434bdf45-fc0f-4633-80a8-5fb03a1d9079
+        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        slug: environment
         title:
-            en: Taxes
-            fr: Taxes
+            en: Environment
+            fr: Environnement
         description:
             en: Description ...
             fr: Description ...
@@ -30,7 +30,7 @@ items:
             en: Presentation ...
             fr: Presentation ...
         services:
-            - bc235109-6528-4e5e-b054-ab1788d8d640 # Pay Taxes
+            - 6c2013d6-5627-4249-9446-51b539016bf2 # Recycle Bin Query
 
 prototype:
     uuid: ~

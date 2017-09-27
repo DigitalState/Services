@@ -6,7 +6,7 @@ items:
         type: bpm
         config:
             bpm: camunda
-            process_definition_key: report-pothole
+            process_definition_key: pothole-report
         slug: online
         title:
             en: Report a Pothole Online
@@ -25,30 +25,13 @@ items:
         weight: 0
 
     -
-        uuid: 3584cb49-a908-4e58-89c3-6d6d77e0a5f0
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        service: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d # Report a Pothole
-        type: info
-        slug: info
-        title:
-            en: Report a Pothole By Mail
-            fr: Signaler un nids de poule par courrier
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-        weight: 1
-
-    -
         uuid: d4833574-377f-4845-acc1-bc6fcead0ce5
         owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
         service: 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
         type: bpm
         config:
             bpm: camunda
-            process_definition_key: report-graffiti
+            process_definition_key: graffiti-report
         slug: online
         title:
             en: Report a Graffiti Online
@@ -67,34 +50,17 @@ items:
         weight: 0
 
     -
-        uuid: 8a22dd6c-0548-452b-8fda-68d80362a1d7
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        service: 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
-        type: info
-        slug: info
-        title:
-            en: Report a Graffiti By Mail
-            fr: Signaler un graffiti par courrier
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-        weight: 1
-
-    -
-        uuid: 539dbe06-0b5f-4844-b93f-fa46c3e38ef2
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        service: bc235109-6528-4e5e-b054-ab1788d8d640 # Pay Taxes
+        uuid: 46a56c28-b0c0-4b7e-8cb8-9c68df1a4a97
+        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        service: 6c2013d6-5627-4249-9446-51b539016bf2 # Recycle Bin Query
         type: bpm
         config:
             bpm: camunda
-            process_definition_key: pay-taxes
+            process_definition_key: recycle-bin-query
         slug: online
         title:
-            en: Pay Taxes Online
-            fr: Payer des impôts en-ligne
+            en: Recycle Bin Query Online
+            fr: Requête pour bac de recyclage en-ligne
         description:
             en: Description ...
             fr: Description ...
@@ -109,14 +75,14 @@ items:
         weight: 0
 
     -
-        uuid: 7fea4fca-eb89-47d5-83fc-ae5dc27dca46
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        service: bc235109-6528-4e5e-b054-ab1788d8d640 # Pay Taxes
+        uuid: f2cc9686-51b4-4e35-96ce-2977cfedcf90
+        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        service: 6c2013d6-5627-4249-9446-51b539016bf2 # Recycle Bin Query
         type: info
         slug: info
         title:
-            en: Pay Taxes By Mail
-            fr: Payer des impôts par courrier
+            en: Recycle Bin Query By Mail
+            fr: Requête pour bac de recyclage par courrier
         description:
             en: Description ...
             fr: Description ...

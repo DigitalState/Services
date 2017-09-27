@@ -6,7 +6,7 @@ items:
         type: bpm
         config:
             bpm: camunda
-            process_definition_key: report-pothole
+            process_definition_key: pothole-report
         slug: online
         title:
             en: Report a Pothole Online
@@ -23,65 +23,6 @@ items:
             fr:
                 button_text: Activer
         weight: 0
-
-    -
-        uuid: 55df72ef-6b9e-4c8c-9062-83484d913289
-        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
-        service: 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole
-        type: info
-        slug: info
-        title:
-            en: Report a Pothole By Mail
-            fr: Signaler un nids de poule par courrier
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-        weight: 1
-
-    -
-        uuid: 4c403246-b7f3-458e-9a4c-2286b53d7524
-        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
-        service: cdfbc069-c2f6-4a66-b477-7f9e289f6beb # Report a Graffiti
-        type: bpm
-        config:
-            bpm: camunda
-            process_definition_key: PayTaxes
-        slug: online
-        title:
-            en: Report a Graffiti Online
-            fr: Signaler un graffiti en-ligne
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-        data:
-            en:
-                button_text: Activate
-            fr:
-                button_text: Activer
-        weight: 0
-
-    -
-        uuid: 1d3175d2-664b-4217-9fa7-cdfabf530775
-        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
-        service: cdfbc069-c2f6-4a66-b477-7f9e289f6beb # Report a Graffiti
-        type: info
-        slug: info
-        title:
-            en: Report a Graffiti By Mail
-            fr: Signaler un graffiti par courrier
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Présentation ...
-        weight: 1
 
 prototype:
     uuid: ~

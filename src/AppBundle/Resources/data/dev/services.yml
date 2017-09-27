@@ -28,12 +28,12 @@ items:
             fr: Presentation ...
 
     -
-        uuid: bc235109-6528-4e5e-b054-ab1788d8d640
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
-        slug: pay-taxes
+        uuid: 6c2013d6-5627-4249-9446-51b539016bf2
+        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        slug: recycle-bin-query
         title:
-            en: Pay Taxes
-            fr: Payer des impôts
+            en: Recycle Bin Query
+            fr: Requête pour bac de recyclage
         description:
             en: Description ...
             fr: Description ...
