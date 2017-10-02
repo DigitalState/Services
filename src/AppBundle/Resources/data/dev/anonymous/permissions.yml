@@ -13,11 +13,13 @@ items:
             - service_title
             - service_description
             - service_presentation
+            - service_data
             - scenario
             - scenario_uuid
             - scenario_title
             - scenario_description
             - scenario_presentation
+            - scenario_data
             - submission
             - submission_uuid
             - submission_created_at
