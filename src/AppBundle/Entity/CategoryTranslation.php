@@ -20,6 +20,7 @@ class CategoryTranslation
     use Accessor\Title;
     use Accessor\Description;
     use Accessor\Presentation;
+    use Accessor\Data;
 
     /**
      * @var string
@@ -38,4 +39,10 @@ class CategoryTranslation
      * @ORM\Column(name="presentation", type="text", nullable=true)
      */
     protected $presentation;
+
+    /**
+     * @var string
+     * @ORM\Column(name="data", type="json_array")
+     */
+    protected $data;
 }

@@ -29,6 +29,7 @@ abstract class CategoryFixture extends ResourceFixture
                 ->setTitle($category['title'])
                 ->setDescription($category['description'])
                 ->setPresentation($category['presentation'])
+                ->setData($category['data'])
                 ->setEnabled($category['enabled'])
                 ->setWeight($category['weight']);
 

@@ -65,6 +65,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use TranslationAccessor\Title;
     use TranslationAccessor\Description;
     use TranslationAccessor\Presentation;
+    use TranslationAccessor\Data;
     use Accessor\Enabled;
     use Accessor\Deleted;
     use Accessor\Weight;
@@ -186,6 +187,17 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     protected $presentation;
 
     /**
+     * @var array
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @Assert\Type("array")
+     * @Assert\NotBlank
+     * @Locale
+     * @Translate
+     */
+    protected $data;
+
+    /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ApiProperty
      * @Serializer\Groups({"category_output", "category_input"})
@@ -272,6 +284,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
         $this->title = [];
         $this->description = [];
         $this->presentation = [];
+        $this->data = [];
         $this->services = new ArrayCollection;
         $this->enabled = false;
         $this->deleted = false;

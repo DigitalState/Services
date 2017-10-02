@@ -29,6 +29,14 @@ Feature: Add categories
         "en": "Presentation - add",
         "fr": "Presentation - add"
       },
+      "data": {
+        "en": {
+          "test": "test"
+        },
+        "fr": {
+          "test": "test"
+        }
+      },
       "enabled": true,
       "weight": 1,
       "version": 1
@@ -56,6 +64,8 @@ Feature: Add categories
 #    And the JSON node "description" should be equal to "todo"
     And the JSON node "presentation" should exist
 #    And the JSON node "presentation" should be equal to "todo"
+    And the JSON node "data" should exist
+#    And the JSON node "data" should be equal to "todo"
     And the JSON node "enabled" should exist
     And the JSON node "enabled" should be true
     And the JSON node "weight" should exist

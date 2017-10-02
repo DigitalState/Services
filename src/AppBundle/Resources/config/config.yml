@@ -34,6 +34,7 @@ ds_security:
         category_title:              { title: app.permissions.category.title,              property:  AppBundle\Entity\Category.title,             attributes: [BROWSE, READ, EDIT] }
         category_description:        { title: app.permissions.category.description,        property:  AppBundle\Entity\Category.description,       attributes: [BROWSE, READ, EDIT] }
         category_presentation:       { title: app.permissions.category.presentation,       property:  AppBundle\Entity\Category.presentation,      attributes: [BROWSE, READ, EDIT] }
+        category_data:               { title: app.permissions.category.data,               property:  AppBundle\Entity\Category.data,              attributes: [BROWSE, READ, EDIT] }
         category_version:            { title: app.permissions.category.version,            property:  AppBundle\Entity\Category.version,           attributes: [BROWSE, READ, EDIT] }
         service:                     { title: app.permissions.service,                     entity:    AppBundle\Entity\Service,                    attributes: [BROWSE, READ, EDIT, ADD, DELETE] }
         service_property:            { title: app.permissions.service.property,            property:  AppBundle\Entity\Service.*,                  attributes: [BROWSE, READ, EDIT] }

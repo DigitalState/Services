@@ -28,6 +28,14 @@ Feature: Edit categories
         "en": "Presentation - edit",
         "fr": "Presentation - edit"
       },
+      "data": {
+        "en": {
+          "test": "test - edit"
+        },
+        "fr": {
+          "test": "test - edit"
+        }
+      },
       "enabled": false,
       "weight": 1
     }
@@ -40,6 +48,7 @@ Feature: Edit categories
 #    And the JSON node "title" should be equal to "todo"
 #    And the JSON node "description" should be equal to "todo"
 #    And the JSON node "presentation" should be equal to "todo"
+#    And the JSON node "data" should be equal to "todo"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
 
@@ -54,6 +63,7 @@ Feature: Edit categories
 #    And the JSON node "title" should be equal to "todo"
 #    And the JSON node "description" should be equal to "todo"
 #    And the JSON node "presentation" should be equal to "todo"
+#    And the JSON node "data" should be equal to "todo"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
 

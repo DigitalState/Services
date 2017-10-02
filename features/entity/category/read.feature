@@ -34,6 +34,8 @@ Feature: Read categories
 #    And the JSON node "description" should be equal to "todo"
     And the JSON node "presentation" should exist
 #    And the JSON node "presentation" should be equal to "todo"
+    And the JSON node "data" should exist
+#    And the JSON node "data" should be equal to "todo"
     And the JSON node "enabled" should exist
     And the JSON node "enabled" should be true
     And the JSON node "weight" should exist

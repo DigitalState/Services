@@ -8,6 +8,7 @@ items:
             - category_title
             - category_description
             - category_presentation
+            - category_data
             - service
             - service_uuid
             - service_title
