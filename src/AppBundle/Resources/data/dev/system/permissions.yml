@@ -17,6 +17,24 @@ items:
         key: custom
         attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 
+    -
+        access: bb459e8f-c046-4b0e-b34b-d6138282b0b0 # Bpm
+        entity_uuid: ~ # Any business unit
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+
+    -
+        access: bb459e8f-c046-4b0e-b34b-d6138282b0b0 # Bpm
+        entity_uuid: ~ # Any business unit
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+
+    -
+        access: bb459e8f-c046-4b0e-b34b-d6138282b0b0 # Bpm
+        entity_uuid: ~ # Any business unit
+        key: custom
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
 prototype:
     access: ~
     entity: BusinessUnit
