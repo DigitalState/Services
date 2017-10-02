@@ -30,8 +30,12 @@ Feature: Add services
         "fr": "Presentation - add"
       },
       "data": {
-        "en": {},
-        "fr": {}
+        "en": {
+          "test": "test"
+        },
+        "fr": {
+          "test": "test"
+        }
       },
       "enabled": true,
       "weight": 1,
