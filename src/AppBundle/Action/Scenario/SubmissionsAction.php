@@ -92,7 +92,8 @@ class SubmissionsAction
         $manager = $this->submissionService->getManager();
         $manager->persist($submission);
         $manager->flush();
+        $response = new JsonResponse($submission, Response::HTTP_CREATED);
 
-        return new JsonResponse($submission, Response::HTTP_CREATED);
+        return $response;
     }
 }

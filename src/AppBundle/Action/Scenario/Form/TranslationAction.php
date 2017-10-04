@@ -54,7 +54,8 @@ class TranslationAction
     {
         $request = $this->requestStack->getCurrentRequest();
         $locale = $request->query->get('locale', 'en');
+        $response = new JsonResponse([$locale => 'test']);
 
-        return new JsonResponse([$locale => 'test']);
+        return $response;
     }
 }

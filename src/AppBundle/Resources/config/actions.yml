@@ -4,6 +4,11 @@ services:
         arguments:
             - '@app.service.scenario'
 
+    AppBundle\Action\Scenario\UrlAction:
+        class: AppBundle\Action\Scenario\UrlAction
+        arguments:
+            - '@app.service.scenario'
+
     AppBundle\Action\Scenario\Form\TranslationAction:
         class: AppBundle\Action\Scenario\Form\TranslationAction
         arguments:
