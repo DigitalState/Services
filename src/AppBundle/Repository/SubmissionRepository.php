@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Ds\Component\Entity\Repository\EntityRepository;
 
 /**
  * Class SubmissionRepository
