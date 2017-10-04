@@ -52,6 +52,7 @@ class AppExtension extends Extension implements PrependExtensionInterface
         $loader->load('event_listeners.yml');
         $loader->load('forms.yml');
         $loader->load('services.yml');
+        $loader->load('stats.yml');
 
         // @todo Move this config -> parameters logic to a common trait in the config component bridge
         $container->setParameter('ds_config.configs.app.bpm.variables.api_url', $config['bpm']['variables']['api_url']);

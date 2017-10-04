@@ -5,6 +5,9 @@ api:
 ds_health:
     resource: '@DsHealthBundle/Resources/config/routing.yml'
 
+ds_statistic:
+    resource: '@DsStatisticBundle/Resources/config/routing.yml'
+
 ds_security:
     resource: '@DsSecurityBundle/Resources/config/routing.yml'
 
