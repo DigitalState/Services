@@ -86,6 +86,14 @@ class ValidValidator extends ConstraintValidator
      */
     protected function validateUrl(array $config, Constraint $constraint)
     {
-
+        foreach (['url'] as $attribute) {
+            if (!array_key_exists($attribute, $config)) {
+                $this->context
+                    ->buildViolation($constraint->missing)
+                    ->setParameter('{{ attribute }}', '"'.$attribute.'"')
+                    ->atPath('config.'.$attribute)
+                    ->addViolation();
+            }
+        }
     }
 }
