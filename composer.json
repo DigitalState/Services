@@ -67,7 +67,7 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "hard",
         "incenteev-parameters": {
-            "file": "app/config/dev/parameters.yml"
+            "file": "app/config/parameters.yml"
         },
         "branch-alias": {
         }

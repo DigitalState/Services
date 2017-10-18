@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.yml }
+    - { resource: ../parameters.yml }
     - { resource: ../config.yml }
 
 doctrine:
