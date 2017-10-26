@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixtures\ORM;
 
-use AppBundle\Fixture\ORM\ScenarioFixture;
+use AppBundle\Fixture\ORM\CategoryFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 /**
- * Class Scenarios
+ * Class Categories
  */
-class Scenarios extends ScenarioFixture implements OrderedFixtureInterface
+class Categories extends CategoryFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class Scenarios extends ScenarioFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{env}/scenarios.yml';
+        return __DIR__.'/../../Resources/data/{env}/categories.yml';
     }
 }

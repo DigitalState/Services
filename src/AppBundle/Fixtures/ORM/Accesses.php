@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Fixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Ds\Component\Config\Fixture\ORM\ConfigFixture;
+use Ds\Component\Security\Fixture\ORM\AccessFixture;
 
 /**
- * Class Configs
+ * Class Accesses
  */
-class Configs extends ConfigFixture implements OrderedFixtureInterface
+class Accesses extends AccessFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -23,6 +23,6 @@ class Configs extends ConfigFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return __DIR__.'/../../Resources/data/{env}/configs.yml';
+        return __DIR__.'/../../Resources/data/{env}/*/accesses.yml';
     }
 }
