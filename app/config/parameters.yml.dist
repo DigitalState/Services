@@ -1,5 +1,5 @@
 parameters:
-    database_host: db
+    database_host: services_db
     database_port: 3306
     database_name: api_platform
     database_user: api_platform
