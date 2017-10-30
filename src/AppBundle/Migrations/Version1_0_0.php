@@ -66,20 +66,29 @@ class Version1_0_0 extends AbstractMigration
             INSERT INTO 
                 `ds_config` (`id`, `uuid`, `owner`, `owner_uuid`, `key`, `value`, `enabled`, `version`, `created_at`, `updated_at`)
             VALUES 
-                (1, \'2e2f49df-2ae6-4065-a677-fcac4ed47769\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.username\', \'system@digitalstate.ca\', 1, 1, now(), now()),
-                (2, \'b77a1910-5f4d-41dc-a4e5-e94f9aecbfd7\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\', 1, 1, now(), now()),
-                (3, \'f5b9e5ef-b59a-4645-83d9-d99af2726ad2\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.roles\', \'ROLE_USER\', 1, 1, now(), now()),
-                (4, \'428ebc7f-eb8a-4614-83b2-36bee24d1517\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.identity\', \'System\', 1, 1, now(), now()),
-                (5, \'a4c68cdf-0867-4b67-aa1b-e45dadf6adf9\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.credential.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, 1, now(), now()),
-                (6, \'a1612291-ec5d-43a6-b701-7a0e523359bb\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_url\', \'api_url\', 1, 1, now(), now()),
-                (7, \'320660ba-07a7-4000-a970-78a8b4601a94\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_user\', \'api_user\', 1, 1, now(), now()),
-                (8, \'9d9df387-3dc2-4301-8a86-b36f66b9ae6e\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_key\', \'api_key\', 1, 1, now(), now()),
-                (9, \'1541eecc-9cbc-446d-9111-e06bd9b18045\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.service_uuid\', \'service_uuid\', 1, 1, now(), now()),
-                (10, \'0da7715a-552b-47e3-ae68-9e86dd33a693\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.scenario_uuid\', \'scenario_uuid\', 1, 1, now(), now()),
-                (11, \'689bc680-9f3c-4ab0-a7ff-29997e58c3b4\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity\', \'identity\', 1, 1, now(), now()),
-                (12, \'0dc59760-2d99-401b-b5bc-99ff275f8a09\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity_uuid\', \'identity_uuid\', 1, 1, now(), now()),
-                (13, \'fcadcae3-180b-4261-98d5-093788748c99\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\', 1, 1, now(), now()),
-                (14, \'674213cf-dd26-4ec9-952f-52db344b7970\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.start_data\', \'start_data\', 1, 1, now(), now());
+                (1, \'a1612291-ec5d-43a6-b701-7a0e523359bb\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_url\', \'api_url\', 1, 1, now(), now()),
+                (2, \'320660ba-07a7-4000-a970-78a8b4601a94\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_user\', \'api_user\', 1, 1, now(), now()),
+                (3, \'9d9df387-3dc2-4301-8a86-b36f66b9ae6e\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_key\', \'api_key\', 1, 1, now(), now()),
+                (4, \'1541eecc-9cbc-446d-9111-e06bd9b18045\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.service_uuid\', \'service_uuid\', 1, 1, now(), now()),
+                (5, \'0da7715a-552b-47e3-ae68-9e86dd33a693\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.scenario_uuid\', \'scenario_uuid\', 1, 1, now(), now()),
+                (6, \'689bc680-9f3c-4ab0-a7ff-29997e58c3b4\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity\', \'identity\', 1, 1, now(), now()),
+                (7, \'0dc59760-2d99-401b-b5bc-99ff275f8a09\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity_uuid\', \'identity_uuid\', 1, 1, now(), now()),
+                (8, \'fcadcae3-180b-4261-98d5-093788748c99\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\', 1, 1, now(), now()),
+                (9, \'674213cf-dd26-4ec9-952f-52db344b7970\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.start_data\', \'start_data\', 1, 1, now(), now()),
+                (10, \'07e5372b-4d22-4bb2-a9db-816bfdc0a7f6\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
+                (11, \'11ebfa24-d397-4876-ae03-fa791083f386\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\', 1, 1, now(), now()),
+                (12, \'1780830f-0a16-4f16-be63-4d1577834a19\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
+                (13, \'772f17ec-a46c-4090-9965-56e6839241f5\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
+                (14, \'395c84cc-ac5c-4e95-a735-4c197281146c\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, 1, now(), now()),
+                (15, \'85aa90e0-ca2b-4bef-834b-eab8973a1c97\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.authentication.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (16, \'98c231e4-9886-4d18-b31a-7a9f65fda57d\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.identities.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (17, \'318d2df8-1e5c-47a1-b841-b7b60451833b\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cases.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (18, \'2dd9b153-5eb9-4a5d-bba0-5c21c6cdd5c7\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.services.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (19, \'dd040562-6c77-47f2-929f-ecbfe9d90332\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.records.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (20, \'adae1758-e6ee-4063-9b7f-86e434c1bc21\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.assets.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (21, \'736c5591-832a-4d1c-8236-8b7b07c4a820\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cms.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (22, \'9e581cd1-0d89-4c26-a78a-b679dfe95fc2\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.camunda.host\', \'127.0.0.1\', 1, 1, now(), now()),
+                (23, \'751954bd-177e-43c0-aab2-fb21c758de56\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.formio.host\', \'127.0.0.1\', 1, 1, now(), now());
         ');
     }
 
