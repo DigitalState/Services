@@ -11,7 +11,7 @@ services:
         class: AppBundle\Service\ScenarioService
         parent: ds_entity.service.entity
         arguments:
-            - '@ds_api.factory'
+            - '@ds_api.api'
             - '@ds_resolver.collection.resolver'
 
     app.service.submission:
@@ -19,4 +19,4 @@ services:
         parent: ds_entity.service.entity
         arguments:
             - '@app.service.scenario'
-            - '@ds_api.factory'
+            - '@ds_api.api'

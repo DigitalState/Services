@@ -6,7 +6,7 @@ use AppBundle\Entity\Scenario;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use DomainException;
-use Ds\Component\Api\Api\Factory;
+use Ds\Component\Api\Api\Api;
 use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
 use Ds\Component\Entity\Service\EntityService;
 use Ds\Component\Formio\Query\FormParameters;
@@ -19,11 +19,6 @@ use Ds\Component\Resolver\Exception\UnresolvedException;
  */
 class ScenarioService extends EntityService
 {
-    /**
-     * @var \Ds\Component\Api\Api\Factory
-     */
-    protected $factory;
-
     /**
      * @var \Ds\Component\Api\Api\Api
      */
@@ -38,15 +33,15 @@ class ScenarioService extends EntityService
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
-     * @param \Ds\Component\Api\Api\Factory $factory
+     * @param \Ds\Component\Api\Api\Api $api
      * @param \Ds\Component\Resolver\Collection\ResolverCollection $resolverCollection
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Factory $factory, ResolverCollection $resolverCollection, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Api $api, ResolverCollection $resolverCollection, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
-        $this->factory = $factory;
+        $this->api = $api;
         $this->resolverCollection = $resolverCollection;
     }
 
@@ -61,15 +56,11 @@ class ScenarioService extends EntityService
     {
         $form = new Form;
 
-        if (!$this->api) {
-            $this->api = $this->factory->create();
-        }
-
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $parameters = new ProcessDefinitionParameters;
                 $parameters->setKey($scenario->getConfig('process_definition_key'));
-                $startForm = $this->api->camunda->processDefinition->getStartForm(null, $parameters);
+                $startForm = $this->api->get('camunda.process_definition')->getStartForm(null, $parameters);
 
                 if (null === $startForm) {
                     return null;
@@ -90,7 +81,7 @@ class ScenarioService extends EntityService
             case Form::TYPE_FORMIO:
                 $parameters = new FormParameters;
                 $parameters->setPath($id);
-                $components = $this->api->formio->form->get(null, $parameters)->getComponents();
+                $components = $this->api->get('formio.form')->get(null, $parameters)->getComponents();
                 $resolverCollection = $this->resolverCollection;
                 $resolve = function(&$component) use (&$resolve, $resolverCollection) {
                     switch (true) {

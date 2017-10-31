@@ -5,8 +5,8 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Submission;
 use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
+use Ds\Component\Api\Api\Api;
 use Ds\Component\Entity\Service\EntityService;
-use Ds\Component\Api\Api\Factory;
 use Ds\Component\Formio\Exception\ValidationException;
 use Ds\Component\Formio\Model\Submission as Model;
 use Ds\Component\Formio\Query\SubmissionParameters as Parameters;
@@ -23,24 +23,23 @@ class SubmissionService extends EntityService
     protected $scenarioService;
 
     /**
-     * @var \Ds\Component\Api\Api\Factory
+     * @var \Ds\Component\Api\Api\Api
      */
-    protected $factory;
+    protected $api;
 
     /**
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \AppBundle\Service\ScenarioService $scenarioService
-     * @param \Ds\Component\Api\Api\Factory $factory
+     * @param \Ds\Component\Api\Api\Api $api
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Factory $factory, $entity = Submission::class)
+    public function __construct(EntityManager $manager, ScenarioService $scenarioService, Api $api, $entity = Submission::class)
     {
         parent::__construct($manager, $entity);
-
         $this->scenarioService = $scenarioService;
-        $this->factory = $factory;
+        $this->api = $api;
     }
 
     /**
@@ -62,10 +61,9 @@ class SubmissionService extends EntityService
                     ->setForm($form->getId())
                     ->setData((object) $submission->getData());
                 $parameters = new Parameters;
-                $api = $this->factory->create();
 
                 try {
-                    $api->formio->submission->create($model, $parameters);
+                    $this->api->get('formio.submission')->create($model, $parameters);
 
                     return true;
                 } catch (ValidationException $exception) {

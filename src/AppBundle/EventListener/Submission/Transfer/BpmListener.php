@@ -19,11 +19,6 @@ class BpmListener
     protected $container;
 
     /**
-     * @var \Ds\Component\Api\Api\Factory
-     */
-    protected $factory;
-
-    /**
      * @var \Ds\Component\Api\Api\Api
      */
     protected $api;
@@ -57,7 +52,7 @@ class BpmListener
     {
         // Circular reference error workaround
         // @todo Look into fixing this
-        $this->factory = $this->container->get('ds_api.factory');
+        $this->api = $this->container->get('ds_api.api');
         $this->configService = $this->container->get('ds_config.service.config');
         $this->submissionService = $this->container->get('app.service.submission');
         //
@@ -66,10 +61,6 @@ class BpmListener
 
         if (Scenario::TYPE_BPM !== $scenario->getType()) {
             return;
-        }
-
-        if (!$this->api) {
-            $this->api = $this->factory->create();
         }
 
 //        $parameters = new ProcessDefinitionParameters;
@@ -90,7 +81,7 @@ class BpmListener
                 new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON)
             ])
             ->setKey($scenario->getConfig('process_definition_key'));
-        $this->api->camunda->processDefinition->start(null, $parameters);
+        $this->api->get('camunda.process_definition')->start(null, $parameters);
         $submission->setState(Submission::STATE_TRANSFERRED);
         $manager = $this->submissionService->getManager();
         $manager->persist($submission);
