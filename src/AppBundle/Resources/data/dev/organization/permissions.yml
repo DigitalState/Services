@@ -1,4 +1,34 @@
-items: []
+items:
+    -
+        access: 8b041271-bf3b-486b-8400-669efae5b4f0 # Any organization
+        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        key:
+            - category
+            - category_uuid
+            - category_title
+            - category_description
+            - category_presentation
+            - category_data
+            - service
+            - service_uuid
+            - service_title
+            - service_description
+            - service_presentation
+            - service_data
+            - scenario
+            - scenario_uuid
+            - scenario_title
+            - scenario_description
+            - scenario_presentation
+            - scenario_data
+            - scenario_type
+            - scenario_data
+            - submission
+            - submission_uuid
+            - submission_created_at
+            - submission_scenario
+            - submission_data
+        attributes: [BROWSE, READ]
 
 prototype:
     access: ~
