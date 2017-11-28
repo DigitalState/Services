@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new Ds\Component\Api\Bridge\Symfony\Bundle\DsApiBundle(),
             new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
             new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle(),
+            new Ds\Component\Func\Bridge\Symfony\Bundle\DsFuncBundle(),
             new Ds\Component\Health\Bridge\Symfony\Bundle\DsHealthBundle(),
             new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle(),
             new Ds\Component\Log\Bridge\Symfony\Bundle\DsLogBundle(),
