@@ -32,20 +32,20 @@ services:
         links:
               - db:services_db
         extra_hosts:
-            - 'api.assets.ds:${PROXY_HOST}'
-            - 'api.authentication.ds:${PROXY_HOST}'
-            - 'api.camunda.ds:${PROXY_HOST}'
-            - 'api.cases.ds:${PROXY_HOST}'
-            - 'api.cms.ds:${PROXY_HOST}'
-            - 'api.discovery.ds:${PROXY_HOST}'
-            - 'api.formio.ds:${PROXY_HOST}'
-            - 'api.identities.ds:${PROXY_HOST}'
-            - 'api.interactions.ds:${PROXY_HOST}'
-            - 'api.logs.ds:${PROXY_HOST}'
-            - 'api.records.ds:${PROXY_HOST}'
-            - 'api.services.ds:${PROXY_HOST}'
-            - 'api.tasks.ds:${PROXY_HOST}'
-            - 'api.topics.ds:${PROXY_HOST}'
+            - 'api.assets.lab.ds:${PROXY_HOST}'
+            - 'api.authentication.lab.ds:${PROXY_HOST}'
+            - 'api.camunda.lab.ds:${PROXY_HOST}'
+            - 'api.cases.lab.ds:${PROXY_HOST}'
+            - 'api.cms.lab.ds:${PROXY_HOST}'
+            - 'api.discovery.lab.ds:${PROXY_HOST}'
+            - 'api.formio.lab.ds:${PROXY_HOST}'
+            - 'api.identities.lab.ds:${PROXY_HOST}'
+            - 'api.interactions.lab.ds:${PROXY_HOST}'
+            - 'api.logs.lab.ds:${PROXY_HOST}'
+            - 'api.records.lab.ds:${PROXY_HOST}'
+            - 'api.services.lab.ds:${PROXY_HOST}'
+            - 'api.tasks.lab.ds:${PROXY_HOST}'
+            - 'api.topics.lab.ds:${PROXY_HOST}'
 
     nginx:
         image: nginx:1.11-alpine
