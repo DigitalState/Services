@@ -80,7 +80,14 @@ docker-compose exec php php bin/console doctrine:fixtures:load
 
 ## Documentation
 
-Documentation...
+...
+
+### Scenario Type: BPM
+
+The `BPM` scenario type is a complex scenario type that generates data flows across multiple micro services.
+
+See: [BPM Scenario Data Flow](./docs/bpm-scenario-data-flow.md) documentation for further information about how data is exchanged between Services, Formio, Camunda, and the Client.
+
 
 ## Contributing
 
