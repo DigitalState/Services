@@ -1,8 +1,4 @@
-version: '2.1'
-
-volumes:
-    db_data:
-        driver: local
+version: '3.1'
 
 services:
     db:
@@ -23,12 +19,16 @@ services:
     php:
         build: .
         depends_on:
-            db:
-                condition: service_healthy
+            - db
         environment:
             SYMFONY_ENV: dev
         volumes:
             - '${DIRECTORY}:/srv/api-platform'
+        secrets:
+            - source: jwt_private_key
+              target: jwt/key
+            - source: jwt_public_key
+              target: jwt/key.pub
         links:
               - db:services_db
         extra_hosts:
@@ -50,19 +50,27 @@ services:
     nginx:
         image: nginx:1.11-alpine
         depends_on:
-            php:
-                condition: service_started
+            - php
         environment:
             - VIRTUAL_HOST
-        volumes_from:
-            - php
         volumes:
             - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+            - '${DIRECTORY}:/srv/api-platform'
         links:
               - php:services_php
               - db:services_db
+
+volumes:
+    db_data:
+        driver: local
 
 networks:
     default:
         external:
           name: '${NETWORK}'
+
+secrets:
+    jwt_private_key:
+        file: '${JWT_PRIVATE_KEY}'
+    jwt_public_key:
+        file: '${JWT_PUBLIC_KEY}'
