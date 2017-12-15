@@ -20,7 +20,7 @@ services:
         build: .
         depends_on:
             - db
-        command: ['wait-for', 'services_db:3306', '--', 'docker-app-start']
+        command: ['wait-for', 'services_db:3306', '--timeout=60', '--', 'docker-app-start']
         environment:
             SYMFONY_ENV: dev
         volumes:
