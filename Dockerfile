@@ -70,4 +70,4 @@ COPY docker/wait-for/wait-for /usr/local/bin/wait-for
 
 RUN chmod +x /usr/local/bin/wait-for
 
-CMD ["wait-for", "db:3306", "--", "docker-app-start"]
+CMD ["docker-app-start"]
