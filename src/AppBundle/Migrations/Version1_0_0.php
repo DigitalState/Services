@@ -4,6 +4,8 @@ namespace AppBundle\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Ramsey\Uuid\Uuid;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class Version1_0_0
@@ -42,41 +44,49 @@ class Version1_0_0 extends AbstractMigration
         $this->addSql('ALTER TABLE app_submission ADD CONSTRAINT FK_8D1EF18FE04E49DF FOREIGN KEY (scenario_id) REFERENCES app_scenario (id)');
 
         // Data
+        $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/1_0_0.yml');
+        $data = Yaml::parse($yml);
+
         $this->addSql('
             INSERT INTO 
                 `ds_config` (`id`, `uuid`, `owner`, `owner_uuid`, `key`, `value`, `enabled`, `version`, `created_at`, `updated_at`)
             VALUES 
-                (1, \'a1612291-ec5d-43a6-b701-7a0e523359bb\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_url\', \'api_url\', 1, 1, now(), now()),
-                (2, \'320660ba-07a7-4000-a970-78a8b4601a94\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_user\', \'api_user\', 1, 1, now(), now()),
-                (3, \'9d9df387-3dc2-4301-8a86-b36f66b9ae6e\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.api_key\', \'api_key\', 1, 1, now(), now()),
-                (4, \'1541eecc-9cbc-446d-9111-e06bd9b18045\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.service_uuid\', \'service_uuid\', 1, 1, now(), now()),
-                (5, \'0da7715a-552b-47e3-ae68-9e86dd33a693\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.scenario_uuid\', \'scenario_uuid\', 1, 1, now(), now()),
-                (6, \'689bc680-9f3c-4ab0-a7ff-29997e58c3b4\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity\', \'identity\', 1, 1, now(), now()),
-                (7, \'0dc59760-2d99-401b-b5bc-99ff275f8a09\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.identity_uuid\', \'identity_uuid\', 1, 1, now(), now()),
-                (8, \'fcadcae3-180b-4261-98d5-093788748c99\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\', 1, 1, now(), now()),
-                (9, \'674213cf-dd26-4ec9-952f-52db344b7970\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'app.bpm.variables.start_data\', \'start_data\', 1, 1, now(), now()),
-                (10, \'07e5372b-4d22-4bb2-a9db-816bfdc0a7f6\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
-                (11, \'11ebfa24-d397-4876-ae03-fa791083f386\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.uuid\', \'b496655f-8fe6-4340-9a77-1bc3eeabab53\', 1, 1, now(), now()),
-                (12, \'1780830f-0a16-4f16-be63-4d1577834a19\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
-                (13, \'772f17ec-a46c-4090-9965-56e6839241f5\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
-                (14, \'395c84cc-ac5c-4e95-a735-4c197281146c\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.user.identity_uuid\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, 1, now(), now()),
-                (15, \'85aa90e0-ca2b-4bef-834b-eab8973a1c97\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.authentication.host\', \'http://api.authentication.ds\', 1, 1, now(), now()),
-                (16, \'98c231e4-9886-4d18-b31a-7a9f65fda57d\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.identities.host\', \'http://api.identities.ds\', 1, 1, now(), now()),
-                (17, \'318d2df8-1e5c-47a1-b841-b7b60451833b\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cases.host\', \'http://api.cases.ds\', 1, 1, now(), now()),
-                (18, \'2dd9b153-5eb9-4a5d-bba0-5c21c6cdd5c7\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.services.host\', \'http://api.services.ds\', 1, 1, now(), now()),
-                (19, \'dd040562-6c77-47f2-929f-ecbfe9d90332\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.records.host\', \'http://api.records.ds\', 1, 1, now(), now()),
-                (20, \'adae1758-e6ee-4063-9b7f-86e434c1bc21\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.assets.host\', \'http://api.assets.ds\', 1, 1, now(), now()),
-                (21, \'736c5591-832a-4d1c-8236-8b7b07c4a820\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.cms.host\', \'http://api.cms.ds\', 1, 1, now(), now()),
-                (22, \'9e581cd1-0d89-4c26-a78a-b679dfe95fc2\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.camunda.host\', \'http://api.camunda.ds/engine-rest\', 1, 1, now(), now()),
-                (23, \'751954bd-177e-43c0-aab2-fb21c758de56\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'ds_api.api.formio.host\', \'http://api.formio.ds\', 1, 1, now(), now());
+                (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_url\', \'api_url\', 1, 1, now(), now()),
+                (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_user\', \'api_user\', 1, 1, now(), now()),
+                (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_key\', \'api_key\', 1, 1, now(), now()),
+                (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.service_uuid\', \'service_uuid\', 1, 1, now(), now()),
+                (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.scenario_uuid\', \'scenario_uuid\', 1, 1, now(), now()),
+                (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity\', \'identity\', 1, 1, now(), now()),
+                (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity_uuid\', \'identity_uuid\', 1, 1, now(), now()),
+                (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\', 1, 1, now(), now()),
+                (9, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.start_data\', \'start_data\', 1, 1, now(), now()),
+                (10, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'system@ds\', 1, 1, now(), now()),
+                (11, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \''.$data['user']['system']['uuid'].'\', 1, 1, now(), now()),
+                (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', 1, 1, now(), now()),
+                (13, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity\', \'System\', 1, 1, now(), now()),
+                (14, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity_uuid\', \''.$data['identity']['system']['uuid'].'\', 1, 1, now(), now()),
+                (15, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.assets.host\', \''.$data['config']['ds_api.api.assets.host']['value'].'\', 1, 1, now(), now()),
+                (16, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.authentication.host\', \''.$data['config']['ds_api.api.authentication.host']['value'].'\', 1, 1, now(), now()),
+                (17, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.camunda.host\', \''.$data['config']['ds_api.api.camunda.host']['value'].'\', 1, 1, now(), now()),
+                (18, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.cases.host\', \''.$data['config']['ds_api.api.cases.host']['value'].'\', 1, 1, now(), now()),
+                (19, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.cms.host\', \''.$data['config']['ds_api.api.cms.host']['value'].'\', 1, 1, now(), now()),
+                (20, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.formio.host\', \''.$data['config']['ds_api.api.formio.host']['value'].'\', 1, 1, now(), now()),
+                (21, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.identities.host\', \''.$data['config']['ds_api.api.identities.host']['value'].'\', 1, 1, now(), now()),
+                (22, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.records.host\', \''.$data['config']['ds_api.api.records.host']['value'].'\', 1, 1, now(), now()),
+                (23, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.services.host\', \''.$data['config']['ds_api.api.services.host']['value'].'\', 1, 1, now(), now()),
+                (24, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.api.tasks.host\', \''.$data['config']['ds_api.api.tasks.host']['value'].'\', 1, 1, now(), now());
         ');
-        
+
         $this->addSql('
             INSERT INTO 
                 `ds_access` (`id`, `uuid`, `owner`, `owner_uuid`, `identity`, `identity_uuid`, `version`, `created_at`, `updated_at`)
             VALUES 
-                (1, \'09a02f6a-bb41-4e5a-96fe-b531cd80610e\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', \'System\', \'df5fd904-aa47-452f-9c4a-d6b52fe5ace4\', 1, now(), now()),
-                (2, \'ff56f709-e8f9-43a6-8c0c-741ea15a4e3c\', \'BusinessUnit\', \'11bec012-a73f-45c1-8d2e-53502fa58c23\', \'System\', \'7b59586d-6924-47f3-bc1b-0dc207f5e80c\', 1, now(), now());
+                (1, \''.Uuid::uuid4()->toString().'\', \'System\', \''.$data['identity']['system']['uuid'].'\', \'System\', \''.$data['identity']['system']['uuid'].'\', 1, now(), now()),
+                (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Anonymous\', NULL, 1, now(), now()),
+                (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Individual\', NULL, 1, now(), now()),
+                (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Organization\', NULL, 1, now(), now()),
+                (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Staff\', NULL, 1, now(), now()),
+                (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'Staff\', \''.$data['identity']['admin']['uuid'].'\', 1, now(), now());
         ');
 
         $this->addSql('
@@ -86,9 +96,86 @@ class Version1_0_0 extends AbstractMigration
                 (1, 1, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
                 (2, 1, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
                 (3, 1, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\'),
-                (4, 2, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
-                (5, 2, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
-                (6, 2, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\');
+                (4, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category\', \'["BROWSE","READ"]\'),
+                (5, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_uuid\', \'["BROWSE","READ"]\'),
+                (6, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_title\', \'["BROWSE","READ"]\'),
+                (7, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_description\', \'["BROWSE","READ"]\'),
+                (8, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_presentation\', \'["BROWSE","READ"]\'),
+                (9, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_data\', \'["BROWSE","READ"]\'),
+                (10, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service\', \'["BROWSE","READ"]\'),
+                (11, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_uuid\', \'["BROWSE","READ"]\'),
+                (12, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_title\', \'["BROWSE","READ"]\'),
+                (13, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_description\', \'["BROWSE","READ"]\'),
+                (14, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_presentation\', \'["BROWSE","READ"]\'),
+                (15, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_data\', \'["BROWSE","READ"]\'),
+                (16, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario\', \'["BROWSE","READ"]\'),
+                (17, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_uuid\', \'["BROWSE","READ"]\'),
+                (18, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_title\', \'["BROWSE","READ"]\'),
+                (19, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_description\', \'["BROWSE","READ"]\'),
+                (20, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_presentation\', \'["BROWSE","READ"]\'),
+                (21, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_data\', \'["BROWSE","READ"]\'),
+                (22, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission\', \'["BROWSE","READ"]\'),
+                (23, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_uuid\', \'["BROWSE","READ"]\'),
+                (24, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_created_at\', \'["BROWSE","READ"]\'),
+                (25, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_scenario\', \'["BROWSE","READ"]\'),
+                (26, 2, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_data\', \'["BROWSE","READ"]\'),
+                (27, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category\', \'["BROWSE","READ"]\'),
+                (28, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_uuid\', \'["BROWSE","READ"]\'),
+                (29, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_title\', \'["BROWSE","READ"]\'),
+                (30, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_description\', \'["BROWSE","READ"]\'),
+                (31, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_presentation\', \'["BROWSE","READ"]\'),
+                (32, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_data\', \'["BROWSE","READ"]\'),
+                (33, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service\', \'["BROWSE","READ"]\'),
+                (34, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_uuid\', \'["BROWSE","READ"]\'),
+                (35, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_title\', \'["BROWSE","READ"]\'),
+                (36, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_description\', \'["BROWSE","READ"]\'),
+                (37, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_presentation\', \'["BROWSE","READ"]\'),
+                (38, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_data\', \'["BROWSE","READ"]\'),
+                (39, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario\', \'["BROWSE","READ"]\'),
+                (40, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_uuid\', \'["BROWSE","READ"]\'),
+                (41, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_title\', \'["BROWSE","READ"]\'),
+                (42, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_description\', \'["BROWSE","READ"]\'),
+                (43, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_presentation\', \'["BROWSE","READ"]\'),
+                (44, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_data\', \'["BROWSE","READ"]\'),
+                (45, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission\', \'["BROWSE","READ"]\'),
+                (46, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_uuid\', \'["BROWSE","READ"]\'),
+                (47, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_created_at\', \'["BROWSE","READ"]\'),
+                (48, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_scenario\', \'["BROWSE","READ"]\'),
+                (49, 3, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_data\', \'["BROWSE","READ"]\'),
+                (50, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category\', \'["BROWSE","READ"]\'),
+                (51, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_uuid\', \'["BROWSE","READ"]\'),
+                (52, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_title\', \'["BROWSE","READ"]\'),
+                (53, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_description\', \'["BROWSE","READ"]\'),
+                (54, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_presentation\', \'["BROWSE","READ"]\'),
+                (55, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_data\', \'["BROWSE","READ"]\'),
+                (56, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service\', \'["BROWSE","READ"]\'),
+                (57, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_uuid\', \'["BROWSE","READ"]\'),
+                (58, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_title\', \'["BROWSE","READ"]\'),
+                (59, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_description\', \'["BROWSE","READ"]\'),
+                (60, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_presentation\', \'["BROWSE","READ"]\'),
+                (61, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_data\', \'["BROWSE","READ"]\'),
+                (62, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario\', \'["BROWSE","READ"]\'),
+                (63, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_uuid\', \'["BROWSE","READ"]\'),
+                (64, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_title\', \'["BROWSE","READ"]\'),
+                (65, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_description\', \'["BROWSE","READ"]\'),
+                (66, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_presentation\', \'["BROWSE","READ"]\'),
+                (67, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_data\', \'["BROWSE","READ"]\'),
+                (68, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission\', \'["BROWSE","READ"]\'),
+                (69, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_uuid\', \'["BROWSE","READ"]\'),
+                (70, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_created_at\', \'["BROWSE","READ"]\'),
+                (71, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_scenario\', \'["BROWSE","READ"]\'),
+                (72, 4, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_data\', \'["BROWSE","READ"]\'),
+                (73, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category\', \'["BROWSE","READ"]\'),
+                (74, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'category_property\', \'["BROWSE","READ"]\'),
+                (75, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service\', \'["BROWSE","READ"]\'),
+                (76, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'service_property\', \'["BROWSE","READ"]\'),
+                (77, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario\', \'["BROWSE","READ"]\'),
+                (78, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'scenario_property\', \'["BROWSE","READ"]\'),
+                (79, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission\', \'["BROWSE","READ"]\'),
+                (80, 5, \'BusinessUnit\', \''.$data['business_unit']['backoffice']['uuid'].'\', \'submission_property\', \'["BROWSE","READ"]\'),
+                (81, 6, \'BusinessUnit\', NULL, \'entity\', \'["BROWSE","READ","EDIT","ADD","DELETE"]\'),
+                (82, 6, \'BusinessUnit\', NULL, \'property\', \'["BROWSE","READ","EDIT"]\'),
+                (83, 6, \'BusinessUnit\', NULL, \'custom\', \'["BROWSE","READ","EDIT","ADD","DELETE","EXECUTE"]\');
         ');
     }
 

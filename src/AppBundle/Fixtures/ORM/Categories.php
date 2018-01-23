@@ -23,6 +23,6 @@ class Categories extends CategoryFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/categories.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/categories.yml';
     }
 }

@@ -23,6 +23,6 @@ class Permissions extends PermissionFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/*/permissions.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/*/permissions.yml';
     }
 }

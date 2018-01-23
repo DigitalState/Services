@@ -45,74 +45,79 @@ items:
         value: start_data
 
     -
-        uuid: b057dec0-4943-45e6-99fe-28515f69e362
+        uuid: e48af156-7ae8-4bd9-bcfb-15d01ef1998e
         key: ds_api.user.username
         value: system@ds
 
     -
-        uuid: 340aceba-60e7-4c26-8e80-6d29d848d17a
+        uuid: eb6457c6-dca4-4a59-931d-75ae779e1a3c
         key: ds_api.user.uuid
-        value: 4b0237d1-0917-4d8b-af6d-2aa89be336de
+        value: 4b0237d1-0917-4d8b-af6d-2aa89be336de # System
 
     -
-        uuid: e2f19547-d938-40dd-814f-c5d441424a29
+        uuid: 97c6ae00-c0a5-4c5b-85ee-3fcfbb8f1f35
         key: ds_api.user.roles
         value: ROLE_SYSTEM
 
     -
-        uuid: c90ba1d3-d6a9-4094-927c-275f0663dd26
+        uuid: 7b3998a2-7ff8-44c3-84af-685b936c617b
         key: ds_api.user.identity
         value: System
 
     -
-        uuid: a16bda35-cdf5-44e8-804f-4c7a003d021a
+        uuid: 553c14e0-0d9d-4694-9d9a-cb919e4a7804
         key: ds_api.user.identity_uuid
-        value: fe1b94ed-783a-48d7-8bf2-2f9cea89f11e
+        value: fe1b94ed-783a-48d7-8bf2-2f9cea89f11e # System
 
     -
-        uuid: 4c4cdbc8-2e0a-4555-959d-9b4dfcbaa385
-        key: ds_api.api.authentication.host
-        value: http://api.authentication.ds
-
-    -
-        uuid: e4ad8a76-051c-49c7-9f29-d4c9731133f0
-        key: ds_api.api.identities.host
-        value: http://api.identities.ds
-
-    -
-        uuid: 96be3d98-889a-493e-a131-8c1569c345cc
-        key: ds_api.api.cases.host
-        value: http://api.cases.ds
-
-    -
-        uuid: 263c38f9-07fa-40a5-9f67-29778f1e60b6
-        key: ds_api.api.services.host
-        value: http://api.services.ds
-
-    -
-        uuid: 026b0c21-5bb1-4f4e-9f49-2e965837a29b
-        key: ds_api.api.records.host
-        value: http://api.records.ds
-
-    -
-        uuid: 7c1fbfb3-caf4-4724-b388-43dcb6e89f23
+        uuid: b9671b33-48b5-47b1-b86f-4b24497b1d5c
         key: ds_api.api.assets.host
         value: http://api.assets.ds
 
     -
-        uuid: 17f8da5d-e22d-4423-81c9-ee7702a4187e
-        key: ds_api.api.cms.host
-        value: http://api.cms.ds
+        uuid: abebfc3d-4ba0-4855-9352-c1d2247de9c6
+        key: ds_api.api.authentication.host
+        value: http://api.authentication.ds
 
     -
-        uuid: 04be1761-cc34-457b-b121-80bf22ae2630
+        uuid: 77e80bde-3f37-4520-8516-d35aaeedcc10
         key: ds_api.api.camunda.host
         value: http://api.camunda.ds/engine-rest
 
     -
-        uuid: 9a17cf09-8160-47b4-aa9d-6b60adb566c0
+        uuid: bbe3cbde-7503-4bcd-9b5c-f5921aefad48
+        key: ds_api.api.cases.host
+        value: http://api.cases.ds
+
+    -
+        uuid: 17ccf8c9-22e8-43b2-94dd-21fbf34d2134
+        key: ds_api.api.cms.host
+        value: http://api.cms.ds
+
+    -
+        uuid: 21b8c499-b87e-48cf-abc2-f856bd76bcc7
         key: ds_api.api.formio.host
         value: http://api.formio.ds
+
+    -
+        uuid: 32715d95-e41c-486a-b0ee-422f18d4f56a
+        key: ds_api.api.identities.host
+        value: http://api.identities.ds
+
+    -
+        uuid: 58c064fd-d18d-4398-ba95-732bbbfe6ccc
+        key: ds_api.api.records.host
+        value: http://api.records.ds
+
+    -
+        uuid: dfd85100-7b19-4563-b161-e9a2e46d64f7
+        key: ds_api.api.services.host
+        value: http://api.services.ds
+
+    -
+        uuid: a64acdb4-a020-4d47-b10a-a167f73128c4
+        key: ds_api.api.tasks.host
+        value: http://api.tasks.ds
 
 prototype:
     uuid: ~

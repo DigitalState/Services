@@ -1,7 +1,7 @@
 items:
     -
-        access: cc82373f-d2f7-4b54-ac9d-69dca4ffac5e # Any anonymous
-        entity_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        access: 8b041271-bf3b-486b-8400-669efae5b4f0 # Any Organization
+        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         key:
             - category
             - category_uuid
@@ -20,6 +20,8 @@ items:
             - scenario_title
             - scenario_description
             - scenario_presentation
+            - scenario_data
+            - scenario_type
             - scenario_data
             - submission
             - submission_uuid

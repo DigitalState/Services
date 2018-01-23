@@ -1,0 +1,61 @@
+user:
+    system:
+        uuid: 30765b53-28ed-402b-a5c3-e21e8ab377b3
+    anonymous:
+        uuid: 9120bdb2-2ef0-4124-9907-04e6548f1095
+    admin:
+        uuid: df913928-03ba-47a4-a23d-a16db9c2df65
+
+identity:
+    system:
+        uuid: 3732b4fb-3796-401c-9ecb-007bc363390a
+    admin:
+        uuid: 4daad9ea-794c-4e88-9bed-db6ae2399e22
+
+business_unit:
+    administration:
+        uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
+    backoffice:
+        uuid: 425c63f3-5d7c-4d9a-a0c2-19842b5f1ea1
+    portal:
+        uuid: d46fea94-4b7e-49f9-9f9c-32a2114b3772
+
+config:
+    app.bpm.variables.api_url:
+        value: api_url
+    app.bpm.variables.api_user:
+        value: api_user
+    app.bpm.variables.api_key:
+        value: api_key
+    app.bpm.variables.service_uuid:
+        value: service_uuid
+    app.bpm.variables.scenario_uuid:
+        value: scenario_uuid
+    app.bpm.variables.identity:
+        value: identity
+    app.bpm.variables.identity_uuid:
+        value: identity_uuid
+    app.bpm.variables.submission_uuid:
+        value: submission_uuid
+    app.bpm.variables.start_data:
+        value: start_data
+    ds_api.api.assets.host:
+        value: http://api.assets.ds
+    ds_api.api.authentication.host:
+        value: http://api.authentication.ds
+    ds_api.api.camunda.host:
+        value: http://api.camunda.ds/engine-rest
+    ds_api.api.cases.host:
+        value: http://api.cases.ds
+    ds_api.api.cms.host:
+        value: http://api.cms.ds
+    ds_api.api.formio.host:
+        value: http://api.formio.ds
+    ds_api.api.identities.host:
+        value: http://api.identities.ds
+    ds_api.api.records.host:
+        value: http://api.records.ds
+    ds_api.api.services.host:
+        value: http://api.services.ds
+    ds_api.api.tasks.host:
+        value: http://api.tasks.ds

@@ -1,7 +1,7 @@
 items:
     -
         uuid: e049f2b4-b249-48c2-850c-64d4c4b39527
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         service: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d # Report a Pothole
         type: bpm
         config:
@@ -26,7 +26,7 @@ items:
 
     -
         uuid: d4833574-377f-4845-acc1-bc6fcead0ce5
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         service: 52d4797d-aeba-4933-8775-e44901cf5f2d # Report a Graffiti
         type: bpm
         config:
@@ -51,7 +51,7 @@ items:
 
     -
         uuid: 46a56c28-b0c0-4b7e-8cb8-9c68df1a4a97
-        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         service: 6c2013d6-5627-4249-9446-51b539016bf2 # Recycle Bin Query
         type: bpm
         config:
@@ -76,7 +76,7 @@ items:
 
     -
         uuid: f2cc9686-51b4-4e35-96ce-2977cfedcf90
-        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         service: 6c2013d6-5627-4249-9446-51b539016bf2 # Recycle Bin Query
         type: info
         slug: info

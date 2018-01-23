@@ -23,6 +23,6 @@ class Configs extends ConfigFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/configs.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/configs.yml';
     }
 }

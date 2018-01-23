@@ -23,6 +23,6 @@ class Accesses extends AccessFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/data/{env}/*/accesses.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/*/accesses.yml';
     }
 }

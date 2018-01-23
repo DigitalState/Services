@@ -1,7 +1,7 @@
 items:
     -
         uuid: ecc69524-0b12-4eae-a6f4-b6eb0f442e29
-        owner_uuid: 8454c987-cbc5-4a24-ba1a-d420283caabd # Public Works
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         slug: infrastructure
         title:
             en: Infrastructure
@@ -18,7 +18,7 @@ items:
 
     -
         uuid: 434bdf45-fc0f-4633-80a8-5fb03a1d9079
-        owner_uuid: 9ce729fe-303b-420c-830a-bc7dd1cc407e # Environment
+        owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         slug: environment
         title:
             en: Environment
