@@ -25,6 +25,11 @@ items:
         value: scenario_uuid
 
     -
+        uuid: e7ac4acd-9401-4cf8-8498-433735df9418
+        key: app.bpm.variables.scenario_custom_datas
+        value: scenario_custom_data
+
+    -
         uuid: 15819529-acfc-40f7-9a8f-288b82cf89c8
         key: app.bpm.variables.identity
         value: identity

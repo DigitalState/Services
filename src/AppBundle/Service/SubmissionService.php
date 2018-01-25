@@ -69,10 +69,10 @@ class SubmissionService extends EntityService
                 } catch (ValidationException $exception) {
                     foreach ($exception->getErrors() as $error) {
                         $message = $error->message;
+                        $path = 'data.'.array_shift($error->path);
                         $template = '%s: %s';
-                        $parameters = ['data.'.$error->path, $error->message];
+                        $parameters = [$path, $message];
                         $root = '';
-                        $path = 'data.'.$error->path;
                         $value = null;
                         $violations[] = new ConstraintViolation($message, $template, $parameters, $root, $path, $value);
                     }

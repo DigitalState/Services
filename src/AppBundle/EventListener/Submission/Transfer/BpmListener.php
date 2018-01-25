@@ -68,18 +68,28 @@ class BpmListener
 //        $xml = $this->api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
+        $variables = [];
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.api_url'), '');
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.api_user'), '');
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.api_key'), '');
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.service_uuid'), $service->getUuid());
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.scenario_uuid'), $scenario->getUuid());
+        $config = $scenario->getConfig();
+
+        if (array_key_exists('process_custom_data', $config)
+            && array_key_exists('enabled', $config['process_custom_data'])
+            && $config['process_custom_data']['enabled']
+            && array_key_exists('value', $config['process_custom_data'])
+        ) {
+            $variables[] = new Variable($this->configService->get('app.bpm.variables.scenario_custom_data'), $config['process_custom_data']['value'], Variable::TYPE_JSON);
+        }
+
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.identity'), $submission->getIdentity());
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.identity_uuid'), $submission->getIdentityUuid());
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid());
+        $variables[] = new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON);
         $parameters
-            ->setVariables([
-                new Variable($this->configService->get('app.bpm.variables.api_url'), ''),
-                new Variable($this->configService->get('app.bpm.variables.api_user'), ''),
-                new Variable($this->configService->get('app.bpm.variables.api_key'), ''),
-                new Variable($this->configService->get('app.bpm.variables.service_uuid'), $service->getUuid()),
-                new Variable($this->configService->get('app.bpm.variables.scenario_uuid'), $scenario->getUuid()),
-                new Variable($this->configService->get('app.bpm.variables.identity'), $submission->getIdentity()),
-                new Variable($this->configService->get('app.bpm.variables.identity_uuid'), $submission->getIdentityUuid()),
-                new Variable($this->configService->get('app.bpm.variables.submission_uuid'), $submission->getUuid()),
-                new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON)
-            ])
+            ->setVariables($variables)
             ->setKey($scenario->getConfig('process_definition_key'));
         $this->api->get('camunda.process_definition')->start(null, $parameters);
         $submission->setState(Submission::STATE_TRANSFERRED);
