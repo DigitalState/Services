@@ -3,7 +3,6 @@ version: '3.1'
 services:
     db:
         image: mysql:5.7
-        restart: on-failure
         environment:
             MYSQL_DATABASE: api_platform
             MYSQL_USER: api_platform
@@ -21,7 +20,6 @@ services:
         build: .
         depends_on:
             - db
-        restart: on-failure
         command: ['wait-for', 'services_db:3306', '--timeout=60', '--', 'docker-app-start']
         environment:
             SYMFONY_ENV: dev
@@ -54,7 +52,6 @@ services:
         image: nginx:1.11-alpine
         depends_on:
             - php
-        restart: on-failure
         environment:
             - VIRTUAL_HOST
         volumes:
