@@ -4,14 +4,14 @@ services:
     db:
         image: mysql:5.7
         environment:
-            MYSQL_DATABASE: api_platform
-            MYSQL_USER: api_platform
-            MYSQL_PASSWORD: api_platform
+            MYSQL_DATABASE: '${DATABASE_NAME}'
+            MYSQL_USER: '${DATABASE_USERNAME}'
+            MYSQL_PASSWORD: '${DATABASE_PASSWORD}'
             MYSQL_RANDOM_ROOT_PASSWORD: 'true'
         volumes:
             - db_data:/var/lib/mysql
         healthcheck:
-            test: ['CMD-SHELL', 'mysql --user=api_platform --password=api_platform -e "SHOW TABLES" api_platform']
+            test: ['CMD-SHELL', 'mysql --user=${DATABASE_USERNAME} --password=${DATABASE_PASSWORD} -e "SHOW TABLES" ${DATABASE_NAME}']
             interval: 5s
             timeout: 1s
             retries: 10
