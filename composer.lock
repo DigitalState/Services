@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "06b58423bde280980510f2fb7d45ada7",
+    "content-hash": "d354e87ca9d4832694bae46f30d8e8f1",
     "packages": [
         {
             "name": "api-platform/core",
@@ -277,12 +277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DigitalState/Core.git",
-                "reference": "660a8202f209af7e9aab39555ce9990897c70405"
+                "reference": "7f058a500a98f8f8c10817f627fa67d33668fd76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DigitalState/Core/zipball/660a8202f209af7e9aab39555ce9990897c70405",
-                "reference": "660a8202f209af7e9aab39555ce9990897c70405",
+                "url": "https://api.github.com/repos/DigitalState/Core/zipball/7f058a500a98f8f8c10817f627fa67d33668fd76",
+                "reference": "7f058a500a98f8f8c10817f627fa67d33668fd76",
                 "shasum": ""
             },
             "require": {
@@ -311,7 +311,7 @@
             ],
             "description": "The DigitalState Core",
             "homepage": "https://digitalstate.ca",
-            "time": "2017-12-22T20:57:34+00:00"
+            "time": "2018-01-30T14:40:18+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -1284,6 +1284,73 @@
                 "symfony"
             ],
             "time": "2016-09-29T06:34:48+00:00"
+        },
+        {
+            "name": "dunglas/doctrine-json-odm",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dunglas/doctrine-json-odm.git",
+                "reference": "2de29f7fe6125d75a8d08ff86ec943a36f38bf40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dunglas/doctrine-json-odm/zipball/2de29f7fe6125d75a8d08ff86ec943a36f38bf40",
+                "reference": "2de29f7fe6125d75a8d08ff86ec943a36f38bf40",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.5",
+                "php": ">=5.5.9",
+                "symfony/serializer": "^2.8 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0",
+                "symfony/finder": "^2.8 || ^3.0 || ^4.0",
+                "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
+                "symfony/property-access": "^2.8 || ^3.0 || ^4.0",
+                "symfony/property-info": "^2.8 || ^3.0 || ^4.0"
+            },
+            "suggest": {
+                "symfony/property-access": "To support complex objects.",
+                "symfony/property-info": "To support complex objects.",
+                "symfony/symfony": "To use the provided bundle."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dunglas\\DoctrineJsonOdm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Dunglas",
+                    "email": "dunglas@gmail.com",
+                    "homepage": "https://dunglas.fr"
+                }
+            ],
+            "description": "An object document mapper for Doctrine ORM using JSON types of modern RDBMS.",
+            "homepage": "https://dunglas.fr",
+            "keywords": [
+                "database",
+                "json",
+                "mysql",
+                "odm",
+                "orm",
+                "postgresql",
+                "rdbms"
+            ],
+            "time": "2017-11-19T16:41:08+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

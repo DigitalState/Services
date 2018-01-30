@@ -3,6 +3,7 @@ FROM php:7.1-fpm-alpine
 RUN apk add --no-cache --virtual .persistent-deps \
 		git \
 		icu-libs \
+		libpq \
 		zlib
 
 ENV APCU_VERSION 5.1.8
@@ -11,10 +12,11 @@ RUN set -xe \
 	&& apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
 		icu-dev \
+		postgresql-dev \
 		zlib-dev \
 	&& docker-php-ext-install \
 		intl \
-		pdo_mysql \
+		pdo_pgsql \
 		zip \
 	&& pecl install \
 		apcu-${APCU_VERSION} \

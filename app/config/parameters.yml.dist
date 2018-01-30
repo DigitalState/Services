@@ -1,6 +1,6 @@
 parameters:
     database_host: services_db
-    database_port: 3306
+    database_port: 5432
     database_name: services
     database_user: services
     database_password: services
