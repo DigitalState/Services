@@ -5,7 +5,7 @@ Feature: Browse services
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
   @createSchema @loadFixtures
   Scenario: Browse all services
@@ -14,8 +14,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse paginated services
     When I add "Accept" header equal to "application/json"
@@ -23,8 +23,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific id
     When I add "Accept" header equal to "application/json"
@@ -32,8 +32,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific ids
     When I add "Accept" header equal to "application/json"
@@ -41,8 +41,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific uuid
     When I add "Accept" header equal to "application/json"
@@ -50,8 +50,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific uuids
     When I add "Accept" header equal to "application/json"
@@ -59,8 +59,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific owner
     When I add "Accept" header equal to "application/json"
@@ -68,35 +68,35 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific owners
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?owner[0]=BusinessUnit&owner[1]=Staff"
+    And I send a "GET" request to "/services?owner[0]=BusinessUnit"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific owner uuid
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?ownerUuid=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
+    And I send a "GET" request to "/services?ownerUuid=83bf8f26-7181-4bed-92f3-3ce5e4c286d7"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with specific owner uuids
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?ownerUuid[0]=14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
+    And I send a "GET" request to "/services?ownerUuid[0]=83bf8f26-7181-4bed-92f3-3ce5e4c286d7"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific before created date
     When I add "Accept" header equal to "application/json"
@@ -104,8 +104,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific after created date
     When I add "Accept" header equal to "application/json"
@@ -113,8 +113,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific before updated date
     When I add "Accept" header equal to "application/json"
@@ -122,8 +122,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific after updated date
     When I add "Accept" header equal to "application/json"
@@ -131,8 +131,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific before deleted date
     When I add "Accept" header equal to "application/json"
@@ -140,8 +140,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services with a specific after deleted date
     When I add "Accept" header equal to "application/json"
@@ -149,8 +149,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that are enabled
     When I add "Accept" header equal to "application/json"
@@ -158,8 +158,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that are disabled
     When I add "Accept" header equal to "application/json"
@@ -167,8 +167,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 0 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has keywords for title
     When I add "Accept" header equal to "application/json"
@@ -176,8 +176,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has case-insensitive keywords for title
     When I add "Accept" header equal to "application/json"
@@ -185,8 +185,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has keywords for description
     When I add "Accept" header equal to "application/json"
@@ -194,8 +194,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has case-insensitive keywords for description
     When I add "Accept" header equal to "application/json"
@@ -203,8 +203,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has keywords for presentation
     When I add "Accept" header equal to "application/json"
@@ -212,8 +212,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services that has case-insensitive keywords for presentation
     When I add "Accept" header equal to "application/json"
@@ -221,8 +221,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 1 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by id asc
     When I add "Accept" header equal to "application/json"
@@ -230,8 +230,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by id desc
     When I add "Accept" header equal to "application/json"
@@ -239,8 +239,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by created date asc
     When I add "Accept" header equal to "application/json"
@@ -248,8 +248,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by created date desc
     When I add "Accept" header equal to "application/json"
@@ -257,8 +257,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by updated date asc
     When I add "Accept" header equal to "application/json"
@@ -266,8 +266,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by updated date desc
     When I add "Accept" header equal to "application/json"
@@ -275,8 +275,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by deleted date asc
     When I add "Accept" header equal to "application/json"
@@ -284,8 +284,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by deleted date desc
     When I add "Accept" header equal to "application/json"
@@ -293,8 +293,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by owner asc
     When I add "Accept" header equal to "application/json"
@@ -302,8 +302,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   Scenario: Browse services ordered by owner desc
     When I add "Accept" header equal to "application/json"
@@ -311,8 +311,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
 #  Scenario: Browse services ordered by title asc
 #    When I add "Accept" header equal to "application/json"
@@ -338,8 +338,8 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items
 
   @dropSchema
   Scenario: Browse services ordered by weight desc
@@ -348,5 +348,5 @@ Feature: Browse services
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-#    And the response JSON should be a collection
-#    And the response collection should count 2 items
+    And the response should be a collection
+    And the response collection should count 1 items

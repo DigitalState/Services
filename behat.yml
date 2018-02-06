@@ -20,6 +20,8 @@ default:
         - Ds\Component\Database\Test\Context\SchemaContext:
             doctrine: "@doctrine"
         - Ds\Component\Database\Test\Context\MigrationContext
+        - Ds\Component\Database\Test\Context\FixtureContext
+        - Ds\Component\Http\Test\Context\JsonContext
 
   extensions:
     Behat\Symfony2Extension:
@@ -28,7 +30,7 @@ default:
         debug: "true"
 
     Behat\MinkExtension:
-      base_url: "http://localhost:8051/"
+      base_url: "http://api.services.ds/"
       sessions:
         default:
           symfony2: ~

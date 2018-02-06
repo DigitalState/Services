@@ -5,7 +5,7 @@ Feature: Read services
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
   @createSchema @loadFixtures @dropSchema
   Scenario: Read a service
@@ -25,17 +25,27 @@ Feature: Read services
     And the JSON node "owner" should exist
     And the JSON node "owner" should be equal to the string "BusinessUnit"
     And the JSON node "ownerUuid" should exist
-    And the JSON node "ownerUuid" should be equal to the string "14da4a8c-aee1-43b3-bbac-e3e81a853e0e"
+    And the JSON node "ownerUuid" should be equal to the string "83bf8f26-7181-4bed-92f3-3ce5e4c286d7"
     And the JSON node "slug" should exist
     And the JSON node "slug" should be equal to the string "report-pothole"
     And the JSON node "title" should exist
-#    And the JSON node "title" should be equal to "todo"
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Report a Pothole"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Signaler un nids de poule"
     And the JSON node "description" should exist
-#    And the JSON node "description" should be equal to "todo"
+    And the JSON node "description.en" should exist
+    And the JSON node "description.en" should be equal to "Description ..."
+    And the JSON node "description.fr" should exist
+    And the JSON node "description.fr" should be equal to "Description ..."
     And the JSON node "presentation" should exist
-#    And the JSON node "presentation" should be equal to "todo"
+    And the JSON node "presentation.en" should exist
+    And the JSON node "presentation.en" should be equal to "Presentation ..."
+    And the JSON node "presentation.fr" should exist
+    And the JSON node "presentation.fr" should be equal to "Presentation ..."
     And the JSON node "data" should exist
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "data.en" should exist
+    And the JSON node "data.fr" should exist
     And the JSON node "categories" should exist
     And the JSON node "scenarios" should exist
     And the JSON node "enabled" should exist

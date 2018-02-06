@@ -5,9 +5,9 @@ Feature: Add services
   I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
-  @createSchema @loadFixtures @dropSchema
+  @createSchema @loadFixtures
   Scenario: Add a service
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
@@ -15,7 +15,7 @@ Feature: Add services
     """
     {
       "owner": "BusinessUnit",
-      "ownerUuid": "a4b9e265-a7a1-4921-a387-1f2a6bea43f6",
+      "ownerUuid": "83bf8f26-7181-4bed-92f3-3ce5e4c286d7",
       "slug": "slug-add",
       "title": {
         "en": "Title - add",
@@ -31,10 +31,10 @@ Feature: Add services
       },
       "data": {
         "en": {
-          "test": "test"
+          "test": "test - add"
         },
         "fr": {
-          "test": "test"
+          "test": "test - add"
         }
       },
       "enabled": true,
@@ -55,17 +55,31 @@ Feature: Add services
     And the JSON node "owner" should exist
     And the JSON node "owner" should be equal to the string "BusinessUnit"
     And the JSON node "ownerUuid" should exist
-    And the JSON node "ownerUuid" should be equal to the string "a4b9e265-a7a1-4921-a387-1f2a6bea43f6"
+    And the JSON node "ownerUuid" should be equal to the string "83bf8f26-7181-4bed-92f3-3ce5e4c286d7"
     And the JSON node "slug" should exist
     And the JSON node "slug" should be equal to the string "slug-add"
     And the JSON node "title" should exist
-#    And the JSON node "title" should be equal to "todo"
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Title - add"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Titre - add"
     And the JSON node "description" should exist
-#    And the JSON node "description" should be equal to "todo"
+    And the JSON node "description.en" should exist
+    And the JSON node "description.en" should be equal to "Description - add"
+    And the JSON node "description.fr" should exist
+    And the JSON node "description.fr" should be equal to "Description - add"
     And the JSON node "presentation" should exist
-#    And the JSON node "presentation" should be equal to "todo"
+    And the JSON node "presentation.en" should exist
+    And the JSON node "presentation.en" should be equal to "Presentation - add"
+    And the JSON node "presentation.fr" should exist
+    And the JSON node "presentation.fr" should be equal to "Presentation - add"
     And the JSON node "data" should exist
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "test - add"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "test - add"
     And the JSON node "categories" should exist
     And the JSON node "scenarios" should exist
     And the JSON node "enabled" should exist
@@ -74,3 +88,13 @@ Feature: Add services
     And the JSON node "weight" should be equal to the number 1
     And the JSON node "version" should exist
     And the JSON node "version" should be equal to the number 1
+
+  @dropSchema
+  Scenario: Read the added category
+    When I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/services?id=2"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the response should be in JSON
+    And the response should be a collection
+    And the response collection should count 1 items

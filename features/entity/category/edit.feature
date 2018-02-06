@@ -5,7 +5,7 @@ Feature: Edit categories
   I should be able to send api requests related to categories
 
   Background:
-    Given I am authenticated as a "system" identity
+    Given I am authenticated as the "system" identity
 
   @createSchema @loadFixtures
   Scenario: Edit a category
@@ -14,7 +14,7 @@ Feature: Edit categories
     And I send a "PUT" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0" with body:
     """
     {
-      "ownerUuid": "0350944c-3d60-4d19-b74f-48865ea91339",
+      "ownerUuid": "325e1004-8516-4ca9-a4d3-d7505bd9a7fe",
       "slug": "infrastructure-edit",
       "title": {
         "en": "Infrastructure - edit",
@@ -43,12 +43,30 @@ Feature: Edit categories
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-    And the JSON node "ownerUuid" should be equal to the string "0350944c-3d60-4d19-b74f-48865ea91339"
+    And the JSON node "ownerUuid" should be equal to the string "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"
     And the JSON node "slug" should be equal to the string "infrastructure-edit"
-#    And the JSON node "title" should be equal to "todo"
-#    And the JSON node "description" should be equal to "todo"
-#    And the JSON node "presentation" should be equal to "todo"
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "title" should exist
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Infrastructure - edit"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Infrastructure - edit"
+    And the JSON node "description" should exist
+    And the JSON node "description.en" should exist
+    And the JSON node "description.en" should be equal to "Description - edit"
+    And the JSON node "description.fr" should exist
+    And the JSON node "description.fr" should be equal to "Description - edit"
+    And the JSON node "presentation" should exist
+    And the JSON node "presentation.en" should exist
+    And the JSON node "presentation.en" should be equal to "Presentation - edit"
+    And the JSON node "presentation.fr" should exist
+    And the JSON node "presentation.fr" should be equal to "Presentation - edit"
+    And the JSON node "data" should exist
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "test - edit"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "test - edit"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
 
@@ -58,12 +76,30 @@ Feature: Edit categories
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-    And the JSON node "ownerUuid" should be equal to the string "0350944c-3d60-4d19-b74f-48865ea91339"
+    And the JSON node "ownerUuid" should be equal to the string "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"
     And the JSON node "slug" should be equal to the string "infrastructure-edit"
-#    And the JSON node "title" should be equal to "todo"
-#    And the JSON node "description" should be equal to "todo"
-#    And the JSON node "presentation" should be equal to "todo"
-#    And the JSON node "data" should be equal to "todo"
+    And the JSON node "title" should exist
+    And the JSON node "title.en" should exist
+    And the JSON node "title.en" should be equal to "Infrastructure - edit"
+    And the JSON node "title.fr" should exist
+    And the JSON node "title.fr" should be equal to "Infrastructure - edit"
+    And the JSON node "description" should exist
+    And the JSON node "description.en" should exist
+    And the JSON node "description.en" should be equal to "Description - edit"
+    And the JSON node "description.fr" should exist
+    And the JSON node "description.fr" should be equal to "Description - edit"
+    And the JSON node "presentation" should exist
+    And the JSON node "presentation.en" should exist
+    And the JSON node "presentation.en" should be equal to "Presentation - edit"
+    And the JSON node "presentation.fr" should exist
+    And the JSON node "presentation.fr" should be equal to "Presentation - edit"
+    And the JSON node "data" should exist
+    And the JSON node "data.en" should exist
+    And the JSON node "data.en.test" should exist
+    And the JSON node "data.en.test" should be equal to "test - edit"
+    And the JSON node "data.fr" should exist
+    And the JSON node "data.fr.test" should exist
+    And the JSON node "data.fr.test" should be equal to "test - edit"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
 

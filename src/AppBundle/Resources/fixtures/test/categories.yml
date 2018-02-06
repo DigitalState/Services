@@ -1,7 +1,7 @@
 items:
     -
         uuid: 70f36469-a65c-4d81-ae15-d66a2ef90df0
-        owner_uuid: 14da4a8c-aee1-43b3-bbac-e3e81a853e0e # Public Works
+        owner_uuid: 83bf8f26-7181-4bed-92f3-3ce5e4c286d7 # Backoffice
         slug: infrastructure
         title:
             en: Infrastructure
