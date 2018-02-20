@@ -1,38 +1,9 @@
-items:
-    -
-        access: 8b041271-bf3b-486b-8400-669efae5b4f0 # Any Organization
-        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
-        key:
-            - category
-            - category_uuid
-            - category_title
-            - category_description
-            - category_presentation
-            - category_data
-            - service
-            - service_uuid
-            - service_title
-            - service_description
-            - service_presentation
-            - service_data
-            - scenario
-            - scenario_uuid
-            - scenario_title
-            - scenario_description
-            - scenario_presentation
-            - scenario_data
-            - scenario_type
-            - scenario_data
-            - submission
-            - submission_uuid
-            - submission_created_at
-            - submission_scenario
-            - submission_data
-        attributes: [BROWSE, READ]
+items: []
 
 prototype:
     access: ~
-    entity: BusinessUnit
+    scope: ~
+    entity: ~
     entity_uuid: ~
     key: ~
     attributes: []

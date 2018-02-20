@@ -2,7 +2,8 @@ items: []
 
 prototype:
     access: ~
-    entity: BusinessUnit
+    scope: ~
+    entity: ~
     entity_uuid: ~
     key: ~
     attributes: []
