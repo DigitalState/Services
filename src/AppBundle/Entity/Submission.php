@@ -10,6 +10,7 @@ use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Identitiable;
 use Ds\Component\Model\Type\Versionable;
 use AppBundle\Entity\Attribute\Accessor as ServiceAccessor;
+use Ds\Component\Security\Model\Type\Secured;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -42,7 +43,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\Table(name="app_submission")
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable
+class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable, Secured
 {
     use Behavior\Timestampable\Timestampable;
     use Behavior\SoftDeletable\SoftDeletable;

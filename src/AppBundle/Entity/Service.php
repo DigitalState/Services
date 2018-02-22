@@ -13,6 +13,7 @@ use Ds\Component\Model\Type\Ownable;
 use Ds\Component\Model\Type\Sluggable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Versionable;
+use Ds\Component\Security\Model\Type\Secured;
 use Ds\Component\Translation\Model\Attribute\Accessor as TranslationAccessor;
 use Ds\Component\Translation\Model\Type\Translatable;
 use Knp\DoctrineBehaviors\Model as Behavior;
@@ -52,7 +53,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
-class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable
+class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable, Secured
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
