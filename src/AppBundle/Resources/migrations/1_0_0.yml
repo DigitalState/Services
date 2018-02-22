@@ -1,10 +1,13 @@
 user:
     system:
         uuid: 30765b53-28ed-402b-a5c3-e21e8ab377b3
+        password: ~
     anonymous:
         uuid: 9120bdb2-2ef0-4124-9907-04e6548f1095
+        password: ~
     admin:
         uuid: df913928-03ba-47a4-a23d-a16db9c2df65
+        password: ~
 
 identity:
     system:
