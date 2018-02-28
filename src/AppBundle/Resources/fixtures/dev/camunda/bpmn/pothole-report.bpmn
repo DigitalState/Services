@@ -5,7 +5,7 @@
       <bpmn:outgoing>SequenceFlow_1q8gf6i</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1q8gf6i" sourceRef="StartEvent_1" targetRef="Task_1um55u0" />
-    <bpmn:userTask id="Task_1um55u0" name="Review" camunda:formKey="formio:pothole-report-review" camunda:assignee="Staff:e32f09b7-e1cf-4a91-a0e1-6822bf47a662" camunda:candidateGroups="8454c987-cbc5-4a24-ba1a-d420283caabd">
+    <bpmn:userTask id="Task_1um55u0" name="Review" camunda:formKey="formio:pothole-report-review" camunda:assignee="Staff:5449ce65-5df0-440d-aead-21a77907e59a" camunda:candidateGroups="a9d68bf7-5000-49fe-8b00-33dde235b327">
       <bpmn:incoming>SequenceFlow_1q8gf6i</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0wplinc</bpmn:outgoing>
     </bpmn:userTask>

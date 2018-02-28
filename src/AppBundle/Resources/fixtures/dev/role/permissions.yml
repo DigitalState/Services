@@ -63,9 +63,7 @@ items:
 
     -
         access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
-        scope: owner
-        entity: BusinessUnit
-        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+        scope: session
         key:
             - category
             - category_uuid
@@ -96,9 +94,7 @@ items:
 
     -
         access: 06a30c71-c4c8-430c-97fa-be4bcba1244b # Organization
-        scope: owner
-        entity: BusinessUnit
-        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+        scope: session
         key:
             - category
             - category_uuid
@@ -129,9 +125,7 @@ items:
 
     -
         access: cf626093-2ad4-4687-855d-8e9144f5620d # Anonymous
-        scope: owner
-        entity: BusinessUnit
-        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+        scope: session
         key:
             - category
             - category_uuid
