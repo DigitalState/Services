@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Fixtures\ORM;
+namespace AppBundle\Fixtures;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Ds\Component\Security\Fixture\ORM\AccessFixture;
+use Ds\Component\Security\Fixture\AccessFixture;
 
 /**
  * Class Accesses

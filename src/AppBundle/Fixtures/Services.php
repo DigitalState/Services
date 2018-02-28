@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Fixtures\ORM;
+namespace AppBundle\Fixtures;
 
-use AppBundle\Fixture\ORM\ServiceFixture;
+use AppBundle\Fixture\ServiceFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 /**

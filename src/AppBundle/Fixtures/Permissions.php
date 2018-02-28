@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Fixtures\ORM;
+namespace AppBundle\Fixtures;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Ds\Component\Security\Fixture\ORM\PermissionFixture;
+use Ds\Component\Security\Fixture\PermissionFixture;
 
 /**
  * Class Permissions

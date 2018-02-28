@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Fixtures\ORM;
+namespace AppBundle\Fixtures;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Ds\Component\Config\Fixture\ORM\ConfigFixture;
+use Ds\Component\Config\Fixture\ConfigFixture;
 
 /**
  * Class Configs
