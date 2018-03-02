@@ -63,7 +63,9 @@ items:
 
     -
         access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
-        scope: session
+        scope: owner
+        entity: BusinessUnit
+        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         key:
             - category
             - category_uuid
@@ -85,6 +87,12 @@ items:
             - scenario_data
             - scenario_type
             - scenario_data
+        attributes: [BROWSE, READ]
+
+    -
+        access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
+        scope: session
+        key:
             - submission
             - submission_uuid
             - submission_created_at
@@ -94,7 +102,9 @@ items:
 
     -
         access: 06a30c71-c4c8-430c-97fa-be4bcba1244b # Organization
-        scope: session
+        scope: owner
+        entity: BusinessUnit
+        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         key:
             - category
             - category_uuid
@@ -116,6 +126,12 @@ items:
             - scenario_data
             - scenario_type
             - scenario_data
+        attributes: [BROWSE, READ]
+
+    -
+        access: 06a30c71-c4c8-430c-97fa-be4bcba1244b # Organization
+        scope: session
+        key:
             - submission
             - submission_uuid
             - submission_created_at
@@ -125,7 +141,9 @@ items:
 
     -
         access: cf626093-2ad4-4687-855d-8e9144f5620d # Anonymous
-        scope: session
+        scope: owner
+        entity: BusinessUnit
+        entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
         key:
             - category
             - category_uuid
@@ -145,6 +163,12 @@ items:
             - scenario_description
             - scenario_presentation
             - scenario_data
+        attributes: [BROWSE, READ]
+
+    -
+        access: cf626093-2ad4-4687-855d-8e9144f5620d # Anonymous
+        scope: session
+        key:
             - submission
             - submission_uuid
             - submission_created_at
