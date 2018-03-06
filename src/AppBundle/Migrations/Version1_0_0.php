@@ -94,7 +94,7 @@ class Version1_0_0 extends AbstractMigration
                 (9, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.submission_uuid\', \'submission_uuid\', true, 1, now(), now()),
                 (10, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.start_data\', \'start_data\', true, 1, now(), now()),
                 (11, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'system@system.ds\', true, 1, now(), now()),
-                (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'\', true, 1, now(), now()),
+                (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \''.$data['user']['system']['password'].'\', true, 1, now(), now()),
                 (13, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \''.$data['user']['system']['uuid'].'\', true, 1, now(), now()),
                 (14, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'ROLE_SYSTEM\', true, 1, now(), now()),
                 (15, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity\', \'System\', true, 1, now(), now()),
@@ -132,7 +132,6 @@ class Version1_0_0 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         // Schema
-        $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE ds_access_permission DROP CONSTRAINT FK_D46DD4D04FEA67CF');
         $this->addSql('ALTER TABLE app_category_trans DROP CONSTRAINT FK_47E8C30A2C2AC5D3');
         $this->addSql('ALTER TABLE app_service_category DROP CONSTRAINT FK_6B04A35D12469DE2');
