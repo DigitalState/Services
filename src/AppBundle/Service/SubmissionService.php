@@ -47,9 +47,10 @@ class SubmissionService extends EntityService
      *
      * @param \AppBundle\Entity\Submission $submission
      * @param array $violations
+     * @oaram boolean $overwrite
      * @return boolean
      */
-    public function isValid(Submission $submission, array &$violations = [])
+    public function isValid(Submission $submission, array &$violations = [], $overwrite = true)
     {
         $scenario = $submission->getScenario();
         $form = $this->scenarioService->getForm($scenario);
@@ -63,7 +64,11 @@ class SubmissionService extends EntityService
                 $parameters = new Parameters;
 
                 try {
-                    $this->api->get('formio.submission')->create($model, $parameters);
+                    $model = $this->api->get('formio.submission')->create($model, $parameters);
+
+                    if ($overwrite) {
+                        $submission->setData((array) $model->getData());
+                    }
 
                     return true;
                 } catch (ValidationException $exception) {
