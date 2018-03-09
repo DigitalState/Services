@@ -11,7 +11,7 @@ services:
             - db_data:/var/lib/postgresql/data:rw
 
     php:
-        image: digitalstate/services:0.1.0
+        image: digitalstate/services:0.1.2
         depends_on:
             - db
         command: ['wait-for', 'services_db:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
