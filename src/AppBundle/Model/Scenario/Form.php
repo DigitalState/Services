@@ -13,6 +13,7 @@ class Form
     use Attribute\Method;
     use Attribute\Action;
     use Attribute\Type;
+    use Attribute\Display;
     use Attribute\Schema;
 
     /**

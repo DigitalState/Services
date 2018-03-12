@@ -81,7 +81,8 @@ class ScenarioService extends EntityService
             case Form::TYPE_FORMIO:
                 $parameters = new FormParameters;
                 $parameters->setPath($id);
-                $components = $this->api->get('formio.form')->get(null, $parameters)->getComponents();
+                $formio = $this->api->get('formio.form')->get(null, $parameters);
+                $components = $formio->getComponents();
                 $resolverCollection = $this->resolverCollection;
                 $resolve = function(&$component) use (&$resolve, $resolverCollection) {
                     switch (true) {
@@ -119,6 +120,7 @@ class ScenarioService extends EntityService
                 }
 
                 $form
+                    ->setDisplay($formio->getDisplay())
                     ->setSchema($components)
                     ->setMethod('POST')
                     ->setAction('/scenarios/'.$scenario->getUuid().'/submissions');
