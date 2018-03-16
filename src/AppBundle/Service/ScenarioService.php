@@ -86,11 +86,15 @@ class ScenarioService extends EntityService
 
         $forms = $this->formService->getForms($id);
 
-        foreach ($forms as $form) {
+        foreach ($forms as $key => $form) {
+            $form = $this->formService->resolve($form);
+
             if ($form->getPrimary()) {
                 // @todo Perhaps use the route generator.
                 $form->setAction('/scenarios/'.$scenario->getUuid().'/submissions');
             }
+
+            $forms[$key] = $form;
         }
 
         return $forms;

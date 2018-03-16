@@ -46,7 +46,7 @@ class TranslationAction
      * Form
      *
      * @Method("GET")
-     * @Route(path="/scenarios/{uuid}/form/translation")
+     * @Route(path="/scenarios/{uuid}/forms/translation")
      * @param string $uuid
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */

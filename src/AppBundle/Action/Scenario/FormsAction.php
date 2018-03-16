@@ -33,7 +33,7 @@ class FormsAction
      * Form
      *
      * @Method("GET")
-     * @Route(path="/scenarios/{uuid}/form")
+     * @Route(path="/scenarios/{uuid}/forms")
      * @param string $uuid
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
