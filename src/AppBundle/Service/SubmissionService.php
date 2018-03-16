@@ -3,10 +3,10 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Submission;
-use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use Ds\Component\Api\Api\Api;
 use Ds\Component\Entity\Service\EntityService;
+use Ds\Component\Form\Model\Form;
 use Ds\Component\Formio\Exception\ValidationException;
 use Ds\Component\Formio\Model\Submission as Model;
 use Ds\Component\Formio\Query\SubmissionParameters as Parameters;
@@ -47,7 +47,7 @@ class SubmissionService extends EntityService
      *
      * @param \AppBundle\Entity\Submission $submission
      * @param array $violations
-     * @oaram boolean $overwrite
+     * @param boolean $overwrite
      * @return boolean
      */
     public function isValid(Submission $submission, array &$violations = [], $overwrite = true)

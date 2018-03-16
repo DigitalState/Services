@@ -42,6 +42,24 @@ class ScenarioService extends EntityService
     }
 
     /**
+     * Get form
+     *
+     * @param \AppBundle\Entity\Scenario $scenario
+     * @return \Ds\Component\Form\Model\Form
+     * @throws \DomainException
+     */
+    public function getForm(Scenario $scenario)
+    {
+        $forms = $this->getForms($scenario);
+
+        foreach ($forms as $form) {
+            if ($form->getPrimary()) {
+                return $form;
+            }
+        }
+    }
+
+    /**
      * Get forms
      *
      * @param \AppBundle\Entity\Scenario $scenario
