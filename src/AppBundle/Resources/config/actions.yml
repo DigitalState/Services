@@ -1,6 +1,6 @@
 services:
-    AppBundle\Action\Scenario\FormAction:
-        class: AppBundle\Action\Scenario\FormAction
+    AppBundle\Action\Scenario\FormsAction:
+        class: AppBundle\Action\Scenario\FormsAction
         arguments:
             - '@app.service.scenario'
 
@@ -9,8 +9,8 @@ services:
         arguments:
             - '@app.service.scenario'
 
-    AppBundle\Action\Scenario\Form\TranslationAction:
-        class: AppBundle\Action\Scenario\Form\TranslationAction
+    AppBundle\Action\Scenario\Forms\TranslationAction:
+        class: AppBundle\Action\Scenario\Forms\TranslationAction
         arguments:
             - '@app.service.scenario'
             - '@request_stack'

@@ -12,7 +12,7 @@ services:
         parent: ds_entity.service.entity
         arguments:
             - '@ds_api.api'
-            - '@ds_resolver.collection.resolver'
+            - '@ds_form.service.form'
 
     app.service.submission:
         class: AppBundle\Service\SubmissionService

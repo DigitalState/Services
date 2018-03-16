@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Action\Scenario\Form;
+namespace AppBundle\Action\Scenario\Forms;
 
 use AppBundle\Service\ScenarioService;
 use Symfony\Component\HttpFoundation\JsonResponse;

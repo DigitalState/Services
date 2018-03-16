@@ -10,9 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class FormAction
+ * Class FormsAction
  */
-class FormAction
+class FormsAction
 {
     /**
      * @var \AppBundle\Service\ScenarioService
@@ -46,13 +46,13 @@ class FormAction
             throw new NotFoundHttpException('Scenario not found.');
         }
 
-        $form = $this->scenarioService->getForm($scenario);
+        $forms = $this->scenarioService->getForms($scenario);
 
-        if (!$form) {
-            throw new NotFoundHttpException('Scenario form not found.');
+        foreach ($forms as $key => $value) {
+            $forms[$key] = $value->toObject();
         }
 
-        $response = new JsonResponse($form->toObject());
+        $response = new JsonResponse($forms);
 
         return $response;
     }

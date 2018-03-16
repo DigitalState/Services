@@ -3,16 +3,12 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Scenario;
-use AppBundle\Model\Scenario\Form;
 use Doctrine\ORM\EntityManager;
 use DomainException;
 use Ds\Component\Api\Api\Api;
 use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
 use Ds\Component\Entity\Service\EntityService;
-use Ds\Component\Formio\Query\FormParameters;
-use Ds\Component\Resolver\Collection\ResolverCollection;
-use Ds\Component\Resolver\Exception\UnmatchedException;
-use Ds\Component\Resolver\Exception\UnresolvedException;
+use Ds\Component\Form\Service\FormService;
 
 /**
  * Class ScenarioService
@@ -25,51 +21,44 @@ class ScenarioService extends EntityService
     protected $api;
 
     /**
-     * @var \Ds\Component\Resolver\Collection\ResolverCollection
+     * @var \Ds\Component\Form\Service\FormService
      */
-    protected $resolverCollection;
+    protected $formService;
 
     /**
      * Constructor
      *
      * @param \Doctrine\ORM\EntityManager $manager
      * @param \Ds\Component\Api\Api\Api $api
-     * @param \Ds\Component\Resolver\Collection\ResolverCollection $resolverCollection
+     * @param \Ds\Component\Form\Service\FormService $formService
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, Api $api, ResolverCollection $resolverCollection, $entity = Scenario::class)
+    public function __construct(EntityManager $manager, Api $api, FormService $formService, $entity = Scenario::class)
     {
         parent::__construct($manager, $entity);
 
         $this->api = $api;
-        $this->resolverCollection = $resolverCollection;
+        $this->formService = $formService;
     }
 
     /**
-     * Get form
+     * Get forms
      *
      * @param \AppBundle\Entity\Scenario $scenario
-     * @return \AppBundle\Model\Scenario\Form
+     * @return array
      * @throws \DomainException
      */
-    public function getForm(Scenario $scenario)
+    public function getForms(Scenario $scenario)
     {
-        $form = new Form;
-
         switch ($scenario->getType()) {
             case Scenario::TYPE_BPM:
                 $parameters = new ProcessDefinitionParameters;
                 $parameters->setKey($scenario->getConfig('process_definition_key'));
-                $startForm = $this->api->get('camunda.process_definition')->getStartForm(null, $parameters);
+                $id = $this->api->get('camunda.process_definition')->getStartForm(null, $parameters);
 
-                if (null === $startForm) {
+                if (null === $id) {
                     return null;
                 }
-
-                list($type, $id) = explode(':', $startForm, 2);
-                $form
-                    ->setType($type)
-                    ->setId($id);
 
                 break;
 
@@ -77,63 +66,15 @@ class ScenarioService extends EntityService
                 throw new DomainException('Scenario type does not exist.');
         }
 
-        switch ($form->getType()) {
-            case Form::TYPE_FORMIO:
-                $parameters = new FormParameters;
-                $parameters->setPath($id);
-                $formio = $this->api->get('formio.form')->get(null, $parameters);
-                $components = $formio->getComponents();
-                $resolverCollection = $this->resolverCollection;
-                $resolve = function(&$component) use (&$resolve, $resolverCollection) {
-                    switch (true) {
-                        case property_exists($component, 'components'):
-                            foreach ($component->components as &$subComponent) {
-                                $resolve($subComponent);
-                            }
+        $forms = $this->formService->getForms($id);
 
-                            break;
-
-                        case property_exists($component, 'columns'):
-                            foreach ($component->columns as &$column) {
-                                foreach ($column->components as &$subComponent) {
-                                    $resolve($subComponent);
-                                }
-                            }
-
-                            break;
-
-                        case property_exists($component, 'defaultValue'):
-                            try {
-                                $component->defaultValue = $resolverCollection->resolve($component->defaultValue);
-                            } catch (UnresolvedException $exception) {
-                                $component->defaultValue = null;
-                            } catch (UnmatchedException $exception) {
-                                // Leave default value as-is
-                            }
-
-                            break;
-                    }
-                };
-
-                foreach ($components as &$component) {
-                    $resolve($component);
-                }
-
-                $form
-                    ->setDisplay($formio->getDisplay())
-                    ->setSchema($components)
-                    ->setMethod('POST')
-                    ->setAction('/scenarios/'.$scenario->getUuid().'/submissions');
-
-                break;
-
-            case Form::TYPE_SYMFONY:
-                break;
-
-            default:
-                throw new DomainException('Scenario form type does not exist.');
+        foreach ($forms as $form) {
+            if ($form->getPrimary()) {
+                // @todo Perhaps use the route generator.
+                $form->setAction('/scenarios/'.$scenario->getUuid().'/submissions');
+            }
         }
 
-        return $form;
+        return $forms;
     }
 }
