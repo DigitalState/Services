@@ -10,6 +10,13 @@ services:
         volumes:
             - db_data:/var/lib/postgresql/data:rw
 
+    redis:
+        image: redis:4.0.8-alpine
+        environment:
+            ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - redis_data:/data:rw
+
     php:
         image: digitalstate/services:0.1.2
         depends_on:
@@ -26,6 +33,7 @@ services:
               target: jwt/key.pub
         links:
               - db:services_db
+              - redis:services_redis
         extra_hosts:
             - 'api.assets.lab.ds:${PROXY_HOST}'
             - 'api.authentication.lab.ds:${PROXY_HOST}'
@@ -57,6 +65,8 @@ services:
 
 volumes:
     db_data:
+        driver: local
+    redis_data:
         driver: local
 
 networks:

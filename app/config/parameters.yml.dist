@@ -9,6 +9,8 @@ parameters:
     database_user: services
     database_password: services
 
+    redis_host: services_redis
+
     jwt_private_key_path: '/run/secrets/jwt/key'
     jwt_public_key_path: '/run/secrets/jwt/key.pub'
     jwt_key_pass_phrase: ''

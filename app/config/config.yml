@@ -47,12 +47,12 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-
-doctrine_cache:
-    providers:
-        app_query:
-            type: file_system
-            namespace: app_query
+        second_level_cache:
+            enabled: true
+            region_cache_driver:
+                type: service
+                id: snc.cache
+            region_lifetime: 86400
 
 doctrine_migrations:
     dir_name: '%kernel.root_dir%/../src/AppBundle/Migrations'
@@ -69,6 +69,35 @@ knp_doctrine_behaviors:
     timestampable: true
     translatable: true
     tree: false
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: 'redis://%redis_host%/0'
+            logging: '%kernel.debug%'
+        doctrine:
+            type: predis
+            alias: doctrine
+            dsn: 'redis://%redis_host%/1'
+            logging: '%kernel.debug%'
+    doctrine:
+        metadata_cache:
+            client: doctrine
+            entity_manager: default
+            namespace: doctrine:metadata:
+        result_cache:
+            client: doctrine
+            entity_manager: default
+            namespace: doctrine:result:
+        query_cache:
+            client: doctrine
+            entity_manager: default
+            namespace: doctrine:query:
+        second_level_cache:
+            client: doctrine
+            entity_manager: default
 
 lexik_jwt_authentication:
     private_key_path: '%jwt_private_key_path%'

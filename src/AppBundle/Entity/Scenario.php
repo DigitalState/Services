@@ -56,6 +56,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         @ORM\UniqueConstraint(columns={"service_id", "slug"})
  *     }
  * )
+ * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields={"service", "slug"})
  * @ScenarioAssert\Config\Valid
@@ -157,6 +158,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @Serializer\Groups({"scenario_output", "scenario_input"})
      * @ORM\ManyToOne(targetEntity="Service", inversedBy="scenarios")
      * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
+     * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      * @Assert\Valid
      */
     protected $service;
@@ -249,6 +251,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\OneToMany(targetEntity="Submission", mappedBy="scenario")
+     * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
     protected $submissions;
 

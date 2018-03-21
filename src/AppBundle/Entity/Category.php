@@ -49,6 +49,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  * @ORM\Table(name="app_category")
+ * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
@@ -203,6 +204,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @ApiProperty
      * @Serializer\Groups({"category_output", "category_input"})
      * @ORM\ManyToMany(targetEntity="Service", mappedBy="categories")
+     * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
     protected $services; # region accessors
 

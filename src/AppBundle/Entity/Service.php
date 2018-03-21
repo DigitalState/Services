@@ -50,6 +50,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ServiceRepository")
  * @ORM\Table(name="app_service")
+ * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
  * @ORMAssert\UniqueEntity(fields="slug")
  */
@@ -210,6 +211,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      *     joinColumns={@ORM\JoinColumn(name="service_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
      * )
+     * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
     protected $categories; # region accessors
 
@@ -261,6 +263,7 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      * @ApiProperty(writable=false)
      * @Serializer\Groups({"service_output"})
      * @ORM\OneToMany(targetEntity="Scenario", mappedBy="service")
+     * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
     protected $scenarios;
 

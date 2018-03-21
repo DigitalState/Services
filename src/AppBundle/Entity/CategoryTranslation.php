@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  * @ORM\Table(name="app_category_trans")
+ * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */
 class CategoryTranslation
 {

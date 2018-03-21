@@ -41,6 +41,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SubmissionRepository")
  * @ORM\Table(name="app_submission")
+ * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
 class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable, Secured
