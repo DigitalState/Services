@@ -18,7 +18,7 @@ services:
             - redis_data:/data:rw
 
     php:
-        image: digitalstate/services:0.1.5
+        image: digitalstate/services:0.1.6
         depends_on:
             - db
         command: ['wait-for', 'services_db:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
