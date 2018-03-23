@@ -1,14 +1,21 @@
 version: '3.1'
 
 services:
-    db:
+    database:
         image: postgres:9.6-alpine
         environment:
             POSTGRES_DB: '${DATABASE_NAME}'
             POSTGRES_USER: '${DATABASE_USERNAME}'
             POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
         volumes:
-            - db_data:/var/lib/postgresql/data:rw
+            - database_data:/var/lib/postgresql/data:rw
+
+    adminer:
+        image: adminer:4-standalone
+        environment:
+            VIRTUAL_HOST: '${ADMINER_VIRTUAL_HOST}'
+        links:
+              - database:services_database
 
     redis:
         image: redis:4.0.8-alpine
@@ -20,8 +27,8 @@ services:
     php:
         image: digitalstate/services:0.1.6
         depends_on:
-            - db
-        command: ['wait-for', 'services_db:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
+            - database
+        command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
         environment:
             SYMFONY_ENV: dev
         volumes:
@@ -32,7 +39,7 @@ services:
             - source: jwt_public_key
               target: jwt/key.pub
         links:
-              - db:services_db
+              - database:services_database
               - redis:services_redis
         extra_hosts:
             - 'api.assets.lab.ds:${PROXY_HOST}'
@@ -55,16 +62,15 @@ services:
         depends_on:
             - php
         environment:
-            - VIRTUAL_HOST
+            VIRTUAL_HOST: '${NGINX_VIRTUAL_HOST}'
         volumes:
             - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
             - '${DIRECTORY}:/srv/api-platform'
         links:
               - php:services_php
-              - db:services_db
 
 volumes:
-    db_data:
+    database_data:
         driver: local
     redis_data:
         driver: local
