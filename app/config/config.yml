@@ -75,12 +75,12 @@ snc_redis:
         default:
             type: predis
             alias: default
-            dsn: 'redis://%redis_host%/0'
+            dsn: 'redis://%redis_host%/%redis_name%'
             logging: '%kernel.debug%'
         doctrine:
             type: predis
             alias: doctrine
-            dsn: 'redis://%redis_host%/1'
+            dsn: 'redis://%redis_host%/%redis_name%'
             logging: '%kernel.debug%'
     doctrine:
         metadata_cache:
