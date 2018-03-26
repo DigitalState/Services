@@ -1,6 +1,11 @@
 imports:
     - { resource: ../config.yml }
 
+doctrine:
+    orm:
+        second_level_cache:
+            enabled: true
+
 monolog:
     handlers:
         main:
