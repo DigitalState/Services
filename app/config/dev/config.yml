@@ -1,6 +1,9 @@
 imports:
     - { resource: ../config.yml }
 
+parameters:
+    redis_prefix: dev:
+
 framework:
     router:
         resource: '%kernel.root_dir%/config/dev/routing.yml'

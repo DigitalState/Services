@@ -5,6 +5,16 @@ doctrine:
     orm:
         second_level_cache:
             enabled: true
+            region_cache_driver:
+                type: service
+                id: snc.cache
+            region_lifetime: 86400
+
+snc_redis:
+    doctrine:
+        second_level_cache:
+            client: doctrine
+            entity_manager: default
 
 monolog:
     handlers:

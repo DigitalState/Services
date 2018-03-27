@@ -49,10 +49,6 @@ doctrine:
         auto_mapping: true
         second_level_cache:
             enabled: false
-            region_cache_driver:
-                type: service
-                id: snc.cache
-            region_lifetime: 86400
 
 doctrine_migrations:
     dir_name: '%kernel.root_dir%/../src/AppBundle/Migrations'
@@ -86,18 +82,15 @@ snc_redis:
         metadata_cache:
             client: doctrine
             entity_manager: default
-            namespace: doctrine:metadata:
+            namespace: '%redis_prefix%doctrine:metadata:'
         result_cache:
             client: doctrine
             entity_manager: default
-            namespace: doctrine:result:
+            namespace: '%redis_prefix%doctrine:result:'
         query_cache:
             client: doctrine
             entity_manager: default
-            namespace: doctrine:query:
-        second_level_cache:
-            client: doctrine
-            entity_manager: default
+            namespace: '%redis_prefix%doctrine:query:'
 
 lexik_jwt_authentication:
     private_key_path: '%jwt_private_key_path%'
