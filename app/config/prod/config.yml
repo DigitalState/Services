@@ -4,7 +4,7 @@ imports:
 doctrine:
     orm:
         second_level_cache:
-            enabled: true
+            enabled: false
             region_cache_driver:
                 type: service
                 id: snc.cache
