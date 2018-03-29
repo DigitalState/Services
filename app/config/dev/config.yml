@@ -16,16 +16,14 @@ web_profiler:
 
 monolog:
     handlers:
-        main:
+        stream:
             type: stream
             path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
+            formatter: app.monolog.formatter.json
         console:
             type: console
             channels: [!event, !doctrine]
-
-#swiftmailer:
-#    delivery_address: me@example.com
 
 api_platform:
     enable_swagger: true

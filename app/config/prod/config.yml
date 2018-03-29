@@ -18,13 +18,14 @@ snc_redis:
 
 monolog:
     handlers:
-        main:
+        stream_fingers_crossed:
             type: fingers_crossed
             action_level: error
             handler: nested
-        nested:
+        stream:
             type: stream
             path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
+            formatter: app.monolog.formatter.json
         console:
             type: console
