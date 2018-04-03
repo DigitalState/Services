@@ -26,7 +26,7 @@ items:
 
     -
         uuid: e7ac4acd-9401-4cf8-8498-433735df9418
-        key: app.bpm.variables.scenario_custom_datas
+        key: app.bpm.variables.scenario_custom_data
         value: scenario_custom_data
 
     -
