@@ -21,7 +21,7 @@ monolog:
         stream_fingers_crossed:
             type: fingers_crossed
             action_level: error
-            handler: nested
+            handler: stream
         stream:
             type: stream
             path: '%kernel.logs_dir%/%kernel.environment%.log'
