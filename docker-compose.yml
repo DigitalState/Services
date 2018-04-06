@@ -33,11 +33,6 @@ services:
             SYMFONY_ENV: dev
         volumes:
             - '${DIRECTORY}:/srv/api-platform'
-        secrets:
-            - source: jwt_private_key
-              target: jwt/key
-            - source: jwt_public_key
-              target: jwt/key.pub
         links:
               - database:services_database
               - redis:services_redis
@@ -79,9 +74,3 @@ networks:
     default:
         external:
           name: '${NETWORK}'
-
-secrets:
-    jwt_private_key:
-        file: '${JWT_PRIVATE_KEY}'
-    jwt_public_key:
-        file: '${JWT_PUBLIC_KEY}'

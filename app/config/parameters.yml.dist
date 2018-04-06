@@ -13,8 +13,8 @@ parameters:
     redis_name: 7
     redis_prefix: ''
 
-    jwt_private_key_path: '/run/secrets/jwt/key'
-    jwt_public_key_path: '/run/secrets/jwt/key.pub'
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/key'
+    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/key.pub'
     jwt_key_pass_phrase: ''
     jwt_token_ttl: 3600
 
