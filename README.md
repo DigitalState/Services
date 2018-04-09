@@ -43,7 +43,7 @@ The following are screenshots of various aspects of the Services Microservice be
 
 ![postman services](./docs/resources/postman-services-api.png)
 
-
+[![Build Status](https://travis-ci.org/DigitalState/Services.svg?branch=develop)](https://travis-ci.org/DigitalState/Services)
 
 ## Table of Contents
 

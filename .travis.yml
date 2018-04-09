@@ -13,7 +13,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
+  - docker network create ds_default
   - docker-compose build
   - docker-compose run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
-  - docker-compose run --rm php bin/console security:check
-
+#  - docker-compose run --rm php bin/console security:check
+  - docker-compose run --rm php vendor/bin/behat
