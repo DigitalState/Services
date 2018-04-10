@@ -10,13 +10,6 @@ services:
         volumes:
             - database_data:/var/lib/postgresql/data:rw
 
-    adminer:
-        image: adminer:4-standalone
-        environment:
-            VIRTUAL_HOST: '${ADMINER_VIRTUAL_HOST}'
-        links:
-              - database:services_database
-
     redis:
         image: redis:4.0.8-alpine
         environment:
@@ -29,28 +22,11 @@ services:
         depends_on:
             - database
         command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
-        environment:
-            SYMFONY_ENV: dev
         volumes:
             - '${DIRECTORY}:/srv/api-platform'
         links:
               - database:services_database
               - redis:services_redis
-        extra_hosts:
-            - 'api.assets.lab.ds:${PROXY_HOST}'
-            - 'api.authentication.lab.ds:${PROXY_HOST}'
-            - 'api.camunda.lab.ds:${PROXY_HOST}'
-            - 'api.cases.lab.ds:${PROXY_HOST}'
-            - 'api.cms.lab.ds:${PROXY_HOST}'
-            - 'api.discovery.lab.ds:${PROXY_HOST}'
-            - 'api.formio.lab.ds:${PROXY_HOST}'
-            - 'api.identities.lab.ds:${PROXY_HOST}'
-            - 'api.interactions.lab.ds:${PROXY_HOST}'
-            - 'api.logs.lab.ds:${PROXY_HOST}'
-            - 'api.records.lab.ds:${PROXY_HOST}'
-            - 'api.services.lab.ds:${PROXY_HOST}'
-            - 'api.tasks.lab.ds:${PROXY_HOST}'
-            - 'api.topics.lab.ds:${PROXY_HOST}'
 
     nginx:
         image: nginx:1.11-alpine

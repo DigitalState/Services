@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+    php:
+        build: .
+        environment:
+            SYMFONY_ENV: test
+        extra_hosts:
+            - 'api.assets.test.ds:${PROXY_HOST}'
+            - 'api.authentication.test.ds:${PROXY_HOST}'
+            - 'api.camunda.test.ds:${PROXY_HOST}'
+            - 'api.cases.test.ds:${PROXY_HOST}'
+            - 'api.cms.test.ds:${PROXY_HOST}'
+            - 'api.discovery.test.ds:${PROXY_HOST}'
+            - 'api.formio.test.ds:${PROXY_HOST}'
+            - 'api.identities.test.ds:${PROXY_HOST}'
+            - 'api.interactions.test.ds:${PROXY_HOST}'
+            - 'api.logs.test.ds:${PROXY_HOST}'
+            - 'api.records.test.ds:${PROXY_HOST}'
+            - 'api.services.test.ds:${PROXY_HOST}'
+            - 'api.tasks.test.ds:${PROXY_HOST}'
+            - 'api.topics.test.ds:${PROXY_HOST}'
