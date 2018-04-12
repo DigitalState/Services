@@ -14,7 +14,7 @@ before_install:
 
 script:
   - docker network create dsproxy_default
-  - docker-compose -f docker-compose.yml -f docker-compose.test.yml build
-  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
-#  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php bin/console security:check
-  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run --rm php vendor/bin/behat
+  - docker-compose -f docker-compose.yml -f docker-compose.test.ci.yml build
+  - docker-compose -f docker-compose.yml -f docker-compose.test.ci.yml run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
+#  - docker-compose -f docker-compose.yml -f docker-compose.test.ci.yml run --rm php bin/console security:check
+  - docker-compose -f docker-compose.yml -f docker-compose.test.ci.yml run --rm php vendor/bin/behat
