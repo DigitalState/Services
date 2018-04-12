@@ -31,7 +31,7 @@ services:
               - database:services_database
               - redis:services_redis
         environment:
-            SYMFONY_ENV: prod
+            SYMFONY_ENV: test
         extra_hosts:
             - 'api.assets.test.ds:${PROXY_HOST}'
             - 'api.authentication.test.ds:${PROXY_HOST}'
