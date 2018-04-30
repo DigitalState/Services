@@ -17,33 +17,26 @@ abstract class ScenarioFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $scenarios = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($scenarios as $scenario) {
-            $entity = new Scenario;
-            $entity
-                ->setService($manager->getRepository(Service::class)->findOneBy(['uuid' => $scenario['service']]))
-                ->setType($scenario['type'])
-                ->setConfig($scenario['config'])
-                ->setUuid($scenario['uuid'])
-                ->setOwner($scenario['owner'])
-                ->setOwnerUuid($scenario['owner_uuid'])
-                ->setSlug($scenario['slug'])
-                ->setTitle($scenario['title'])
-                ->setDescription($scenario['description'])
-                ->setPresentation($scenario['presentation'])
-                ->setData($scenario['data'])
-                ->setEnabled($scenario['enabled'])
-                ->setWeight($scenario['weight']);
-            $manager->persist($entity);
+        foreach ($objects as $object) {
+            $scenario = new Scenario;
+            $scenario
+                ->setService($manager->getRepository(Service::class)->findOneBy(['uuid' => $object->service]))
+                ->setType($object->type)
+                ->setConfig((array) $object->config)
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setDescription((array) $object->description)
+                ->setPresentation((array) $object->presentation)
+                ->setData((array) $object->data)
+                ->setEnabled($object->enabled)
+                ->setWeight($object->weight);
+            $manager->persist($scenario);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }

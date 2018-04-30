@@ -16,30 +16,23 @@ abstract class ServiceFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $services = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($services as $service) {
-            $entity = new Service;
-            $entity
-                ->setUuid($service['uuid'])
-                ->setOwner($service['owner'])
-                ->setOwnerUuid($service['owner_uuid'])
-                ->setSlug($service['slug'])
-                ->setTitle($service['title'])
-                ->setDescription($service['description'])
-                ->setPresentation($service['presentation'])
-                ->setData($service['data'])
-                ->setEnabled($service['enabled'])
-                ->setWeight($service['weight']);
-            $manager->persist($entity);
+        foreach ($objects as $object) {
+            $service = new Service;
+            $service
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setDescription((array) $object->description)
+                ->setPresentation((array) $object->presentation)
+                ->setData((array) $object->data)
+                ->setEnabled($object->enabled)
+                ->setWeight($object->weight);
+            $manager->persist($service);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }

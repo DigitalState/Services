@@ -17,35 +17,28 @@ abstract class CategoryFixture extends ResourceFixture
      */
     public function load(ObjectManager $manager)
     {
-        $categories = $this->parse($this->getResource());
+        $objects = $this->parse($this->getResource());
 
-        foreach ($categories as $category) {
-            $entity = new Category;
-            $entity
-                ->setUuid($category['uuid'])
-                ->setOwner($category['owner'])
-                ->setOwnerUuid($category['owner_uuid'])
-                ->setSlug($category['slug'])
-                ->setTitle($category['title'])
-                ->setDescription($category['description'])
-                ->setPresentation($category['presentation'])
-                ->setData($category['data'])
-                ->setEnabled($category['enabled'])
-                ->setWeight($category['weight']);
+        foreach ($objects as $object) {
+            $category = new Category;
+            $category
+                ->setUuid($object->uuid)
+                ->setOwner($object->owner)
+                ->setOwnerUuid($object->owner_uuid)
+                ->setSlug($object->slug)
+                ->setTitle((array) $object->title)
+                ->setDescription((array) $object->description)
+                ->setPresentation((array) $object->presentation)
+                ->setData((array) $object->data)
+                ->setEnabled($object->enabled)
+                ->setWeight($object->weight);
 
-            foreach ($category['services'] as $service) {
-                $entity->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $service]));
+            foreach ($object->services as $uuid) {
+                $category->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $uuid]));
             }
 
-            $manager->persist($entity);
+            $manager->persist($category);
             $manager->flush();
         }
     }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    abstract protected function getResource();
 }

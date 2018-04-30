@@ -1,9 +1,9 @@
-items: []
+fixtures: []
 
 prototype:
-    access: ~
-    scope: ~
-    entity: ~
-    entity_uuid: ~
-    key: ~
-    attributes: []
+  access: ~
+  scope: ~
+  entity: ~
+  entity_uuid: ~
+  key: ~
+  attributes: []

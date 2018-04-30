@@ -1,20 +1,19 @@
 items:
-    -
-        title: Pothole Report
-        display: form
-        type: form
-        name: pothole-report
-        path: pothole-report
-        tags: 
-            - pothole
-        components: []
-
-prototype:
-    title: ~
+  - title: Pothole Report
     display: form
     type: form
-    name: ~
-    path: ~
-    tags: []
+    name: pothole-report
+    path: pothole-report
+    tags:
+      - pothole
     components: []
-    submission_access: []
+
+prototype:
+  title: ~
+  display: form
+  type: form
+  name: ~
+  path: ~
+  tags: []
+  components: []
+  submission_access: []

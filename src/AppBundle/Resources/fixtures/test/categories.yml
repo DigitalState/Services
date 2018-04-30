@@ -1,29 +1,36 @@
-items:
-    -
-        uuid: 70f36469-a65c-4d81-ae15-d66a2ef90df0
-        owner_uuid: 83bf8f26-7181-4bed-92f3-3ce5e4c286d7 # Backoffice
-        slug: infrastructure
-        title:
-            en: Infrastructure
-            fr: Infrastructure
-        description:
-            en: Description ...
-            fr: Description ...
-        presentation:
-            en: Presentation ...
-            fr: Presentation ...
-        services:
-            - 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole
+fixtures:
+  - uuid: 70f36469-a65c-4d81-ae15-d66a2ef90df0
+    owner_uuid: 83bf8f26-7181-4bed-92f3-3ce5e4c286d7 # Backoffice
+    slug: infrastructure
+    title:
+      en: Infrastructure
+      fr: Infrastructure
+    description:
+      en: Description ...
+      fr: Description ...
+    presentation:
+      en: Presentation ...
+      fr: Presentation ...
+    services:
+      - 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole
 
 prototype:
-    uuid: ~
-    owner: BusinessUnit
-    owner_uuid: ~
-    slug: ~
-    title: []
-    description: []
-    presentation: []
-    data: []
-    enabled: true
-    weight: 0
-    services: []
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: ~
+  slug: ~
+  title:
+    en: ~
+    fr: ~
+  description:
+    en: ~
+    fr: ~
+  presentation:
+    en: ~
+    fr: ~
+  data:
+    en: {}
+    fr: {}
+  enabled: true
+  weight: 0
+  services: []
