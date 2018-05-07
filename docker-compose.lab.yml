@@ -8,6 +8,13 @@ services:
     links:
       - database:services_database
 
+  rebrow:
+    image: marian/rebrow
+    environment:
+      VIRTUAL_HOST: '${REBROW_VIRTUAL_HOST}'
+    links:
+      - redis:services_redis
+
   php:
     build: .
     environment:
