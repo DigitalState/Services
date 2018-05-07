@@ -1,9 +1,9 @@
 checks:
-    php: true
+  php: true
 
 filter:
-    excluded_paths:
-        - bin/*
-        - tests/*
-        - var/*
-        - vendor/*
+  excluded_paths:
+    - bin/*
+    - tests/*
+    - var/*
+    - vendor/*

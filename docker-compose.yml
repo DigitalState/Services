@@ -1,52 +1,52 @@
 version: '3.1'
 
 services:
-    database:
-        image: postgres:9.6-alpine
-        environment:
-            POSTGRES_DB: '${DATABASE_NAME}'
-            POSTGRES_USER: '${DATABASE_USERNAME}'
-            POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
-        volumes:
-            - database_data:/var/lib/postgresql/data:rw
+  database:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_DB: '${DATABASE_NAME}'
+      POSTGRES_USER: '${DATABASE_USERNAME}'
+      POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
 
-    redis:
-        image: redis:4.0.8-alpine
-        environment:
-            ALLOW_EMPTY_PASSWORD: 'yes'
-        volumes:
-            - redis_data:/data:rw
+  redis:
+    image: redis:4.0.8-alpine
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - redis_data:/data:rw
 
-    php:
-        image: 'digitalstate/services:${IMAGE_TAG}'
-        depends_on:
-            - database
-        command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
-        volumes:
-            - '${DIRECTORY}:/srv/api-platform'
-        links:
-              - database:services_database
-              - redis:services_redis
+  php:
+    image: 'digitalstate/services:${IMAGE_TAG}'
+    depends_on:
+      - database
+    command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
+    volumes:
+      - '${DIRECTORY}:/srv/api-platform'
+    links:
+      - database:services_database
+      - redis:services_redis
 
-    nginx:
-        image: nginx:1.11-alpine
-        depends_on:
-            - php
-        environment:
-            VIRTUAL_HOST: '${NGINX_VIRTUAL_HOST}'
-        volumes:
-            - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
-            - '${DIRECTORY}:/srv/api-platform'
-        links:
-              - php:services_php
+  nginx:
+    image: nginx:1.11-alpine
+    depends_on:
+      - php
+    environment:
+      VIRTUAL_HOST: '${NGINX_VIRTUAL_HOST}'
+    volumes:
+      - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
+      - '${DIRECTORY}:/srv/api-platform'
+    links:
+      - php:services_php
 
 volumes:
-    database_data:
-        driver: local
-    redis_data:
-        driver: local
+  database_data:
+    driver: local
+  redis_data:
+    driver: local
 
 networks:
-    default:
-        external:
-          name: '${NETWORK}'
+  default:
+    external:
+      name: '${NETWORK}'
