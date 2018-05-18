@@ -1,28 +1,21 @@
 parameters:
     app: services
-
     discovery_host: api.discovery.ds
-
     database_host: services_database
     database_port: 5432
     database_name: services
     database_user: services
     database_password: services
-
     redis_host: services_redis
     redis_name: 7
     redis_prefix: ''
-
     jwt_private_key_path: '%kernel.root_dir%/../var/jwt/key'
     jwt_public_key_path: '%kernel.root_dir%/../var/jwt/key.pub'
     jwt_key_pass_phrase: ''
     jwt_token_ttl: 3600
-
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: ~
     mailer_password: ~
-
     secret: secret
-
     cors_allow_origin: '*'

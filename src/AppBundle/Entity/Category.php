@@ -13,6 +13,8 @@ use Ds\Component\Model\Type\Sluggable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Security\Model\Type\Secured;
+use Ds\Component\Tenant\Model\Attribute\Accessor as TenantAccessor;
+use Ds\Component\Tenant\Model\Type\Tenantable;
 use Ds\Component\Translation\Model\Attribute\Accessor as TranslationAccessor;
 use Ds\Component\Translation\Model\Type\Translatable;
 use Knp\DoctrineBehaviors\Model as Behavior;
@@ -48,12 +50,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
- * @ORM\Table(name="app_category")
+ * @ORM\Table(
+ *     name="app_category",
+ *     uniqueConstraints={
+ *        @ORM\UniqueConstraint(columns={"slug", "tenant"})
+ *    }
+ * )
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
- * @ORMAssert\UniqueEntity(fields="slug")
+ * @ORMAssert\UniqueEntity(fields={"slug", "tenant"})
  */
-class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable, Secured
+class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable, Tenantable, Secured
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -72,6 +79,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use Accessor\Deleted;
     use Accessor\Weight;
     use Accessor\Version;
+    use TenantAccessor\Tenant;
 
     /**
      * @var integer
@@ -137,7 +145,7 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @var string
      * @ApiProperty
      * @Serializer\Groups({"category_output", "category_input"})
-     * @ORM\Column(name="slug", type="string", unique=true)
+     * @ORM\Column(name="slug", type="string")
      * @Assert\NotBlank
      * @Assert\Length(min=1, max=255)
      */
@@ -278,6 +286,15 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @Assert\Type("integer")
      */
     protected $version;
+
+    /**
+     * @var string
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"category_output"})
+     * @ORM\Column(name="tenant", type="guid")
+     * @Assert\Uuid
+     */
+    protected $tenant;
 
     /**
      * Constructor

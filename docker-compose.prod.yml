@@ -18,4 +18,5 @@ services:
       - 'api.records.prod.ds:${PROXY_HOST}'
       - 'api.services.prod.ds:${PROXY_HOST}'
       - 'api.tasks.prod.ds:${PROXY_HOST}'
+      - 'api.tenants.prod.ds:${PROXY_HOST}'
       - 'api.topics.prod.ds:${PROXY_HOST}'

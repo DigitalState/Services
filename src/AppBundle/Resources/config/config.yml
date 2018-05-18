@@ -36,6 +36,7 @@ ds_security:
         category_presentation:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.presentation,   title: app.permissions.category.presentation    }
         category_data:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.data,           title: app.permissions.category.data            }
         category_version:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.version,        title: app.permissions.category.version         }
+        category_tenant:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.tenant,         title: app.permissions.category.tenant          }
         service:                     { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Service,                 title: app.permissions.service                  }
         service_property:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.*,               title: app.permissions.service.property         }
         service_id:                  { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.id,              title: app.permissions.service.id               }
@@ -50,6 +51,7 @@ ds_security:
         service_presentation:        { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.presentation,    title: app.permissions.service.presentation     }
         service_data:                { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.data,            title: app.permissions.service.data             }
         service_version:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.version,         title: app.permissions.service.version          }
+        service_tenant:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.tenant,          title: app.permissions.service.tenant           }
         scenario:                    { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Scenario,                title: app.permissions.scenario                 }
         scenario_property:           { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.*,              title: app.permissions.scenario.property        }
         scenario_id:                 { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.id,             title: app.permissions.scenario.id              }
@@ -66,6 +68,7 @@ ds_security:
         scenario_presentation:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.presentation,   title: app.permissions.scenario.presentation    }
         scenario_data:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.data,           title: app.permissions.scenario.data            }
         scenario_version:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.version,        title: app.permissions.scenario.version         }
+        scenario_tenant:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.tenant,         title: app.permissions.scenario.tenant          }
         submission:                  { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Submission,              title: app.permissions.submission               }
         submission_property:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.*,            title: app.permissions.submission.property      }
         submission_id:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.id,           title: app.permissions.submission.id            }
@@ -81,3 +84,4 @@ ds_security:
         submission_data:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.data,         title: app.permissions.submission.data          }
         submission_state:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.state,        title: app.permissions.submission.state         }
         submission_version:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.version,      title: app.permissions.submission.version       }
+        submission_tenant:           { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.tenant,       title: app.permissions.submission.tenant        }

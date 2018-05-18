@@ -3,6 +3,7 @@ fixtures: []
 prototype:
   uuid: ~
   owner: BusinessUnit
-  owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+  owner_uuid: ~
   assignee: Individual
   assignee_uuid: ~
+  tenant: ~

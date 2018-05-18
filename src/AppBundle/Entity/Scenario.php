@@ -14,6 +14,8 @@ use Ds\Component\Model\Type\Sluggable;
 use Ds\Component\Model\Type\Uuidentifiable;
 use Ds\Component\Model\Type\Versionable;
 use Ds\Component\Security\Model\Type\Secured;
+use Ds\Component\Tenant\Model\Attribute\Accessor as TenantAccessor;
+use Ds\Component\Tenant\Model\Type\Tenantable;
 use Ds\Component\Translation\Model\Attribute\Accessor as TranslationAccessor;
 use Ds\Component\Translation\Model\Type\Translatable;
 use Knp\DoctrineBehaviors\Model as Behavior;
@@ -61,7 +63,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORMAssert\UniqueEntity(fields={"service", "slug"})
  * @ScenarioAssert\Config\Valid
  */
-class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable, Secured
+class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Translatable, Localizable, Enableable, Deletable, Versionable, Tenantable, Secured
 {
     use Behavior\Translatable\Translatable;
     use Behavior\Timestampable\Timestampable;
@@ -84,6 +86,7 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
     use Accessor\Deleted;
     use Accessor\Weight;
     use Accessor\Version;
+    use TenantAccessor\Tenant;
 
     /**
      * @const string
@@ -283,6 +286,15 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
      * @Assert\Type("integer")
      */
     protected $version;
+
+    /**
+     * @var string
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"scenario_output"})
+     * @ORM\Column(name="tenant", type="guid")
+     * @Assert\Uuid
+     */
+    protected $tenant;
 
     /**
      * Constructor

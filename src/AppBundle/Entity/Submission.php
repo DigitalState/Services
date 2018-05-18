@@ -11,6 +11,8 @@ use Ds\Component\Model\Type\Identitiable;
 use Ds\Component\Model\Type\Versionable;
 use AppBundle\Entity\Attribute\Accessor as ServiceAccessor;
 use Ds\Component\Security\Model\Type\Secured;
+use Ds\Component\Tenant\Model\Attribute\Accessor as TenantAccessor;
+use Ds\Component\Tenant\Model\Type\Tenantable;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -44,7 +46,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  * @ORMAssert\UniqueEntity(fields="uuid")
  */
-class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable, Secured
+class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable, Deletable, Versionable, Tenantable, Secured
 {
     use Behavior\Timestampable\Timestampable;
     use Behavior\SoftDeletable\SoftDeletable;
@@ -60,6 +62,7 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
     use Accessor\Deleted;
     use Accessor\Version;
     use ServiceAccessor\Scenario;
+    use TenantAccessor\Tenant;
 
     /**
      * @const integer
@@ -178,6 +181,15 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
      * @Assert\Type("integer")
      */
     protected $version;
+
+    /**
+     * @var string
+     * @ApiProperty(writable=false)
+     * @Serializer\Groups({"submission_output"})
+     * @ORM\Column(name="tenant", type="guid")
+     * @Assert\Uuid
+     */
+    protected $tenant;
 
     /**
      * Constructor

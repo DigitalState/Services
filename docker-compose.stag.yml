@@ -18,4 +18,5 @@ services:
       - 'api.records.stag.ds:${PROXY_HOST}'
       - 'api.services.stag.ds:${PROXY_HOST}'
       - 'api.tasks.stag.ds:${PROXY_HOST}'
+      - 'api.tenants.stag.ds:${PROXY_HOST}'
       - 'api.topics.stag.ds:${PROXY_HOST}'

@@ -19,4 +19,5 @@ services:
       - 'api.records.ci.test.ds:${PROXY_HOST}'
       - 'api.services.ci.test.ds:${PROXY_HOST}'
       - 'api.tasks.ci.test.ds:${PROXY_HOST}'
+      - 'api.tenants.ci.test.ds:${PROXY_HOST}'
       - 'api.topics.ci.test.ds:${PROXY_HOST}'

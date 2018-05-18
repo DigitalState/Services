@@ -31,7 +31,8 @@ abstract class CategoryFixture extends ResourceFixture
                 ->setPresentation((array) $object->presentation)
                 ->setData((array) $object->data)
                 ->setEnabled($object->enabled)
-                ->setWeight($object->weight);
+                ->setWeight($object->weight)
+                ->setTenant($object->tenant);
 
             foreach ($object->services as $uuid) {
                 $category->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $uuid]));

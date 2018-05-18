@@ -33,4 +33,5 @@ services:
       - 'api.records.lab.ds:${PROXY_HOST}'
       - 'api.services.lab.ds:${PROXY_HOST}'
       - 'api.tasks.lab.ds:${PROXY_HOST}'
+      - 'api.tenants.lab.ds:${PROXY_HOST}'
       - 'api.topics.lab.ds:${PROXY_HOST}'

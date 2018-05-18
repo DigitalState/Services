@@ -43,17 +43,10 @@ prototype:
   owner: BusinessUnit
   owner_uuid: ~
   slug: ~
-  title:
-    en: ~
-    fr: ~
-  description:
-    en: ~
-    fr: ~
-  presentation:
-    en: ~
-    fr: ~
-  data:
-    en: {}
-    fr: {}
+  title: {}
+  description: {}
+  presentation: {}
+  data: {}
   enabled: true
   weight: 0
+  tenant: e5a2120d-6bf7-4c58-a900-bac1e55e986b # Tenant 1

@@ -1,17 +1,17 @@
-@app @entity @service @add
-Feature: Add services
-  In order to add services
+@app @api @entity @category @add
+Feature: Add categories
+  In order to add categories
   As a system identity
-  I should be able to send api requests related to services
+  I should be able to send api requests related to categories
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures
-  Scenario: Add a service
+  Scenario: Add a category
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "POST" request to "/services" with body:
+    And I send a "POST" request to "/categories" with body:
     """
     {
       "owner": "BusinessUnit",
@@ -46,7 +46,7 @@ Feature: Add services
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should exist
-    And the JSON node "id" should be equal to the number 2
+    And the JSON node "id" should be equal to the number 3
     And the JSON node "uuid" should exist
     And the JSON node "createdAt" should exist
     And the JSON node "updatedAt" should exist
@@ -80,19 +80,19 @@ Feature: Add services
     And the JSON node "data.fr" should exist
     And the JSON node "data.fr.test" should exist
     And the JSON node "data.fr.test" should be equal to "test - add"
-    And the JSON node "categories" should exist
-    And the JSON node "scenarios" should exist
     And the JSON node "enabled" should exist
     And the JSON node "enabled" should be true
     And the JSON node "weight" should exist
     And the JSON node "weight" should be equal to the number 1
     And the JSON node "version" should exist
     And the JSON node "version" should be equal to the number 1
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @dropSchema
   Scenario: Read the added category
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?id=2"
+    And I send a "GET" request to "/categories?id=3"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON

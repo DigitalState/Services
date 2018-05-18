@@ -1,24 +1,24 @@
-@app @entity @category @edit
-Feature: Edit categories
-  In order to edit categories
+@app @api @entity @service @edit
+Feature: Edit services
+  In order to edit services
   As a system identity
-  I should be able to send api requests related to categories
+  I should be able to send api requests related to services
 
   Background:
-    Given I am authenticated as the "system" identity
+    Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @createSchema @loadFixtures
-  Scenario: Edit a category
+  Scenario: Edit a service
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "ownerUuid": "325e1004-8516-4ca9-a4d3-d7505bd9a7fe",
-      "slug": "infrastructure-edit",
+      "slug": "report-pothole-edit",
       "title": {
-        "en": "Infrastructure - edit",
-        "fr": "Infrastructure - edit"
+        "en": "Report a Pothole - edit",
+        "fr": "Signaler un nids de poule - edit"
       },
       "description": {
         "en": "Description - edit",
@@ -44,12 +44,12 @@ Feature: Edit categories
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "ownerUuid" should be equal to the string "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"
-    And the JSON node "slug" should be equal to the string "infrastructure-edit"
+    And the JSON node "slug" should be equal to the string "report-pothole-edit"
     And the JSON node "title" should exist
     And the JSON node "title.en" should exist
-    And the JSON node "title.en" should be equal to "Infrastructure - edit"
+    And the JSON node "title.en" should be equal to "Report a Pothole - edit"
     And the JSON node "title.fr" should exist
-    And the JSON node "title.fr" should be equal to "Infrastructure - edit"
+    And the JSON node "title.fr" should be equal to "Signaler un nids de poule - edit"
     And the JSON node "description" should exist
     And the JSON node "description.en" should exist
     And the JSON node "description.en" should be equal to "Description - edit"
@@ -69,20 +69,22 @@ Feature: Edit categories
     And the JSON node "data.fr.test" should be equal to "test - edit"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  Scenario: Confirm the edited category
+  Scenario: Confirm the edited service
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0"
+    And I send a "GET" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "ownerUuid" should be equal to the string "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"
-    And the JSON node "slug" should be equal to the string "infrastructure-edit"
+    And the JSON node "slug" should be equal to the string "report-pothole-edit"
     And the JSON node "title" should exist
     And the JSON node "title.en" should exist
-    And the JSON node "title.en" should be equal to "Infrastructure - edit"
+    And the JSON node "title.en" should be equal to "Report a Pothole - edit"
     And the JSON node "title.fr" should exist
-    And the JSON node "title.fr" should be equal to "Infrastructure - edit"
+    And the JSON node "title.fr" should be equal to "Signaler un nids de poule - edit"
     And the JSON node "description" should exist
     And the JSON node "description.en" should exist
     And the JSON node "description.en" should be equal to "Description - edit"
@@ -102,46 +104,51 @@ Feature: Edit categories
     And the JSON node "data.fr.test" should be equal to "test - edit"
     And the JSON node "enabled" should be false
     And the JSON node "weight" should be equal to the number 1
+    And the JSON node "tenant" should exist
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  Scenario: Edit a category's read-only properties
+  Scenario: Edit a service's read-only properties
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "id": 9999,
-      "uuid": "25cfe5bb-b52d-4d33-9b54-5ed189cbcd2c",
+      "uuid": "002a4b0e-6f73-408f-8b04-3295a758feff",
       "createdAt":"2000-01-01T12:00:00+00:00",
       "updatedAt":"2000-01-01T12:00:00+00:00",
-      "deletedAt":"2000-01-01T12:00:00+00:00"
+      "deletedAt":"2000-01-01T12:00:00+00:00",
+      "tenant": "20401625-f398-467b-ad31-955575f22d1e"
     }
     """
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "70f36469-a65c-4d81-ae15-d66a2ef90df0"
+    And the JSON node "uuid" should be equal to the string "7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  Scenario: Confirm the unedited category
+  Scenario: Confirm the unedited service
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0"
+    And I send a "GET" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
-    And the JSON node "uuid" should be equal to the string "70f36469-a65c-4d81-ae15-d66a2ef90df0"
+    And the JSON node "uuid" should be equal to the string "7293e6d1-48e2-4761-b9c6-f77258cbe31a"
     And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "deletedAt" should not contain "2000-01-01T12:00:00+00:00"
+    And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
   @dropSchema
-  Scenario: Edit a category with an invalid optimistic lock
+  Scenario: Edit a service with an invalid optimistic lock
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/categories/70f36469-a65c-4d81-ae15-d66a2ef90df0" with body:
+    And I send a "PUT" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a" with body:
     """
     {
       "enabled": true,

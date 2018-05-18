@@ -22,6 +22,32 @@ fixtures:
       fr:
         button_text: Activer
     weight: 0
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 69dcf905-3cf6-471e-97c7-52af7536f622
+    owner_uuid: 6e9c30e2-ce82-4d32-a60a-b0c6b0a1474e # Backoffice
+    service: 9f305f96-35d8-4b8b-b930-d844a3c0d050 # Report a Pothole
+    type: bpm
+    config:
+      bpm: camunda
+      process_definition_key: pothole-report
+    slug: online
+    title:
+      en: Report a Pothole Online
+      fr: Signaler un nids de poule en-ligne
+    description:
+      en: Description ...
+      fr: Description ...
+    presentation:
+      en: Presentation ...
+      fr: Présentation ...
+    data:
+      en:
+        button_text: Activate
+      fr:
+        button_text: Activer
+    weight: 0
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
 prototype:
   uuid: ~
@@ -29,19 +55,12 @@ prototype:
   owner_uuid: ~
   service: ~
   type: ~
-  config: []
+  config: {}
   slug: ~
-  title:
-    en: ~
-    fr: ~
-  description:
-    en: ~
-    fr: ~
-  presentation:
-    en: ~
-    fr: ~
-  data:
-    en: {}
-    fr: {}
+  title: {}
+  description: {}
+  presentation: {}
+  data: {}
   enabled: true
   weight: 0
+  tenant: ~

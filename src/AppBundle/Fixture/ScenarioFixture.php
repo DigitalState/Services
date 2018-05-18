@@ -34,7 +34,8 @@ abstract class ScenarioFixture extends ResourceFixture
                 ->setPresentation((array) $object->presentation)
                 ->setData((array) $object->data)
                 ->setEnabled($object->enabled)
-                ->setWeight($object->weight);
+                ->setWeight($object->weight)
+                ->setTenant($object->tenant);
             $manager->persist($scenario);
             $manager->flush();
         }

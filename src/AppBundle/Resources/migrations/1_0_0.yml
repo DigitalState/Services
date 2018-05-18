@@ -1,44 +1,47 @@
+tenant:
+  uuid: 2b533711-7884-4e55-93eb-21afb3c7ad28
+
 user:
-    system:
-        uuid: 30765b53-28ed-402b-a5c3-e21e8ab377b3
-        password: system
-    anonymous:
-        uuid: 9120bdb2-2ef0-4124-9907-04e6548f1095
-        password: anonymous
-    admin:
-        uuid: df913928-03ba-47a4-a23d-a16db9c2df65
-        password: admin
+  system:
+    uuid: 30765b53-28ed-402b-a5c3-e21e8ab377b3
+    password: system
+  anonymous:
+    uuid: 9120bdb2-2ef0-4124-9907-04e6548f1095
+    password: anonymous
+  admin:
+    uuid: df913928-03ba-47a4-a23d-a16db9c2df65
+    password: admin
 
 identity:
-    system:
-        uuid: 3732b4fb-3796-401c-9ecb-007bc363390a
-    admin:
-        uuid: 4daad9ea-794c-4e88-9bed-db6ae2399e22
+  system:
+    uuid: 3732b4fb-3796-401c-9ecb-007bc363390a
+  admin:
+    uuid: 4daad9ea-794c-4e88-9bed-db6ae2399e22
 
 business_unit:
-    administration:
-        uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
-    backoffice:
-        uuid: 425c63f3-5d7c-4d9a-a0c2-19842b5f1ea1
-    portal:
-        uuid: d46fea94-4b7e-49f9-9f9c-32a2114b3772
+  administration:
+    uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
+  backoffice:
+    uuid: 425c63f3-5d7c-4d9a-a0c2-19842b5f1ea1
+  portal:
+    uuid: d46fea94-4b7e-49f9-9f9c-32a2114b3772
 
 config:
-    app.bpm.variables.api_url:
-        value: api_url
-    app.bpm.variables.api_user:
-        value: api_user
-    app.bpm.variables.api_key:
-        value: api_key
-    app.bpm.variables.service_uuid:
-        value: service_uuid
-    app.bpm.variables.scenario_uuid:
-        value: scenario_uuid
-    app.bpm.variables.identity:
-        value: identity
-    app.bpm.variables.identity_uuid:
-        value: identity_uuid
-    app.bpm.variables.submission_uuid:
-        value: submission_uuid
-    app.bpm.variables.start_data:
-        value: start_data
+  app.bpm.variables.api_url:
+    value: api_url
+  app.bpm.variables.api_user:
+    value: api_user
+  app.bpm.variables.api_key:
+    value: api_key
+  app.bpm.variables.service_uuid:
+    value: service_uuid
+  app.bpm.variables.scenario_uuid:
+    value: scenario_uuid
+  app.bpm.variables.identity:
+    value: identity
+  app.bpm.variables.identity_uuid:
+    value: identity_uuid
+  app.bpm.variables.submission_uuid:
+    value: submission_uuid
+  app.bpm.variables.start_data:
+    value: start_data
