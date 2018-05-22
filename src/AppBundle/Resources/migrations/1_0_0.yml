@@ -25,23 +25,3 @@ business_unit:
     uuid: 425c63f3-5d7c-4d9a-a0c2-19842b5f1ea1
   portal:
     uuid: d46fea94-4b7e-49f9-9f9c-32a2114b3772
-
-config:
-  app.bpm.variables.api_url:
-    value: api_url
-  app.bpm.variables.api_user:
-    value: api_user
-  app.bpm.variables.api_key:
-    value: api_key
-  app.bpm.variables.service_uuid:
-    value: service_uuid
-  app.bpm.variables.scenario_uuid:
-    value: scenario_uuid
-  app.bpm.variables.identity:
-    value: identity
-  app.bpm.variables.identity_uuid:
-    value: identity_uuid
-  app.bpm.variables.submission_uuid:
-    value: submission_uuid
-  app.bpm.variables.start_data:
-    value: start_data
