@@ -21,7 +21,3 @@ identity:
 business_unit:
   administration:
     uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
-  backoffice:
-    uuid: 425c63f3-5d7c-4d9a-a0c2-19842b5f1ea1
-  portal:
-    uuid: d46fea94-4b7e-49f9-9f9c-32a2114b3772
