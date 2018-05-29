@@ -95,6 +95,12 @@ fixtures:
     value: aa18b644-a503-49fa-8f53-10f4c1f8e3a1 # System
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
+  - uuid: c5e882ca-b9d9-4fa1-9ea1-5066bdb86d52
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: ds_api.user.tenant
+    value: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
   - uuid: a6b0cd21-55d8-4240-86b8-e9ae18fd1697
     owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
     key: app.bpm.variables.api_url
@@ -189,6 +195,12 @@ fixtures:
     owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
     key: ds_api.user.identity_uuid
     value: 571c4b5f-532e-48ac-aa6a-8099d57d9088 # System
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: dd6a767c-da3e-4b08-88a6-98432acb4e7e
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: ds_api.user.tenant
+    value: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
 prototype:
