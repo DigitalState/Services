@@ -16,7 +16,7 @@ default:
         - Behatch\Context\JsonContext
         - Ds\Component\Identity\Test\Context\IdentityContext:
             tokenManager: "@lexik_jwt_authentication.jwt_manager"
-            identityCollection: "@ds_identity_test.collection.identity"
+            userCollection: "@ds_identity_test.collection.user"
         - Ds\Component\Database\Test\Context\SchemaContext:
             doctrine: "@doctrine"
         - Ds\Component\Database\Test\Context\MigrationContext
