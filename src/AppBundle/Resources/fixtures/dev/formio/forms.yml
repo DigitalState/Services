@@ -4,188 +4,18 @@ fixtures:
     type: form
     name: pothole-report
     path: pothole-report
-    tags:
-      - pothole
-    components:
-      - input: true
-        tableView: true
-        inputType: text
-        inputMask: ''
-        label: Description
-        key: description
-        placeholder: ''
-        prefix: ''
-        suffix: ''
-        multiple: false
-        defaultValue: ''
-        protected: false
-        unique: false
-        persistent: true
-        hidden: false
-        clearOnHide: true
-        validate:
-          required: true
-          minLength: ''
-          maxLength: ''
-          pattern: ''
-          custom: ''
-          customPrivate: false
-        conditional:
-          show: ''
-          when:
-          eq: ''
-        type: textfield
-        hideLabel: false
-        labelPosition: top
-        tags: []
-        properties: {}
+    tags: [pothole]
+    components: components/pothole-report.json
+    submission_access: submission_access/anonymous.json
 
-      - input: true
-        label: Submit
-        tableView: false
-        key: submit
-        size: md
-        leftIcon: ''
-        rightIcon: ''
-        block: false
-        action: submit
-        disableOnInvalid: false
-        theme: primary
-        type: button
-        hideLabel: false
-    submission_access:
-      - type: create_all
-        roles: []
-
-      - type: read_all
-        roles: []
-
-      - type: update_all
-        roles: []
-
-      - type: delete_all
-        roles: []
-
-      - type: create_own
-        roles:
-          - anonymous
-      - type: read_own
-        roles: []
-
-      - type: update_own
-        roles: []
-
-      - type: delete_own
-        roles: []
-
-  -
-    title: Pothole Report Review
+  - title: Pothole Report Review
     display: form
     type: form
     name: pothole-report-review
     path: pothole-report-review
-    tags:
-      - pothole
-    components:
-      - properties: {}
-        tags: []
-        labelPosition: top
-        hideLabel: false
-        type: textfield
-        conditional:
-          eq: ''
-          when:
-          show: ''
-        validate:
-          customPrivate: false
-          custom: ''
-          pattern: ''
-          maxLength: ''
-          minLength: ''
-          required: false
-        clearOnHide: true
-        hidden: false
-        persistent: true
-        unique: false
-        protected: false
-        defaultValue: ''
-        multiple: false
-        suffix: ''
-        prefix: ''
-        placeholder: ''
-        key: description
-        label: Description
-        inputMask: ''
-        inputType: text
-        tableView: true
-        input: true
-
-      - conditional:
-          eq: ''
-          when:
-          show: ''
-        optionsLabelPosition: right
-        labelPosition: top
-        hideLabel: false
-        type: selectboxes
-        validate:
-          required: true
-        clearOnHide: true
-        hidden: false
-        persistent: true
-        protected: false
-        inline: false
-        values:
-          - shortcut: ''
-            label: 'yes'
-            value: 'yes'
-
-          - shortcut: ''
-            label: 'no'
-            value: 'no'
-        key: approved
-        label: Approved
-        tableView: true
-        input: true
-
-      - hideLabel: false
-        type: button
-        theme: primary
-        disableOnInvalid: false
-        action: submit
-        block: false
-        rightIcon: ''
-        leftIcon: ''
-        size: md
-        key: submit
-        tableView: false
-        label: Submit
-        input: true
-    submission_access:
-        - type: create_all
-          roles: []
-
-        - type: read_all
-          roles: []
-
-        - type: update_all
-          roles: []
-
-        - type: delete_all
-          roles: []
-
-        - type: create_own
-          roles:
-              - anonymous
-
-        - type: read_own
-          roles: []
-
-        - type: update_own
-          roles: []
-
-        - type: delete_own
-          roles: []
+    tags: [pothole]
+    components: components/pothole-report-review.json
+    submission_access: submission_access/anonymous.json
 
 prototype:
   title: ~
@@ -194,5 +24,6 @@ prototype:
   name: ~
   path: ~
   tags: []
-  components: []
-  submission_access: []
+  components: ~
+  submission_access: ~
+  tenant: e5a2120d-6bf7-4c58-a900-bac1e55e986b # Tenant 1

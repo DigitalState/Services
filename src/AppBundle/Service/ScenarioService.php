@@ -76,7 +76,9 @@ class ScenarioService extends EntityService
                     $id = $config['form_key'];
                 } else {
                     $parameters = new ProcessDefinitionParameters;
-                    $parameters->setKey($scenario->getConfig('process_definition_key'));
+                    $parameters
+                        ->setKey($scenario->getConfig('process_definition_key'))
+                        ->setTenantId($scenario->getTenant());
                     $id = $this->api->get('camunda.process_definition')->getStartForm(null, $parameters);
                 }
 

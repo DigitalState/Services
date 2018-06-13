@@ -90,7 +90,8 @@ class BpmListener
         $variables[] = new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON);
         $parameters
             ->setVariables($variables)
-            ->setKey($scenario->getConfig('process_definition_key'));
+            ->setKey($scenario->getConfig('process_definition_key'))
+            ->setTenantId($scenario->getTenant());
         $this->api->get('camunda.process_definition')->start(null, $parameters);
         $submission->setState(Submission::STATE_TRANSFERRED);
         $manager = $this->submissionService->getManager();
