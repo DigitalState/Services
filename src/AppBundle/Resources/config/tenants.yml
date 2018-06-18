@@ -1,15 +1,15 @@
 services:
-  app.tenant.initializer.access:
-    class: AppBundle\Tenant\Initializer\AccessInitializer
+  app.tenant.accesses:
+    class: AppBundle\Tenant\Accesses
     arguments:
       - '@ds_security.service.access'
       - '@ds_security.service.permission'
     tags:
-      - { name: ds_tenant.initializer }
+      - { name: ds_tenant.loader }
 
-  app.tenant.initializer.config:
-    class: AppBundle\Tenant\Initializer\ConfigInitializer
+  app.tenant.configs:
+    class: AppBundle\Tenant\Configs
     arguments:
       - '@ds_config.service.config'
     tags:
-      - { name: ds_tenant.initializer }
+      - { name: ds_tenant.loader }

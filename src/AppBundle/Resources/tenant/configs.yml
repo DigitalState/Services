@@ -1,0 +1,37 @@
+objects:
+  - key: app.bpm.variables.api_url
+    value: api_url
+
+  - key: app.bpm.variables.api_user
+    value: api_user
+
+  - key: app.bpm.variables.api_key
+    value: api_key
+
+  - key: app.bpm.variables.service_uuid
+    value: service_uuid
+
+  - key: app.bpm.variables.scenario_uuid
+    value: scenario_uuid
+
+  - key: app.bpm.variables.scenario_custom_data
+    value: scenario_custom_data
+
+  - key: app.bpm.variables.identity
+    value: identity
+
+  - key: app.bpm.variables.identity_uuid
+    value: identity_uuid
+
+  - key: app.bpm.variables.submission_uuid
+    value: submission_uuid
+
+  - key: app.bpm.variables.start_data
+    value: start_data
+
+prototype:
+  owner: BusinessUnit
+  owner_uuid: '%business_unit.administration.uuid%'
+  key: ~
+  value: ~
+  tenant: '%tenant.uuid%'
