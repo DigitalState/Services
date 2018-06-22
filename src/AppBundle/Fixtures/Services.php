@@ -15,7 +15,7 @@ class Services extends ServiceFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 10;
+        return 20;
     }
 
     /**

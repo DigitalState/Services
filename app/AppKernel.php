@@ -14,55 +14,56 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Dunglas\ActionBundle\DunglasActionBundle(),
-            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
-            new Nelmio\CorsBundle\NelmioCorsBundle(),
-            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
-//            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
-            new Craue\FormFlowBundle\CraueFormFlowBundle(),
-            new Snc\RedisBundle\SncRedisBundle(),
-            new Ds\Component\Api\Bridge\Symfony\Bundle\DsApiBundle(),
-            new Ds\Component\Cache\Bridge\Symfony\Bundle\DsCacheBundle(),
-            new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle(),
-            new Ds\Component\Discovery\Bridge\Symfony\Bundle\DsDiscoveryBundle(),
-            new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle(),
-            new Ds\Component\Form\Bridge\Symfony\Bundle\DsFormBundle(),
-            new Ds\Component\Func\Bridge\Symfony\Bundle\DsFuncBundle(),
-            new Ds\Component\Health\Bridge\Symfony\Bundle\DsHealthBundle(),
-            new Ds\Component\Identity\Bridge\Symfony\Bundle\DsIdentityBundle(),
-            new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle(),
-            new Ds\Component\Log\Bridge\Symfony\Bundle\DsLogBundle(),
-            new Ds\Component\Resolver\Bridge\Symfony\Bundle\DsResolverBundle(),
-            new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle(),
-            new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle(),
-            new Ds\Component\Statistic\Bridge\Symfony\Bundle\DsStatisticBundle(),
-            new Ds\Component\Tenant\Bridge\Symfony\Bundle\DsTenantBundle(),
-            new Ds\Component\Translation\Bridge\Symfony\Bundle\DsTranslationBundle(),
-            new AppBundle\AppBundle(),
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
+            new Symfony\Bundle\SecurityBundle\SecurityBundle,
+            new Symfony\Bundle\TwigBundle\TwigBundle,
+            new Symfony\Bundle\MonologBundle\MonologBundle,
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle,
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle,
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle,
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle,
+            new Dunglas\ActionBundle\DunglasActionBundle,
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle,
+            new Nelmio\CorsBundle\NelmioCorsBundle,
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle,
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle,
+//            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle,
+            new Craue\FormFlowBundle\CraueFormFlowBundle,
+            new Snc\RedisBundle\SncRedisBundle,
+            new Ds\Component\Api\Bridge\Symfony\Bundle\DsApiBundle,
+            new Ds\Component\Cache\Bridge\Symfony\Bundle\DsCacheBundle,
+            new Ds\Component\Config\Bridge\Symfony\Bundle\DsConfigBundle,
+            new Ds\Component\Discovery\Bridge\Symfony\Bundle\DsDiscoveryBundle,
+            new Ds\Component\Entity\Bridge\Symfony\Bundle\DsEntityBundle,
+            new Ds\Component\Form\Bridge\Symfony\Bundle\DsFormBundle,
+            new Ds\Component\Func\Bridge\Symfony\Bundle\DsFuncBundle,
+            new Ds\Component\Health\DsHealthBundle,
+            new Ds\Component\Identity\Bridge\Symfony\Bundle\DsIdentityBundle,
+            new Ds\Component\Locale\Bridge\Symfony\Bundle\DsLocaleBundle,
+            new Ds\Component\Log\Bridge\Symfony\Bundle\DsLogBundle,
+            new Ds\Component\Resolver\Bridge\Symfony\Bundle\DsResolverBundle,
+            new Ds\Component\Security\Bridge\Symfony\Bundle\DsSecurityBundle,
+            new Ds\Component\Session\Bridge\Symfony\Bundle\DsSessionBundle,
+            new Ds\Component\Statistic\Bridge\Symfony\Bundle\DsStatisticBundle,
+            new Ds\Component\System\DsSystemBundle,
+            new Ds\Component\Tenant\DsTenantBundle,
+            new Ds\Component\Translation\Bridge\Symfony\Bundle\DsTranslationBundle,
+            new AppBundle\AppBundle,
         ];
 
         if (in_array($this->getEnvironment(), ['prod'], true)) {
-            $bundles[] = new Ds\Component\Exception\Bridge\Symfony\Bundle\DsExceptionBundle();
+            $bundles[] = new Ds\Component\Exception\Bridge\Symfony\Bundle\DsExceptionBundle;
         }
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-            $bundles[] = new Ds\Component\Debug\Bridge\Symfony\Bundle\DsDebugBundle();
-            $bundles[] = new Ds\Component\Identity\Bridge\Symfony\TestBundle\DsIdentityTestBundle();
+            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle;
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
+            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
+            $bundles[] = new Ds\Component\Debug\Bridge\Symfony\Bundle\DsDebugBundle;
+            $bundles[] = new Ds\Component\Identity\Bridge\Symfony\TestBundle\DsIdentityTestBundle;
         }
 
         return $bundles;

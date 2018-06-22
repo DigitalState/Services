@@ -1,8 +1,8 @@
 services:
-    snc.cache:
-        class: '%snc_redis.doctrine_cache_predis.class%'
-        arguments:
-            - '@snc_redis.default'
+  snc.cache:
+    class: '%snc_redis.doctrine_cache_predis.class%'
+    arguments:
+      - '@snc_redis.default'
 
-    app.monolog.formatter.json:
-        class: Monolog\Formatter\JsonFormatter
+  app.monolog.formatter.json:
+    class: Monolog\Formatter\JsonFormatter

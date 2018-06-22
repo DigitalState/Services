@@ -1,31 +1,31 @@
 imports:
-    - { resource: ../dev/config.yml }
+  - { resource: ../dev/config.yml }
 
 parameters:
-    redis_prefix: test:
+  redis_prefix: test:
 
 framework:
-    test: ~
-    session:
-        storage_id: session.storage.mock_file
-    profiler:
-        collect: false
+  test: ~
+  session:
+    storage_id: session.storage.mock_file
+  profiler:
+    collect: false
 
 web_profiler:
-    toolbar: false
-    intercept_redirects: false
+  toolbar: false
+  intercept_redirects: false
 
 swiftmailer:
-    disable_delivery: true
+  disable_delivery: true
 
 doctrine:
-    dbal:
-        driver: 'pdo_sqlite'
-        path: '%kernel.cache_dir%/db.sqlite'
-        charset: 'UTF8'
+  dbal:
+    driver: 'pdo_sqlite'
+    path: '%kernel.cache_dir%/db.sqlite'
+    charset: 'UTF8'
 
 lexik_jwt_authentication:
-    private_key_path: '%kernel.root_dir%/../features/resources/jwt/key'
-    public_key_path: '%kernel.root_dir%/../features/resources/jwt/key.pub'
-    pass_phrase: ~
-    token_ttl: 86400
+  private_key_path: '%kernel.root_dir%/../features/resources/jwt/key'
+  public_key_path: '%kernel.root_dir%/../features/resources/jwt/key.pub'
+  pass_phrase: ~
+  token_ttl: 86400

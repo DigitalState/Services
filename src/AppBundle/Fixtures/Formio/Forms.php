@@ -15,7 +15,7 @@ class Forms extends FormFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 20;
+        return 30;
     }
 
     /**

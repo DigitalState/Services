@@ -15,7 +15,7 @@ class Categories extends CategoryFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 11;
+        return 21;
     }
 
     /**

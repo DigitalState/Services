@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Fixtures;
+namespace AppBundle\Fixtures\System;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Ds\Component\Config\Fixture\ParameterFixture;
@@ -23,6 +23,6 @@ class Parameters extends ParameterFixture implements OrderedFixtureInterface
      */
     protected function getResource()
     {
-        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/parameters.yml';
+        return '/srv/api-platform/src/AppBundle/Resources/fixtures/{env}/system/parameters.yml';
     }
 }
