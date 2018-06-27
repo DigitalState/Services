@@ -23,7 +23,7 @@ class Version1_0_0 extends AbstractMigration
 
         // Entity schema
         $this->addSql('CREATE SEQUENCE ds_config_id_seq INCREMENT BY 1 MINVALUE 1 START 19');
-        $this->addSql('CREATE SEQUENCE ds_parameter_id_seq INCREMENT BY 1 MINVALUE 1 START 2');
+        $this->addSql('CREATE SEQUENCE ds_parameter_id_seq INCREMENT BY 1 MINVALUE 1 START 4');
         $this->addSql('CREATE SEQUENCE ds_access_id_seq INCREMENT BY 1 MINVALUE 1 START 3');
         $this->addSql('CREATE SEQUENCE ds_access_permission_id_seq INCREMENT BY 1 MINVALUE 1 START 7');
         $this->addSql('CREATE SEQUENCE ds_tenant_id_seq INCREMENT BY 1 MINVALUE 1 START 2');
@@ -90,7 +90,9 @@ class Version1_0_0 extends AbstractMigration
             INSERT INTO 
                 ds_parameter (id, key, value, enabled)
             VALUES 
-                (1, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
+                (1, \'ds_system.user.username\', \'"system"\', true),
+                (2, \'ds_system.user.password\', \'"password"\', true),
+                (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
         ');
 
         $this->addSql('
