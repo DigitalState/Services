@@ -19,5 +19,5 @@ parameters:
   mailer_password: ~
   secret: secret
   cors_allow_origin: '*'
-  system_user: system
-  system_password: '$2y$12$6KqZMt/XhcIl/JOnr3XUbefl2tlA9dcUBJ8TPIBOIolv0GiJO6N0G'
+  system_username: system
+  system_password: '$2y$12$eRsfIkAoZjP8zjsy9znbGOKjKgrjp8.riM3cRZ3f5xepZsioE3UYO'
