@@ -2,7 +2,6 @@ version: '3.1'
 
 services:
   php:
-    build: .
     environment:
       SYMFONY_ENV: test
     extra_hosts:
