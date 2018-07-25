@@ -1,4 +1,4 @@
-@app @api @entity @category @add
+@api @category @add
 Feature: Add categories
   In order to add categories
   As a system identity

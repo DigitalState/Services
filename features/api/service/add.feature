@@ -1,4 +1,4 @@
-@app @api @entity @service @add
+@api @service @add
 Feature: Add services
   In order to add services
   As a system identity
