@@ -42,6 +42,7 @@ class AppKernel extends Kernel
             new Ds\Component\Identity\DsIdentityBundle,
             new Ds\Component\Locale\DsLocaleBundle,
             new Ds\Component\Log\DsLogBundle,
+            new Ds\Component\Metadata\DsMetadataBundle,
             new Ds\Component\Resolver\DsResolverBundle,
             new Ds\Component\Security\DsSecurityBundle,
             new Ds\Component\Session\DsSessionBundle,
