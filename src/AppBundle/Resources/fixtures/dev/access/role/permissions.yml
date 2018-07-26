@@ -27,6 +27,7 @@ fixtures:
       - service
       - scenario
       - submission
+      - metadata
     attributes: [EDIT, ADD, DELETE]
 
   - access: 51922b8c-f3b0-47d7-9a9e-3081859913c0 # Manager
@@ -38,6 +39,7 @@ fixtures:
       - service_property
       - scenario_property
       - submission_property
+      - metadata_property
     attributes: [EDIT]
 
   - access: e7c14666-e442-4097-b0b7-0c8f2647c988 # Staff
@@ -53,6 +55,8 @@ fixtures:
       - scenario_property
       - submission
       - submission_property
+      - metadata
+      - metadata_property
     attributes: [BROWSE, READ]
 
   - access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
