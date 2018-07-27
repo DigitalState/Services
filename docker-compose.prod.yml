@@ -13,6 +13,7 @@ services:
       - 'api.cms.prod.ds:${PROXY_HOST}'
       - 'api.discovery.prod.ds:${PROXY_HOST}'
       - 'api.formio.prod.ds:${PROXY_HOST}'
+      - 'api.forms.prod.ds:${PROXY_HOST}'
       - 'api.identities.prod.ds:${PROXY_HOST}'
       - 'api.interactions.prod.ds:${PROXY_HOST}'
       - 'api.logs.prod.ds:${PROXY_HOST}'

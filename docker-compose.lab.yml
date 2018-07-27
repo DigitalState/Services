@@ -26,6 +26,7 @@ services:
       - 'api.cms.lab.ds:${PROXY_HOST}'
       - 'api.discovery.lab.ds:${PROXY_HOST}'
       - 'api.formio.lab.ds:${PROXY_HOST}'
+      - 'api.forms.lab.ds:${PROXY_HOST}'
       - 'api.identities.lab.ds:${PROXY_HOST}'
       - 'api.interactions.lab.ds:${PROXY_HOST}'
       - 'api.logs.lab.ds:${PROXY_HOST}'

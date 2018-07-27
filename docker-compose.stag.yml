@@ -13,6 +13,7 @@ services:
       - 'api.cms.stag.ds:${PROXY_HOST}'
       - 'api.discovery.stag.ds:${PROXY_HOST}'
       - 'api.formio.stag.ds:${PROXY_HOST}'
+      - 'api.forms.stag.ds:${PROXY_HOST}'
       - 'api.identities.stag.ds:${PROXY_HOST}'
       - 'api.interactions.stag.ds:${PROXY_HOST}'
       - 'api.logs.stag.ds:${PROXY_HOST}'

@@ -12,6 +12,7 @@ services:
       - 'api.cms.ci.test.ds:${PROXY_HOST}'
       - 'api.discovery.ci.test.ds:${PROXY_HOST}'
       - 'api.formio.ci.test.ds:${PROXY_HOST}'
+      - 'api.forms.ci.test.ds:${PROXY_HOST}'
       - 'api.identities.ci.test.ds:${PROXY_HOST}'
       - 'api.interactions.ci.test.ds:${PROXY_HOST}'
       - 'api.logs.ci.test.ds:${PROXY_HOST}'
