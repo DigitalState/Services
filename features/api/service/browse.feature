@@ -7,7 +7,7 @@ Feature: Browse services
   Background:
     Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @createSchema @loadFixtures
+  @upMigrations @loadFixtures
   Scenario: Browse all services
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services"
@@ -341,7 +341,7 @@ Feature: Browse services
     And the response should be a collection
     And the response collection should count 1 items
 
-  @dropSchema
+  @downMigrations
   Scenario: Browse services ordered by weight desc
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services?order[weight]=desc"

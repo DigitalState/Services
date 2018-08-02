@@ -7,7 +7,7 @@ Feature: Read services
   Background:
     Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @createSchema @loadFixtures @dropSchema
+  @upMigrations @loadFixtures @downMigrations
   Scenario: Read a service
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a"

@@ -4,7 +4,7 @@ Feature: Browse health statuses
   As the system user
   I should be able to send api requests related to health statuses
 
-#  @createSchema @loadFixtures @dropSchema
+#  @upMigrations @loadFixtures @downMigrations
 #  Scenario: Browse all health statuses
 #    When I add "Accept" header equal to "application/json"
 #    And I send a "GET" request to "/system/health"

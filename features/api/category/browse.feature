@@ -7,7 +7,7 @@ Feature: Browse categories
   Background:
     Given I am authenticated as the "System" identity from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  @createSchema @loadFixtures
+  @upMigrations @loadFixtures
   Scenario: Browse all categories
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/categories"
@@ -341,7 +341,7 @@ Feature: Browse categories
     And the response should be a collection
     And the response collection should count 1 items
 
-  @dropSchema
+  @downMigrations
   Scenario: Browse categories ordered by weight desc
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/categories?order[weight]=desc"
