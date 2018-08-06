@@ -1,25 +1,8 @@
 version: '3.1'
 
 services:
-  adminer:
-    image: adminer:4-standalone
-    environment:
-      VIRTUAL_HOST: '${ADMINER_VIRTUAL_HOST}'
-    links:
-      - database:services_database
-
-  rebrow:
-    image: marian/rebrow
-    environment:
-      VIRTUAL_HOST: '${REBROW_VIRTUAL_HOST}'
-    links:
-      - redis:services_redis
-
-  php:
-    image: 'digitalstate/services:${IMAGE_TAG}'
-    environment:
-      SYMFONY_ENV: dev
-    extra_hosts:
+  database:
+    extra_hosts: &hosts
       - 'api.assets.dev.ds:${PROXY_HOST}'
       - 'api.authentication.dev.ds:${PROXY_HOST}'
       - 'api.camunda.dev.ds:${PROXY_HOST}'
@@ -36,3 +19,36 @@ services:
       - 'api.tasks.dev.ds:${PROXY_HOST}'
       - 'api.tenants.dev.ds:${PROXY_HOST}'
       - 'api.topics.dev.ds:${PROXY_HOST}'
+
+  redis:
+    extra_hosts: *hosts
+
+  php:
+    image: 'digitalstate/services:${IMAGE_TAG}'
+    environment:
+      SYMFONY_ENV: dev
+    extra_hosts: *hosts
+
+  nginx:
+    extra_hosts: *hosts
+
+  registrator:
+    extra_hosts: *hosts
+
+  adminer:
+    image: adminer:4-standalone
+    environment:
+      VIRTUAL_HOST: '${ADMINER_VIRTUAL_HOST}'
+      SERVICE_IGNORE: 'true'
+    extra_hosts: *hosts
+    links:
+      - database:services_database
+
+  rebrow:
+    image: marian/rebrow
+    environment:
+      VIRTUAL_HOST: '${REBROW_VIRTUAL_HOST}'
+      SERVICE_IGNORE: 'true'
+    extra_hosts: *hosts
+    links:
+      - redis:services_redis

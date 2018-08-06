@@ -7,6 +7,7 @@ services:
       POSTGRES_DB: '${DATABASE_NAME}'
       POSTGRES_USER: '${DATABASE_USERNAME}'
       POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
+      SERVICE_IGNORE: 'true'
     volumes:
       - database_data:/var/lib/postgresql/data:rw
 
@@ -14,6 +15,7 @@ services:
     image: redis:4.0.8-alpine
     environment:
       ALLOW_EMPTY_PASSWORD: 'yes'
+      SERVICE_IGNORE: 'true'
     volumes:
       - redis_data:/data:rw
 
@@ -21,6 +23,8 @@ services:
     build: .
     depends_on:
       - database
+    environment:
+      SERVICE_IGNORE: 'true'
     command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
     volumes:
       - '${DIRECTORY}:/srv/api-platform'
@@ -34,15 +38,28 @@ services:
       - php
     environment:
       VIRTUAL_HOST: '${NGINX_VIRTUAL_HOST}'
+      SERVICE_443_IGNORE: 'true'
+      SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}nginx'
+      SERVICE_80_NAME: 'services'
+      SERVICE_80_TAGS: 'access,tenant'
     volumes:
       - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
       - '${DIRECTORY}:/srv/api-platform'
     links:
       - php:services_php
 
+  registrator:
+    image: gliderlabs/registrator:v7
+    environment:
+      CONSUL_HTTP_TOKEN: '${DISCOVERY_CREDENTIAL}'
+    command: '-internal consul://${DISCOVERY_HOST}'
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
 volumes:
   database_data:
     driver: local
+
   redis_data:
     driver: local
 

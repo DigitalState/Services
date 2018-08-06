@@ -1,10 +1,8 @@
 version: '3.1'
 
 services:
-  php:
-    environment:
-      SYMFONY_ENV: test
-    extra_hosts:
+  database:
+    extra_hosts: &hosts
       - 'api.assets.ci.test.ds:${PROXY_HOST}'
       - 'api.authentication.ci.test.ds:${PROXY_HOST}'
       - 'api.camunda.ci.test.ds:${PROXY_HOST}'
@@ -21,3 +19,17 @@ services:
       - 'api.tasks.ci.test.ds:${PROXY_HOST}'
       - 'api.tenants.ci.test.ds:${PROXY_HOST}'
       - 'api.topics.ci.test.ds:${PROXY_HOST}'
+
+  redis:
+    extra_hosts: *hosts
+
+  php:
+    environment:
+      SYMFONY_ENV: test
+    extra_hosts: *hosts
+
+  nginx:
+    extra_hosts: *hosts
+
+  registrator:
+    extra_hosts: *hosts

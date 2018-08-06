@@ -1,11 +1,8 @@
 version: '3.1'
 
 services:
-  php:
-    image: 'digitalstate/services:${IMAGE_TAG}'
-    environment:
-      SYMFONY_ENV: prod
-    extra_hosts:
+  database:
+    extra_hosts: &hosts
       - 'api.assets.prod.ds:${PROXY_HOST}'
       - 'api.authentication.prod.ds:${PROXY_HOST}'
       - 'api.camunda.prod.ds:${PROXY_HOST}'
@@ -22,3 +19,18 @@ services:
       - 'api.tasks.prod.ds:${PROXY_HOST}'
       - 'api.tenants.prod.ds:${PROXY_HOST}'
       - 'api.topics.prod.ds:${PROXY_HOST}'
+
+  redis:
+    extra_hosts: *hosts
+
+  php:
+    image: 'digitalstate/services:${IMAGE_TAG}'
+    environment:
+      SYMFONY_ENV: prod
+    extra_hosts: *hosts
+
+  nginx:
+    extra_hosts: *hosts
+
+  registrator:
+    extra_hosts: *hosts
