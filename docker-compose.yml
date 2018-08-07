@@ -41,7 +41,6 @@ services:
       SERVICE_443_IGNORE: 'true'
       SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}nginx'
       SERVICE_80_NAME: 'services'
-      SERVICE_80_TAGS: 'access,tenant'
     volumes:
       - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
       - '${DIRECTORY}:/srv/api-platform'
