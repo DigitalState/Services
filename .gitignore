@@ -1,6 +1,4 @@
 /.idea
-/.env
-/.env.*
 /app/config/parameters.yml
 /build/
 /phpunit.xml
@@ -20,4 +18,3 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-/web/adminer.php

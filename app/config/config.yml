@@ -71,26 +71,26 @@ snc_redis:
     default:
       type: predis
       alias: default
-      dsn: 'redis://%redis_host%/%redis_name%'
+      dsn: 'redis://%cache_host%/%cache_name%'
       logging: '%kernel.debug%'
     doctrine:
       type: predis
       alias: doctrine
-      dsn: 'redis://%redis_host%/%redis_name%'
+      dsn: 'redis://%cache_host%/%cache_name%'
       logging: '%kernel.debug%'
   doctrine:
     metadata_cache:
       client: doctrine
       entity_manager: default
-      namespace: '%redis_prefix%doctrine:metadata:'
+      namespace: '%cache_prefix%doctrine:metadata:'
     result_cache:
       client: doctrine
       entity_manager: default
-      namespace: '%redis_prefix%doctrine:result:'
+      namespace: '%cache_prefix%doctrine:result:'
     query_cache:
       client: doctrine
       entity_manager: default
-      namespace: '%redis_prefix%doctrine:query:'
+      namespace: '%cache_prefix%doctrine:query:'
 
 lexik_jwt_authentication:
   private_key_path: '%jwt_private_key_path%'

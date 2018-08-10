@@ -2,7 +2,7 @@ imports:
   - { resource: ../dev/config.yml }
 
 parameters:
-  redis_prefix: test:
+  cache_prefix: test:
 
 framework:
   test: ~

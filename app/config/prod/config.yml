@@ -2,7 +2,7 @@ imports:
   - { resource: ../config.yml }
 
 parameters:
-  redis_prefix: prod:
+  cache_prefix: prod:
 
 doctrine:
   orm:
