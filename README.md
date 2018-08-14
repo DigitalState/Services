@@ -24,6 +24,7 @@ Further documentation can be found in the [Documentation Repository](https://git
 - [Api](references/api.md)
 - [Configurations](references/configurations.md)
 - [Permissions](references/permissions.md)
+- [Docker](references/docker.md)
 
 ## Contributing
 
