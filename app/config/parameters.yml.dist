@@ -1,6 +1,7 @@
 parameters:
+  namespace: ds
   app: services
-  discovery_host: api.discovery.ds
+  discovery_host: 127.0.0.1:8500
   discovery_credential: ~
   database_host: services_database
   database_port: 5432
