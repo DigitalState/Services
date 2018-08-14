@@ -17,6 +17,7 @@ parameters:
   jwt_token_ttl: 3600
   mailer_transport: smtp
   mailer_host: 127.0.0.1
+  mailer_port: ~
   mailer_user: ~
   mailer_password: ~
   secret: secret
