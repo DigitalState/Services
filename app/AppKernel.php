@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Ds\Component\Api\DsApiBundle,
             new Ds\Component\Cache\DsCacheBundle,
             new Ds\Component\Config\DsConfigBundle,
+            new Ds\Component\Container\DsContainerBundle,
             new Ds\Component\Discovery\DsDiscoveryBundle,
             new Ds\Component\Entity\DsEntityBundle,
             new Ds\Component\Form\DsFormBundle,
