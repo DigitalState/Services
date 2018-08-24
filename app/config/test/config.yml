@@ -1,0 +1,25 @@
+imports:
+  - { resource: ../dev/config.yml }
+
+parameters:
+  cache_prefix: test:
+
+framework:
+  test: ~
+  session:
+    storage_id: session.storage.mock_file
+  profiler:
+    collect: false
+
+web_profiler:
+  toolbar: false
+  intercept_redirects: false
+
+swiftmailer:
+  disable_delivery: true
+
+lexik_jwt_authentication:
+  private_key_path: '%kernel.root_dir%/../features/resources/jwt/key'
+  public_key_path: '%kernel.root_dir%/../features/resources/jwt/key.pub'
+  pass_phrase: ~
+  token_ttl: 86400

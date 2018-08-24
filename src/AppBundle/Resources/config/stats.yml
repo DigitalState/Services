@@ -1,0 +1,28 @@
+services:
+  app.stat.category.count:
+    class: AppBundle\Stat\Category\CountStat
+    arguments:
+      - '@app.service.category'
+    tags:
+      - { name: ds_statistic.stat, alias: category.count }
+
+  app.stat.service.count:
+    class: AppBundle\Stat\Service\CountStat
+    arguments:
+      - '@app.service.service'
+    tags:
+      - { name: ds_statistic.stat, alias: service.count }
+
+  app.stat.scenario.count:
+    class: AppBundle\Stat\Scenario\CountStat
+    arguments:
+      - '@app.service.scenario'
+    tags:
+      - { name: ds_statistic.stat, alias: scenario.count }
+
+  app.stat.submission.count:
+    class: AppBundle\Stat\Submission\CountStat
+    arguments:
+      - '@app.service.submission'
+    tags:
+      - { name: ds_statistic.stat, alias: submission.count }

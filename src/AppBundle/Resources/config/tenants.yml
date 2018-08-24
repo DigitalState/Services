@@ -1,0 +1,15 @@
+services:
+  app.tenant.accesses:
+    class: AppBundle\Tenant\Accesses
+    arguments:
+      - '@ds_security.service.access'
+      - '@ds_security.service.permission'
+    tags:
+      - { name: ds_tenant.loader }
+
+  app.tenant.configs:
+    class: AppBundle\Tenant\Configs
+    arguments:
+      - '@ds_config.service.config'
+    tags:
+      - { name: ds_tenant.loader }

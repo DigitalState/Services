@@ -1,0 +1,35 @@
+default:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+
+  suites:
+    default:
+      paths:
+        - %paths.base%/features
+      contexts:
+        - FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+        - Behatch\Context\RestContext
+        - Behatch\Context\JsonContext
+        - Ds\Component\Identity\Test\Context\IdentityContext:
+            tokenManager: "@lexik_jwt_authentication.jwt_manager"
+            userCollection: "@ds_identity_test.collection.user"
+        - Ds\Component\Database\Test\Context\SchemaContext:
+            doctrine: "@doctrine"
+        - Ds\Component\Database\Test\Context\MigrationContext
+        - Ds\Component\Database\Test\Context\FixtureContext
+        - Ds\Component\Http\Test\Context\JsonContext
+
+  extensions:
+    Behat\Symfony2Extension:
+      kernel:
+        env: "test"
+        debug: "true"
+
+    Behat\MinkExtension:
+      base_url: "http://api.services.ds/"
+      sessions:
+        default:
+          symfony2: ~
+
+    Behatch\Extension: ~

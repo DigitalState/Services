@@ -1,0 +1,9 @@
+checks:
+  php: true
+
+filter:
+  excluded_paths:
+    - bin/*
+    - tests/*
+    - var/*
+    - vendor/*

@@ -1,0 +1,7 @@
+version: '3.1'
+
+services:
+  php:
+    image: 'digitalstate/services:${IMAGE_TAG}'
+    environment:
+      SYMFONY_ENV: prod

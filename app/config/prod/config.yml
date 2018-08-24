@@ -1,0 +1,34 @@
+imports:
+  - { resource: ../config.yml }
+
+parameters:
+  cache_prefix: prod:
+
+doctrine:
+  orm:
+    second_level_cache:
+      enabled: false
+      region_cache_driver:
+        type: service
+        id: snc.cache
+      region_lifetime: 86400
+
+snc_redis:
+  doctrine:
+    second_level_cache:
+      client: doctrine
+      entity_manager: default
+
+monolog:
+  handlers:
+    stream_fingers_crossed:
+      type: fingers_crossed
+      action_level: error
+      handler: stream
+    stream:
+      type: stream
+      path: '%kernel.logs_dir%/%kernel.environment%.log'
+      level: debug
+      formatter: app.monolog.formatter.json
+    console:
+      type: console

@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  php:
+    environment:
+      SYMFONY_ENV: dev
+
+  database_ui:
+    image: adminer:4-standalone
+    environment:
+      SERVICE_8080_ID: '${COMPOSE_PROJECT_NAME}_database_ui_8080'
+      SERVICE_8080_NAME: '${COMPOSE_PROJECT_NAME}_database_ui_8080'
+      SERVICE_8080_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${DATABASE_UI_HOST}'
+    links:
+      - database:services_database
+
+  cache_ui:
+    image: marian/rebrow
+    environment:
+      SERVICE_5001_ID: '${COMPOSE_PROJECT_NAME}_cache_ui_5001'
+      SERVICE_5001_NAME: '${COMPOSE_PROJECT_NAME}_cache_ui_5001'
+      SERVICE_5001_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${CACHE_UI_HOST}'
+    links:
+      - cache:services_cache

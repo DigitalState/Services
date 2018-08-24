@@ -1,0 +1,24 @@
+services:
+  AppBundle\Action\Scenario\FormsAction:
+    class: AppBundle\Action\Scenario\FormsAction
+    arguments:
+      - '@app.service.scenario'
+
+  AppBundle\Action\Scenario\UrlAction:
+    class: AppBundle\Action\Scenario\UrlAction
+    arguments:
+      - '@app.service.scenario'
+
+  AppBundle\Action\Scenario\Forms\TranslationAction:
+    class: AppBundle\Action\Scenario\Forms\TranslationAction
+    arguments:
+      - '@app.service.scenario'
+      - '@request_stack'
+      - '%locale%'
+
+  AppBundle\Action\Scenario\SubmissionsAction:
+    class: AppBundle\Action\Scenario\SubmissionsAction
+    arguments:
+      - '@request_stack'
+      - '@app.service.scenario'
+      - '@app.service.submission'

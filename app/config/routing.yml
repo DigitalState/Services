@@ -1,0 +1,19 @@
+api:
+  resource: .
+  type: api_platform
+
+ds_func:
+  resource: '@DsFuncBundle/Resources/config/routing.yml'
+
+ds_health:
+  resource: '@DsHealthBundle/Resources/config/routing.yml'
+
+ds_statistic:
+  resource: '@DsStatisticBundle/Resources/config/routing.yml'
+
+ds_security:
+  resource: '@DsSecurityBundle/Resources/config/routing.yml'
+
+app_action:
+  resource: '@AppBundle/Action/'
+  type: annotation

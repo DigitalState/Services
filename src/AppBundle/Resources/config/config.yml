@@ -1,0 +1,87 @@
+framework:
+  workflows:
+    submission_state:
+      type: state_machine
+      marking_store:
+        type: single_state
+        arguments:
+          - state
+      supports:
+        - AppBundle\Entity\Submission
+      places:
+        - !php/const:AppBundle\Entity\Submission::STATE_DRAFT
+        - !php/const:AppBundle\Entity\Submission::STATE_SUBMITTED
+        - !php/const:AppBundle\Entity\Submission::STATE_TRANSFERRED
+      transitions:
+        submit:
+          from: [!php/const:AppBundle\Entity\Submission::STATE_DRAFT]
+          to: [!php/const:AppBundle\Entity\Submission::STATE_SUBMITTED]
+        transfer:
+          from: [!php/const:AppBundle\Entity\Submission::STATE_SUBMITTED]
+          to: [!php/const:AppBundle\Entity\Submission::STATE_TRANSFERRED]
+
+ds_security:
+  permissions:
+    category:                    { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Category,                title: app.permissions.category                 }
+    category_property:           { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.*,              title: app.permissions.category.property        }
+    category_id:                 { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.id,             title: app.permissions.category.id              }
+    category_uuid:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.uuid,           title: app.permissions.category.uuid            }
+    category_created_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.createdAt,      title: app.permissions.category.created_at      }
+    category_updated_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.updatedAt,      title: app.permissions.category.updated_at      }
+    category_deleted_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.deletedAt,      title: app.permissions.category.deleted_at      }
+    category_owner:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.owner,          title: app.permissions.category.owner           }
+    category_owner_uuid:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.ownerUuid,      title: app.permissions.category.owner_uuid      }
+    category_title:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.title,          title: app.permissions.category.title           }
+    category_description:        { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.description,    title: app.permissions.category.description     }
+    category_presentation:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.presentation,   title: app.permissions.category.presentation    }
+    category_data:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.data,           title: app.permissions.category.data            }
+    category_version:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.version,        title: app.permissions.category.version         }
+    category_tenant:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Category.tenant,         title: app.permissions.category.tenant          }
+    service:                     { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Service,                 title: app.permissions.service                  }
+    service_property:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.*,               title: app.permissions.service.property         }
+    service_id:                  { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.id,              title: app.permissions.service.id               }
+    service_uuid:                { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.uuid,            title: app.permissions.service.uuid             }
+    service_created_at:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.createdAt,       title: app.permissions.service.created_at       }
+    service_updated_at:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.updatedAt,       title: app.permissions.service.updated_at       }
+    service_deleted_at:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.deletedAt,       title: app.permissions.service.deleted_at       }
+    service_owner:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.owner,           title: app.permissions.service.owner            }
+    service_owner_uuid:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.ownerUuid,       title: app.permissions.service.owner_uuid       }
+    service_title:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.title,           title: app.permissions.service.title            }
+    service_description:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.description,     title: app.permissions.service.description      }
+    service_presentation:        { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.presentation,    title: app.permissions.service.presentation     }
+    service_data:                { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.data,            title: app.permissions.service.data             }
+    service_version:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.version,         title: app.permissions.service.version          }
+    service_tenant:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Service.tenant,          title: app.permissions.service.tenant           }
+    scenario:                    { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Scenario,                title: app.permissions.scenario                 }
+    scenario_property:           { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.*,              title: app.permissions.scenario.property        }
+    scenario_id:                 { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.id,             title: app.permissions.scenario.id              }
+    scenario_uuid:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.uuid,           title: app.permissions.scenario.uuid            }
+    scenario_created_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.createdAt,      title: app.permissions.scenario.created_at      }
+    scenario_updated_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.updatedAt,      title: app.permissions.scenario.updated_at      }
+    scenario_deleted_at:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.deletedAt,      title: app.permissions.scenario.deleted_at      }
+    scenario_owner:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.owner,          title: app.permissions.scenario.owner           }
+    scenario_owner_uuid:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.ownerUuid,      title: app.permissions.scenario.owner_uuid      }
+    scenario_type:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.type,           title: app.permissions.scenario.type            }
+    scenario_config:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.config,         title: app.permissions.scenario.config          }
+    scenario_title:              { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.title,          title: app.permissions.scenario.title           }
+    scenario_description:        { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.description,    title: app.permissions.scenario.description     }
+    scenario_presentation:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.presentation,   title: app.permissions.scenario.presentation    }
+    scenario_data:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.data,           title: app.permissions.scenario.data            }
+    scenario_version:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.version,        title: app.permissions.scenario.version         }
+    scenario_tenant:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Scenario.tenant,         title: app.permissions.scenario.tenant          }
+    submission:                  { attributes: [BROWSE, READ, EDIT, ADD, DELETE], entity:    AppBundle\Entity\Submission,              title: app.permissions.submission               }
+    submission_property:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.*,            title: app.permissions.submission.property      }
+    submission_id:               { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.id,           title: app.permissions.submission.id            }
+    submission_uuid:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.uuid,         title: app.permissions.submission.uuid          }
+    submission_created_at:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.createdAt,    title: app.permissions.submission.created_at    }
+    submission_updated_at:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.updatedAt,    title: app.permissions.submission.updated_at    }
+    submission_deleted_at:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.deletedAt,    title: app.permissions.submission.deleted_at    }
+    submission_owner:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.owner,        title: app.permissions.submission.owner         }
+    submission_owner_uuid:       { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.ownerUuid,    title: app.permissions.submission.owner_uuid    }
+    submission_identity:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.identity,     title: app.permissions.submission.identity      }
+    submission_identity_uuid:    { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.identityUuid, title: app.permissions.submission.identity_uuid }
+    submission_scenario:         { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.scenario,     title: app.permissions.submission.scenario      }
+    submission_data:             { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.data,         title: app.permissions.submission.data          }
+    submission_state:            { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.state,        title: app.permissions.submission.state         }
+    submission_version:          { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.version,      title: app.permissions.submission.version       }
+    submission_tenant:           { attributes: [BROWSE, READ, EDIT],              property:  AppBundle\Entity\Submission.tenant,       title: app.permissions.submission.tenant        }
