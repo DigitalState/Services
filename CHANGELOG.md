@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.10.0
+
+- Feature [Discovery] Standardize discovery service names
+- Upgrade [Core] Upgrade digitalstate/core dependency to 0.10.0
+
 ## 0.9.0
 
 - Upgrade [Core] Upgrade digitalstate/core dependency to 0.9.0
