@@ -5,3 +5,17 @@ services:
     image: 'digitalstate/services:${IMAGE_TAG}'
     environment:
       SYMFONY_ENV: prod
+    extra_hosts:
+      - 'api.assets.stag.ds:${PROXY_HOST}'
+      - 'api.authentication.stag.ds:${PROXY_HOST}'
+      - 'api.camunda.stag.ds:${PROXY_HOST}'
+      - 'api.cases.stag.ds:${PROXY_HOST}'
+      - 'api.cms.stag.ds:${PROXY_HOST}'
+      - 'api.discovery.stag.ds:${PROXY_HOST}'
+      - 'api.formio.stag.ds:${PROXY_HOST}'
+      - 'api.forms.stag.ds:${PROXY_HOST}'
+      - 'api.identities.stag.ds:${PROXY_HOST}'
+      - 'api.records.stag.ds:${PROXY_HOST}'
+      - 'api.services.stag.ds:${PROXY_HOST}'
+      - 'api.tasks.stag.ds:${PROXY_HOST}'
+      - 'api.tenants.stag.ds:${PROXY_HOST}'

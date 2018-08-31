@@ -37,11 +37,11 @@ services:
     depends_on:
       - php
     environment:
-      SERVICE_443_ID: '${COMPOSE_PROJECT_NAME}_api_443'
-      SERVICE_443_NAME: '${COMPOSE_PROJECT_NAME}_api_443'
+      SERVICE_443_ID: '${COMPOSE_PROJECT_NAME}_api_https'
+      SERVICE_443_NAME: '${COMPOSE_PROJECT_NAME}_api_https'
       SERVICE_443_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=https,proxy.frontend.rule=Host:${API_HOST}'
-      SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}_api_80'
-      SERVICE_80_NAME: '${COMPOSE_PROJECT_NAME}_api_80'
+      SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}_api_http'
+      SERVICE_80_NAME: '${COMPOSE_PROJECT_NAME}_api_http'
       SERVICE_80_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${API_HOST}'
     volumes:
       - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
