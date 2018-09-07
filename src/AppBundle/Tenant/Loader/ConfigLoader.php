@@ -1,15 +1,16 @@
 <?php
 
-namespace AppBundle\Tenant;
+namespace AppBundle\Tenant\Loader;
 
 use Ds\Component\Config\Service\ConfigService;
+use Ds\Component\Tenant\Entity\Tenant;
 use Ds\Component\Tenant\Loader\Loader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Configs
+ * Class ConfigLoader
  */
-class Configs implements Loader
+class ConfigLoader implements Loader
 {
     /**
      * @var \Ds\Component\Config\Service\ConfigService
@@ -29,16 +30,16 @@ class Configs implements Loader
     /**
      * {@inheritdoc}
      */
-    public function load(array $data)
+    public function load(Tenant $tenant)
     {
         $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/tenant/configs.yml');
 
         // @todo Figure out how symfony does parameter binding and use the same technique
         $yml = strtr($yml, [
-            '%config.app.spa.admin.value%' => $data['config']['app.spa.admin']['value'],
-            '%config.app.spa.portal.value%' => $data['config']['app.spa.portal']['value'],
-            '%business_unit.administration.uuid%' => $data['business_unit']['administration']['uuid'],
-            '%tenant.uuid%' => $data['tenant']['uuid']
+            '%config.app.spa.admin.value%' => $tenant->getData()['config']['app.spa.admin']['value'],
+            '%config.app.spa.portal.value%' => $tenant->getData()['config']['app.spa.portal']['value'],
+            '%business_unit.administration.uuid%' => $tenant->getData()['business_unit']['administration']['uuid'],
+            '%tenant.uuid%' => $tenant->getUuid()
         ]);
 
         $configs = Yaml::parse($yml, YAML::PARSE_OBJECT_FOR_MAP);
@@ -52,6 +53,7 @@ class Configs implements Loader
                 ->setOwnerUuid($object->owner_uuid)
                 ->setKey($object->key)
                 ->setValue($object->value)
+                ->setEnabled($object->enabled)
                 ->setTenant($object->tenant);
             $manager->persist($config);
             $manager->flush();

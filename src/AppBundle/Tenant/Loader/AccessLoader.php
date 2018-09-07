@@ -1,16 +1,17 @@
 <?php
 
-namespace AppBundle\Tenant;
+namespace AppBundle\Tenant\Loader;
 
 use Ds\Component\Security\Service\AccessService;
 use Ds\Component\Security\Service\PermissionService;
+use Ds\Component\Tenant\Entity\Tenant;
 use Ds\Component\Tenant\Loader\Loader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Accesses
+ * Class AccessLoader
  */
-class Accesses implements Loader
+class AccessLoader implements Loader
 {
     /**
      * @var \Ds\Component\Security\Service\AccessService
@@ -37,16 +38,16 @@ class Accesses implements Loader
     /**
      * {@inheritdoc}
      */
-    public function load(array $data)
+    public function load(Tenant $tenant)
     {
         $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/tenant/accesses.yml');
 
         // @todo Figure out how symfony does parameter binding and use the same technique
         $yml = strtr($yml, [
-            '%identity.system.uuid%' => $data['identity']['system']['uuid'],
-            '%business_unit.administration.uuid%' => $data['business_unit']['administration']['uuid'],
-            '%identity.admin.uuid%' => $data['identity']['admin']['uuid'],
-            '%tenant.uuid%' => $data['tenant']['uuid']
+            '%identity.system.uuid%' => $tenant->getData()['identity']['system']['uuid'],
+            '%business_unit.administration.uuid%' => $tenant->getData()['business_unit']['administration']['uuid'],
+            '%identity.admin.uuid%' => $tenant->getData()['identity']['admin']['uuid'],
+            '%tenant.uuid%' => $tenant->getUuid()
         ]);
 
         $accesses = Yaml::parse($yml, YAML::PARSE_OBJECT_FOR_MAP);
