@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.0
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.12.0
+- Feature [Tenant] Introduce tenant unloaders
+- Feature [Web] Introduce test entrypoint
+
 ## 0.11.0
 
 - Feature [Test] Refactor continious integration
