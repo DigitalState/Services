@@ -5,6 +5,7 @@
 - Feature [Core] Upgrade digitalstate/core dependency to 0.12.0
 - Feature [Tenant] Introduce tenant unloaders
 - Feature [Web] Introduce test entrypoint
+- Feature [System] Enable system behat context
 
 ## 0.11.0
 
