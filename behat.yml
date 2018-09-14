@@ -11,6 +11,7 @@ default:
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
+        - Ds\Component\Discovery\Test\Context\DiscoveryContext
         - Ds\Component\Identity\Test\Context\IdentityContext:
             tokenManager: "@lexik_jwt_authentication.jwt_manager"
             userCollection: "@ds_identity_test.collection.user"
