@@ -2,6 +2,7 @@ sudo: required
 
 env:
   DOCKER_COMPOSE_VERSION: 1.11.2
+  JWT_PASS_PHRASE: secret
 
 services:
   - docker
@@ -11,6 +12,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - openssl genrsa -out var/jwt/key -aes256 -passout pass:${JWT_PASS_PHRASE} 4096
+  - openssl rsa -pubout -in var/jwt/key -out var/jwt/key.pub -passin pass:${JWT_PASS_PHRASE}
 
 script:
   - docker network create dsproxy_default

@@ -65,7 +65,9 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
             $bundles[] = new Ds\Component\Debug\DsDebugBundle;
+            $bundles[] = new Ds\Component\Discovery\Test\DsDiscoveryTestBundle;
             $bundles[] = new Ds\Component\Identity\Test\DsIdentityTestBundle;
+            $bundles[] = new Ds\Component\System\Test\DsSystemTestBundle;
         }
 
         return $bundles;

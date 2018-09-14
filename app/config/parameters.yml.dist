@@ -13,7 +13,7 @@ parameters:
   cache_prefix: ''
   jwt_private_key_path: '%kernel.root_dir%/../var/jwt/key'
   jwt_public_key_path: '%kernel.root_dir%/../var/jwt/key.pub'
-  jwt_key_pass_phrase: ''
+  jwt_key_pass_phrase: secret
   jwt_token_ttl: 3600
   mailer_transport: smtp
   mailer_host: 127.0.0.1
