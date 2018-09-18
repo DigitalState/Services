@@ -9,3 +9,4 @@ The DigitalState Services microservice api endpoints.
 - [Config](api/config.md)
 - [Access](api/access.md)
 - [Statistic](api/statistic.md)
+- [Service](api/service.md)

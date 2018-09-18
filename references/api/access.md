@@ -255,8 +255,8 @@ A JSON object that contains the following properties:
 | assignee | string | The access card assignee. |
 | assigneeUuid | string | The access card assignee uuid. |
 | permissions | array | The access card granted permissions. |
-| version | integer | The config version. This value is used for optimistic locking. |
-| tenant | string | The config tenant uuid. |
+| version | integer | The access card version. This value is used for optimistic locking. |
+| tenant | string | The access card tenant uuid. |
 
 #### 400 Bad Request
 
@@ -376,8 +376,8 @@ A JSON object that contains the following properties:
 | assignee | string | The access card assignee. |
 | assigneeUuid | string | The access card assignee uuid. |
 | permissions | array | The access card granted permissions. |
-| version | integer | The config version. This value is used for optimistic locking. |
-| tenant | string | The config tenant uuid. |
+| version | integer | The access card version. This value is used for optimistic locking. |
+| tenant | string | The access card tenant uuid. |
 
 #### 400 Bad Request
 
