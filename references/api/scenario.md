@@ -25,7 +25,7 @@ GET `/scenarios`
 | Name | Type | Description | Example |
 | :--- | :--- | :---------- | :------ |
 | id | integer | Filter scenarios by the given id. __Optional.__ | `id=1`<br><br>`id[]=1&id[]=2` |
-| uuid | string | Filter scenarios by the given uuid. __Optional.__ | `uuid=2069c3a1-c401-4f9b-8a15-1a179c9cd8f2`<br><br>`uuid[]=2069c3a1-c401-4f9b-8a15-1a179c9cd8f2&uuid[]=3d47f83e-c098-4cff-928f-344f9c33427f` |
+| uuid | string | Filter scenarios by the given uuid. __Optional.__ | `uuid=04acd353-4737-4543-a9b5-e16f2aca2449`<br><br>`uuid[]=04acd353-4737-4543-a9b5-e16f2aca2449&uuid[]=8f51f42c-c095-418c-ba6e-73c8f193353f` |
 | owner | string | Filter scenarios by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
 | ownerUuid | string | Filter scenarios by the given owner uuid. __Optional.__ | `ownerUuid=5f4108bb-fa74-4c93-9bb1-9e37d9302640`<br><br>`ownerUuid[]=5f4108bb-fa74-4c93-9bb1-9e37d9302640&ownerUuid[]=0092e830-e411-47cf-b7ef-c19cc79ba8cb` |
 | createdAt[before] | string | Filter scenarios that were created before the given date. __Optional.__ | `createdAt[before]=2018-07-20T13:19:30.181Z` |
