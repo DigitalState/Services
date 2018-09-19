@@ -49,18 +49,18 @@ A JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
-| id | integer | The services id. |
-| uuid | string | The services uuid. |
-| createdAt | string | The date the services was created on. |
-| updatedAt | string | The date the services was update at. |
-| owner | string | The services owner. |
-| ownerUuid | string | The services owner uuid. |
-| slug | string | The services unique slug. |
+| id | integer | The service id. |
+| uuid | string | The service uuid. |
+| createdAt | string | The date the service was created on. |
+| updatedAt | string | The date the service was update at. |
+| owner | string | The service owner. |
+| ownerUuid | string | The service owner uuid. |
+| slug | string | The service unique slug. |
 | title | object | The object of translated service titles. |
 | description | object | The object of translated service descriptions. |
 | presentation | object | The object of translated service presentations. |
 | enabled | boolean | The service enabled status. |
-| version | integer | The services version. This value is used for optimistic locking. |
+| version | integer | The service version. This value is used for optimistic locking. |
 | tenant | string | The service tenant uuid. |
 
 ### Example
@@ -162,18 +162,18 @@ A JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
-| id | integer | The services id. |
-| uuid | string | The services uuid. |
-| createdAt | string | The date the services was created on. |
-| updatedAt | string | The date the services was update at. |
-| owner | string | The services owner. |
-| ownerUuid | string | The services owner uuid. |
-| slug | string | The services unique slug. |
+| id | integer | The service id. |
+| uuid | string | The service uuid. |
+| createdAt | string | The date the service was created on. |
+| updatedAt | string | The date the service was update at. |
+| owner | string | The service owner. |
+| ownerUuid | string | The service owner uuid. |
+| slug | string | The service unique slug. |
 | title | object | The object of translated service titles. |
 | description | object | The object of translated service descriptions. |
 | presentation | object | The object of translated service presentations. |
 | enabled | boolean | The service enabled status. |
-| version | integer | The services version. This value is used for optimistic locking. |
+| version | integer | The service version. This value is used for optimistic locking. |
 | tenant | string | The service tenant uuid. |
 
 #### 404 Not Found
