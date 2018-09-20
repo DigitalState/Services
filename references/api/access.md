@@ -28,22 +28,27 @@ GET `/accesses`
 | :--- | :--- | :---------- | :------ |
 | id | integer | Filter access cards by the given id. __Optional.__ | `id=1`<br><br>`id[]=1&id[]=2` |
 | uuid | string | Filter access cards by the given uuid. __Optional.__ | `uuid=dc719883-c593-42e5-8aee-5d9367525273`<br><br>`uuid[]=dc719883-c593-42e5-8aee-5d9367525273&uuid[]=242e3829-9345-469a-a612-f6c432e0b4b1` |
-| owner | string | Filter access cards by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
-| ownerUuid | string | Filter access cards by the given owner uuid. __Optional.__ | `ownerUuid=5f4108bb-fa74-4c93-9bb1-9e37d9302640`<br><br>`ownerUuid[]=5f4108bb-fa74-4c93-9bb1-9e37d9302640&ownerUuid[]=0092e830-e411-47cf-b7ef-c19cc79ba8cb` |
-| assignee | string | Filter access cards by the given assignee. __Optional.__ | `assignee=Staff`<br><br>`assignee[]=Individual&assignee[]=Organization` |
-| assigneeUuid | string | Filter access cards by the given assignee uuid. __Optional.__ | `assigneeUuid=c8c17ac2-3c41-491d-888c-459f13b97d3c`<br><br>`assigneeUuid[]=c8c17ac2-3c41-491d-888c-459f13b97d3c&assigneeUuid[]=54be68f2-1043-4614-846b-6a1638abae4e` |
 | createdAt[before] | string | Filter access cards that were created before the given date. __Optional.__ | `createdAt[before]=2018-07-20T13:19:30.181Z` |
 | createdAt[after] | string | Filter access cards that were created after the given date. __Optional.__ | `createdAt[after]2018-07-20T13:19:30.181Z` |
 | updatedAt[before] | string | Filter access cards that were updated before the given date. __Optional.__ | `updatedAt[before]=2018-07-20T13:19:30.181Z` |
 | updatedAt[after] | string | Filter access cards that were updated after the given date. __Optional.__ | `updatedAt[after]=2018-07-20T13:19:30.181Z` |
+| owner | string | Filter access cards by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
+| ownerUuid | string | Filter access cards by the given owner uuid. __Optional.__ | `ownerUuid=5f4108bb-fa74-4c93-9bb1-9e37d9302640`<br><br>`ownerUuid[]=5f4108bb-fa74-4c93-9bb1-9e37d9302640&ownerUuid[]=0092e830-e411-47cf-b7ef-c19cc79ba8cb` |
+| assignee | string | Filter access cards by the given assignee. __Optional.__ | `assignee=Staff`<br><br>`assignee[]=Individual&assignee[]=Organization` |
+| assigneeUuid | string | Filter access cards by the given assignee uuid. __Optional.__ | `assigneeUuid=c8c17ac2-3c41-491d-888c-459f13b97d3c`<br><br>`assigneeUuid[]=c8c17ac2-3c41-491d-888c-459f13b97d3c&assigneeUuid[]=54be68f2-1043-4614-846b-6a1638abae4e` |
 | page | integer | The current page in the pagination. __Optional.__ Default: `1`. | `page=2` |
 | limit | integer | The number of items per page. __Optional.__ Default: `10`. | `limit=25` |
+| order[id] | string | Order access cards by id. __Optional.__ Options: `asc`, `desc`. | `order[id]=asc` |
+| order[createdAt] | string | Order access cards by creation date. __Optional.__ Options: `asc`, `desc`. | `order[createdAt]=asc` |
+| order[updatedAt] | string | Order access cards by modification date. __Optional.__ Options: `asc`, `desc`. | `order[updatedAt]=asc` |
+| order[owner] | string | Order forms by owner. __Optional.__ | `order[owner]=asc` |
+| order[assignee] | string | Order forms by assignee. __Optional.__ | `order[assignee]=asc` |
 
 ### Response
 
 #### 200 OK
 
-A JSON array of objects. Each object contains the following properties:
+The request was successful and returns a  JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -148,7 +153,7 @@ GET `/accesses/{uuid}`
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -166,7 +171,13 @@ A JSON object that contains the following properties:
 
 #### 404 Not Found
 
-The access card with the given uuid does not exist.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -242,7 +253,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -260,7 +271,14 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
+| violations | array | The array of violations. |
 
 ### Example
 
@@ -363,7 +381,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -381,7 +399,14 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error compiled violations. |
+| violations | array | The array of violations. |
 
 ### Example
 
