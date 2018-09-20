@@ -58,7 +58,7 @@ The request was successful and returns a JSON array of objects. Each object cont
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |
@@ -142,7 +142,7 @@ The request was successful and returns a JSON object that contains the following
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |

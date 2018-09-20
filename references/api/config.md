@@ -53,7 +53,7 @@ The request was successful and returns a JSON array of objects. Each object cont
 | id | integer | The config id. |
 | uuid | string | The config uuid. |
 | createdAt | string | The date the config was created on. |
-| updatedAt | string | The date the config was update at. |
+| updatedAt | string | The date the config was updated at. |
 | owner | string | The config owner. |
 | ownerUuid | string | The config owner uuid. |
 | key | string | The config key. This value is unique. |
@@ -142,7 +142,7 @@ The request was successful and returns a JSON object that contains the following
 | id | integer | The config id. |
 | uuid | string | The config uuid. |
 | createdAt | string | The date the config was created on. |
-| updatedAt | string | The date the config was update at. |
+| updatedAt | string | The date the config was updated at. |
 | owner | string | The config owner. |
 | ownerUuid | string | The config owner uuid. |
 | key | string | The config key. This value is unique. |

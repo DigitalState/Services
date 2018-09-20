@@ -26,12 +26,14 @@ GET `/scenarios`
 | :--- | :--- | :---------- | :------ |
 | id | integer | Filter scenarios by the given id. __Optional.__ | `id=1`<br><br>`id[]=1&id[]=2` |
 | uuid | string | Filter scenarios by the given uuid. __Optional.__ | `uuid=04acd353-4737-4543-a9b5-e16f2aca2449`<br><br>`uuid[]=04acd353-4737-4543-a9b5-e16f2aca2449&uuid[]=8f51f42c-c095-418c-ba6e-73c8f193353f` |
-| owner | string | Filter scenarios by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
-| ownerUuid | string | Filter scenarios by the given owner uuid. __Optional.__ | `ownerUuid=5f4108bb-fa74-4c93-9bb1-9e37d9302640`<br><br>`ownerUuid[]=5f4108bb-fa74-4c93-9bb1-9e37d9302640&ownerUuid[]=0092e830-e411-47cf-b7ef-c19cc79ba8cb` |
 | createdAt[before] | string | Filter scenarios that were created before the given date. __Optional.__ | `createdAt[before]=2018-07-20T13:19:30.181Z` |
 | createdAt[after] | string | Filter scenarios that were created after the given date. __Optional.__ | `createdAt[after]2018-07-20T13:19:30.181Z` |
 | updatedAt[before] | string | Filter scenarios that were updated before the given date. __Optional.__ | `updatedAt[before]=2018-07-20T13:19:30.181Z` |
 | updatedAt[after] | string | Filter scenarios that were updated after the given date. __Optional.__ | `updatedAt[after]=2018-07-20T13:19:30.181Z` |
+| deletedAt[before] | string | Filter scenarios that were deleted before the given date. __Optional.__ | `updatedAt[before]=2018-07-20T13:19:30.181Z` |
+| deletedAt[after] | string | Filter scenarios that were deleted after the given date. __Optional.__ | `updatedAt[after]=2018-07-20T13:19:30.181Z` |
+| owner | string | Filter scenarios by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
+| ownerUuid | string | Filter scenarios by the given owner uuid. __Optional.__ | `ownerUuid=5f4108bb-fa74-4c93-9bb1-9e37d9302640`<br><br>`ownerUuid[]=5f4108bb-fa74-4c93-9bb1-9e37d9302640&ownerUuid[]=0092e830-e411-47cf-b7ef-c19cc79ba8cb` |
 | type | string | Filter scenarios by exact type. __Optional.__ | `type=bpm`<br><br>`type[]=bpm&type[]=info` |
 | slug | string | Filter scenarios by exact slug. __Optional.__ | `slug=slug-1`<br><br>`slug[]=slug-1&slug[]=slug-2` |
 | title | string | Filter scenarios by partial title. __Optional.__ | `Title 1`<br><br>`` |
@@ -41,19 +43,29 @@ GET `/scenarios`
 | service.uuid | string | Filter scenarios by uuid of service the scenarios is associated with. __Optional.__ | `categories.uuid=9f9aeb3f-69aa-42f4-b028-2432a3317eea`<br><br>`categories.uuid[]=9f9aeb3f-69aa-42f4-b028-2432a3317eea&categories.uuid[]=7fc7a5e4-5ed0-43b1-a983-f7af9a7f446f` |
 | page | integer | The current page in the pagination. __Optional.__ Default: `1`. | `page=2` |
 | limit | integer | The number of items per page. __Optional.__ Default: `10`. | `limit=25` |
+| order[id] | string | Order scenarios by id. __Optional.__ Options: `asc`, `desc`. | `order[id]=asc` |
+| order[createdAt] | string | Order scenarios by creation date. __Optional.__ Options: `asc`, `desc`. | `order[createdAt]=asc` |
+| order[updatedAt] | string | Order scenarios by modification date. __Optional.__ Options: `asc`, `desc`. | `order[updatedAt]=asc` |
+| order[deletedAt] | string | Order scenarios by deletion date. __Optional.__ Options: `asc`, `desc`. | `order[deletedAt]=asc` |
+| order[owner] | string | Order scenarios by owner. __Optional.__ | `order[owner]=asc` |
+| order[type] | string | Order scenarios by type. __Optional.__ | `order[type]=asc` |
+| order[title] | string | Order scenarios by title. __Optional.__ | `order[title]=asc` |
+| order[description] | string | Order scenarios by description. __Optional.__ | `order[description]=asc` |
+| order[presentation] | string | Order scenarios by presentation. __Optional.__ | `order[presentation]=asc` |
 
 ### Response
 
 #### 200 OK
 
-A JSON array of objects. Each object contains the following properties:
+The request was successful and returns a JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The scenario id. |
 | uuid | string | The scenario uuid. |
 | createdAt | string | The date the scenario was created on. |
-| updatedAt | string | The date the scenario was update at. |
+| updatedAt | string | The date the scenario was updated at. |
+| deletedAt | string | The date the scenario was deleted at. |
 | owner | string | The scenario owner. |
 | ownerUuid | string | The scenario owner uuid. |
 | type | string | The scenario type. |
@@ -145,14 +157,15 @@ GET `/scenarios/{uuid}`
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The scenario id. |
 | uuid | string | The scenario uuid. |
 | createdAt | string | The date the scenario was created on. |
-| updatedAt | string | The date the scenario was update at. |
+| updatedAt | string | The date the scenario was updated at. |
+| deletedAt | string | The date the scenario was deleted at. |
 | owner | string | The scenario owner. |
 | ownerUuid | string | The scenario owner uuid. |
 | type | string | The scenario type. |
@@ -166,7 +179,13 @@ A JSON object that contains the following properties:
 
 #### 404 Not Found
 
-The scenario with the given uuid does not exist.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -256,14 +275,15 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The scenario id. |
 | uuid | string | The scenario uuid. |
 | createdAt | string | The date the scenario was created on. |
-| updatedAt | string | The date the scenario was update at. |
+| updatedAt | string | The date the scenario was updated at. |
+| deletedAt | string | The date the scenario was deleted at. |
 | owner | string | The scenario owner. |
 | ownerUuid | string | The scenario owner uuid. |
 | type | string | The scenario type. |
@@ -277,7 +297,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -405,14 +431,15 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The scenario id. |
 | uuid | string | The scenario uuid. |
 | createdAt | string | The date the scenario was created on. |
-| updatedAt | string | The date the scenario was update at. |
+| updatedAt | string | The date the scenario was updated at. |
+| deletedAt | string | The date the scenario was deleted at. |
 | owner | string | The scenario owner. |
 | ownerUuid | string | The scenario owner uuid. |
 | type | string | The scenario type. |
@@ -426,7 +453,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 

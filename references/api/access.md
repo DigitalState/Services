@@ -55,7 +55,7 @@ The request was successful and returns a  JSON array of objects. Each object con
 | id | integer | The access card id. |
 | uuid | string | The access card uuid. |
 | createdAt | string | The date the access card was created on. |
-| updatedAt | string | The date the access card was update at. |
+| updatedAt | string | The date the access card was updated at. |
 | owner | string | The access card owner. |
 | ownerUuid | string | The access card owner uuid. |
 | assignee | string | The access card assignee. |
@@ -160,7 +160,7 @@ The request was successful and returns a JSON object that contains the following
 | id | integer | The access card id. |
 | uuid | string | The access card uuid. |
 | createdAt | string | The date the access card was created on. |
-| updatedAt | string | The date the access card was update at. |
+| updatedAt | string | The date the access card was updated at. |
 | owner | string | The access card owner. |
 | ownerUuid | string | The access card owner uuid. |
 | assignee | string | The access card assignee. |

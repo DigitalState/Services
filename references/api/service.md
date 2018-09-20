@@ -40,19 +40,28 @@ GET `/services`
 | categories.uuid | string | Filter services by uuid of categories the services is associated with. __Optional.__ | `categories.uuid=9f9aeb3f-69aa-42f4-b028-2432a3317eea`<br><br>`categories.uuid[]=9f9aeb3f-69aa-42f4-b028-2432a3317eea&categories.uuid[]=7fc7a5e4-5ed0-43b1-a983-f7af9a7f446f` |
 | page | integer | The current page in the pagination. __Optional.__ Default: `1`. | `page=2` |
 | limit | integer | The number of items per page. __Optional.__ Default: `10`. | `limit=25` |
+| order[id] | string | Order services by id. __Optional.__ Options: `asc`, `desc`. | `order[id]=asc` |
+| order[createdAt] | string | Order services by creation date. __Optional.__ Options: `asc`, `desc`. | `order[createdAt]=asc` |
+| order[updatedAt] | string | Order services by modification date. __Optional.__ Options: `asc`, `desc`. | `order[updatedAt]=asc` |
+| order[deletedAt] | string | Order services by deletion date. __Optional.__ Options: `asc`, `desc`. | `order[deletedAt]=asc` |
+| order[owner] | string | Order services by owner. __Optional.__ | `order[owner]=asc` |
+| order[type] | string | Order services by type. __Optional.__ | `order[type]=asc` |
+| order[title] | string | Order services by title. __Optional.__ | `order[title]=asc` |
+| order[description] | string | Order services by description. __Optional.__ | `order[description]=asc` |
+| order[presentation] | string | Order services by presentation. __Optional.__ | `order[presentation]=asc` |
 
 ### Response
 
 #### 200 OK
 
-A JSON array of objects. Each object contains the following properties:
+The request was successful and returns a JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The service id. |
 | uuid | string | The service uuid. |
 | createdAt | string | The date the service was created on. |
-| updatedAt | string | The date the service was update at. |
+| updatedAt | string | The date the service was updated at. |
 | owner | string | The service owner. |
 | ownerUuid | string | The service owner uuid. |
 | slug | string | The service unique slug. |
@@ -158,14 +167,14 @@ GET `/services/{uuid}`
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The service id. |
 | uuid | string | The service uuid. |
 | createdAt | string | The date the service was created on. |
-| updatedAt | string | The date the service was update at. |
+| updatedAt | string | The date the service was updated at. |
 | owner | string | The service owner. |
 | ownerUuid | string | The service owner uuid. |
 | slug | string | The service unique slug. |
@@ -178,7 +187,13 @@ A JSON object that contains the following properties:
 
 #### 404 Not Found
 
-The service with the given uuid does not exist.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -259,7 +274,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -279,7 +294,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -390,7 +411,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -410,7 +431,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
