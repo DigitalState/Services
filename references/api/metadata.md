@@ -28,30 +28,37 @@ GET `/metadatas`
 | ---- | ---- | ----------- | ------- |
 | id | integer | Filter metadata resources by the given id. __Optional.__ | `id=1`<br><br>`id[]=1&id[]=2` |
 | uuid | string | Filter metadata resources by the given uuid. __Optional.__ | `uuid=941b9d4e-d0e5-41df-a62e-97db05559dac`<br><br>`uuid[]=941b9d4e-d0e5-41df-a62e-97db05559dac&uuid[]=70e6171c-c1ea-47d1-b24c-4b93328908fc` |
+| createdAt[before] | string | Filter metadata resources that were created before the given date. __Optional.__ | `createdAt[before]=2018-07-20T13:19:30.181Z` |
+| createdAt[after] | string | Filter metadata resources that were created after the given date. __Optional.__ | `createdAt[after]2018-07-20T13:19:30.181Z` |
+| updatedAt[before] | string | Filter metadata resources that were updated before the given date. __Optional.__ | `updatedAt[before]=2018-07-20T13:19:30.181Z` |
+| updatedAt[after] | string | Filter metadata resources that were updated after the given date. __Optional.__ | `updatedAt[after]=2018-07-20T13:19:30.181Z` |
 | owner | string | Filter metadata resources by the given owner. __Optional.__ | `owner=BusinessUnit`<br><br>`owner[]=BusinessUnit&owner[]=Staff` |
 | ownerUuid | string | Filter metadata resources by the given owner uuid. __Optional.__ | `ownerUuid=c11c546e-bd01-47cf-97da-e25388357b5a`<br><br>`ownerUuid[]=c11c546e-bd01-47cf-97da-e25388357b5a&ownerUuid[]=a9d68bf7-5000-49fe-8b00-33dde235b327` |
 | title | string | Filter metadata resources by the given partial title. __Optional.__ | `title=OAuth`<br><br>`title[]=OAuth&title[]=Registration` |
 | slug | string | Filter metadata resources by the given slug. __Optional.__ | `slug=oauth-providers`<br><br>`slug[]=oauth-providers&slug[]=registration` |
 | type | string | Filter metadata resources by the given type. __Optional.__ | `type=authentication`<br><br>`type[]=authentication&type[]=user` |
-| createdAt[before] | string | Filter metadata resources that were created before the given date. __Optional.__ | `createdAt[before]=2018-07-20T13:19:30.181Z` |
-| createdAt[after] | string | Filter metadata resources that were created after the given date. __Optional.__ | `createdAt[after]2018-07-20T13:19:30.181Z` |
-| updatedAt[before] | string | Filter metadata resources that were updated before the given date. __Optional.__ | `updatedAt[before]=2018-07-20T13:19:30.181Z` |
-| updatedAt[after] | string | Filter metadata resources that were updated after the given date. __Optional.__ | `updatedAt[after]=2018-07-20T13:19:30.181Z` |
 | page | integer | The current page in the pagination. __Optional.__ Default: `1`. | `page=2` |
 | limit | integer | The number of items per page. __Optional.__ Default: `10`. | `limit=25` |
+| order[id] | string | Order metadata resources by id. __Optional.__ Options: `asc`, `desc`. | `order[id]=asc` |
+| order[createdAt] | string | Order metadata resources by creation date. __Optional.__ Options: `asc`, `desc`. | `order[createdAt]=asc` |
+| order[updatedAt] | string | Order metadata resources by modification date. __Optional.__ Options: `asc`, `desc`. | `order[updatedAt]=asc` |
+| order[owner] | string | Order metadata resources by owner. __Optional.__ | `order[owner]=asc` |
+| order[title] | string | Order metadata resources by title. __Optional.__ | `order[title]=asc` |
+| order[type] | string | Order metadata resources by type. __Optional.__ | `order[type]=asc` |
+| order[slug] | string | Order metadata resources by slug. __Optional.__ | `order[slug]=asc` |
 
 ### Response
 
 #### 200 OK
 
-A JSON array of objects. Each object contains the following properties:
+The request was successful and returns a JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |
@@ -128,14 +135,14 @@ GET `/metadatas/{uuid}`
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | id | integer | The metadata resource id. |
 | uuid | string | The metadata resource uuid. |
 | createdAt | string | The date the metadata resource was created on. |
-| updatedAt | string | The date the metadata resource was update at. |
+| updatedAt | string | The date the metadata resource was updated at. |
 | owner | string | The metadata resource owner. |
 | ownerUuid | string | The metadata resource owner uuid. |
 | title | object | The metadata resource title. |
@@ -147,7 +154,13 @@ A JSON object that contains the following properties:
 
 #### 404 Not Found
 
-The metadata resource with the given uuid does not exist.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -223,7 +236,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -242,7 +255,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -344,7 +363,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Value | Description |
 | ---- | ----- | ----------- |
@@ -363,7 +382,13 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 

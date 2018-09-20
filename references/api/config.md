@@ -2,7 +2,7 @@
 
 The config api endpoints allow authorized users to read and modify application configurations.
 
-The complete list of configs available can be found [here](../config.md).
+The complete list of configs available can be found [here](../configurations.md).
 
 ## Table of Contents
 
@@ -36,19 +36,24 @@ GET `/configs`
 | enabled | boolean | Filter configs by given enabled status. __Optional.__ | `enabled=true` |
 | page | integer | The current page in the pagination. __Optional.__ Default: `1`. | `page=2` |
 | limit | integer | The number of items per page. __Optional.__ Default: `10`. | `limit=25` |
+| order[id] | string | Order configs by id. __Optional.__ Options: `asc`, `desc`. | `order[id]=asc` |
+| order[createdAt] | string | Order configs by creation date. __Optional.__ Options: `asc`, `desc`. | `order[createdAt]=asc` |
+| order[updatedAt] | string | Order configs by modification date. __Optional.__ Options: `asc`, `desc`. | `order[updatedAt]=asc` |
+| order[owner] | string | Order configs by owner. __Optional.__ | `order[owner]=asc` |
+| order[key] | string | Order configs by key. __Optional.__ | `order[key]=asc` |
 
 ### Response
 
 #### 200 OK
 
-A JSON array of objects. Each object contains the following properties:
+The request was successful and returns a JSON array of objects. Each object contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The config id. |
 | uuid | string | The config uuid. |
 | createdAt | string | The date the config was created on. |
-| updatedAt | string | The date the config was update at. |
+| updatedAt | string | The date the config was updated at. |
 | owner | string | The config owner. |
 | ownerUuid | string | The config owner uuid. |
 | key | string | The config key. This value is unique. |
@@ -130,14 +135,14 @@ GET `/configs/{uuid}`
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
 | id | integer | The config id. |
 | uuid | string | The config uuid. |
 | createdAt | string | The date the config was created on. |
-| updatedAt | string | The date the config was update at. |
+| updatedAt | string | The date the config was updated at. |
 | owner | string | The config owner. |
 | ownerUuid | string | The config owner uuid. |
 | key | string | The config key. This value is unique. |
@@ -148,7 +153,13 @@ A JSON object that contains the following properties:
 
 #### 404 Not Found
 
-The config with the given uuid does not exist.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error detail description. |
 
 ### Example
 
@@ -222,7 +233,7 @@ A JSON object that contains the following properties:
 
 #### 200 OK
 
-A JSON object that contains the following properties:
+The request was successful and returns a JSON object that contains the following properties:
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
@@ -240,7 +251,14 @@ A JSON object that contains the following properties:
 
 #### 400 Bad Request
 
-There were some validation errors.
+The request was unsuccessful and returns a JSON object that contains the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :---------- |
+| type | string | The error type. |
+| title | string | The error title message. |
+| detail | string | The error compiled violations. |
+| violations | array | The array of violations. |
 
 ### Example
 
