@@ -2,7 +2,7 @@ sudo: required
 
 env:
   DOCKER_COMPOSE_VERSION: 1.11.2
-  JWT_PASS_PHRASE: secret
+  JWT_PASS_PHRASE: 00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
 
 services:
   - docker
