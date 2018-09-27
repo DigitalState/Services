@@ -6,6 +6,7 @@
 - Feature [Tenant] Introduce tenant unloaders
 - Feature [Web] Introduce test entrypoint
 - Feature [System] Enable system behat context
+- Feature [Config] Enable encryption for config and parameter entities
 
 ## 0.11.0
 

@@ -4,14 +4,19 @@ namespace AppBundle\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Ds\Component\Container\Attribute;
 use Ramsey\Uuid\Uuid;
+use stdClass;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class Version1_0_0
  */
-class Version1_0_0 extends AbstractMigration
+class Version1_0_0 extends AbstractMigration implements ContainerAwareInterface
 {
+    use Attribute\Container;
+
     /**
      * Up
      *
@@ -20,6 +25,7 @@ class Version1_0_0 extends AbstractMigration
     public function up(Schema $schema)
     {
         $platform = $this->connection->getDatabasePlatform()->getName();
+        $cipherService = $this->container->get('ds_encryption.service.cipher');
 
         switch ($platform) {
             case 'postgresql':
@@ -38,10 +44,10 @@ class Version1_0_0 extends AbstractMigration
                 $this->addSql('CREATE SEQUENCE app_service_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
                 $this->addSql('CREATE SEQUENCE app_service_trans_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
                 $this->addSql('CREATE SEQUENCE app_submission_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-                $this->addSql('CREATE TABLE ds_config (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE TABLE ds_config (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, encrypted BOOLEAN NOT NULL, enabled BOOLEAN NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F4D17F50A6 ON ds_config (uuid)');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_758C45F48A90ABA94E59C462 ON ds_config (key, tenant)');
-                $this->addSql('CREATE TABLE ds_parameter (id INT NOT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, enabled BOOLEAN NOT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE TABLE ds_parameter (id INT NOT NULL, "key" VARCHAR(255) NOT NULL, value JSON DEFAULT NULL, encrypted BOOLEAN NOT NULL, enabled BOOLEAN NOT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_B3C0FD91F48571EB ON ds_parameter ("key")');
                 $this->addSql('CREATE TABLE ds_metadata (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, slug VARCHAR(255) NOT NULL, type VARCHAR(255) DEFAULT NULL, data JSON NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_11290F17D17F50A6 ON ds_metadata (uuid)');
@@ -55,9 +61,6 @@ class Version1_0_0 extends AbstractMigration
                 $this->addSql('CREATE INDEX IDX_D46DD4D04FEA67CF ON ds_access_permission (access_id)');
                 $this->addSql('CREATE TABLE ds_tenant (id INT NOT NULL, uuid UUID NOT NULL, data JSON NOT NULL, version INT DEFAULT 1 NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_EF5FAEEAD17F50A6 ON ds_tenant (uuid)');
-                $this->addSql('CREATE TABLE app_submission (id INT NOT NULL, scenario_id INT DEFAULT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, identity VARCHAR(255) DEFAULT NULL, identity_uuid UUID DEFAULT NULL, data JSON NOT NULL, state SMALLINT NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
-                $this->addSql('CREATE UNIQUE INDEX UNIQ_8D1EF18FD17F50A6 ON app_submission (uuid)');
-                $this->addSql('CREATE INDEX IDX_8D1EF18FE04E49DF ON app_submission (scenario_id)');
                 $this->addSql('CREATE TABLE app_category (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, slug VARCHAR(255) NOT NULL, enabled BOOLEAN NOT NULL, weight SMALLINT NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_ECC796CD17F50A6 ON app_category (uuid)');
                 $this->addSql('CREATE UNIQUE INDEX UNIQ_ECC796C989D9B624E59C462 ON app_category (slug, tenant)');
@@ -80,15 +83,18 @@ class Version1_0_0 extends AbstractMigration
                 $this->addSql('CREATE TABLE app_service_trans (id INT NOT NULL, translatable_id INT DEFAULT NULL, title VARCHAR(255) DEFAULT NULL, description TEXT DEFAULT NULL, presentation TEXT DEFAULT NULL, data JSON NOT NULL, locale VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
                 $this->addSql('CREATE INDEX IDX_432ECEF62C2AC5D3 ON app_service_trans (translatable_id)');
                 $this->addSql('CREATE UNIQUE INDEX app_service_trans_unique_translation ON app_service_trans (translatable_id, locale)');
+                $this->addSql('CREATE TABLE app_submission (id INT NOT NULL, scenario_id INT DEFAULT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, identity VARCHAR(255) DEFAULT NULL, identity_uuid UUID DEFAULT NULL, data JSON NOT NULL, state SMALLINT NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE UNIQUE INDEX UNIQ_8D1EF18FD17F50A6 ON app_submission (uuid)');
+                $this->addSql('CREATE INDEX IDX_8D1EF18FE04E49DF ON app_submission (scenario_id)');
                 $this->addSql('ALTER TABLE ds_metadata_trans ADD CONSTRAINT FK_A6447E202C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES ds_metadata (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE ds_access_permission ADD CONSTRAINT FK_D46DD4D04FEA67CF FOREIGN KEY (access_id) REFERENCES ds_access (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-                $this->addSql('ALTER TABLE app_submission ADD CONSTRAINT FK_8D1EF18FE04E49DF FOREIGN KEY (scenario_id) REFERENCES app_scenario (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_category_trans ADD CONSTRAINT FK_47E8C30A2C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_category (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_scenario ADD CONSTRAINT FK_36C5A875ED5CA9E6 FOREIGN KEY (service_id) REFERENCES app_service (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_scenario_trans ADD CONSTRAINT FK_80D43D122C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_scenario (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35DED5CA9E6 FOREIGN KEY (service_id) REFERENCES app_service (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35D12469DE2 FOREIGN KEY (category_id) REFERENCES app_category (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_service_trans ADD CONSTRAINT FK_432ECEF62C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_service (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
+                $this->addSql('ALTER TABLE app_submission ADD CONSTRAINT FK_8D1EF18FE04E49DF FOREIGN KEY (scenario_id) REFERENCES app_scenario (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
 
                 // Custom schema
                 $this->addSql('CREATE TABLE ds_session (id VARCHAR(128) NOT NULL PRIMARY KEY, data BYTEA NOT NULL, time INTEGER NOT NULL, lifetime INTEGER NOT NULL)');
@@ -99,42 +105,42 @@ class Version1_0_0 extends AbstractMigration
 
                 $this->addSql('
                     INSERT INTO 
-                        ds_parameter (id, key, value, enabled)
+                        ds_parameter (id, key, value, encrypted, enabled)
                     VALUES 
-                        (1, \'ds_system.user.username\', \'"'.$data['system']['username'].'"\', true),
-                        (2, \'ds_system.user.password\', \'"'.$data['system']['password'].'"\', true),
-                        (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', true);
+                        (1, \'ds_system.user.username\', \'"'.$data['system']['username'].'"\', false, true),
+                        (2, \'ds_system.user.password\', \'"'.$cipherService->encrypt($data['system']['password']).'"\', true, true),
+                        (3, \'ds_tenant.tenant.default\', \'"'.$data['tenant']['uuid'].'"\', false, true);
                 ');
 
                 $this->addSql('
                     INSERT INTO 
                         ds_tenant (id, uuid, data, created_at, updated_at)
                     VALUES 
-                        (1, \''.$data['tenant']['uuid'].'\', \'{}\', now(), now());
+                        (1, \''.$data['tenant']['uuid'].'\', \'"'.$cipherService->encrypt(new stdClass).'"\', now(), now());
                 ');
 
                 $this->addSql('
                     INSERT INTO 
-                        ds_config (id, uuid, owner, owner_uuid, key, value, enabled, version, tenant, created_at, updated_at)
+                        ds_config (id, uuid, owner, owner_uuid, key, value, encrypted, enabled, version, tenant, created_at, updated_at)
                     VALUES 
-                        (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_url\', \'"api_url"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_user\', \'"api_user"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_key\', \'"api_key"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.service_uuid\', \'"service_uuid"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.scenario_uuid\', \'"scenario_uuid"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.scenario_custom_data\', \'"scenario_custom_data"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity\', \'"identity"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity_uuid\', \'"identity_uuid"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (9, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.submission_uuid\', \'"submission_uuid"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (10, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.start_data\', \'"start_data"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (11, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"'.$data['user']['system']['username'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'"'.$data['user']['system']['password'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (13, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \'"'.$data['user']['system']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (14, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'[]\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (15, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.roles\', \'[]\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (16, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.type\', \'"System"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (17, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.uuid\', \'"'.$data['identity']['system']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
-                        (18, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.tenant\', \'"'.$data['tenant']['uuid'].'"\', true, 1, \''.$data['tenant']['uuid'].'\', now(), now());
+                        (1, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_url\', \'"api_url"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (2, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_user\', \'"api_user"\', true, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (3, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.api_key\', \'"api_key"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (4, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.service_uuid\', \'"service_uuid"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (5, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.scenario_uuid\', \'"scenario_uuid"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (6, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.scenario_custom_data\', \'"scenario_custom_data"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (7, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity\', \'"identity"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (8, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.identity_uuid\', \'"identity_uuid"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (9, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.submission_uuid\', \'"submission_uuid"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (10, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'app.bpm.variables.start_data\', \'"start_data"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (11, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.username\', \'"'.$data['user']['system']['username'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (12, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.password\', \'"'.$cipherService->encrypt($data['user']['system']['password']).'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (13, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.uuid\', \'"'.$data['user']['system']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (14, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.roles\', \'[]\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (15, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.roles\', \'[]\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (16, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.type\', \'"System"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (17, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.identity.uuid\', \'"'.$data['identity']['system']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now()),
+                        (18, \''.Uuid::uuid4()->toString().'\', \'BusinessUnit\', \''.$data['business_unit']['administration']['uuid'].'\', \'ds_api.user.tenant\', \'"'.$data['tenant']['uuid'].'"\', false, true, 1, \''.$data['tenant']['uuid'].'\', now(), now());
                 ');
 
                 $this->addSql('

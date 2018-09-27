@@ -30,6 +30,7 @@
         "knplabs/doctrine-behaviors": "~1.1",
         "dunglas/doctrine-json-odm": "0.1.1",
         "craue/formflow-bundle": "~3.0@dev",
+        "defuse/php-encryption": "^2.2",
         "digitalstate/core": "dev-develop"
     },
     "require-dev": {
