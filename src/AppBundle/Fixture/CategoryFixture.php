@@ -45,7 +45,8 @@ abstract class CategoryFixture extends ResourceFixture
                 ->setTenant($object->tenant);
 
             foreach ($object->services as $uuid) {
-                $category->addService($manager->getRepository(Service::class)->findOneBy(['uuid' => $uuid]));
+                $service = $manager->getRepository(Service::class)->findOneBy(['uuid' => $uuid]);
+                $category->addService($service);
             }
 
             $manager->persist($category);

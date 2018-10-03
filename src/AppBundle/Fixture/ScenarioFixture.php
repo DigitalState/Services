@@ -30,9 +30,10 @@ abstract class ScenarioFixture extends ResourceFixture
         $objects = $this->parse($this->getResource());
 
         foreach ($objects as $object) {
+            $service = $manager->getRepository(Service::class)->findOneBy(['uuid' => $object->service]);
             $scenario = new Scenario;
             $scenario
-                ->setService($manager->getRepository(Service::class)->findOneBy(['uuid' => $object->service]))
+                ->setService($service)
                 ->setType($object->type)
                 ->setConfig((array) $object->config)
                 ->setUuid($object->uuid)

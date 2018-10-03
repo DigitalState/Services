@@ -34,6 +34,4 @@ prototype:
   owner_uuid: '%business_unit.administration.uuid%'
   key: ~
   value: ~
-  encrypted: false
-  enabled: true
   tenant: '%tenant.uuid%'

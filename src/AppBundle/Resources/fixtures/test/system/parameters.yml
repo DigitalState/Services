@@ -4,7 +4,6 @@ fixtures:
 
   - key: ds_system.user.password
     value: system
-    encrypted: true
 
   - key: ds_tenant.tenant.default
     value: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
@@ -12,5 +11,3 @@ fixtures:
 prototype:
   key: ~
   value: ~
-  encrypted: false
-  enabled: true
