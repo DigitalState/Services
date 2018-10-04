@@ -75,6 +75,11 @@ class AccessLoader implements Loader
 
             $manager->persist($access);
             $manager->flush();
+            $manager->detach($access);
+
+            foreach ($access->getPermissions() as $permission) {
+                $manager->detach($permission);
+            }
         }
     }
 }
