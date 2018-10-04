@@ -31,7 +31,7 @@ fixtures:
 
   - uuid: e3c48a35-cfa0-427b-8982-339edcebc156
     owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
-    key: app.bpm.variables.scenario_custom_datas
+    key: app.bpm.variables.scenario_custom_data
     value: scenario_custom_data
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
@@ -139,7 +139,7 @@ fixtures:
 
   - uuid: c6be4fff-38b2-4024-8011-6e82660db06f
     owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
-    key: app.bpm.variables.scenario_custom_datas
+    key: app.bpm.variables.scenario_custom_data
     value: scenario_custom_data
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
@@ -221,5 +221,4 @@ prototype:
   owner_uuid: ~
   key: ~
   value: ~
-  enabled: true
   tenant: ~

@@ -13,14 +13,15 @@ parameters:
   cache_prefix: ''
   jwt_private_key_path: '%kernel.root_dir%/../var/jwt/key'
   jwt_public_key_path: '%kernel.root_dir%/../var/jwt/key.pub'
-  jwt_key_pass_phrase: secret
+  jwt_key_pass_phrase: ~
   jwt_token_ttl: 3600
   mailer_transport: smtp
   mailer_host: 127.0.0.1
   mailer_port: ~
   mailer_user: ~
   mailer_password: ~
-  secret: secret
+  secret: ~
+  encryption: ~
   cors_allow_origin: '*'
   system_username: system
   system_password: '$2y$12$eRsfIkAoZjP8zjsy9znbGOKjKgrjp8.riM3cRZ3f5xepZsioE3UYO'
