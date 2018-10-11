@@ -16,9 +16,7 @@ Description...
 
 ## Documentation
 
-Documentation...
-
-Further documentation can be found in the [Documentation Repository](https://github.com/DigitalState/Documentation)
+Further documentation can be found in the [Documentation Repository](https://github.com/DigitalState/Documentation).
 
 ## References
 
