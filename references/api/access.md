@@ -20,6 +20,13 @@ This endpoint returns the list of access cards.
 
 GET `/accesses`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Query Parameters
@@ -141,6 +148,13 @@ This endpoint returns a specific access card.
 
 GET `/accesses/{uuid}`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Path Parameters
@@ -233,6 +247,14 @@ This endpoint adds an access card to the list.
 
 POST `/accesses`
 
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Content-Type | string | The accepted returned content types. Options: `application/json`. | `Content-Type: application/json` |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
+
 ### Parameters
 
 #### Body
@@ -291,6 +313,7 @@ __POST__ `/accesses`
 *Headers:*
 
 ```yaml
+Content-Type: application/json
 Accept: application/json
 ```
 
@@ -301,7 +324,7 @@ Accept: application/json
   "owner": "BusinessUnit",
   "ownerUuid": "5f4108bb-fa74-4c93-9bb1-9e37d9302640",
   "assignee": "Staff",
-  "assigneeUuid": "c8c17ac2-3c41-491d-888c-459f13b97d3c"",
+  "assigneeUuid": "c8c17ac2-3c41-491d-888c-459f13b97d3c",
   "permissions": [
     {
       "scope": "owner",
@@ -332,7 +355,7 @@ Accept: application/json
   "owner": "BusinessUnit",
   "ownerUuid": "5f4108bb-fa74-4c93-9bb1-9e37d9302640",
   "assignee": "Staff",
-  "assigneeUuid": "c8c17ac2-3c41-491d-888c-459f13b97d3c"",
+  "assigneeUuid": "c8c17ac2-3c41-491d-888c-459f13b97d3c",
   "permissions": [
     {
       "scope": "owner",
@@ -354,6 +377,14 @@ This endpoint edits a specific access card.
 ### Method
 
 PUT `/accesses/{uuid}`
+
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Content-Type | string | The accepted returned content types. Options: `application/json`. | `Content-Type: application/json` |
+| Accept | string | The accepted returned content types. __Optional.__ Default: `application/ld+json`. Options: `application/json`, `application/ld+json`. | `Accept: application/json` |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
 
 ### Parameters
 
@@ -419,6 +450,7 @@ __PUT__ `/accesses/dc719883-c593-42e5-8aee-5d9367525273`
 *Headers:*
 
 ```yaml
+Content-Type: application/json
 Accept: application/json
 ```
 
@@ -461,7 +493,7 @@ Accept: application/json
     {
       "scope": "owner",
       "entity": "BusinessUnit",
-      "entityUuid": "5f4108bb-fa74-4c93-9bb1-9e37d9302640"",
+      "entityUuid": "5f4108bb-fa74-4c93-9bb1-9e37d9302640",
       "key": "config",
       "attributes": ["BROWSE", "READ"]
     }
@@ -478,6 +510,12 @@ This endpoint deletes a specific access card from the list.
 ### Method
 
 DELETE `/accesses/{uuid}`
+
+### Headers
+
+| Name | Type | Description | Example |
+| :--- | :--- | :---------- | :------ |
+| Authorization | string | The JWT token. __Required.__ | `Authorization: eyJhbGciOi.eyJyb2xlcy[...].Ds34hb80Mf[...]` |
 
 ### Parameters
 
