@@ -227,6 +227,7 @@ __POST__ `/system/tenants`
 ```yaml
 Content-Type: application/json
 Accept: application/json
+Authorization: Basic c3lzdGVtOnN5c3RlbQ==
 ```
 
 *Body:*
@@ -323,6 +324,7 @@ __PUT__ `/system/tenants/d928b020-94f6-4928-a510-04fc49d5a174`
 ```yaml
 Content-Type: application/json
 Accept: application/json
+Authorization: Basic c3lzdGVtOnN5c3RlbQ==
 ```
 
 *Body:*
