@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.0 (2018-10-17)
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.13.0
+
 ## 0.12.0 (2018-10-10)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.12.0

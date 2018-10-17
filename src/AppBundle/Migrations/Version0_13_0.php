@@ -11,9 +11,9 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Version1_0_0
+ * Class Version0_13_0
  */
-class Version1_0_0 extends AbstractMigration implements ContainerAwareInterface
+class Version0_13_0 extends AbstractMigration implements ContainerAwareInterface
 {
     use Attribute\Container;
 
