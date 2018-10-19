@@ -20,7 +20,7 @@ parameters:
   mailer_port: ~
   mailer_user: ~
   mailer_password: ~
-  secret: ~
+  secret: secret
   encryption: ~
   cors_allow_origin: '*'
   system_username: system

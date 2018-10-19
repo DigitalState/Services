@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.1 (2018-10-19)
+
+- Bug [App] Fix racing issue related to `secret` app parameter being null early in the execution
+
 ## 0.13.0 (2018-10-17)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.13.0
