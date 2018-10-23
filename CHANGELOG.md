@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.2 ()
+
+- Bug [Migration] Fix serialization bug for parameter and config migration
+
 ## 0.13.1 (2018-10-19)
 
 - Bug [App] Fix racing issue related to `secret` app parameter being null early in the execution
