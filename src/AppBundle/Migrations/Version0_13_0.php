@@ -98,7 +98,7 @@ class Version0_13_0 extends AbstractMigration implements ContainerAwareInterface
                 $this->addSql('CREATE TABLE ds_session (id VARCHAR(128) NOT NULL PRIMARY KEY, data BYTEA NOT NULL, time INTEGER NOT NULL, lifetime INTEGER NOT NULL)');
 
                 // Data
-                $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/1_0_0.yml');
+                $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/0_13_0.yml');
                 $data = Yaml::parse($yml);
                 $i = 0;
                 $parameters = [
