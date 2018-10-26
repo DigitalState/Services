@@ -98,7 +98,7 @@ class Version0_13_0 extends AbstractMigration implements ContainerAwareInterface
                 $this->addSql('CREATE TABLE ds_session (id VARCHAR(128) NOT NULL PRIMARY KEY, data BYTEA NOT NULL, time INTEGER NOT NULL, lifetime INTEGER NOT NULL)');
 
                 // Data
-                $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/1_0_0.yml');
+                $yml = file_get_contents('/srv/api-platform/src/AppBundle/Resources/migrations/0_13_0.yml');
                 $data = Yaml::parse($yml);
                 $i = 0;
                 $parameters = [
@@ -108,7 +108,7 @@ class Version0_13_0 extends AbstractMigration implements ContainerAwareInterface
                     ],
                     [
                         'key' => 'ds_system.user.password',
-                        'value' => $cipherService->encrypt($data['system']['password'])
+                        'value' => $cipherService->encrypt(serialize($data['system']['password']))
                     ],
                     [
                         'key' => 'ds_tenant.tenant.default',
@@ -152,7 +152,7 @@ class Version0_13_0 extends AbstractMigration implements ContainerAwareInterface
                     ],
                     [
                         'key' => 'ds_api.user.password',
-                        'value' => $cipherService->encrypt($data['user']['system']['password'])
+                        'value' => $cipherService->encrypt(serialize($data['user']['system']['password']))
                     ],
                     [
                         'key' => 'ds_api.user.uuid',
