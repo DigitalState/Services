@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.0 (2018-10-29)
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.14.0
+- Feature [Tenant] Convert tenant data to runtime-only data.
+
 ## 0.13.2 (2018-10-26)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.13.2
