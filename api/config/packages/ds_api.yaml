@@ -1,0 +1,5 @@
+parameters:
+  env(APP_NAMESPACE): ''
+
+ds_api:
+  namespace: '%env(resolve:APP_NAMESPACE)%'

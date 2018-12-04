@@ -1,0 +1,2 @@
+ds_acl:
+  resource: '@DsAclBundle/Resources/config/routing.yaml'

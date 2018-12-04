@@ -1,0 +1,9 @@
+objects: []
+
+prototype:
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: c11c546e-bd01-47cf-97da-e25388357b5a # Administration
+  assignee: Anonymous
+  assignee_uuid: ~
+  tenant: e5a2120d-6bf7-4c58-a900-bac1e55e986b # Tenant 1

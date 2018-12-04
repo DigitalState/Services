@@ -1,0 +1,32 @@
+tenant:
+  uuid: 2b533711-7884-4e55-93eb-21afb3c7ad28
+
+system:
+  username: system
+  password: ~
+
+user:
+  system:
+    uuid: 30765b53-28ed-402b-a5c3-e21e8ab377b3
+    username: system@system.ds
+    password: ~
+  anonymous:
+    uuid: 9120bdb2-2ef0-4124-9907-04e6548f1095
+    username: anonymous@anonymous.ds
+    password: ~
+  admin:
+    uuid: df913928-03ba-47a4-a23d-a16db9c2df65
+    username: admin@staff.ds
+    password: ~
+
+identity:
+  system:
+    uuid: 3732b4fb-3796-401c-9ecb-007bc363390a
+  admin:
+    uuid: 4daad9ea-794c-4e88-9bed-db6ae2399e22
+
+business_unit:
+  administration:
+    uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
+
+config: []

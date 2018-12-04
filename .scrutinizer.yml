@@ -3,7 +3,7 @@ checks:
 
 filter:
   excluded_paths:
-    - bin/*
-    - tests/*
-    - var/*
-    - vendor/*
+    - api/bin/*
+    - api/tests/*
+    - api/var/*
+    - api/vendor/*

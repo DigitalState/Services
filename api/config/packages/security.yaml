@@ -1,0 +1,21 @@
+security:
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js|sandbox)/?
+      security: false
+    system:
+      pattern: ^/system/
+      stateless: true
+      provider: ds_system
+      http_basic: ~
+    api:
+      pattern: ^/
+      stateless: true
+      provider: ds_security
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator
+
+  access_control:
+    - { path: ^/system/, role: ROLE_SYSTEM }
+    - { path: ^/, role: IS_AUTHENTICATED_FULLY }

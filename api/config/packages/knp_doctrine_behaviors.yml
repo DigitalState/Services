@@ -1,0 +1,9 @@
+knp_doctrine_behaviors:
+  blameable: true
+  geocodable: false
+  loggable: false
+  sluggable: false
+  sortable: false
+  timestampable: true
+  translatable: true
+  tree: false

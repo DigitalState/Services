@@ -1,0 +1,7 @@
+parameters:
+  env(DISCOVERY_HOST): ''
+  env(DISCOVERY_CREDENTIAL): ''
+
+ds_discovery:
+  host: '%env(resolve:DISCOVERY_HOST)%'
+  credential: '%env(resolve:DISCOVERY_CREDENTIAL)%'

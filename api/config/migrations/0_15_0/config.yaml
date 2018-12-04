@@ -1,0 +1,33 @@
+objects:
+  - key: ds_api.user.username
+    value: '%user.system.username%'
+
+  - key: ds_api.user.password
+    value: '%user.system.password%'
+
+  - key: ds_api.user.uuid
+    value: '%user.system.uuid%'
+
+  - key: ds_api.user.roles
+    value: []
+
+  - key: ds_api.user.identity.roles
+    value: []
+
+  - key: ds_api.user.identity.type
+    value: System
+
+  - key: ds_api.user.identity.uuid
+    value: '%identity.system.uuid%'
+
+  - key: ds_api.user.tenant
+    value: '%tenant.uuid%'
+
+prototype:
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: '%business_unit.administration.uuid%'
+  key: ~
+  value: ~
+  version: 1
+  tenant: '%tenant.uuid%'

@@ -1,0 +1,11 @@
+objects: []
+
+prototype:
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: ~
+  title: {}
+  slug: ~
+  type: ~
+  data: {}
+  tenant: ~

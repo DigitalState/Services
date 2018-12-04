@@ -1,0 +1,8 @@
+objects:
+  - uuid: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+prototype:
+  uuid: ~
+  data: {}

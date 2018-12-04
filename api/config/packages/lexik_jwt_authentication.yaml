@@ -1,0 +1,8 @@
+parameters:
+  env(JWT_PASS_PHRASE): ''
+
+lexik_jwt_authentication:
+  secret_key: '%kernel.project_dir%/config/jwt/key'
+  public_key: '%kernel.project_dir%/config/jwt/key.pub'
+  pass_phrase: '%env(resolve:JWT_PASS_PHRASE)%'
+  token_ttl: 3600

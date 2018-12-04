@@ -1,39 +1,19 @@
-version: '3.1'
+version: '3.4'
 
 services:
-  php:
-    image: 'digitalstate/services:${IMAGE_TAG}'
-    environment:
-      SYMFONY_ENV: dev
-    extra_hosts:
-      - 'api.assets.dev.ds:${PROXY_HOST}'
-      - 'api.authentication.dev.ds:${PROXY_HOST}'
-      - 'api.camunda.dev.ds:${PROXY_HOST}'
-      - 'api.cases.dev.ds:${PROXY_HOST}'
-      - 'api.cms.dev.ds:${PROXY_HOST}'
-      - 'api.discovery.dev.ds:${PROXY_HOST}'
-      - 'api.formio.dev.ds:${PROXY_HOST}'
-      - 'api.forms.dev.ds:${PROXY_HOST}'
-      - 'api.identities.dev.ds:${PROXY_HOST}'
-      - 'api.records.dev.ds:${PROXY_HOST}'
-      - 'api.services.dev.ds:${PROXY_HOST}'
-      - 'api.tasks.dev.ds:${PROXY_HOST}'
-      - 'api.tenants.dev.ds:${PROXY_HOST}'
-
   database_ui:
     image: adminer:4-standalone
-    environment:
-      SERVICE_8080_ID: '${COMPOSE_PROJECT_NAME}_database_ui_http'
-      SERVICE_8080_NAME: '${COMPOSE_PROJECT_NAME}_database_ui_http'
-      SERVICE_8080_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${DATABASE_UI_HOST}'
-    links:
-      - database:services_database
+    networks:
+      default:
+        aliases:
+          - services_database_ui
 
-  cache_ui:
-    image: marian/rebrow
+  php:
     environment:
-      SERVICE_5001_ID: '${COMPOSE_PROJECT_NAME}_cache_ui_http'
-      SERVICE_5001_NAME: '${COMPOSE_PROJECT_NAME}_cache_ui_http'
-      SERVICE_5001_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${CACHE_UI_HOST}'
-    links:
-      - cache:services_cache
+      APP_ENV: dev
+    volumes:
+      - ${DIRECTORY}/api:/srv/api:rw,cached
+
+  api:
+    volumes:
+      - ${DIRECTORY}/api/public:/srv/api/public:ro

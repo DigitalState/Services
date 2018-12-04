@@ -1,0 +1,4 @@
+ds_acl:
+  entities:
+    - App\Entity\Greeting
+  permissions: []

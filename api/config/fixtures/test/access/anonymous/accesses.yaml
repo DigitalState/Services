@@ -1,0 +1,9 @@
+objects: []
+
+prototype:
+  uuid: ~
+  owner: BusinessUnit
+  owner_uuid: ~
+  assignee: Anonymous
+  assignee_uuid: ~
+  tenant: ~
