@@ -1,0 +1,4 @@
+knp_doctrine_behaviors:
+  soft_deletable: true
+  timestampable: true
+  translatable: true

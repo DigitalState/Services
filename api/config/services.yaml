@@ -8,12 +8,70 @@ services:
     public: false
 
   App\:
-    resource: ../src/{Fixtures}
+    resource: ../src/{Controller,EventListener,Fixture,Repository,Service,Stat,Tenant,Validator}
 
   App\Controller\:
     resource: ../src/Controller
     tags: [controller.service_arguments]
 
-  App\Fixtures\:
-    resource: ../src/Fixtures
+  App\Controller\Scenario\Forms\TranslationController:
+    arguments:
+      - '@App\Service\ScenarioService'
+      - '@request_stack'
+      - '%locale%'
+
+  App\Fixture\:
+    resource: ../src/Fixture
     tags: [doctrine.fixture.orm]
+
+  App\EventListener\Submission\Validation\DataListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
+
+  App\EventListener\Submission\OwnerListener:
+    tags:
+      - { name: doctrine.orm.entity_listener, entity: App\Entity\Submission, event: prePersist }
+
+  App\EventListener\Submission\Transfer\BpmListener:
+    tags:
+      - { name: doctrine.orm.entity_listener, entity: App\Entity\Submission, event: postPersist }
+
+  App\Stat\Category\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: category.count }
+
+  App\Stat\Service\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: service.count }
+
+  App\Stat\Scenario\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: scenario.count }
+
+  App\Stat\Submission\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: submission.count }
+
+  App\Tenant\Loader\AccessLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Loader\ConfigLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Unloader\CategoryUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }
+
+  App\Tenant\Unloader\ScenarioUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }
+
+  App\Tenant\Unloader\ServiceUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
+
+  App\Tenant\Unloader\SubmissionUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }

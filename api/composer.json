@@ -25,6 +25,7 @@
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
         "symfony/monolog-bundle": "^3.3",
+        "symfony/translation": "^4.0",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {

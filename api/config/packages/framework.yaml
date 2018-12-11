@@ -21,3 +21,23 @@ framework:
     #default_redis_provider: redis://localhost
   validation:
     email_validation_mode: html5
+#  workflows:
+#    submission_state:
+#      type: state_machine
+#      marking_store:
+#        type: single_state
+#        arguments:
+#          - state
+#      supports:
+#        - App\Entity\Submission
+#      places:
+#        - !php/const:App\Entity\Submission::STATE_DRAFT
+#        - !php/const:App\Entity\Submission::STATE_SUBMITTED
+#        - !php/const:App\Entity\Submission::STATE_TRANSFERRED
+#      transitions:
+#        submit:
+#          from: [!php/const:App\Entity\Submission::STATE_DRAFT]
+#          to: [!php/const:App\Entity\Submission::STATE_SUBMITTED]
+#        transfer:
+#          from: [!php/const:App\Entity\Submission::STATE_SUBMITTED]
+#          to: [!php/const:App\Entity\Submission::STATE_TRANSFERRED]
