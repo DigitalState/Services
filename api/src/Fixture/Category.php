@@ -57,7 +57,8 @@ trait Category
             }
 
             $manager->persist($category);
-            $manager->flush();
         }
+
+        $manager->flush();
     }
 }

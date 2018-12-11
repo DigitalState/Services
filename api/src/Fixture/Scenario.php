@@ -55,7 +55,8 @@ trait Scenario
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);
             $manager->persist($scenario);
-            $manager->flush();
         }
+
+        $manager->flush();
     }
 }

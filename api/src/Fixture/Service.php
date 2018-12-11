@@ -50,7 +50,8 @@ trait Service
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);
             $manager->persist($service);
-            $manager->flush();
         }
+
+        $manager->flush();
     }
 }
