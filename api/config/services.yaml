@@ -1,4 +1,6 @@
 parameters:
+  env(APP): ''
+  env(APP_NAMESPACE): ''
   locale: en
 
 services:
@@ -22,6 +24,12 @@ services:
 
   App\Fixture\:
     resource: ../src/Fixture
+    tags: [doctrine.fixture.orm]
+
+  App\Fixture\Camunda\DeploymentFixture:
+    arguments:
+      - '%env(resolve:APP)%'
+      - '%env(resolve:APP_NAMESPACE)%'
     tags: [doctrine.fixture.orm]
 
   App\EventListener\Submission\Validation\DataListener:

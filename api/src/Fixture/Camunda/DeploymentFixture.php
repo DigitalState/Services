@@ -16,9 +16,14 @@ final class DeploymentFixture implements FixtureInterface, OrderedFixtureInterfa
 
     /**
      * Constructor
+     *
+     * @param string $app
+     * @param string $namespace
      */
-    public function __construct()
+    public function __construct(string $app, string $namespace)
     {
+        $this->app = $app;
+        $this->namespace = $namespace;
         $this->path = '/srv/api/config/fixtures/{fixtures}/camunda/deployment.yaml';
     }
 
