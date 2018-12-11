@@ -1,4 +1,4 @@
-fixtures:
+objects:
   - uuid: 2cb7402d-2a1d-49b3-af2a-3cf378193ffa
     owner_uuid: 83bf8f26-7181-4bed-92f3-3ce5e4c286d7 # Backoffice
     service: 7293e6d1-48e2-4761-b9c6-f77258cbe31a # Report a Pothole

@@ -33,7 +33,7 @@ trait Service
                 break;
         }
 
-        $objects = $this->parse($this->getResource());
+        $objects = $this->parse($this->path);
 
         foreach ($objects as $object) {
             $service = new ServiceEntity;
@@ -45,7 +45,7 @@ trait Service
                 ->setTitle((array) $object->title)
                 ->setDescription((array) $object->description)
                 ->setPresentation((array) $object->presentation)
-                ->setData((array) $object->data)
+                ->setData(json_decode(json_encode($object->data), true))
                 ->setEnabled($object->enabled)
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);

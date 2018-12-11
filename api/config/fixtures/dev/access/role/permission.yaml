@@ -1,4 +1,137 @@
-objects: []
+objects:
+  - access: a295c397-0dc7-40eb-b4a2-7c2278bf41d2 # Administrator
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: ~ # Any BusinessUnit
+    key: entity
+    attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+
+  - access: a295c397-0dc7-40eb-b4a2-7c2278bf41d2 # Administrator
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: ~ # Any BusinessUnit
+    key: property
+    attributes: [BROWSE, READ, EDIT]
+
+  - access: a295c397-0dc7-40eb-b4a2-7c2278bf41d2 # Administrator
+    scope: generic
+    key: generic
+    attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+  - access: 51922b8c-f3b0-47d7-9a9e-3081859913c0 # Manager
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+    key:
+      - category
+      - service
+      - scenario
+      - submission
+      - metadata
+    attributes: [EDIT, ADD, DELETE]
+
+  - access: 51922b8c-f3b0-47d7-9a9e-3081859913c0 # Manager
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+    key:
+      - category_property
+      - service_property
+      - scenario_property
+      - submission_property
+      - metadata_property
+    attributes: [EDIT]
+
+  - access: e7c14666-e442-4097-b0b7-0c8f2647c988 # Staff
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+    key:
+      - category
+      - category_property
+      - service
+      - service_property
+      - scenario
+      - scenario_property
+      - submission
+      - submission_property
+      - metadata
+      - metadata_property
+    attributes: [BROWSE, READ]
+
+  - access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+    key:
+      - category
+      - category_uuid
+      - category_title
+      - category_description
+      - category_presentation
+      - category_data
+      - service
+      - service_uuid
+      - service_title
+      - service_description
+      - service_presentation
+      - service_data
+      - scenario
+      - scenario_uuid
+      - scenario_title
+      - scenario_description
+      - scenario_presentation
+      - scenario_data
+      - scenario_type
+      - scenario_data
+    attributes: [BROWSE, READ]
+
+  - access: 539d1a37-4587-4a1d-a1c0-3392ee85d169 # Individual
+    scope: session
+    key:
+      - submission
+      - submission_uuid
+      - submission_created_at
+      - submission_scenario
+      - submission_data
+    attributes: [BROWSE, READ]
+
+  - access: 06a30c71-c4c8-430c-97fa-be4bcba1244b # Organization
+    scope: owner
+    entity: BusinessUnit
+    entity_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
+    key:
+      - category
+      - category_uuid
+      - category_title
+      - category_description
+      - category_presentation
+      - category_data
+      - service
+      - service_uuid
+      - service_title
+      - service_description
+      - service_presentation
+      - service_data
+      - scenario
+      - scenario_uuid
+      - scenario_title
+      - scenario_description
+      - scenario_presentation
+      - scenario_data
+      - scenario_type
+      - scenario_data
+    attributes: [BROWSE, READ]
+
+  - access: 06a30c71-c4c8-430c-97fa-be4bcba1244b # Organization
+    scope: session
+    key:
+      - submission
+      - submission_uuid
+      - submission_created_at
+      - submission_scenario
+      - submission_data
+    attributes: [BROWSE, READ]
 
 prototype:
   access: ~

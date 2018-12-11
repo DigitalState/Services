@@ -46,7 +46,7 @@ trait Category
                 ->setTitle((array) $object->title)
                 ->setDescription((array) $object->description)
                 ->setPresentation((array) $object->presentation)
-                ->setData((array) $object->data)
+                ->setData(json_decode(json_encode($object->data), true))
                 ->setEnabled($object->enabled)
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);

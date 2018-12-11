@@ -1,4 +1,4 @@
-fixtures:
+objects:
   - name: Pothole Report
     files:
       - bpmn/pothole-report.bpmn

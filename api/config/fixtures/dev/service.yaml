@@ -1,4 +1,4 @@
-fixtures:
+objects:
   - uuid: 9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d
     owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
     slug: report-pothole

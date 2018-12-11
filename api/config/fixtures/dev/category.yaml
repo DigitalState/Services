@@ -1,4 +1,4 @@
-fixtures:
+objects:
   - uuid: ecc69524-0b12-4eae-a6f4-b6eb0f442e29
     owner_uuid: a9d68bf7-5000-49fe-8b00-33dde235b327 # Backoffice
     slug: infrastructure
