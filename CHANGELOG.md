@@ -2,6 +2,7 @@
 
 ## 0.15.0
 
+- Feature [Composer] Upgrade apip dependency to 2.3.4
 
 ## 0.14.0 (2018-10-29)
 
