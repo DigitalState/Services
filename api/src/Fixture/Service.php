@@ -23,16 +23,6 @@ trait Service
      */
     public function load(ObjectManager $manager)
     {
-        $connection = $manager->getConnection();
-        $platform = $connection->getDatabasePlatform()->getName();
-
-        switch ($platform) {
-            case 'postgresql':
-                $connection->exec('ALTER SEQUENCE app_service_id_seq RESTART WITH 1');
-                $connection->exec('ALTER SEQUENCE app_service_trans_id_seq RESTART WITH 1');
-                break;
-        }
-
         $objects = $this->parse($this->path);
 
         foreach ($objects as $object) {

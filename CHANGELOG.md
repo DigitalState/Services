@@ -3,6 +3,7 @@
 ## 0.15.0
 
 - Feature [Composer] Upgrade apip dependency to 2.3.4
+- Feature [Fixture] Separate sequence reset fixture from entity fixture
 
 ## 0.14.0 (2018-10-29)
 
