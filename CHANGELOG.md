@@ -4,6 +4,7 @@
 
 - Feature [Composer] Upgrade apip dependency to 2.3.4
 - Feature [Fixture] Separate sequence reset fixture from entity fixture
+- Feature [Tests] Add wider range of behat tests
 
 ## 0.14.0 (2018-10-29)
 
