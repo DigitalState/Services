@@ -19,3 +19,12 @@ services:
       default:
         aliases:
           - services_mock_discovery
+
+  mock_workflow:
+    image: rodolpheche/wiremock:2.19.0-alpine
+    volumes:
+      - ${DIRECTORY}/mock/workflow:/home/wiremock:rw
+    networks:
+      default:
+        aliases:
+          - services_mock_workflow

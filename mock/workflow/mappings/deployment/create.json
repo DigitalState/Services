@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/deployment/create"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "links": [
+        {
+          "method": "GET",
+          "href": "http://mock_workflow/rest/deployment/880729b9-0d31-11e9-a5a0-0242ac130024",
+          "rel": "self"
+        }
+      ],
+      "id": "880729b9-0d31-11e9-a5a0-0242ac130024",
+      "name": "My Deployment",
+      "source": null,
+      "deploymentTime": "2018-12-31T19:23:19.824+0000",
+      "tenantId": null,
+      "deployedProcessDefinitions": {
+        "pothole-report:1:882b7a9b-0d31-11e9-a5a0-0242ac130024": {
+          "id": "pothole-report:1:882b7a9b-0d31-11e9-a5a0-0242ac130024",
+          "key": "pothole-report",
+          "category": "http://bpmn.io/schema/bpmn",
+          "description": null,
+          "name": null,
+          "version": 1,
+          "resource": "pothole-report.bpmn",
+          "deploymentId": "880729b9-0d31-11e9-a5a0-0242ac130024",
+          "diagram": null,
+          "suspended": false,
+          "tenantId": null,
+          "versionTag": null,
+          "historyTimeToLive": null
+        }
+      },
+      "deployedCaseDefinitions": null,
+      "deployedDecisionDefinitions": null,
+      "deployedDecisionRequirementsDefinitions": null
+    }
+  }
+}
