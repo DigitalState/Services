@@ -78,8 +78,8 @@ final class Version0_15_0 extends AbstractMigration implements ContainerAwareInt
         $this->acl->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/acl.yaml', $parameters));
         $this->config->setContainer($this->container)->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/config.yaml', $parameters));
         $this->metadata->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/metadata.yaml', $parameters));
-        $this->parameter->setContainer($this->container)->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/parameter.yaml', $parameters));
-        $this->tenant->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/tenant.yaml', $parameters));
+        $this->parameter->setContainer($this->container)->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/system/parameter.yaml', $parameters));
+        $this->tenant->up($schema, Objects::parseFile(static::DIRECTORY.'/0_15_0/system/tenant.yaml', $parameters));
 
         switch ($this->platform->getName()) {
             case 'postgresql':
