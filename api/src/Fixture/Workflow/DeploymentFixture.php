@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Fixture\Camunda;
+namespace App\Fixture\Workflow;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -24,7 +24,7 @@ final class DeploymentFixture implements FixtureInterface, OrderedFixtureInterfa
     {
         $this->app = $app;
         $this->namespace = $namespace;
-        $this->path = '/srv/api/config/fixtures/{fixtures}/camunda/deployment.yaml';
+        $this->path = '/srv/api/config/fixtures/{fixtures}/workflow/deployment.yaml';
     }
 
     /**
