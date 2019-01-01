@@ -26,7 +26,7 @@ services:
     resource: ../src/Fixture
     tags: [doctrine.fixture.orm]
 
-  App\Fixture\Camunda\DeploymentFixture:
+  App\Fixture\Workflow\DeploymentFixture:
     arguments:
       - '%env(resolve:APP)%'
       - '%env(resolve:APP_NAMESPACE)%'
