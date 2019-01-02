@@ -13,7 +13,6 @@ return [
     Ds\Component\Config\DsConfigBundle::class => ['all' => true],
     Ds\Component\Debug\DsDebugBundle::class => ['dev' => true, 'test' => true],
     Ds\Component\Discovery\DsDiscoveryBundle::class => ['all' => true],
-    Ds\Component\Discovery\Test\DsDiscoveryTestBundle::class => ['test' => true],
     Ds\Component\Encryption\DsEncryptionBundle::class => ['all' => true],
     Ds\Component\Entity\DsEntityBundle::class => ['all' => true],
     Ds\Component\Exception\DsExceptionBundle::class => ['all' => true],
