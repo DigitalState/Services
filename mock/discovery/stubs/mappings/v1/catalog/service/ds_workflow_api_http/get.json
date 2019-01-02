@@ -25,7 +25,7 @@
         "ServiceID": "ds_workflow_api_http",
         "ServiceName": "ds_workflow_api_http",
         "ServiceTags": [
-          "proxy.frontend.rule=Host:services_mock_workflow",
+          "proxy.frontend.rule=Host:services_mock_workflow:8080",
           "proxy.frontend.entryPoints=http",
           "proxy.tags=external",
           "proxy.enable=true"
