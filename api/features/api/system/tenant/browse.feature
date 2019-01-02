@@ -11,7 +11,7 @@ Feature: Browse tenants
   Scenario: Browse all tenants
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/system/tenants"
-    Then the response status code should be 200
+    Then print last JSON response
+    And the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
-    And print last JSON response
