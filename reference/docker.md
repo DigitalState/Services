@@ -1,6 +1,6 @@
 # Docker
 
-The DigitalState Services microservice docker information.
+The DigitalState Abstract microservice docker information.
 
 ## Table of Contents
 
@@ -18,12 +18,12 @@ _Note: The majority of variables found in the list below are used to override im
 | Name | Description | Default |
 | :--- | :---------- | :------ |
 | `COMPOSE_CONVERT_WINDOWS_PATHS` | The docker-compose windows path compatibility config. | `true` |
-| `COMPOSE_PROJECT_NAME` | The docker-compose project name. This is used to properly namespace docker containers in the event where you are running multiple instances. | `ds_services` |
+| `COMPOSE_PROJECT_NAME` | The docker-compose project name. This is used to properly namespace docker containers in the event where you are running multiple instances. | `ds_microservice` |
 | `DIRECTORY` | The base directory the docker-compose files are located. This is used to properly configure the base directory for DockerForWindows and DockerForMac based machines. | `.` |
 | `DATABASE_NAME` | See [POSTGRES_DB](#database_image). | `api` |
 | `DATABASE_USER` | See [POSTGRES_USER](#database_image). | `api` |
 | `DATABASE_PASSWORD` | See [POSTGRES_PASSWORD](#database_image). | `!ChangeMe!` |
-| `API_NAME` | See [APP](#api_image). | `services` |
+| `API_NAME` | See [APP](#api_image). | `microservice` |
 | `API_ENV` | See [APP_ENV](#api_image). | `dev` |
 | `API_SECRET` | See [APP_SECRET](#api_image). | `!ChangeMe!` |
 | `API_NAMESPACE` | See [APP_NAMESPACE](#api_image). | `ds` |
@@ -61,7 +61,7 @@ _Note: The majority of variables found in the list below are used to override im
 
 | Name | Description | Default |
 | :--- | :---------- | :------ |
-| `APP` | The microservice app name. This value is used to tag various resources, such as log records, to properly identify such resources in a microservice architecture.  | `services` |
+| `APP` | The microservice app name. This value is used to tag various resources, such as log records, to properly identify such resources in a microservice architecture.  | `microservice` |
 | `APP_ENV` | The app runtime environment.  | `dev` |
 | `APP_SECRET` | The app secret. See [Symfony reference](https://symfony.com/doc/current/reference/configuration/framework.html#secret) | `!ChangeMe!` |
 | `APP_NAMESPACE` | The app namespace. This value is used by various core components to help namespace multiple instances. | `ds` |

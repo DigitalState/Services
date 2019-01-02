@@ -10,7 +10,6 @@ env:
 
 services:
   - docker
-  - docker-compose
 
 before_install:
   - openssl genrsa -out api/config/jwt/key -aes256 -passout pass:${API_JWT_PASS_PHRASE} 4096

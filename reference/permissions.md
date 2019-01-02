@@ -1,6 +1,6 @@
 # Permissions
 
-The DigitalState Services microservice permissions.
+The DigitalState Abstract microservice permissions.
 
 ## Table of Contents
 

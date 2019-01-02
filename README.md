@@ -1,10 +1,10 @@
-# Services
+# Microservice
 
-The DigitalState Services Microservice
+The DigitalState Abstract Microservice
 
-[![Build Status](https://travis-ci.org/DigitalState/Services.svg?branch=develop)](https://travis-ci.org/DigitalState/Services)
-[![Coverage Status](https://coveralls.io/repos/github/DigitalState/Services/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Services?branch=develop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DigitalState/Services/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/DigitalState/Services/?branch=develop)
+[![Build Status](https://travis-ci.org/DigitalState/Microservice.svg?branch=develop)](https://travis-ci.org/DigitalState/Microservice)
+[![Coverage Status](https://coveralls.io/repos/github/DigitalState/Microservice/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Microservice?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DigitalState/Microservice/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/DigitalState/Microservice/?branch=develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Table of Contents
