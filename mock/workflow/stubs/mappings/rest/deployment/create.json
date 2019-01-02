@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "POST",
-    "url": "/deployment/create"
+    "url": "/rest/deployment/create"
   },
   "response": {
     "status": 200,
