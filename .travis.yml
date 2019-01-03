@@ -24,7 +24,6 @@ before_install:
 
 script:
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d
-  - docker ps -a
   - while true; do output=`docker-compose exec -T php pidof php-fpm | cat`; if [[ ! -z "${output// }" ]]; then break; fi; sleep 1; done;
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console security:check
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console doctrine:migration:migrate --no-interaction
