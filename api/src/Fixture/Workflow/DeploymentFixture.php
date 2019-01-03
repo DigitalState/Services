@@ -60,7 +60,7 @@ final class DeploymentFixture implements FixtureInterface, OrderedFixtureInterfa
      * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
-    {
+    {echo 'test';
         $fixtures = array_key_exists('FIXTURES', $_ENV) ? $_ENV['FIXTURES'] : 'dev';
         $source = $this->namespace.'.'.$this->app.'.fixtures.'.$fixtures;
         $api = $this->container->get(Api::class)->get('workflow.deployment');
