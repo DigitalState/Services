@@ -26,7 +26,7 @@ script:
   - docker-compose -v
   - docker -v
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d
-  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php composer install --prefer-dist --no-progress --no-suggest --no-interaction
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php composer install --prefer-dist --no-progress --no-suggest --no-interaction
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console security:check
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console doctrine:migration:migrate --no-interaction
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console doctrine:fixtures:load --no-interaction
