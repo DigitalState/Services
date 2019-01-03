@@ -8,7 +8,7 @@ services:
     public: false
 
   App\:
-    resource: ../src/{Controller,EventListener,Fixture,Repository,Service,Stat}
+    resource: ../src/{Controller,EventListener,Fixture,Repository,Service,Stat,Tenant}
 
   App\Controller\:
     resource: ../src/Controller
@@ -51,6 +51,30 @@ services:
   App\Stat\Submission\CountStat:
     tags:
       - { name: ds_statistic.stat, alias: submission.count }
+
+  App\Tenant\Loader\AccessLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Loader\ConfigLoader:
+    tags:
+      - { name: ds_tenant.loader }
+
+  App\Tenant\Unloader\CategoryUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }
+
+  App\Tenant\Unloader\ScenarioUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }
+
+  App\Tenant\Unloader\ServiceUnloader:
+    tags:
+      - { name: ds_tenant.unloader }
+
+  App\Tenant\Unloader\SubmissionUnloader:
+    tags:
+      - { name: ds_tenant.unloader, priority: -1 }
 
   App\Validator\Constraints\Scenario\Config\ValidValidator:
     tags:
