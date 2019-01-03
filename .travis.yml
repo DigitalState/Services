@@ -1,7 +1,7 @@
 sudo: required
 
 env:
-  DOCKER_VERSION: 18.06.1
+  DOCKER_VERSION: 18.06.1~ce~3-0~ubuntu
   DOCKER_COMPOSE_VERSION: 1.22.0
   API_ENV: test
   API_SECRET: byzxl36nl289x6yu71hdie2euf19vm3r
