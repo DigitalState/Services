@@ -17,3 +17,7 @@ services:
   App\Fixture\:
     resource: ../src/Fixture
     tags: [doctrine.fixture.orm]
+
+  App\Validator\Constraints\Scenario\Config\ValidValidator:
+    tags:
+      - { name: validator.constraint_validator }
