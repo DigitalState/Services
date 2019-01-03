@@ -1,30 +1,30 @@
 objects:
-  - access: 7da58b7a-0590-48a2-ad98-054179a759d1 # System
+  - access: b76eca1a-c6ce-48d6-bda7-5d7bafe8ec72 # System
     key: entity
     attributes: [BROWSE, READ, EDIT, ADD, DELETE]
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
-  - access: 7da58b7a-0590-48a2-ad98-054179a759d1 # System
+  - access: b76eca1a-c6ce-48d6-bda7-5d7bafe8ec72 # System
     key: property
     attributes: [BROWSE, READ, EDIT]
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
-  - access: 7da58b7a-0590-48a2-ad98-054179a759d1 # System
+  - access: b76eca1a-c6ce-48d6-bda7-5d7bafe8ec72 # System
     key: generic
     attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
 
-  - access: ccc1be9b-60ae-49b5-b62f-07b8f1b6ad23 # System
+  - access: 7f3276d3-e95c-459a-854a-bc7f41cc6bfb # System
     key: entity
     attributes: [BROWSE, READ, EDIT, ADD, DELETE]
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
-  - access: ccc1be9b-60ae-49b5-b62f-07b8f1b6ad23 # System
+  - access: 7f3276d3-e95c-459a-854a-bc7f41cc6bfb # System
     key: property
     attributes: [BROWSE, READ, EDIT]
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
-  - access: ccc1be9b-60ae-49b5-b62f-07b8f1b6ad23 # System
+  - access: 7f3276d3-e95c-459a-854a-bc7f41cc6bfb # System
     key: generic
     attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
