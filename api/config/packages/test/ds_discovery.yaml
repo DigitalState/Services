@@ -1,2 +1,2 @@
 ds_discovery:
-  host: mock_discovery:8080
+  host: services_mock_discovery:8080
