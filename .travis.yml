@@ -1,6 +1,7 @@
 sudo: required
 
 env:
+  DOCKER_COMPOSE_VERSION: 1.22.0
   API_ENV: test
   API_SECRET: byzxl36nl289x6yu71hdie2euf19vm3r
   API_JWT_PASS_PHRASE: 00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
@@ -12,6 +13,10 @@ services:
   - docker
 
 before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
   - openssl genrsa -out api/config/jwt/key -aes256 -passout pass:${API_JWT_PASS_PHRASE} 4096
   - openssl rsa -pubout -in api/config/jwt/key -out api/config/jwt/key.pub -passin pass:${API_JWT_PASS_PHRASE}
 
