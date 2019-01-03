@@ -12,10 +12,10 @@ services:
     networks:
       default:
         aliases:
-          - microservice_database
+          - services_database
 
   php:
-    image: digitalstate/microservice-php
+    image: digitalstate/services-php
     build:
       context: ./api
       target: api_platform_php
@@ -41,10 +41,10 @@ services:
     networks:
       default:
         aliases:
-          - microservice_php
+          - services_php
 
   api:
-    image: digitalstate/microservice-api
+    image: digitalstate/services-api
     build:
       context: ./api
       target: api_platform_nginx
@@ -53,7 +53,7 @@ services:
     networks:
       default:
         aliases:
-          - microservice_api
+          - services_api
 
 volumes:
   database_data: {}

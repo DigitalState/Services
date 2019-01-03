@@ -6,7 +6,7 @@ services:
     networks:
       default:
         aliases:
-          - microservice_database_ui
+          - services_database_ui
 
   php:
     environment:

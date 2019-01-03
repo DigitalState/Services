@@ -1,6 +1,6 @@
 # Api
 
-The DigitalState Abstract microservice api endpoints.
+The DigitalState Services microservice api endpoints.
 
 ## Table of Contents
 

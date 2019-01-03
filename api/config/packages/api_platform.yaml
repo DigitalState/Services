@@ -4,7 +4,7 @@ parameters:
 api_platform:
   mapping:
     paths: ['%kernel.project_dir%/src/Entity']
-  title: Microservice
+  title: Services
   version: 0.15.0
   http_cache:
     invalidation:

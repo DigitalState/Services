@@ -18,4 +18,4 @@ services:
     networks:
       default:
         aliases:
-          - microservice_mock_discovery
+          - services_mock_discovery
