@@ -1,0 +1,47 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/v1/catalog/service/ds_workflow_api_http"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "ID": "6e29a18d-3802-e27c-419f-bcca632b86d5",
+        "Node": "d9e671bdba71",
+        "Address": "172.19.0.5",
+        "Datacenter": "ds",
+        "TaggedAddresses": {
+          "lan": "172.19.0.5",
+          "wan": "172.19.0.5"
+        },
+        "NodeMeta": {
+          "consul-network-segment": ""
+        },
+        "ServiceKind": "",
+        "ServiceID": "ds_workflow_api_http",
+        "ServiceName": "ds_workflow_api_http",
+        "ServiceTags": [
+          "proxy.frontend.rule=Host:services_mock_workflow:8080",
+          "proxy.frontend.entryPoints=http",
+          "proxy.tags=external",
+          "proxy.enable=true"
+        ],
+        "ServiceAddress": "172.19.0.35",
+        "ServiceMeta": {},
+        "ServicePort": 80,
+        "ServiceEnableTagOverride": false,
+        "ServiceProxyDestination": "",
+        "ServiceConnect": {
+          "Native": false,
+          "Proxy": null
+        },
+        "CreateIndex": 26708,
+        "ModifyIndex": 26708
+      }
+    ]
+  }
+}
