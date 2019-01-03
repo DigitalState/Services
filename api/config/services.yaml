@@ -8,7 +8,7 @@ services:
     public: false
 
   App\:
-    resource: ../src/{Controller,EventListener,Fixture,Repository,Service}
+    resource: ../src/{Controller,EventListener,Fixture,Repository,Service,Stat}
 
   App\Controller\:
     resource: ../src/Controller
@@ -35,6 +35,22 @@ services:
   App\Fixture\:
     resource: ../src/Fixture
     tags: [doctrine.fixture.orm]
+
+  App\Stat\Category\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: category.count }
+
+  App\Stat\Service\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: service.count }
+
+  App\Stat\Scenario\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: scenario.count }
+
+  App\Stat\Submission\CountStat:
+    tags:
+      - { name: ds_statistic.stat, alias: submission.count }
 
   App\Validator\Constraints\Scenario\Config\ValidValidator:
     tags:
