@@ -8,11 +8,17 @@ services:
     public: false
 
   App\:
-    resource: ../src/{Fixture}
+    resource: ../src/{Controller,Fixture,Repository,Service}
 
   App\Controller\:
     resource: ../src/Controller
     tags: [controller.service_arguments]
+
+  App\Controller\Scenario\Forms\TranslationController:
+    arguments:
+      - '@App\Service\ScenarioService'
+      - '@request_stack'
+      - '%locale%'
 
   App\Fixture\:
     resource: ../src/Fixture
