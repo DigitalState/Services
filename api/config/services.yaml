@@ -36,6 +36,12 @@ services:
     resource: ../src/Fixture
     tags: [doctrine.fixture.orm]
 
+  App\Fixture\Workflow\DeploymentFixture:
+    arguments:
+      - '%env(resolve:APP)%'
+      - '%env(resolve:APP_NAMESPACE)%'
+    tags: [doctrine.fixture.orm]
+
   App\Stat\Category\CountStat:
     tags:
       - { name: ds_statistic.stat, alias: category.count }
