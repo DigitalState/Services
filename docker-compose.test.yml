@@ -14,8 +14,17 @@ services:
   mock_discovery:
     image: rodolpheche/wiremock:2.19.0-alpine
     volumes:
-      - ${DIRECTORY}/mock/discovery:/home/wiremock:rw
+      - ${DIRECTORY}/mock/discovery/stubs:/home/wiremock:rw
     networks:
       default:
         aliases:
           - services_mock_discovery
+
+  mock_workflow:
+    image: rodolpheche/wiremock:2.19.0-alpine
+    volumes:
+      - ${DIRECTORY}/mock/workflow/stubs:/home/wiremock:rw
+    networks:
+      default:
+        aliases:
+          - services_mock_workflow
