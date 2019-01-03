@@ -1,7 +1,7 @@
-objects:
-  - name: Pothole Report
-    files:
-      - bpmn/pothole-report.bpmn
+objects: []
+#  - name: Pothole Report
+#    files:
+#      - bpmn/pothole-report.bpmn
 
 prototype:
   name: ~
