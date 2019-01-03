@@ -8,7 +8,7 @@ services:
     public: false
 
   App\:
-    resource: ../src/{Controller,Fixture,Repository,Service}
+    resource: ../src/{Controller,EventListener,Fixture,Repository,Service}
 
   App\Controller\:
     resource: ../src/Controller
@@ -19,6 +19,18 @@ services:
       - '@App\Service\ScenarioService'
       - '@request_stack'
       - '%locale%'
+
+  App\EventListener\Submission\Validation\DataListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, method: kernelView, priority: 64 }
+
+  App\EventListener\Submission\OwnerListener:
+    tags:
+      - { name: doctrine.orm.entity_listener, entity: App\Entity\Submission, event: prePersist }
+
+  App\EventListener\Submission\Transfer\BpmListener:
+    tags:
+      - { name: doctrine.orm.entity_listener, entity: App\Entity\Submission, event: postPersist }
 
   App\Fixture\:
     resource: ../src/Fixture
