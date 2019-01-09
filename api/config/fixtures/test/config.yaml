@@ -1,4 +1,64 @@
 objects:
+  - uuid: 6017bd99-3751-41b0-bc1c-bd629a46a335
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.api_url
+    value: api_url
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 251507f6-9c89-4994-993b-747ba62a8936
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.api_user
+    value: api_user
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 283a54f6-840c-4db9-b01d-03e3e92e6d51
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.api_key
+    value: api_key
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: e3505e76-070d-4696-839f-4af4e64a8dc9
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.service_uuid
+    value: service_uuid
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 22d249d2-7b93-4026-9241-a5f0d048a5b8
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.scenario_uuid
+    value: scenario_uuid
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: e3c48a35-cfa0-427b-8982-339edcebc156
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.scenario_custom_data
+    value: scenario_custom_data
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 60b06725-48c6-4df5-897f-5c04cbf233fa
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.identity
+    value: identity
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: f9e47f4c-c561-49da-8ff5-1b4297dea83a
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.identity_uuid
+    value: identity_uuid
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: aba8114b-7523-4e4e-becc-7de1f6190b76
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.submission_uuid
+    value: submission_uuid
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: 92cc0292-025a-4c46-a581-4e61d258a835
+    owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
+    key: app.bpm.variables.start_data
+    value: start_data
+    tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
   - uuid: 4804b00d-cc69-4a2b-98c2-f8a0d9404764
     owner_uuid: 325e1004-8516-4ca9-a4d3-d7505bd9a7fe # Administration
     key: ds_api.user.username
@@ -46,6 +106,66 @@ objects:
     key: ds_api.user.tenant
     value: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
+
+  - uuid: a6b0cd21-55d8-4240-86b8-e9ae18fd1697
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.api_url
+    value: api_url
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: fcb3270d-e7f0-47d4-81fa-e7d87b11e5de
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.api_user
+    value: api_user
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 4fdce89a-048c-4187-913d-568a505dd610
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.api_key
+    value: api_key
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: fbf880e6-0330-4e84-87eb-22033da09226
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.service_uuid
+    value: service_uuid
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 430b7738-2ba4-4fe8-b84a-b6f2264f0b72
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.scenario_uuid
+    value: scenario_uuid
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: c6be4fff-38b2-4024-8011-6e82660db06f
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.scenario_custom_data
+    value: scenario_custom_data
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: dfd8a9aa-2e73-41ed-a195-628db2f34f34
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.identity
+    value: identity
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: ac69ca70-b855-460a-bcea-2425b649414d
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.identity_uuid
+    value: identity_uuid
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: 66758acd-04ae-4cde-b586-bd4f9a10eaef
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.submission_uuid
+    value: submission_uuid
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
+
+  - uuid: c20b0972-5e3d-4abb-91cd-3a4503b65155
+    owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
+    key: app.bpm.variables.start_data
+    value: start_data
+    tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
   - uuid: 9b3ae41d-dc45-491a-9de4-42a7ad12c66c
     owner_uuid: 72ecd949-6960-4d9d-8baa-3dc15c2cbd63 # Administration
