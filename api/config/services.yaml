@@ -72,7 +72,7 @@ services:
 
   App\Tenant\Unloader\ScenarioUnloader:
     tags:
-      - { name: ds_tenant.unloader, priority: -1 }
+      - { name: ds_tenant.unloader, priority: -2 }
 
   App\Tenant\Unloader\ServiceUnloader:
     tags:
@@ -80,7 +80,7 @@ services:
 
   App\Tenant\Unloader\SubmissionUnloader:
     tags:
-      - { name: ds_tenant.unloader, priority: -1 }
+      - { name: ds_tenant.unloader, priority: -3 }
 
   App\Validator\Constraints\Scenario\Config\ValidValidator:
     tags:

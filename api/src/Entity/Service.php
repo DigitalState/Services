@@ -215,8 +215,8 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="services")
      * @ORM\JoinTable(
      *     name="app_service_category",
-     *     joinColumns={@ORM\JoinColumn(name="service_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     *     joinColumns={@ORM\JoinColumn(name="service_id", referencedColumnName="id", onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
      */
