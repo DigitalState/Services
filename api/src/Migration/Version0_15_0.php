@@ -123,8 +123,8 @@ final class Version0_15_0 extends AbstractMigration implements ContainerAwareInt
                 $this->addSql('ALTER TABLE app_category_trans ADD CONSTRAINT FK_47E8C30A2C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_category (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_scenario ADD CONSTRAINT FK_36C5A875ED5CA9E6 FOREIGN KEY (service_id) REFERENCES app_service (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_scenario_trans ADD CONSTRAINT FK_80D43D122C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_scenario (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
-                $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35DED5CA9E6 FOREIGN KEY (service_id) REFERENCES app_service (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-                $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35D12469DE2 FOREIGN KEY (category_id) REFERENCES app_category (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+                $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35DED5CA9E6 FOREIGN KEY (service_id) REFERENCES app_service (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
+                $this->addSql('ALTER TABLE app_service_category ADD CONSTRAINT FK_6B04A35D12469DE2 FOREIGN KEY (category_id) REFERENCES app_category (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_service_trans ADD CONSTRAINT FK_432ECEF62C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_service (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 $this->addSql('ALTER TABLE app_submission ADD CONSTRAINT FK_8D1EF18FE04E49DF FOREIGN KEY (scenario_id) REFERENCES app_scenario (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
                 break;
