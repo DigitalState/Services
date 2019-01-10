@@ -1,0 +1,2 @@
+ds_debug:
+  resource: '@DsDebugBundle/Resources/config/routing.yaml'
