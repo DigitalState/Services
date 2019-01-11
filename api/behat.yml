@@ -1,11 +1,15 @@
 default:
   suites:
     default:
+      paths:
+        - '%paths.base%/features'
+        - '%paths.base%/vendor/digitalstate/core/features'
       contexts:
         - FeatureContext
         - Behat\MinkExtension\Context\MinkContext
         - behatch:context:json
         - behatch:context:rest
+        - Ds\Component\Console\Test\Context\ConsoleContext
         - Ds\Component\Database\Test\Context\SchemaContext:
             doctrine: '@doctrine'
         - Ds\Component\Database\Test\Context\MigrationContext
