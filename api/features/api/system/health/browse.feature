@@ -1,8 +1,5 @@
 @api @system @health @browse
 Feature: Browse health statuses
-  In order to browse health statuses
-  As the system user
-  I should be able to send api requests related to health statuses
 
   Background:
     Given I am authenticated as the "system" user
