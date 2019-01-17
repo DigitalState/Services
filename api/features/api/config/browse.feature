@@ -14,8 +14,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8,
+      "minItems": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -153,8 +153,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -168,8 +168,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -183,8 +183,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -198,8 +198,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -245,8 +245,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -260,8 +260,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -275,8 +275,8 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
 
@@ -290,7 +290,7 @@ Feature: Browse configs
     """
     {
       "type": "array",
-      "minItems": 8,
-      "maxItems": 8
+      "minItems": 10,
+      "maxItems": 10
     }
     """
