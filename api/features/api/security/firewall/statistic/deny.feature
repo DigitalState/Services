@@ -1,7 +1,6 @@
 @api @security @firewall @statistic @deny
 Feature: Deny access to non-authenticated users to statistic endpoints
 
-  @upMigrations @loadFixtures @downMigrations
   Scenario: Browse statistics
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/statistics"

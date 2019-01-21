@@ -1,7 +1,6 @@
 @api @security @firewall @config @deny
 Feature: Deny access to non-authenticated users to config endpoints
 
-  @upMigrations @loadFixtures
   Scenario: Browse configs
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/configs"
@@ -38,7 +37,6 @@ Feature: Deny access to non-authenticated users to config endpoints
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
 
-  @downMigrations
   Scenario: Delete a config
     When I add "Accept" header equal to "application/json"
     And I send a "DELETE" request to "/configs/6017bd99-3751-41b0-bc1c-bd629a46a335"
