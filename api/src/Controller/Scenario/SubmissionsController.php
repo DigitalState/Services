@@ -78,7 +78,7 @@ final class SubmissionsController
         $submission = $this->submissionService->createInstance();
         $submission
             ->setScenario($scenario)
-            ->setData($content->data)
+            ->setData((array) $content->data)
             ->setState(Submission::STATE_SUBMITTED);
         $violations = [];
 
