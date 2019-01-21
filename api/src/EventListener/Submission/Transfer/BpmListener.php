@@ -4,8 +4,11 @@ namespace App\EventListener\Submission\Transfer;
 
 use App\Entity\Submission;
 use App\Entity\Scenario;
+use App\Service\SubmissionService;
+use Ds\Component\Api\Api\Api;
 use Ds\Component\Camunda\Model\Variable;
 use Ds\Component\Camunda\Query\ProcessDefinitionParameters;
+use Ds\Component\Config\Service\ConfigService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -52,9 +55,9 @@ final class BpmListener
     {
         // Circular reference error workaround
         // @todo Look into fixing this
-        $this->api = $this->container->get('ds_api.api');
-        $this->configService = $this->container->get('ds_config.service.config');
-        $this->submissionService = $this->container->get('app.service.submission');
+        $this->api = $this->container->get(Api::class);
+        $this->configService = $this->container->get(ConfigService::class);
+        $this->submissionService = $this->container->get(SubmissionService::class);
         //
 
         $scenario = $submission->getScenario();
@@ -64,7 +67,7 @@ final class BpmListener
         }
 
 //        $parameters = new ProcessDefinitionParameters;
-//        $parameters->setKey($scenario->getConfig('process_definition_key'));
+//        $parameters->setKey($scenario->getConfig()['process_definition_key']);
 //        $xml = $this->api->camunda->processDefinition->getXml(null, $parameters);
         $service = $scenario->getService();
         $parameters = new ProcessDefinitionParameters;
@@ -90,9 +93,9 @@ final class BpmListener
         $variables[] = new Variable($this->configService->get('app.bpm.variables.start_data'), $submission->getData(), Variable::TYPE_JSON);
         $parameters
             ->setVariables($variables)
-            ->setKey($scenario->getConfig('process_definition_key'))
+            ->setKey($scenario->getConfig()['process_definition_key'])
             ->setTenantId($scenario->getTenant());
-        $this->api->get('camunda.process_definition')->start(null, $parameters);
+        $this->api->get('workflow.process_definition')->start(null, $parameters);
         $submission->setState(Submission::STATE_TRANSFERRED);
         $manager = $this->submissionService->getManager();
         $manager->persist($submission);

@@ -49,7 +49,7 @@ final class UrlController
             throw new NotFoundHttpException('Scenario url not found.');
         }
 
-        $response = new RedirectResponse($scenario->getConfig('url'));
+        $response = new RedirectResponse($scenario->getConfig()['url']);
 
         return $response;
     }

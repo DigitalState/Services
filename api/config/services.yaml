@@ -42,6 +42,9 @@ services:
       - '%env(resolve:APP_NAMESPACE)%'
     tags: [doctrine.fixture.orm]
 
+  App\Service\SubmissionService:
+    public: true # Used by event listener
+
   App\Stat\Category\CountStat:
     tags:
       - { name: ds_statistic.stat, alias: category.count }
