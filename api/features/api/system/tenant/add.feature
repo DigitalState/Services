@@ -42,6 +42,11 @@ Feature: Add tenant
                   "uuid": "dfdc7e82-82b2-429e-b564-c9161083615b"
               }
           },
+          "role": {
+              "administrator": {
+                  "uuid": "73070c31-5e65-40f0-b1cb-536d0f81f1bc"
+              }
+          },
           "tenant": {
               "uuid": "cd358ded-5c17-445e-a80c-871f551937bf"
           },
