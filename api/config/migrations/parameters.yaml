@@ -29,4 +29,8 @@ business_unit:
   administration:
     uuid: 36565c23-ed22-4dc2-bc7e-ae1ce59a727c
 
+role:
+  administrator:
+    uuid: 6978eb53-8d0b-4c30-8424-94452ddb1ac3
+
 config: []

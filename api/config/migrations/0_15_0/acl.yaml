@@ -8,38 +8,38 @@ objects:
         entity: ~
         entity_uuid: ~
         key: entity
-        attributes: ['BROWSE','READ','EDIT','ADD','DELETE']
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
       - scope: generic
         entity: ~
         entity_uuid: ~
         key: property
-        attributes: ['BROWSE','READ','EDIT']
+        attributes: [BROWSE, READ, EDIT]
       - scope: generic
         entity: ~
         entity_uuid: ~
         key: generic
-        attributes: ['BROWSE','READ','EDIT','ADD','DELETE','EXECUTE']
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 
   - owner: BusinessUnit
     owner_uuid: '%business_unit.administration.uuid%'
-    assignee: Staff
-    assignee_uuid: '%identity.admin.uuid%'
+    assignee: Role
+    assignee_uuid: '%role.administrator.uuid%'
     permissions:
-      - scope: generic
-        entity: ~
+      - scope: owner
+        entity: BusinessUnit
         entity_uuid: ~
         key: entity
-        attributes: ['BROWSE','READ','EDIT','ADD','DELETE']
-      - scope: generic
-        entity: ~
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+      - scope: owner
+        entity: BusinessUnit
         entity_uuid: ~
         key: property
-        attributes: ['BROWSE','READ','EDIT']
+        attributes: [BROWSE, READ, EDIT]
       - scope: generic
         entity: ~
         entity_uuid: ~
         key: generic
-        attributes: ['BROWSE','READ','EDIT','ADD','DELETE','EXECUTE']
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 
 prototype:
   uuid: ~
