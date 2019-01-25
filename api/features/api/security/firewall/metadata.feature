@@ -1,4 +1,4 @@
-@api @security @firewall @metadata @deny
+@api @security @firewall @metadata
 Feature: Deny access to non-authenticated users to metadata endpoints
 
   Scenario: Browse metadata

@@ -1,4 +1,4 @@
-@api @security @firewall @statistic @deny
+@api @security @firewall @statistic
 Feature: Deny access to non-authenticated users to statistic endpoints
 
   Scenario: Browse statistics

@@ -1,4 +1,4 @@
-@api @security @firewall @system @health @deny
+@api @security @firewall @system @health
 Feature: Deny access to non-authenticated users to system health endpoints
 
   Scenario: Browse health checks

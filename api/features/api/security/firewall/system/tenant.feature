@@ -1,4 +1,4 @@
-@api @security @firewall @system @tenant @deny
+@api @security @firewall @system @tenant
 Feature: Deny access to non-authenticated users to system tenant endpoints
 
   Scenario: Browse tenants

@@ -1,4 +1,4 @@
-@api @security @firewall @reference @permissions @deny
+@api @security @firewall @reference @permissions
 Feature: Deny access to non-authenticated users to permissions reference endpoints
 
   Scenario: Browse permissions reference
