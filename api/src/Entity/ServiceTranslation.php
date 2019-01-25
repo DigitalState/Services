@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Ds\Component\Model\Attribute\Accessor;
+use Ds\Component\Translation\Model\Type\Translation;
 use Knp\DoctrineBehaviors\Model as Behavior;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_service_trans")
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */
-class ServiceTranslation
+class ServiceTranslation implements Translation
 {
     use Behavior\Translatable\Translation;
 
@@ -46,4 +47,12 @@ class ServiceTranslation
      * @ORM\Column(name="data", type="json_array")
      */
     private $data;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = [];
+    }
 }
