@@ -1,17 +1,23 @@
-@api @service @add
-Feature: Add services
+@api @scenario @add
+Feature: Add scenarios
 
   Background:
     Given I am authenticated as the "system@system.ds" user from the tenant "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  Scenario: Add a service
+  Scenario: Add a scenario
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "POST" request to "/services" with body:
+    And I send a "POST" request to "/scenarios" with body:
     """
     {
       "owner": "BusinessUnit",
       "ownerUuid": "83bf8f26-7181-4bed-92f3-3ce5e4c286d7",
+      "service": "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a",
+      "type": "bpm",
+      "config": {
+        "bpm": "camunda",
+        "process_definition_key": "process-add"
+      },
       "slug": "slug-add",
       "title": {
         "en": "Title - add",
@@ -42,7 +48,7 @@ Feature: Add services
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should exist
-    And the JSON node "id" should be equal to the number 5
+    And the JSON node "id" should be equal to the number 3
     And the JSON node "uuid" should exist
     And the JSON node "createdAt" should exist
     And the JSON node "updatedAt" should exist
@@ -52,6 +58,13 @@ Feature: Add services
     And the JSON node "owner" should be equal to the string "BusinessUnit"
     And the JSON node "ownerUuid" should exist
     And the JSON node "ownerUuid" should be equal to the string "83bf8f26-7181-4bed-92f3-3ce5e4c286d7"
+    And the JSON node "type" should exist
+    And the JSON node "type" should be equal to the string "bpm"
+    And the JSON node "config" should exist
+    And the JSON node "config.bpm" should exist
+    And the JSON node "config.bpm" should be equal to the string "camunda"
+    And the JSON node "config.process_definition_key" should exist
+    And the JSON node "config.process_definition_key" should be equal to the string "process-add"
     And the JSON node "slug" should exist
     And the JSON node "slug" should be equal to the string "slug-add"
     And the JSON node "title" should exist
@@ -76,8 +89,6 @@ Feature: Add services
     And the JSON node "data.fr" should exist
     And the JSON node "data.fr.value" should exist
     And the JSON node "data.fr.value" should be equal to "value - add"
-    And the JSON node "categories" should exist
-    And the JSON node "scenarios" should exist
     And the JSON node "enabled" should exist
     And the JSON node "enabled" should be true
     And the JSON node "weight" should exist
@@ -87,9 +98,9 @@ Feature: Add services
     And the JSON node "tenant" should exist
     And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
-  Scenario: Read the added service
+  Scenario: Read the added scenario
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/services?id=5"
+    And I send a "GET" request to "/scenarios?id=3"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
