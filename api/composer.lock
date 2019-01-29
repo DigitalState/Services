@@ -330,16 +330,16 @@
         },
         {
             "name": "digitalstate/core",
-            "version": "dev-feature/apip-2-3-3-upgrade",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DigitalState/Core.git",
-                "reference": "5e4dbde7a2f35925f6836c10e32cba5ef1f9b5d2"
+                "reference": "d609bca323c5117c93b851846a3ed11ee483fc05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DigitalState/Core/zipball/5e4dbde7a2f35925f6836c10e32cba5ef1f9b5d2",
-                "reference": "5e4dbde7a2f35925f6836c10e32cba5ef1f9b5d2",
+                "url": "https://api.github.com/repos/DigitalState/Core/zipball/d609bca323c5117c93b851846a3ed11ee483fc05",
+                "reference": "d609bca323c5117c93b851846a3ed11ee483fc05",
                 "shasum": ""
             },
             "require": {
