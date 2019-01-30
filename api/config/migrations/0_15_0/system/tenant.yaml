@@ -1,0 +1,6 @@
+objects:
+  - uuid: '%tenant.uuid%'
+
+prototype:
+  uuid: ~
+  version: 1

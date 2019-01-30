@@ -1,0 +1,5 @@
+parameters:
+  env(ENCRYPTION): ''
+
+ds_encryption:
+  encryption: '%env(resolve:ENCRYPTION)%'

@@ -1,65 +1,59 @@
-version: '3.1'
+version: '3.4'
 
 services:
   database:
     image: postgres:9.6-alpine
     environment:
-      POSTGRES_DB: '${DATABASE_NAME}'
-      POSTGRES_USER: '${DATABASE_USERNAME}'
-      POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
-      SERVICE_IGNORE: 'true'
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - database_data:/var/lib/postgresql/data:rw
-
-  cache:
-    image: redis:4.0.8-alpine
-    environment:
-      ALLOW_EMPTY_PASSWORD: 'yes'
-      SERVICE_IGNORE: 'true'
-    volumes:
-      - cache_data:/data:rw
+    networks:
+      default:
+        aliases:
+          - services_database
 
   php:
-    build: .
+    image: digitalstate/services-php
+    build:
+      context: ./api
+      target: api_platform_php
     depends_on:
       - database
+    env_file:
+      - ./api/.env
     environment:
-      SERVICE_IGNORE: 'true'
-    command: ['wait-for', 'services_database:${DATABASE_PORT}', '--timeout=60', '--', 'docker-app-start']
-    volumes:
-      - '${DIRECTORY}:/srv/api-platform'
-    links:
-      - database:services_database
-      - cache:services_cache
+      APP_NAME: ${API_NAME}
+      APP_ENV: ${API_ENV}
+      APP_SECRET: ${API_SECRET}
+      APP_NAMESPACE: ${API_NAMESPACE}
+      TRUSTED_PROXIES: ${API_TRUSTED_PROXIES}
+      TRUSTED_HOSTS: ${API_TRUSTED_HOSTS}
+      DATABASE_URL: ${API_DATABASE_URL}
+      CORS_ALLOW_ORIGIN: ${API_CORS_ALLOW_ORIGIN}
+      JWT_PASS_PHRASE: ${API_JWT_PASS_PHRASE}
+      DISCOVERY_HOST: ${API_DISCOVERY_HOST}
+      DISCOVERY_CREDENTIAL: ${API_DISCOVERY_CREDENTIAL}
+      ENCRYPTION: ${API_ENCRYPTION}
+      SYSTEM_USERNAME: ${API_SYSTEM_USERNAME}
+      SYSTEM_PASSWORD: ${API_SYSTEM_PASSWORD}
+    networks:
+      default:
+        aliases:
+          - services_php
 
   api:
-    image: nginx:1.11-alpine
+    image: digitalstate/services-api
+    build:
+      context: ./api
+      target: api_platform_nginx
     depends_on:
       - php
-    environment:
-      SERVICE_ENTRYPOINT-PROD: '$${url}'
-      SERVICE_ENTRYPOINT-DEV: '$${url}/app_dev.php'
-      SERVICE_ENTRYPOINT-TEST: '$${url}/app_test.php'
-      SERVICE_443_ID: '${COMPOSE_PROJECT_NAME}_api_https'
-      SERVICE_443_NAME: '${COMPOSE_PROJECT_NAME}_api_https'
-      SERVICE_443_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=https,proxy.frontend.rule=Host:${API_HOST}'
-      SERVICE_80_ID: '${COMPOSE_PROJECT_NAME}_api_http'
-      SERVICE_80_NAME: '${COMPOSE_PROJECT_NAME}_api_http'
-      SERVICE_80_TAGS: 'proxy.enable=true,proxy.tags=external,proxy.frontend.entryPoints=http,proxy.frontend.rule=Host:${API_HOST}'
-    volumes:
-      - '${DIRECTORY}/docker/nginx/conf.d:/etc/nginx/conf.d:ro'
-      - '${DIRECTORY}:/srv/api-platform'
-    links:
-      - php:services_php
+    networks:
+      default:
+        aliases:
+          - services_api
 
 volumes:
-  database_data:
-    driver: local
-
-  cache_data:
-    driver: local
-
-networks:
-  default:
-    external:
-      name: '${NETWORK}'
+  database_data: {}

@@ -1,0 +1,52 @@
+objects:
+  - owner: System
+    owner_uuid: '%identity.system.uuid%'
+    assignee: System
+    assignee_uuid: '%identity.system.uuid%'
+    permissions:
+      - scope: generic
+        entity: ~
+        entity_uuid: ~
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+      - scope: generic
+        entity: ~
+        entity_uuid: ~
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+      - scope: generic
+        entity: ~
+        entity_uuid: ~
+        key: generic
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+  - owner: BusinessUnit
+    owner_uuid: '%business_unit.administration.uuid%'
+    assignee: Role
+    assignee_uuid: '%role.administrator.uuid%'
+    permissions:
+      - scope: owner
+        entity: BusinessUnit
+        entity_uuid: ~
+        key: entity
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+      - scope: owner
+        entity: BusinessUnit
+        entity_uuid: ~
+        key: property
+        attributes: [BROWSE, READ, EDIT]
+      - scope: generic
+        entity: ~
+        entity_uuid: ~
+        key: generic
+        attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
+
+prototype:
+  uuid: ~
+  owner: ~
+  owner_uuid: ~
+  assignee: ~
+  assignee_uuid: ~
+  permissions: []
+  version: 1
+  tenant: '%tenant.uuid%'

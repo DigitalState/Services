@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  php:
+    environment:
+      APP_ENV: test
+    volumes:
+      - ${DIRECTORY}/api:/srv/api:rw,cached
+
+  api:
+    volumes:
+      - ${DIRECTORY}/api/public:/srv/api/public:ro
+
+  mock_discovery:
+    image: rodolpheche/wiremock:2.19.0-alpine
+    volumes:
+      - ${DIRECTORY}/mock/discovery/stubs:/home/wiremock:rw
+    networks:
+      default:
+        aliases:
+          - services_mock_discovery
+
+  mock_workflow:
+    image: rodolpheche/wiremock:2.19.0-alpine
+    volumes:
+      - ${DIRECTORY}/mock/workflow/stubs:/home/wiremock:rw
+    networks:
+      default:
+        aliases:
+          - services_mock_workflow

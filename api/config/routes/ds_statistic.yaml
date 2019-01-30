@@ -1,0 +1,2 @@
+ds_statistic:
+  resource: '@DsStatisticBundle/Resources/config/routing.yaml'

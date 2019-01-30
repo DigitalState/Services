@@ -1,6 +1,6 @@
 # Services
 
-Description...
+The DigitalState Services Microservice
 
 [![Build Status](https://travis-ci.org/DigitalState/Services.svg?branch=develop)](https://travis-ci.org/DigitalState/Services)
 [![Coverage Status](https://coveralls.io/repos/github/DigitalState/Services/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Services?branch=develop)
@@ -20,10 +20,10 @@ Further documentation can be found in the [Documentation Repository](https://git
 
 ## References
 
-- [Api](references/api.md)
-- [Configurations](references/configurations.md)
-- [Permissions](references/permissions.md)
-- [Docker](references/docker.md)
+- [Api](reference/api.md)
+- [Configurations](reference/configurations.md)
+- [Permissions](reference/permissions.md)
+- [Docker](reference/docker.md)
 
 ## Contributing
 

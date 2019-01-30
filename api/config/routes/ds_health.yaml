@@ -1,0 +1,3 @@
+ds_health:
+  resource: '@DsHealthBundle/Resources/config/routing.yaml'
+  prefix: /system

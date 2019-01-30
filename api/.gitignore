@@ -1,0 +1,10 @@
+/.idea
+.env
+/public/bundles/
+/var/
+/vendor/
+/config/jwt/key
+/config/jwt/key.pub
+/helm/api/charts
+.php_cs
+.php_cs.cache

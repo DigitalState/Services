@@ -1,0 +1,13 @@
+objects:
+  - key: ds_system.user.username
+    value: '%system.username%'
+
+  - key: ds_system.user.password
+    value: '%system.password%'
+
+  - key: ds_tenant.tenant.default
+    value: '%tenant.uuid%'
+
+prototype:
+  key: ~
+  value: ~

@@ -1,23 +1,31 @@
 sudo: required
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.11.2
-  JWT_PASS_PHRASE: 00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
-
-services:
-  - docker
+  DOCKER_VERSION: 18.06.1~ce~3-0~ubuntu
+  DOCKER_COMPOSE_VERSION: 1.22.0
+  API_ENV: test
+  API_SECRET: byzxl36nl289x6yu71hdie2euf19vm3r
+  API_JWT_PASS_PHRASE: 00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
+  API_ENCRYPTION: def00000b66cdea17be03154351b285554884f1cba050541781f535bce839d31e315a82771d5dc5c32a8634ba1d7831ce5f1ec0a29e4a17344216eb038745acd63d3149f
+  API_SYSTEM_USERNAME: system
+  API_SYSTEM_PASSWORD: system
 
 before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce=${DOCKER_VERSION}
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - openssl genrsa -out var/jwt/key -aes256 -passout pass:${JWT_PASS_PHRASE} 4096
-  - openssl rsa -pubout -in var/jwt/key -out var/jwt/key.pub -passin pass:${JWT_PASS_PHRASE}
+  - openssl genrsa -out api/config/jwt/key -aes256 -passout pass:${API_JWT_PASS_PHRASE} 4096
+  - openssl rsa -pubout -in api/config/jwt/key -out api/config/jwt/key.pub -passin pass:${API_JWT_PASS_PHRASE}
 
 script:
-  - docker network create dsproxy_default
-  - docker-compose -f docker-compose.yml -f docker-compose.ci.yml build
-  - docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
-#  - docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm php bin/console security:check
-  - docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm php vendor/bin/behat
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d
+  - while true; do output=`docker-compose exec -T php pidof php-fpm | cat`; if [[ ! -z "${output// }" ]]; then break; fi; sleep 1; done;
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console security:check
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php php bin/console doctrine:migration:migrate --no-interaction
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -e FIXTURES=test php php bin/console doctrine:fixtures:load --no-interaction
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml exec php vendor/bin/behat

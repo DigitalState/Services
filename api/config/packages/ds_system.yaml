@@ -1,0 +1,10 @@
+parameters:
+  env(APP_NAMESPACE): ''
+  env(SYSTEM_USERNAME): ''
+  env(SYSTEM_PASSWORD): ''
+
+ds_system:
+  namespace: '%env(resolve:APP_NAMESPACE)%'
+  system:
+    username: '%env(resolve:SYSTEM_USERNAME)%'
+    password: '%env(resolve:SYSTEM_PASSWORD)%'

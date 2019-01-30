@@ -1,21 +1,12 @@
-version: '3.1'
+version: '3.4'
 
 services:
   php:
-    image: 'digitalstate/services:${IMAGE_TAG}'
     environment:
-      SYMFONY_ENV: prod
-    extra_hosts:
-      - 'api.assets.prod.ds:${PROXY_HOST}'
-      - 'api.authentication.prod.ds:${PROXY_HOST}'
-      - 'api.camunda.prod.ds:${PROXY_HOST}'
-      - 'api.cases.prod.ds:${PROXY_HOST}'
-      - 'api.cms.prod.ds:${PROXY_HOST}'
-      - 'api.discovery.prod.ds:${PROXY_HOST}'
-      - 'api.formio.prod.ds:${PROXY_HOST}'
-      - 'api.forms.prod.ds:${PROXY_HOST}'
-      - 'api.identities.prod.ds:${PROXY_HOST}'
-      - 'api.records.prod.ds:${PROXY_HOST}'
-      - 'api.services.prod.ds:${PROXY_HOST}'
-      - 'api.tasks.prod.ds:${PROXY_HOST}'
-      - 'api.tenants.prod.ds:${PROXY_HOST}'
+      APP_ENV: prod
+    volumes:
+      - ${DIRECTORY}/api/config/jwt/key:/srv/api/config/jwt/key:rw
+      - ${DIRECTORY}/api/config/jwt/key.pub:/srv/api/config/jwt/key.pub:rw
+      - ${DIRECTORY}/api/config/migrations/parameters.yaml:/srv/api/config/migrations/parameters.yaml:rw
+      - ${DIRECTORY}/api/var/cache:/srv/api/var/cache:rw
+      - ${DIRECTORY}/api/var/logs:/srv/api/var/logs:rw

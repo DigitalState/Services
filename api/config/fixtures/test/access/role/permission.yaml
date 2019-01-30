@@ -1,0 +1,10 @@
+objects: []
+
+prototype:
+  access: ~
+  scope: ~
+  entity: ~
+  entity_uuid: ~
+  key: ~
+  attributes: []
+  tenant: ~

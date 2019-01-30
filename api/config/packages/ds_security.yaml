@@ -1,0 +1,7 @@
+ds_security:
+  token:
+    uuid: true
+    identity:
+      roles: true
+      type: true
+      uuid: true

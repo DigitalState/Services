@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.15.0
+
+- Feature [Composer] Upgrade apip dependency to 2.3.6
+- Feature [Composer] Upgrade symfony dependency to 4.2.0
+- Feature [Fixture] Separate sequence reset fixture from entity fixture
+- Feature [Tests] Add wider range of behat tests
+- Feature [Api] Rename pagination query parameters to `_page` and `_limit`
+- Feature [Config] Config api filter `key` changed from `partial` to `exact` strategy
+
 ## 0.14.0 (2018-10-29)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.14.0

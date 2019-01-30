@@ -1,0 +1,5 @@
+parameters:
+  env(APP): ''
+
+ds_log:
+  app: '%env(resolve:APP)%'
