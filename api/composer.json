@@ -11,7 +11,7 @@
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.1",
         "defuse/php-encryption": "^2.2",
-        "digitalstate/core": "dev-feature/apip-2-3-3-upgrade",
+        "digitalstate/core": "dev-develop",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "doctrine/doctrine-migrations-bundle": "^1.3",
         "guzzlehttp/guzzle": "^6.3",
