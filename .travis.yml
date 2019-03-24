@@ -1,19 +1,23 @@
 sudo: required
 
 env:
-  DOCKER_VERSION: 18.06.1~ce~3-0~ubuntu
-  DOCKER_COMPOSE_VERSION: 1.22.0
-  API_ENV: test
-  API_SECRET: byzxl36nl289x6yu71hdie2euf19vm3r
-  API_JWT_PASS_PHRASE: 00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
-  API_ENCRYPTION: def00000b66cdea17be03154351b285554884f1cba050541781f535bce839d31e315a82771d5dc5c32a8634ba1d7831ce5f1ec0a29e4a17344216eb038745acd63d3149f
-  API_SYSTEM_USERNAME: system
-  API_SYSTEM_PASSWORD: system
+  global:
+    - API_ENV=test
+    - API_SECRET=byzxl36nl289x6yu71hdie2euf19vm3r
+    - API_JWT_PASS_PHRASE=00ix4gk15tgvh6hl7z8nlj0r2xvlxczj
+    - API_ENCRYPTION=def00000b66cdea17be03154351b285554884f1cba050541781f535bce839d31e315a82771d5dc5c32a8634ba1d7831ce5f1ec0a29e4a17344216eb038745acd63d3149f
+    - API_SYSTEM_USERNAME=system
+    - API_SYSTEM_PASSWORD=system
+  matrix:
+    - DOCKER_VERSION=18.06.3~ce~3-0~ubuntu    DOCKER_COMPOSE_VERSION=1.22.0
+    - DOCKER_VERSION=18.06.2~ce~3-0~ubuntu    DOCKER_COMPOSE_VERSION=1.22.0
+    - DOCKER_VERSION=18.06.1~ce~3-0~ubuntu    DOCKER_COMPOSE_VERSION=1.22.0
 
 before_install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
+  - apt-cache madison docker-ce
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce=${DOCKER_VERSION}
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
