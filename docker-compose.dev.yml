@@ -9,11 +9,17 @@ services:
           - services_database_ui
 
   php:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-php
     environment:
       APP_ENV: dev
     volumes:
       - ${DIRECTORY}/api:/srv/api:rw,cached
 
   api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-api
     volumes:
       - ${DIRECTORY}/api/public:/srv/api/public:ro
