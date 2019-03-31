@@ -2,12 +2,18 @@ version: '3.4'
 
 services:
   php:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-php
     environment:
       APP_ENV: test
     volumes:
       - ${DIRECTORY}/api:/srv/api:rw,cached
 
   api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-api
     volumes:
       - ${DIRECTORY}/api/public:/srv/api/public:ro
 

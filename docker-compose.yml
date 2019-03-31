@@ -15,10 +15,7 @@ services:
           - services_database
 
   php:
-    image: digitalstate/services-php
-    build:
-      context: ./api
-      target: api_platform_php
+    image: digitalstate/services:php-0.16.0
     depends_on:
       - database
     env_file:
@@ -44,10 +41,7 @@ services:
           - services_php
 
   api:
-    image: digitalstate/services-api
-    build:
-      context: ./api
-      target: api_platform_nginx
+    image: digitalstate/services:api-0.16.0
     depends_on:
       - php
     networks:
