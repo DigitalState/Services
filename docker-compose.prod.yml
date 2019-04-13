@@ -8,5 +8,3 @@ services:
       - ${DIRECTORY}/api/config/jwt/key:/srv/api/config/jwt/key:rw
       - ${DIRECTORY}/api/config/jwt/key.pub:/srv/api/config/jwt/key.pub:rw
       - ${DIRECTORY}/api/config/migrations/parameters.yaml:/srv/api/config/migrations/parameters.yaml:rw
-      - ${DIRECTORY}/api/var/cache:/srv/api/var/cache:rw
-      - ${DIRECTORY}/api/var/logs:/srv/api/var/logs:rw
