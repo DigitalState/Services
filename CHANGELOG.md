@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.1 (2019-04-13)
+
+- Feature [Docker] Clean up docker prod volumes
+
 ## 0.16.0 (2019-03-31)
 
 - Feature [Docker] Restructure docker for dockerhub integration
