@@ -3,6 +3,7 @@
 ## 0.16.2 (2019-04-14)
 
 - Feature [Pagination] Increase maximum pagination to 100
+- Feature [Filter] Enable ds filter bundle
 
 ## 0.16.1 (2019-04-13)
 
