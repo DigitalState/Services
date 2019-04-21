@@ -3,6 +3,7 @@
 ## 0.16.3 (2019-04-21)
 
 - Feature [Docker] Add migration to docker entrypoint
+- Feature [Docker] Add perl to nginx container
 
 ## 0.16.2 (2019-04-14)
 
