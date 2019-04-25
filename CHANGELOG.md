@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.4 (2019-04-24)
+
+- Feature [Composer] Update various vendor packages to latest version
+
 ## 0.16.3 (2019-04-21)
 
 - Feature [Docker] Add migration to docker entrypoint
