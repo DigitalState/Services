@@ -24,6 +24,7 @@ return [
     Ds\Component\Log\DsLogBundle::class => ['all' => true],
     Ds\Component\Metadata\DsMetadataBundle::class => ['all' => true],
     Ds\Component\Parameter\DsParameterBundle::class => ['all' => true],
+    Ds\Component\Query\DsQueryBundle::class => ['all' => true],
     Ds\Component\Resolver\DsResolverBundle::class => ['all' => true],
     Ds\Component\Security\DsSecurityBundle::class => ['all' => true],
     Ds\Component\Security\Test\DsSecurityTestBundle::class => ['test' => true],
