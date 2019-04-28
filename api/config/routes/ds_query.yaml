@@ -1,0 +1,2 @@
+ds_query:
+  resource: '@DsQueryBundle/Resources/config/routing.yaml'

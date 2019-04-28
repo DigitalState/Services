@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.5 (2019-04-28)
+
+- Feature [Query] Enable query bundle
+
 ## 0.16.4 (2019-04-24)
 
 - Feature [Composer] Update various vendor packages to latest version
