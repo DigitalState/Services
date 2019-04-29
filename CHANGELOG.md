@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.6 (2019-04-29)
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.16.2
+
 ## 0.16.5 (2019-04-28)
 
 - Feature [Query] Enable query bundle
