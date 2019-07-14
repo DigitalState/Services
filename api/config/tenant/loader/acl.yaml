@@ -4,19 +4,16 @@ objects:
     assignee: System
     assignee_uuid: '%identity.system.uuid%'
     permissions:
-      - scope: generic
-        entity: ~
-        entity_uuid: ~
+      - scope:
+          type: generic
         key: entity
         attributes: [BROWSE, READ, EDIT, ADD, DELETE]
-      - scope: generic
-        entity: ~
-        entity_uuid: ~
+      - scope:
+          type: generic
         key: property
         attributes: [BROWSE, READ, EDIT]
-      - scope: generic
-        entity: ~
-        entity_uuid: ~
+      - scope:
+          type: generic
         key: generic
         attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 
@@ -25,19 +22,20 @@ objects:
     assignee: Role
     assignee_uuid: '%role.administrator.uuid%'
     permissions:
-      - scope: owner
-        entity: BusinessUnit
-        entity_uuid: ~
+      - scope:
+          type: owner
+          entity: BusinessUnit
+          entity_uuid: ~
         key: entity
         attributes: [BROWSE, READ, EDIT, ADD, DELETE]
-      - scope: owner
-        entity: BusinessUnit
-        entity_uuid: ~
+      - scope:
+          type: owner
+          entity: BusinessUnit
+          entity_uuid: ~
         key: property
         attributes: [BROWSE, READ, EDIT]
-      - scope: generic
-        entity: ~
-        entity_uuid: ~
+      - scope:
+          type: generic
         key: generic
         attributes: [BROWSE, READ, EDIT, ADD, DELETE, EXECUTE]
 

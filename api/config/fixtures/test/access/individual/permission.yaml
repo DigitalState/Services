@@ -2,9 +2,8 @@ objects: []
 
 prototype:
   access: ~
-  scope: ~
-  entity: ~
-  entity_uuid: ~
+  scope:
+    type: generic
   key: ~
   attributes: []
   tenant: ~
