@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.0 (2019-07-14)
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.17.0
+- Feature [Acl] Refactor fixtures and tenant loaders according to acl scope restructure
+- Bug [Docker] Set php version to 7.2.19 to fix bug https://github.com/symfony/symfony/issues/32395
+
 ## 0.16.6 (2019-04-29)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.16.2

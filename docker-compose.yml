@@ -15,7 +15,7 @@ services:
           - services_database
 
   php:
-    image: digitalstate/services:php-0.16.6
+    image: digitalstate/services:php-0.17.0
     depends_on:
       - database
     env_file:
@@ -41,7 +41,7 @@ services:
           - services_php
 
   api:
-    image: digitalstate/services:api-0.16.6
+    image: digitalstate/services:api-0.17.0
     depends_on:
       - php
     networks:
