@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.17.0 (2019-07-14)
+
 ## 0.16.6 (2019-04-29)
 
 - Feature [Core] Upgrade digitalstate/core dependency to 0.16.2
