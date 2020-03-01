@@ -334,12 +334,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DigitalState/Core.git",
-                "reference": "0ce0714edd439b079e26e4448f0a86c6f9b8c635"
+                "reference": "c82f55f241a49a89a84df384a0a69656be9abc7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DigitalState/Core/zipball/0ce0714edd439b079e26e4448f0a86c6f9b8c635",
-                "reference": "0ce0714edd439b079e26e4448f0a86c6f9b8c635",
+                "url": "https://api.github.com/repos/DigitalState/Core/zipball/c82f55f241a49a89a84df384a0a69656be9abc7d",
+                "reference": "c82f55f241a49a89a84df384a0a69656be9abc7d",
                 "shasum": ""
             },
             "require": {

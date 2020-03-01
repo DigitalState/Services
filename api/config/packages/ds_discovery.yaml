@@ -1,7 +1,15 @@
 parameters:
-  env(DISCOVERY_HOST): ''
-  env(DISCOVERY_CREDENTIAL): ''
+  env(DISCOVERY_ADAPTER): ''
+  env(DISCOVERY_CONSUL_HOST): ''
+  env(DISCOVERY_CONSUL_CREDENTIALS): ''
+  env(DISCOVERY_ENV_SERVICES): ''
+  env(DISCOVERY_ENV_CONFIGS): ''
 
 ds_discovery:
-  host: '%env(resolve:DISCOVERY_HOST)%'
-  credential: '%env(resolve:DISCOVERY_CREDENTIAL)%'
+  adapter: '%env(resolve:DISCOVERY_ADAPTER)%'
+  consul:
+    host: '%env(resolve:DISCOVERY_CONSUL_HOST)%'
+    credentials: '%env(resolve:DISCOVERY_CONSUL_CREDENTIALS)%'
+  env:
+    services: '%env(resolve:DISCOVERY_ENV_SERVICES)%'
+    configs: '%env(resolve:DISCOVERY_ENV_CONFIGS)%'
