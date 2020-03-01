@@ -31,8 +31,11 @@ _Note: The majority of variables found in the list below are used to override im
 | `API_TRUSTED_HOSTS` | See [TRUSTED_HOSTS](#api_image). | `localhost,api` |
 | `API_DATABASE_URL` | See [DATABASE_URL](#api_image). | `postgres://api:!ChangeMe!@database/api` |
 | `API_CORS_ALLOW_ORIGIN` | See [CORS_ALLOW_ORIGIN](#api_image). | `^https?://localhost(:[0-9]+)?$` |
-| `API_DISCOVERY_HOST` | See [DISCOVERY_HOST](#api_image). | `127.0.0.1:8500` |
-| `API_DISCOVERY_CREDENTIAL` | See [DISCOVERY_CREDENTIAL](#api_image). | `!ChangeMe!` |
+| `API_DISCOVERY_ADAPTER` | See [DISCOVERY_ADAPTER](#api_image). | `consul` |
+| `API_DISCOVERY_CONSUL_HOST` | See [DISCOVERY_CONSUL_HOST](#api_image). | `127.0.0.1:8500` |
+| `API_DISCOVERY_CONSUL_CREDENTIALS` | See [DISCOVERY_CONSUL_CREDENTIALS](#api_image). | `!ChangeMe!` |
+| `API_DISCOVERY_ENV_SERVICES` | See [DISCOVERY_ENV_SERVICES](#api_image). | `{}` |
+| `API_DISCOVERY_ENV_CONFIGS` | See [DISCOVERY_ENV_CONFIGS](#api_image). | `{}` |
 | `API_ENCRYPTION` | See [ENCRYPTION](#api_image). | `!ChangeMe!` |
 | `API_SYSTEM_USERNAME` | See [SYSTEM_USERNAME](#api_image). | `!ChangeMe!` |
 | `API_SYSTEM_PASSWORD` | See [SYSTEM_PASSWORD](#api_image). | `!ChangeMe!` |
@@ -69,8 +72,11 @@ _Note: The majority of variables found in the list below are used to override im
 | `TRUSTED_HOSTS` | The trusted hosts by the web entrypoint. | `localhost,api` |
 | `DATABASE_URL` | The database connection string. | `postgres://api:!ChangeMe!@database/api` |
 | `CORS_ALLOW_ORIGIN` | The cors rules. | `^https?://localhost(:[0-9]+)?$` |
-| `DISCOVERY_HOST` | The discovery host. This value is used by the discovery core component. | `127.0.0.1:8500` |
-| `DISCOVERY_CREDENTIAL` | The discovery credential. This value is used by the discovery core component. | `!ChangeMe!` |
+| `DISCOVERY_ADAPTER` | The discovery adapter. This value is used by the discovery core component. | `consul` |
+| `DISCOVERY_CONSUL_HOST` | The discovery consul host. This value is used by the discovery core component. | `127.0.0.1:8500` |
+| `DISCOVERY_CONSUL_CREDENTIALS` | The discovery consul credentials. This value is used by the discovery core component. | `!ChangeMe!` |
+| `DISCOVERY_ENV_SERVICES` | The discovery env services. This value is used by the discovery core component. | `{}` |
+| `DISCOVERY_ENV_CONFIGS` | The discovery env configs. This value is used by the discovery core component. | `{}` |
 | `ENCRYPTION` | The secret encryption key. | `!ChangeMe!` |
 | `SYSTEM_USERNAME` | The system username. | `!ChangeMe!` |
 | `SYSTEM_PASSWORD` | The system password. | `!ChangeMe!` |
