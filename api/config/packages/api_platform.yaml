@@ -82,6 +82,7 @@ services:
     arguments:
       - id: exact
         uuid: exact
+        slug: exact
         owner: exact
         ownerUuid: exact
         categories.uuid: exact
