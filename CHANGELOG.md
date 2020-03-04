@@ -1,6 +1,8 @@
 # Changelog
 
-## 0.18.0
+## 0.18.0 (2020-03-03)
+
+- Feature [Core] Upgrade digitalstate/core dependency to 0.18.0
 
 ## 0.17.3 (2019-11-17)
 
