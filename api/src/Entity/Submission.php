@@ -33,10 +33,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as ORMAssert;
  *             "groups"={"submission_input"}
  *         },
  *         "filters"={
- *             "ds.submission.search",
- *             "ds.submission.date",
- *             "ds.submission.boolean",
- *             "ds.submission.order"
+ *             "app.submission.search",
+ *             "app.submission.date",
+ *             "app.submission.boolean",
+ *             "app.submission.order"
  *         }
  *     }
  * )
