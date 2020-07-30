@@ -3,7 +3,6 @@ objects:
     scope:
       type: owner
       entity: BusinessUnit
-      entity_uuid: ~ # Any BusinessUnit
     key: entity
     attributes: [BROWSE, READ, EDIT, ADD, DELETE]
 
@@ -11,7 +10,6 @@ objects:
     scope:
       type: owner
       entity: BusinessUnit
-      entity_uuid: ~ # Any BusinessUnit
     key: property
     attributes: [BROWSE, READ, EDIT]
 
