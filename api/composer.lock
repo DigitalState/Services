@@ -330,16 +330,16 @@
         },
         {
             "name": "digitalstate/core",
-            "version": "0.18.0",
+            "version": "0.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DigitalState/Core.git",
-                "reference": "c94e4b990ef1a7f1adc76b89d06d95f6a47721ec"
+                "reference": "7caa21bd878923e318dc5e4b214846fb11eae96c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DigitalState/Core/zipball/c94e4b990ef1a7f1adc76b89d06d95f6a47721ec",
-                "reference": "c94e4b990ef1a7f1adc76b89d06d95f6a47721ec",
+                "url": "https://api.github.com/repos/DigitalState/Core/zipball/7caa21bd878923e318dc5e4b214846fb11eae96c",
+                "reference": "7caa21bd878923e318dc5e4b214846fb11eae96c",
                 "shasum": ""
             },
             "require": {
