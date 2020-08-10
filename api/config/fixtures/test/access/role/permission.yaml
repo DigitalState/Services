@@ -1,4 +1,37 @@
-objects: []
+objects:
+  - access: bf5488c4-0cfa-42b8-b21a-5cdf61adf335
+    key: entity
+    attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+    scope:
+      type: owner
+      entity: BusinessUnit
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
+  - access: bf5488c4-0cfa-42b8-b21a-5cdf61adf335
+    key: property
+    attributes: [BROWSE, READ, EDIT]
+    scope:
+      type: owner
+      entity: BusinessUnit
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
+  - access: ef8b15dd-9260-4847-afc6-a61ef891312e
+    key: entity
+    attributes: [BROWSE, READ, EDIT, ADD, DELETE]
+    scope:
+      type: property
+      property: data.en.attribute
+      value: string
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
+  - access: ef8b15dd-9260-4847-afc6-a61ef891312e
+    key: property
+    attributes: [BROWSE, READ, EDIT]
+    scope:
+      type: property
+      property: data.en.attribute
+      value: string
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
 
 prototype:
   access: ~

@@ -14,8 +14,8 @@ Feature: Browse tenants
     """
     {
       "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
+      "minItems": 3,
+      "maxItems": 3,
       "items": {
         "type": "object",
         "properties": {
