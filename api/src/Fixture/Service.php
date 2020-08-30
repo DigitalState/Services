@@ -3,6 +3,7 @@
 namespace App\Fixture;
 
 use App\Entity\Service as ServiceEntity;
+use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Database\Fixture\Yaml;
 
@@ -39,6 +40,13 @@ trait Service
                 ->setEnabled($object->enabled)
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);
+
+            if (null !== $object->created_at) {
+                $date = new DateTime;
+                $date->setTimestamp($object->created_at);
+                $service->setCreatedAt($date);
+            }
+
             $manager->persist($service);
         }
 

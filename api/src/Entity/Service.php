@@ -103,8 +103,9 @@ class Service implements Identifiable, Uuidentifiable, Sluggable, Ownable, Trans
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"service_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"service_output", "service_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

@@ -4,6 +4,7 @@ namespace App\Fixture;
 
 use App\Entity\Service;
 use App\Entity\Scenario as ScenarioEntity;
+use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Database\Fixture\Yaml;
 
@@ -44,6 +45,13 @@ trait Scenario
                 ->setEnabled($object->enabled)
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);
+
+            if (null !== $object->created_at) {
+                $date = new DateTime;
+                $date->setTimestamp($object->created_at);
+                $scenario->setCreatedAt($date);
+            }
+
             $manager->persist($scenario);
         }
 

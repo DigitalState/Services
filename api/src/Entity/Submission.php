@@ -91,8 +91,9 @@ class Submission implements Identifiable, Uuidentifiable, Ownable, Identitiable,
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"submission_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"submission_output", "submission_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

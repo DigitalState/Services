@@ -10,6 +10,7 @@ Feature: Add scenarios
     And I send a "POST" request to "/scenarios" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "owner": "BusinessUnit",
       "ownerUuid": "83bf8f26-7181-4bed-92f3-3ce5e4c286d7",
       "service": "/services/7293e6d1-48e2-4761-b9c6-f77258cbe31a",
@@ -51,6 +52,7 @@ Feature: Add scenarios
     And the JSON node "id" should be equal to the number 3
     And the JSON node "uuid" should exist
     And the JSON node "createdAt" should exist
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should exist
     And the JSON node "deletedAt" should exist
     And the JSON node "deletedAt" should be null

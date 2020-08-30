@@ -4,6 +4,7 @@ namespace App\Fixture;
 
 use App\Entity\Category as CategoryEntity;
 use App\Entity\Service;
+use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ds\Component\Database\Fixture\Yaml;
 
@@ -40,6 +41,12 @@ trait Category
                 ->setEnabled($object->enabled)
                 ->setWeight($object->weight)
                 ->setTenant($object->tenant);
+
+            if (null !== $object->created_at) {
+                $date = new DateTime;
+                $date->setTimestamp($object->created_at);
+                $category->setCreatedAt($date);
+            }
 
             foreach ($object->services as $uuid) {
                 $service = $manager->getRepository(Service::class)->findOneBy(['uuid' => $uuid]);

@@ -101,8 +101,9 @@ class Category implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"category_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"category_output", "category_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

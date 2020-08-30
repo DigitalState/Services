@@ -7,4 +7,5 @@ objects:
 
 prototype:
   uuid: ~
+  created_at: ~
   data: {}

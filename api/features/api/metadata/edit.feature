@@ -10,6 +10,7 @@ Feature: Edit metadata
     And I send a "PUT" request to "/metadata/abe3bd7f-b0d4-4b77-97fa-f188a5b500a4" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "owner": "System",
       "ownerUuid": "aa18b644-a503-49fa-8f53-10f4c1f8e3a1",
       "title": {
@@ -27,6 +28,7 @@ Feature: Edit metadata
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "owner" should be equal to the string "System"
     And the JSON node "ownerUuid" should be equal to the string "aa18b644-a503-49fa-8f53-10f4c1f8e3a1"
     And the JSON node "title.en" should be equal to the string "Title - edit"
@@ -42,6 +44,7 @@ Feature: Edit metadata
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "owner" should be equal to the string "System"
     And the JSON node "ownerUuid" should be equal to the string "aa18b644-a503-49fa-8f53-10f4c1f8e3a1"
     And the JSON node "title.en" should be equal to the string "Title - edit"
@@ -59,7 +62,6 @@ Feature: Edit metadata
     {
       "id": 9999,
       "uuid": "421aebbb-e62e-4b87-bced-42921456131b",
-      "createdAt":"2000-01-01T12:00:00+00:00",
       "updatedAt":"2000-01-01T12:00:00+00:00",
       "version": 2,
       "tenant": "93377748-2abb-4e33-9027-5d8a5c281a41"
@@ -70,7 +72,6 @@ Feature: Edit metadata
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
     And the JSON node "uuid" should be equal to the string "abe3bd7f-b0d4-4b77-97fa-f188a5b500a4"
-    And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 
@@ -82,7 +83,6 @@ Feature: Edit metadata
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
     And the JSON node "uuid" should be equal to the string "abe3bd7f-b0d4-4b77-97fa-f188a5b500a4"
-    And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "tenant" should be equal to "b6ac25fe-3cd6-4100-a054-6bba2fc9ef18"
 

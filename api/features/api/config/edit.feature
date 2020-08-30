@@ -10,6 +10,7 @@ Feature: Edit configs
     And I send a "PUT" request to "/configs/4804b00d-cc69-4a2b-98c2-f8a0d9404764" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "value": "system2@system.ds",
       "version": 1
     }
@@ -17,6 +18,7 @@ Feature: Edit configs
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "value" should be equal to the string "system2@system.ds"
     And the JSON node "version" should be equal to the number 2
 
@@ -26,6 +28,7 @@ Feature: Edit configs
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "value" should be equal to the string "system2@system.ds"
     And the JSON node "version" should be equal to the number 2
 
@@ -37,7 +40,6 @@ Feature: Edit configs
     {
       "id": 9999,
       "uuid": "1ac1b01e-4934-4b89-8a43-7d17a849be61",
-      "createdAt":"2000-01-01T12:00:00+00:00",
       "updatedAt":"2000-01-01T12:00:00+00:00",
       "owner": "System",
       "ownerUuid": "5f8630dd-4739-4573-bcf6-9133416e4311",
@@ -51,7 +53,6 @@ Feature: Edit configs
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
     And the JSON node "uuid" should be equal to the string "4804b00d-cc69-4a2b-98c2-f8a0d9404764"
-    And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "owner" should be equal to "BusinessUnit"
     And the JSON node "ownerUuid" should be equal to "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"
@@ -66,7 +67,6 @@ Feature: Edit configs
     And the response should be in JSON
     And the JSON node "id" should be equal to the number 1
     And the JSON node "uuid" should be equal to the string "4804b00d-cc69-4a2b-98c2-f8a0d9404764"
-    And the JSON node "createdAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should not contain "2000-01-01T12:00:00+00:00"
     And the JSON node "owner" should be equal to "BusinessUnit"
     And the JSON node "ownerUuid" should be equal to "325e1004-8516-4ca9-a4d3-d7505bd9a7fe"

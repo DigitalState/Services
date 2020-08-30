@@ -10,6 +10,7 @@ Feature: Add accesses
     And I send a "POST" request to "/accesses" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "owner": "BusinessUnit",
       "ownerUuid": "325e1004-8516-4ca9-a4d3-d7505bd9a7fe",
       "assignee": "Anonymous",
@@ -25,6 +26,7 @@ Feature: Add accesses
     And the JSON node "id" should be equal to the number 21
     And the JSON node "uuid" should exist
     And the JSON node "createdAt" should exist
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should exist
     And the JSON node "owner" should exist
     And the JSON node "owner" should be equal to the string "BusinessUnit"

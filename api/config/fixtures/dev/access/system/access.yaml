@@ -9,6 +9,7 @@ objects:
 
 prototype:
   uuid: ~
+  created_at: ~
   owner: System
   owner_uuid: ~
   assignee: System
