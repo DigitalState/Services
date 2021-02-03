@@ -10,6 +10,7 @@ Feature: Add tenant
     And I send a "POST" request to "/system/tenants" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "uuid": "3b0f1019-e9b6-458d-b9ad-fd60c079ee7b",
       "data": {
           "user": {
@@ -66,17 +67,18 @@ Feature: Add tenant
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON
     And the JSON node "id" should exist
-    And the JSON node "id" should be equal to the number 3
+    And the JSON node "id" should be equal to the number 4
     And the JSON node "uuid" should exist
     And the JSON node "uuid" should be equal to "3b0f1019-e9b6-458d-b9ad-fd60c079ee7b"
     And the JSON node "createdAt" should exist
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should exist
     And the JSON node "version" should exist
     And the JSON node "version" should be equal to the number 1
 
   Scenario: Read the added tenant
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/system/tenants?id=3"
+    And I send a "GET" request to "/system/tenants?id=4"
     Then the response status code should be 200
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the response should be in JSON

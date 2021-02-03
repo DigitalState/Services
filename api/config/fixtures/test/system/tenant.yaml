@@ -3,6 +3,9 @@ objects:
 
   - uuid: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
+  - uuid: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
 prototype:
   uuid: ~
+  created_at: ~
   data: {}

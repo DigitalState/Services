@@ -116,8 +116,9 @@ class Scenario implements Identifiable, Uuidentifiable, Sluggable, Ownable, Tran
 
     /**
      * @var \DateTime
-     * @ApiProperty(writable=false)
-     * @Serializer\Groups({"scenario_output"})
+     * @ApiProperty
+     * @Serializer\Groups({"scenario_output", "scenario_input"})
+     * @Assert\DateTime
      */
     protected $createdAt;
 

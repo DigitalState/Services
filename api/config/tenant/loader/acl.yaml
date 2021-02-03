@@ -25,13 +25,11 @@ objects:
       - scope:
           type: owner
           entity: BusinessUnit
-          entity_uuid: ~
         key: entity
         attributes: [BROWSE, READ, EDIT, ADD, DELETE]
       - scope:
           type: owner
           entity: BusinessUnit
-          entity_uuid: ~
         key: property
         attributes: [BROWSE, READ, EDIT]
       - scope:

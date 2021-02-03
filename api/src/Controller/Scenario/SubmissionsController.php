@@ -7,11 +7,11 @@ use App\Entity\Submission;
 use App\Service\ScenarioService;
 use App\Service\SubmissionService;
 use InvalidArgumentException;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use function GuzzleHttp\json_decode;
 
@@ -38,17 +38,24 @@ final class SubmissionsController
     private $submissionService;
 
     /**
+     * @var \Symfony\Component\Serializer\SerializerInterface
+     */
+    private $serializer;
+
+    /**
      * Constructor
      *
      * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
      * @param \App\Service\ScenarioService $scenarioService
      * @param \App\Service\SubmissionService $submissionService
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
      */
-    public function __construct(RequestStack $requestStack, ScenarioService $scenarioService, SubmissionService $submissionService)
+    public function __construct(RequestStack $requestStack, ScenarioService $scenarioService, SubmissionService $submissionService, SerializerInterface $serializer)
     {
         $this->requestStack = $requestStack;
         $this->scenarioService = $scenarioService;
         $this->submissionService = $submissionService;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -56,7 +63,7 @@ final class SubmissionsController
      *
      * @Route(path="/scenarios/{uuid}/submissions", methods={"POST"})
      * @param string $uuid
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function post($uuid)
@@ -90,7 +97,11 @@ final class SubmissionsController
         $manager = $this->submissionService->getManager();
         $manager->persist($submission);
         $manager->flush();
-        $response = new JsonResponse($submission, Response::HTTP_CREATED);
+        $response = new Response(
+            $this->serializer->serialize($submission, 'json', ['item_operation_name' => 'get']),
+            Response::HTTP_CREATED,
+            ['Content-Type' => 'application/json']
+        );
 
         return $response;
     }

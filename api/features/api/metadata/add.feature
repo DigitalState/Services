@@ -10,6 +10,7 @@ Feature: Add metadata
     And I send a "POST" request to "/metadata" with body:
     """
     {
+      "createdAt": "2000-01-01 12:00:00",
       "owner": "BusinessUnit",
       "ownerUuid": "325e1004-8516-4ca9-a4d3-d7505bd9a7fe",
       "title": {
@@ -31,6 +32,7 @@ Feature: Add metadata
     And the JSON node "id" should be equal to the number 3
     And the JSON node "uuid" should exist
     And the JSON node "createdAt" should exist
+    And the JSON node "createdAt" should be equal to the string "2000-01-01T12:00:00+00:00"
     And the JSON node "updatedAt" should exist
     And the JSON node "deletedAt" should exist
     And the JSON node "owner" should exist

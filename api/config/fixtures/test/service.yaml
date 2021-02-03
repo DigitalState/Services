@@ -55,8 +55,47 @@ objects:
       fr: Presentation ...
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
 
+  - uuid: 3302e49b-03b0-40c9-8845-4243ca2c0051
+    owner_uuid: ~
+    slug: service-1
+    title:
+      en: Service 1
+      fr: Service 1
+    description:
+      en: Description ...
+      fr: Description ...
+    presentation:
+      en: Presentation ...
+      fr: Presentation ...
+    data:
+      en:
+        attribute: "string"
+      fr:
+        attribute: "string"
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
+  - uuid: dcdbbb1b-0762-4254-a1c5-33080749d5b3
+    owner_uuid: ~
+    slug: service-2
+    title:
+      en: Service 2
+      fr: Service 2
+    description:
+      en: Description ...
+      fr: Description ...
+    presentation:
+      en: Presentation ...
+      fr: Presentation ...
+    data:
+      en:
+        attribute: 123
+      fr:
+        attribute: 123
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
 prototype:
   uuid: ~
+  created_at: ~
   owner: BusinessUnit
   owner_uuid: ~
   slug: ~

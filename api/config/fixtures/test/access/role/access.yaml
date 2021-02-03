@@ -1,7 +1,15 @@
-objects: []
+objects:
+  - uuid: bf5488c4-0cfa-42b8-b21a-5cdf61adf335
+    assignee_uuid: 3762b831-1bb7-438d-9747-1b8657e59877
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
+
+  - uuid: ef8b15dd-9260-4847-afc6-a61ef891312e
+    assignee_uuid: de3d2dea-ab7c-472d-85f0-c7df3db8a690
+    tenant: 64c82518-017d-4fb2-9fcf-3926da3616e6 # Tenant 0
 
 prototype:
   uuid: ~
+  created_at: ~
   owner: BusinessUnit
   owner_uuid: ~
   assignee: Role

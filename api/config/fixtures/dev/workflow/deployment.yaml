@@ -3,6 +3,10 @@ objects:
     files:
       - bpmn/pothole-report.bpmn
 
+  - name: Graffiti Report
+    files:
+      - bpmn/graffiti-report.bpmn
+
 prototype:
   name: ~
   source: ~
